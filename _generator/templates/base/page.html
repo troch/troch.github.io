@@ -2,14 +2,24 @@
 
 <html>
 <head>
-    <link href="assets/app.css"rel="stylesheet" >
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <base href="/">
+    {% for styleSheet in styleSheets %}
+        <link rel="stylesheet" href="{{ styleSheet }}">
+    {% endfor %}
 </head>
 
 <body>
     {% block body %}{% endblock %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js"></script>
+    {% for script in scriptsSrc %}
+        <script src="{{ script }}"></script>
+    {% endfor %}
+
+    {% for script in scripts %}
+        <script>{{ script }}</script>
+    {% endfor %}
+
+    {% include "base/analytics.html" %}
 </body>
 
 </html>
