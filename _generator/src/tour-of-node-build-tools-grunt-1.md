@@ -17,7 +17,7 @@ Grunt became the reference for building front-end source code, thanks to the rel
 (packages named `grunt-contrib-xxx`) for common tasks like concatenating, copying, watching, serving files etc...
 
 Grunt was a precursor in the wonderful land of JavaScript (and `Node`) based build tools. Today its package ecosystem and its user base
-are very large. For many developers handling front-end technologies, Grunt is the first building tool they use, before having ever programmed on
+are very large. For many developers working with front-end technologies, Grunt is the first building tool they use, before having ever programmed on
 the `Node` platform. On that aspect, Grunt is very accessible thanks to its config-based approach. This is a pro as well as a con, and we will
 talk more about it later in this article. Grunt has also been adopted by other tools, including a lot of [Yeoman](http://yeoman.io/) generators and
 project skeletons. Other building tools are based on Grunt. [Angus](https://github.com/nickjanssen/angus) was one of them but later moved
@@ -84,9 +84,9 @@ And we can now run `grunt build`, `grunt concat`, `grunt jshint` or even `grunt 
 
 ## Splitting the Gruntfile
 
-The most common issue developers encounter with Grunt is the size its config file. The more a build process require tasks and targets,
-the longer the config object. Very quickly a `Gruntfile.js` can exceed a few hundred lines and this will affect A quick solution for this is to split our Gruntfile
-by using [Node modules](https://nodejs.org/api/modules.html).
+The most common issue developers encounter with Grunt is the size its config file. The more a build process requires tasks and targets,
+the longer the config object. Very quickly a `Gruntfile.js` can exceed a few hundred lines and this will affect its **maintainability**. A quick solution
+for this is to split our Gruntfile by using [Node modules](https://nodejs.org/api/modules.html).
 
 We create a tasks folder where we are going to create a file per task, keeping our `Gruntfile.js` very slim:
 

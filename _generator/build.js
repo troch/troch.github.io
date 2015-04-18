@@ -39,16 +39,16 @@ Metalsmith(__dirname)
             author: 'Thomas Roch'
         }
     })
+    .use(collections({posts: '*.md'}))
     .use(drafts())
     .use(markdown({
         gfm: true
     }))
+    .use(excerpts())
     .use(replaceCodeLanguage())
     .use(formatDate())
     .use(permalinks('posts/:year/:month/:day/:title'))
-    .use(collections({posts: '*.html'}))
     .use(template())
-    .use(excerpts())
     .use(feed({collection: 'posts'}))
     .use(generateIndex())
     .destination('../dist')
@@ -86,14 +86,16 @@ function formatDate() {
 function template() {
     return function (files, metalsmith, done) {
         for (file in files) {
-            files[file].contents = new Buffer(
-                nunjucks.render(__dirname + '/templates/article.html', {
-                    styleSheets: styleSheets,
-                    scriptsSrc: scriptsSrc,
-                    scripts: scripts,
-                    contents: files[file].contents.toString()
-                })
-            );
+            if (files[file].collection && files[file].collection.indexOf('posts') !== -1) {
+                files[file].contents = new Buffer(
+                    nunjucks.render(__dirname + '/templates/article.html', {
+                        styleSheets: styleSheets,
+                        scriptsSrc: scriptsSrc,
+                        scripts: scripts,
+                        contents: files[file].contents.toString()
+                    })
+                );
+            }
         };
         done();
     };

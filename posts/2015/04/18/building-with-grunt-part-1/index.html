@@ -43,7 +43,7 @@ So what is exactly Grunt? Since 4.0, Grunt is definitely a task runner... runnin
 Grunt became the reference for building front-end source code, thanks to the release of &quot;contribution&quot; packages by the Grunt team
 (packages named <code class="nohighlight">grunt-contrib-xxx</code>) for common tasks like concatenating, copying, watching, serving files etc...</p>
 <p>Grunt was a precursor in the wonderful land of JavaScript (and <code class="nohighlight">Node</code>) based build tools. Today its package ecosystem and its user base
-are very large. For many developers handling front-end technologies, Grunt is the first building tool they use, before having ever programmed on
+are very large. For many developers working with front-end technologies, Grunt is the first building tool they use, before having ever programmed on
 the <code class="nohighlight">Node</code> platform. On that aspect, Grunt is very accessible thanks to its config-based approach. This is a pro as well as a con, and we will
 talk more about it later in this article. Grunt has also been adopted by other tools, including a lot of <a href="http://yeoman.io/">Yeoman</a> generators and
 project skeletons. Other building tools are based on Grunt. <a href="https://github.com/nickjanssen/angus">Angus</a> was one of them but later moved
@@ -91,9 +91,9 @@ to make Grunt aware of it. A task can contain <code class="nohighlight">targets<
 </code></pre>
 <p>And we can now run <code class="nohighlight">grunt build</code>, <code class="nohighlight">grunt concat</code>, <code class="nohighlight">grunt jshint</code> or even <code class="nohighlight">grunt jshint concat</code>.</p>
 <h2 id="splitting-the-gruntfile">Splitting the Gruntfile</h2>
-<p>The most common issue developers encounter with Grunt is the size its config file. The more a build process require tasks and targets,
-the longer the config object. Very quickly a <code class="nohighlight">Gruntfile.js</code> can exceed a few hundred lines and this will affect A quick solution for this is to split our Gruntfile
-by using <a href="https://nodejs.org/api/modules.html">Node modules</a>.</p>
+<p>The most common issue developers encounter with Grunt is the size its config file. The more a build process requires tasks and targets,
+the longer the config object. Very quickly a <code class="nohighlight">Gruntfile.js</code> can exceed a few hundred lines and this will affect its <strong>maintainability</strong>. A quick solution
+for this is to split our Gruntfile by using <a href="https://nodejs.org/api/modules.html">Node modules</a>.</p>
 <p>We create a tasks folder where we are going to create a file per task, keeping our <code class="nohighlight">Gruntfile.js</code> very slim:</p>
 <pre><code class="nohighlight">├── build
 |   └── app.js
