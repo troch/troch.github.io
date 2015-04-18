@@ -7,7 +7,7 @@ author: Thomas Roch
 
 # A tour of Node building tools
 
-In this serie of articles, we'll explore popular Node based tools for building web applications.
+In this series of articles, we'll explore popular Node based tools for building web applications.
 Although `npm` itself can be used for build automation (see ["How to use npm as a build tool"](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/)),
 we will focus on the specialised npm packages: `grunt`, `gulp` and `broccoli`. We will try to understand what problem they solve, how to use them
 and what their limitations are.

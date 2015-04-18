@@ -34,8 +34,9 @@ var scripts = [
 Metalsmith(__dirname)
     .metadata({
         site: {
-            title:  'Another blog',
-            url:    'http://troch.github.io/',
+            title:  'React and be thankful',
+            description: 'A blog about building (reactive) web applications',
+            url:    'http://blog.reactandbethankful.com',
             author: 'Thomas Roch'
         }
     })
