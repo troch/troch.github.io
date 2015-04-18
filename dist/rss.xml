@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Another blog]]></title><description><![CDATA[Another blog]]></description><link>http://troch.github.io/</link><generator>metalsmith-feed</generator><lastBuildDate>Sat, 18 Apr 2015 10:46:41 GMT</lastBuildDate><atom:link href="http://troch.github.io/rss.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Thomas Roch]]></author></channel></rss>

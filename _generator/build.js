@@ -3,8 +3,9 @@ var Metalsmith      = require('metalsmith');
 var drafts          = require('metalsmith-drafts');
 var markdown        = require('metalsmith-markdown');
 var permalinks      = require('metalsmith-permalinks');
-var templates       = require('metalsmith-templates');
-var metallic        = require('metalsmith-metallic');
+var collections     = require('metalsmith-collections');
+var feed            = require('metalsmith-feed');
+var excerpts        = require('metalsmith-excerpts');
 // Other modules
 var nunjucks        = require('nunjucks');
 var _               = require('lodash');
@@ -31,14 +32,26 @@ var scripts = [
 
 // Build
 Metalsmith(__dirname)
+    .metadata({
+        site: {
+            title:  'Another blog',
+            url:    'http://troch.github.io/',
+            author: 'Thomas Roch'
+        }
+    })
     .use(drafts())
     .use(markdown({
         gfm: true
     }))
     .use(replaceCodeLanguage())
-    .use(permalinks('posts/:title'))
+    .use(formatDate())
+    .use(permalinks('posts/:year/:month/:day/:title'))
+    .use(collections({posts: '*.html'}))
     .use(template())
-    .destination('../build')
+    .use(excerpts())
+    .use(feed({collection: 'posts'}))
+    .use(generateIndex())
+    .destination('../dist')
     .build(noop);
 
 // Functions
@@ -50,8 +63,21 @@ function replaceCodeLanguage() {
     return function (files, metalsmith, done) {
         for (file in files) {
             files[file].contents = new Buffer(
-                files[file].contents.toString().replace('class="lang-', 'class="')
+                files[file].contents.toString()
+                    .replace(/<code>/g, '<code class="nohighlight">')
+                    .replace(/<code class="lang-/g, '\<code class="')
             );
+        };
+        done();
+    };
+}
+
+function formatDate() {
+    return function (files, metalsmith, done) {
+        for (file in files) {
+            files[file].year = files[file].date.getFullYear().toString();
+            files[file].month = formatNumber(files[file].date.getMonth() + 1);
+            files[file].day = formatNumber(files[file].date.getDate());
         };
         done();
     };
@@ -61,13 +87,37 @@ function template() {
     return function (files, metalsmith, done) {
         for (file in files) {
             files[file].contents = new Buffer(
-                nunjucks.render(__dirname + '/templates/index.html', {
+                nunjucks.render(__dirname + '/templates/article.html', {
                     styleSheets: styleSheets,
                     scriptsSrc: scriptsSrc,
                     scripts: scripts,
                     contents: files[file].contents.toString()
                 })
             );
+        };
+        done();
+    };
+}
+
+function formatNumber(number) {
+    if (number.toString().length === 2) {
+        return number.toString();
+    }
+    return "0" + number.toString();
+}
+
+function generateIndex() {
+    return function (files, metalsmith, done) {
+        var indexPage = nunjucks.render(__dirname + '/templates/index.html', {
+            styleSheets: styleSheets,
+            scriptsSrc: scriptsSrc,
+            scripts: scripts,
+            posts: _.sortBy(files, 'date').reverse()
+        });
+        files['index.html'] = {
+            mode: '0666',
+            contents: new Buffer(indexPage),
+            path: ''
         };
         done();
     };

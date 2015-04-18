@@ -1,6 +1,10 @@
-article {
+.main {
     padding: 1rem;
     background-color: white;
+
+    a {
+      color: @primary;
+    }
 
     p {
         line-height: 1.4rem;
@@ -52,8 +56,11 @@ article {
         > code {
             display: block;
             width: 100%;
-            border-left: 0.35rem solid @gray-lighter;
+            border: 1px solid @gray-lighter;
+            border-left-width: 0.35rem;
             font-size: 0.9rem;
+            padding-left: 0.65rem !important;
+            background-color: #f8f8f8;
         }
     }
 }

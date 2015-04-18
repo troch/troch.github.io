@@ -21,7 +21,7 @@ html, body {
 }
 
 a {
-  color: @primary;
+  color: inherit;
   text-decoration: none;
 }
 a strong {
@@ -68,8 +68,11 @@ header, footer {
   padding: 1rem;
   background-color: @primary;
 
-  a {
-    color: white;
+  .info {
+    text-align: center;
+    font-size: 0.85rem;
+    color: @gray-lighter;
+    margin: 1rem 0;
   }
 }
 
@@ -95,6 +98,13 @@ footer {
     margin-bottom: 1rem;
   }
 
+  > .info {
+    color: @gray-lighter;
+    a {
+      text-decoration: underline;
+    }
+  }
+
   > .contact-links {
     text-align: center;
   }
@@ -116,9 +126,14 @@ footer {
 
     footer {
       background-color: transparent;
+      padding: 0;
+
+      .info {
+        color: @gray-dark;
+      }
     }
 
-    article {
+    body > article, body > section {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
       margin: @article-margin auto;
       max-width: @max-article-width;
@@ -141,7 +156,13 @@ footer {
     }
 
     footer {
+      margin: @article-margin auto @article-margin @sidebar-width + @article-margin;
+      max-width: @max-article-width;
       // box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+      > .info {
+        margin: 0;
+        text-align: left;
+      }
     }
 
     .contact-links {
@@ -159,7 +180,7 @@ footer {
       }
     }
 
-    article {
+    body > article, body > section {
       margin: @article-margin auto @article-margin @sidebar-width + @article-margin;
     }
 }
