@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
+var del  = require('rimraf')
 
-gulp.task('build', ['less', 'copy']);
+gulp.task('build', ['less', 'copyPosts']);
 
 gulp.task('less', function () {
     return gulp.src('_less/app.less')
@@ -10,7 +11,17 @@ gulp.task('less', function () {
         .pipe(gulp.dest('assets'));
 });
 
-gulp.task('copy', ['less'], function () {
-    return gulp.src('assets/**/*.*')
-        .pipe(gulp.dest('dist/assets'));
+gulp.task('cleanDist', ['build'], function (done) {
+    del('dist/', done);
+});
+
+gulp.task('copyPosts', function () {
+    return gulp.src('./dist/**/*.*')
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('deploy', function (done) {
+    del('posts/', function () {
+        gulp.start('cleanDist', done);
+    });
 });

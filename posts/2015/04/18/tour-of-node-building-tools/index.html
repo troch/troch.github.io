@@ -18,7 +18,7 @@
     
     <header>
     <h1>
-        <span>Another blog</span>
+        <a href="/">Another blog</a>
 
         <a class="rss-feed circled-icon" href="/rss.xml">
             <span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span>
@@ -35,17 +35,30 @@
 </header>
 
 
-    <section class="main">
-        <h1>Recent posts</h1>
-
-        
-            <article><a href="/"></a></article>
-        
-            <article><a href="/posts/2015/04/18/building-with-grunt-part-1">Building with Grunt Part 1</a></article>
-        
-            <article><a href="/posts/2015/04/18/tour-of-node-building-tools">Tour of Node building tools</a></article>
-        
-    </section>
+    <article class="main"> <h1 id="a-tour-of-node-building-tools">A tour of Node building tools</h1>
+<p>In this serie of articles, we&#39;ll explore popular Node based tools for building web applications.
+Although <code class="nohighlight">npm</code> itself can be used for build automation (see <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">&quot;How to use npm as a build tool&quot;</a>),
+we will focus on the specialised npm packages: <code class="nohighlight">grunt</code>, <code class="nohighlight">gulp</code> and <code class="nohighlight">broccoli</code>. We will try to understand what problem they solve, how to use them
+and what their limitations are.</p>
+<p>Those tools share a few traits in common:</p>
+<ul>
+<li>They are npm packages exposing an API</li>
+<li>A build file needs to be added to your project <code class="nohighlight">Gruntfile.js</code>, <code class="nohighlight">gulpfile.js</code>, <code class="nohighlight">brocfile.js</code>...</li>
+<li>Plugins (npm packages) wrapping well-known npm packages (uglifyjs, jshint, less, etc...) need to be installed to perform specific tasks</li>
+</ul>
+<h2 id="posts">Posts</h2>
+<ul>
+<li><a href="/posts/2015/04/18/building-with-grunt-part-1">Building with Grunt (Part 1)</a></li>
+<li>Building with Grunt (Part 2)</li>
+<li>Building with Gulp</li>
+<li>Building with Broccoli</li>
+</ul>
+<h2 id="recommended-articles-on-the-web">Recommended articles on the web</h2>
+<ul>
+<li><a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">How to use npm as a build tool</a></li>
+<li><a href="http://scm.io/blog/hack/2014/07/why-gulp-might-not-be-the-answer/">Why gulp might not be the answer</a></li>
+</ul>
+ </article>
 
     <footer>
     <!-- <div class="about">About the author</div> -->
