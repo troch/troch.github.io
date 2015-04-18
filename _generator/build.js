@@ -41,9 +41,7 @@ Metalsmith(__dirname)
     })
     .use(collections({posts: '*.md'}))
     .use(drafts())
-    .use(markdown({
-        gfm: true
-    }))
+    .use(markdown({gfm: true}))
     .use(excerpts())
     .use(replaceCodeLanguage())
     .use(formatDate())

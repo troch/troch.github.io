@@ -89,6 +89,13 @@ header {
       padding: 1rem 0;
     }
   }
+
+  > section {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    background-color: @primary-light;
+    margin: 1rem 0;
+    padding: 1rem;
+  }
 }
 
 footer {
@@ -112,15 +119,6 @@ footer {
 @media (min-width: @break-point-1) {
     body, html {
       background-color: white;
-    }
-
-    header {
-      > section {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-        background-color: @primary-light;
-        margin: 1rem 0;
-        padding: 1rem;
-      }
     }
 
     footer {

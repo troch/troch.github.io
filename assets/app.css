@@ -122,6 +122,12 @@ header > h1 {
 header > h1 > a:first-child {
   padding: 1rem 0;
 }
+header > section {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  background-color: #2645aa;
+  margin: 1rem 0;
+  padding: 1rem;
+}
 footer > .about {
   text-align: center;
   margin-bottom: 1rem;
@@ -139,12 +145,6 @@ footer > .contact-links {
   body,
   html {
     background-color: white;
-  }
-  header > section {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    background-color: #2645aa;
-    margin: 1rem 0;
-    padding: 1rem;
   }
   footer {
     background-color: transparent;
