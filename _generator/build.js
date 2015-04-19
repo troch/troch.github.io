@@ -50,6 +50,7 @@ Metalsmith(__dirname)
     })
     .use(collections({posts: '*.md'}))
     .use(drafts())
+    .use(fileStats())
     .use(markdown({gfm: true}))
     .use(excerpts())
     .use(replaceCodeLanguage())
@@ -102,7 +103,10 @@ function template() {
                         contents: files[file].contents.toString(),
                         title: files[file].title + '|' + siteTitle,
                         description: files[file].excerpt.replace(/<\/?[^>]+(>|$)/g, "").trim().replace('\n', ''),
-                        url: siteUrl + files[file].path
+                        url: siteUrl + files[file].path,
+                        isArticle: true,
+                        modifiedTime: files[file].modifiedTime.toISOString(),
+                        publishedTime: files[file].date.toISOString()
                     })
                 );
             }
@@ -118,6 +122,17 @@ function formatNumber(number) {
     return "0" + number.toString();
 }
 
+function fileStats() {
+    return function (files, metalsmith, done) {
+        for (file in files) {
+            if (files[file].collection && files[file].collection.indexOf('posts') !== -1) {
+                files[file].modifiedTime = fs.statSync(__dirname + '/' + metalsmith._source + '/' + file).mtime;
+            }
+        }
+        done();
+    }
+}
+
 function generateIndex() {
     return function (files, metalsmith, done) {
         var indexPage = nunjucks.render(__dirname + '/templates/index.html', {
@@ -127,7 +142,8 @@ function generateIndex() {
             posts: _.sortBy(files, 'date').reverse(),
             title: siteTitle,
             description: siteDescription,
-            url: siteUrl
+            url: siteUrl,
+            isArticle: false
         });
         files['index.html'] = {
             mode: '0666',
