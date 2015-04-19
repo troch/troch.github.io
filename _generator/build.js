@@ -12,7 +12,12 @@ var _               = require('lodash');
 var fs              = require('fs');
 
 // Configure nunjucks
-nunjucks.configure(__dirname + '/templates', {watch: false});
+var env = nunjucks.configure(__dirname + '/templates', {watch: false});
+env.addFilter('maxLength', function(str, maxLength) {
+    if (str.length <= maxLength) return str;
+    return str.slice(0, maxLength - 9) + '&hellip;';
+});
+// Template Data
 var styleSheets = [
     'assets/app.css',
     'http://fonts.googleapis.com/css?family=PT+Sans:400,700',
@@ -29,6 +34,9 @@ var scriptsSrc = [
 var scripts = [
     'hljs.initHighlightingOnLoad();'
 ];
+var siteTitle = 'React and be thankful';
+var siteDescription = 'A blog about building reactive web applications';
+var siteUrl = 'http://blog.reactandbethankful.com';
 
 // Build
 Metalsmith(__dirname)
@@ -91,7 +99,10 @@ function template() {
                         styleSheets: styleSheets,
                         scriptsSrc: scriptsSrc,
                         scripts: scripts,
-                        contents: files[file].contents.toString()
+                        contents: files[file].contents.toString(),
+                        title: files[file].title + '|' + siteTitle,
+                        description: files[file].excerpt.replace(/<\/?[^>]+(>|$)/g, "").trim().replace('\n', ''),
+                        url: siteUrl + files[file].path
                     })
                 );
             }
@@ -113,7 +124,10 @@ function generateIndex() {
             styleSheets: styleSheets,
             scriptsSrc: scriptsSrc,
             scripts: scripts,
-            posts: _.sortBy(files, 'date').reverse()
+            posts: _.sortBy(files, 'date').reverse(),
+            title: siteTitle,
+            description: siteDescription,
+            url: siteUrl
         });
         files['index.html'] = {
             mode: '0666',
