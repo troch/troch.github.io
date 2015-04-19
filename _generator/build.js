@@ -107,7 +107,7 @@ function template() {
                         contents: files[file].contents.toString(),
                         title: files[file].title + ' | ' + siteTitle,
                         description: files[file].excerpt.replace(/<\/?[^>]+(>|$)/g, "").trim().replace('\n', ''),
-                        url: siteUrl + files[file].path,
+                        url: siteUrl + '/' + files[file].path,
                         isArticle: true,
                         modifiedTime: files[file].modifiedTime.toISOString(),
                         publishedTime: files[file].date.toISOString(),

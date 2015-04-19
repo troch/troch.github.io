@@ -87,8 +87,8 @@ And we can now run `grunt build`, `grunt concat`, `grunt jshint` or even `grunt 
 
 The most common issue developers encounter with Grunt is the size its config file. The more a build process requires tasks and targets,
 the longer the config object. Very quickly a `Gruntfile.js` can exceed a few hundred lines and this will affect its **maintainability**. A quick solution
-for this is to split our Gruntfile by using [Node modules](https://nodejs.org/api/modules.html), and use more of the comprehensive Grunt API which is
-surprisingly not used much!
+for this is to split our Gruntfile using [Node modules](https://nodejs.org/api/modules.html), and use more of Grunt comprehensive API (surprisingly
+relatively unknown)!
 
 We create a tasks folder where we are going to create a file per task, keeping our `Gruntfile.js` very slim:
 
