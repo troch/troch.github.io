@@ -4,6 +4,7 @@ draft: false
 date: 2015-04-18 14:00:00
 author: Thomas Roch
 tags: node,nodejs,javascript,grunt,gruntjs,build automation,build tool,task runner
+image: http://gruntjs.com/img/grunt-logo.png
 ---
 
 # Building with Grunt (Part 1)

@@ -13,6 +13,34 @@ var nunjucks        = require('nunjucks');
 var _               = require('lodash');
 var fs              = require('fs');
 
+// Build
+Metalsmith(__dirname)
+    .metadata({
+        site: {
+            title:  'React and be thankful',
+            description: 'A blog about building (reactive) web applications',
+            url:    'http://blog.reactandbethankful.com',
+            author: 'Thomas Roch'
+        }
+    })
+    .use(collections({posts: '*.md'}))
+    .use(drafts())
+    .use(fileStats())
+    .use(markdown({gfm: true}))
+    .use(excerpts())
+    .use(replaceCodeLanguage())
+    .use(formatDate())
+    .use(permalinks('posts/:year/:month/:day/:title'))
+    .use(template())
+    .use(feed({collection: 'posts'}))
+    .use(generateIndex())
+    .use(minify({removeAttributeQuotes: false, removeComments: false}))
+    .use(beautify())
+    .destination('../dist')
+    .build(noop);
+
+
+
 // Configure nunjucks
 var env = nunjucks.configure(__dirname + '/templates', {watch: false});
 env.addFilter('maxLength', function(str, maxLength) {
@@ -39,32 +67,6 @@ var scripts = [
 var siteTitle = 'React and be thankful';
 var siteDescription = 'A blog about building reactive web applications';
 var siteUrl = 'http://blog.reactandbethankful.com';
-
-// Build
-Metalsmith(__dirname)
-    .metadata({
-        site: {
-            title:  'React and be thankful',
-            description: 'A blog about building (reactive) web applications',
-            url:    'http://blog.reactandbethankful.com',
-            author: 'Thomas Roch'
-        }
-    })
-    .use(collections({posts: '*.md'}))
-    .use(drafts())
-    .use(fileStats())
-    .use(markdown({gfm: true}))
-    .use(excerpts())
-    .use(replaceCodeLanguage())
-    .use(formatDate())
-    .use(permalinks('posts/:year/:month/:day/:title'))
-    .use(template())
-    .use(feed({collection: 'posts'}))
-    .use(generateIndex())
-    .use(minify())
-    .use(beautify())
-    .destination('../dist')
-    .build(noop);
 
 // Functions
 function noop(err) {
@@ -112,7 +114,8 @@ function template() {
                         modifiedTime: files[file].modifiedTime.toISOString(),
                         publishedTime: files[file].date.toISOString(),
                         tags: (files[file].tags || '').split(','),
-                        sections: files[file].sections || []
+                        sections: files[file].sections || [],
+                        image: files[file].image
                     })
                 );
             }

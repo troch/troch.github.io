@@ -12,14 +12,21 @@
     <meta name="twitter:title" content="{{ title }}">
     <meta name="twitter:description" content="{{ description | maxLength(200) }}">
     <meta name="twitter:creator" content="@tcroch">
+    {% if image %}
+        <meta name="twitter:image" content="{{ image }}">
+    {% endif %}
 
     <!-- Open Graph data -->
     <meta property="og:title" content="{{ title }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ url }}">
     <meta property="og:description" content="{{ description }}">
+    {% if image %}
+        <meta property="og:image" content="{{ image }}" />
+    {% endif %}
 
     {% if isArticle %}
+        <!-- Article meta data -->
         <meta property="article:published_time" content="{{ publishedTime }}">
         <meta property="article:modified_time" content="{{ modifiedTime }}">
         {% for section in sections %}
@@ -30,8 +37,9 @@
             <meta property="article:tag" content="{{ tag }}">
         {% endfor %}
     {% endif %}
-
+    <!-- RSS feed -->
     <link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml" />
+    <!-- Stylesheets -->
     {% for styleSheet in styleSheets %}
             <link rel="stylesheet" href="{{ styleSheet }}">
     {% endfor %}
@@ -39,15 +47,15 @@
 
 <body>
     {% block body %}{% endblock %}
-
+    <!-- Script files -->
     {% for script in scriptsSrc %}
         <script src="{{ script }}"></script>
     {% endfor %}
-
+    <!-- Scripts -->
     {% for script in scripts %}
         <script>{{ script }}</script>
     {% endfor %}
-
+    <!-- Analytics -->
     {% include "base/analytics.html" %}
 </body>
 
