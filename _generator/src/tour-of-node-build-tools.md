@@ -3,6 +3,7 @@ title: Tour of Node building tools
 draft: false
 date: 2015-04-18 12:00:00
 author: Thomas Roch
+tags: node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build automation,build tool,task runner
 ---
 
 # A tour of Node building tools

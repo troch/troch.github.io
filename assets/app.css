@@ -251,6 +251,7 @@ footer > .contact-links {
 }
 .main pre > code {
   display: block;
+  padding: 0.5em;
   width: 100%;
   border: 1px solid #f1f1f1;
   border-left-width: 0.35rem;

@@ -6,6 +6,8 @@ var permalinks      = require('metalsmith-permalinks');
 var collections     = require('metalsmith-collections');
 var feed            = require('metalsmith-feed');
 var excerpts        = require('metalsmith-excerpts');
+var minify          = require("metalsmith-html-minifier");
+var beautify        = require('metalsmith-beautify');
 // Other modules
 var nunjucks        = require('nunjucks');
 var _               = require('lodash');
@@ -59,6 +61,8 @@ Metalsmith(__dirname)
     .use(template())
     .use(feed({collection: 'posts'}))
     .use(generateIndex())
+    .use(minify())
+    .use(beautify())
     .destination('../dist')
     .build(noop);
 
@@ -101,12 +105,14 @@ function template() {
                         scriptsSrc: scriptsSrc,
                         scripts: scripts,
                         contents: files[file].contents.toString(),
-                        title: files[file].title + '|' + siteTitle,
+                        title: files[file].title + ' | ' + siteTitle,
                         description: files[file].excerpt.replace(/<\/?[^>]+(>|$)/g, "").trim().replace('\n', ''),
                         url: siteUrl + files[file].path,
                         isArticle: true,
                         modifiedTime: files[file].modifiedTime.toISOString(),
-                        publishedTime: files[file].date.toISOString()
+                        publishedTime: files[file].date.toISOString(),
+                        tags: (files[file].tags || '').split(','),
+                        sections: files[file].sections || []
                     })
                 );
             }
