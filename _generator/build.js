@@ -23,8 +23,8 @@ Metalsmith(__dirname)
             author: 'Thomas Roch'
         }
     })
-    .use(collections({posts: '*.md'}))
     .use(drafts())
+    .use(collections({posts: '*.md'}))
     .use(fileStats())
     .use(markdown({gfm: true}))
     .use(excerpts())
@@ -36,6 +36,7 @@ Metalsmith(__dirname)
     .use(generateIndex())
     .use(minify({removeAttributeQuotes: false, removeComments: false}))
     .use(beautify())
+    .use(debug())
     .destination('../dist')
     .build(noop);
 
@@ -161,4 +162,11 @@ function generateIndex() {
         };
         done();
     };
+}
+
+function debug() {
+    return function (files, metalsmith, done) {
+        console.log(Object.keys(files));
+        done();
+    }
 }
