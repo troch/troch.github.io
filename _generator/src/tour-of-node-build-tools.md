@@ -20,9 +20,9 @@ Those tools share a few traits in common:
 
 ## Posts
 
-- [Building with Grunt (Part 1)](/posts/2015/04/18/building-with-grunt-part-1)
-- Building with Grunt (Part 2)
-- Building with Gulp
+- [Building with Grunt (Part 1)](/posts/2015/04/18/building-with-grunt-part-1/)
+- [Building with Grunt (Part 2: caveats)](posts/2015/04/18/building-with-grunt-part-2-caveats/)
+- Building with Gulp (Coming soon)
 - Building with Broccoli
 
 ## Recommended articles on the web
