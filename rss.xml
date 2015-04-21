@@ -1,72 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[React and be thankful]]></title><description><![CDATA[A blog about building (reactive) web applications]]></description><link>http://blog.reactandbethankful.com</link><generator>metalsmith-feed</generator><lastBuildDate>Tue, 21 Apr 2015 23:06:11 GMT</lastBuildDate><atom:link href="http://blog.reactandbethankful.com/rss.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Thomas Roch]]></author><item><title><![CDATA[Tour of Node building tools]]></title><description><![CDATA[<p>In this series of articles, we&#39;ll explore popular Node based tools for building web applications.
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[React and be thankful]]></title><description><![CDATA[A blog about building (reactive) web applications]]></description><link>http://blog.reactandbethankful.com</link><generator>metalsmith-feed</generator><lastBuildDate>Tue, 21 Apr 2015 23:09:25 GMT</lastBuildDate><atom:link href="http://blog.reactandbethankful.com/rss.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Thomas Roch]]></author><item><title><![CDATA[Tour of Node building tools]]></title><description><![CDATA[<p>In this series of articles, we&#39;ll explore popular Node based tools for building web applications.
 Although <code>npm</code> itself can be used for build automation (see <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">&quot;How to use npm as a build tool&quot;</a>),
 we will focus on the specialised npm packages: <code>grunt</code>, <code>gulp</code> and <code>broccoli</code>. We will try to understand what problem they solve, how to use them
 and what their limitations are.</p>]]></description><link>http://blog.reactandbethankful.com/posts/2015/04/18/tour-of-node-building-tools</link><guid isPermaLink="true">http://blog.reactandbethankful.com/posts/2015/04/18/tour-of-node-building-tools</guid><dc:creator><![CDATA[Thomas Roch]]></dc:creator><pubDate>Sat, 18 Apr 2015 12:00:00 GMT</pubDate></item><item><title><![CDATA[Building with Grunt Part 1]]></title><description><![CDATA[<p><a href="http://www.gruntjs.com">Grunt</a> is (or was) not <em>per se</em> a build automation tool. Or at least, This is how Grunt describe itself: <em>&quot;The JavaScript task runner&quot;</em>.
-So what is exactly Grunt? Since 4.0, Grunt is definitely a task runner... running tasks for automating builds!</p>]]></description><link>http://blog.reactandbethankful.com/posts/2015/04/18/building-with-grunt-part-1</link><guid isPermaLink="true">http://blog.reactandbethankful.com/posts/2015/04/18/building-with-grunt-part-1</guid><dc:creator><![CDATA[Thomas Roch]]></dc:creator><pubDate>Sat, 18 Apr 2015 14:00:00 GMT</pubDate></item><item><title><![CDATA[Building with Gulp]]></title><description><![CDATA[
-# Building with Gulp
-
-Like [Grunt](/posts/2015/04/18/building-with-grunt-part-1/), [Gulp](http://gulpjs.com) is also a task runner but is designed to build applications using streams:
-Gulp is __"The streaming build system"__ to __"Automate and enhance your workflow"__. So who are you Gulp?
-
-Gulp was first released in July 2013 (v0.0.1), v3.0.0 was released in December 2013. Current version is 3.8.x released in June 2014 and Gulp 4 is now almost ready.
-
-## First, an example
-
-Gulp (like Grunt) needs to be locally and globally installed. Providing you already have a package.json file:
-
-    $ npm install -g gulp
-    $ npm install --save-dev gulp gulp-jshint gulp-concat
-
-Example of a `gulpfile.js`:
-
-    var gulp = require('gulp');
-    var jshint = require('gulp-jshint');
-    var concat = require('gulp-concat');
-
-    gulp.src('src/**/*.js')
-        .pipe(jshint())
-        .pipe(concat())
-        .pipe(gulp.dest('/build'));
-
-
-## Orchestrator (Gulp 3) and Undertaker (Gulp 4)
-
-[Orchestrator](https://www.npmjs.com/package/orchestrator) is a module for registring tasks, specifying their dependencies and running them in maximum concurrency.
-Tasks created with Orchestrator can return a Promise or a stream, or invoke a done callback to ensure completion. Synchronous tasks are not supported and will have to
-invoke a callback too.
-
-[Undertaker](https://www.npmjs.com/package/undertaker): `undertaker` is more powerful than Orchestrator as it can run tasks in series `.series()` and parallel `.parallel()`,
-providing an easier way to explicitely define in which order tasks should be exectued. Undertaker will create a `tree` of tasks, and like Orchestrator can
-handle promises, streams or invoke a callback when done. Undertaker has also
-
-
-## Vinyl and vinyl-fs
-
-[Vinyl](https://www.npmjs.org/package/vinyl) is an object used by Gulp for modelling files: its path and its content. It has four properties (`cwd`, `base`, `path`, and `contents`).
-`contents` is a [Node Buffer](https://nodejs.org/api/buffer.html), and other properties describe a file path. If you have used Grunt your are no stranger to them:
-`base` + `cwd` + `path` = full path.
-
-From [Vinyl-fs](https://www.npmjs.org/package/vinyl-fs) comes the `.src()`, `.watch()` and `.dest()` functions exposed by Gulp: src will create vinyl objects from files, and dest
-will write them to disk.
-
-
-## Gulp plugins
-
-In between `src` and `dest`, vinyl objects are streamed using the `.pipe()` function from plugin to plugin. Plugins are just here to transform streams, i.e. to modify vinyl objects.
-Gulp plugins can therefore be truly specialised and each of them can have a single responsability, by contrast to [Grunt]([Grunt](/posts/2015/04/18/building-with-grunt-part-2/).
-This is what made Gulp so attractive for many developers: you are fully in control of the transformation chain of your files and you are not limited by existing plugins.
-
-If we compare Gulp with Grunt, in Grunt:
-
-    Tasks = Plugins > Files
-
-In Gulp
-
-    Tasks > Files > Plugins
-
-
-## Gulp 3 caveats and Gulp 4
-]]></description><guid isPermaLink="false">Building with Gulp</guid><dc:creator><![CDATA[Thomas Roch]]></dc:creator><pubDate>Sat, 18 Apr 2015 14:00:00 GMT</pubDate></item><item><title><![CDATA[Building with Grunt Part 2 Caveats]]></title><description><![CDATA[<p>In <a href="/posts/2015/04/18/building-with-grunt-part-1/">Building with Grunt Part 1</a>, we briefly talked about Grunt <em>&quot;configuration over code&quot;</em> approcah and its limitations (<strong>maintainability</strong>).
+So what is exactly Grunt? Since 4.0, Grunt is definitely a task runner... running tasks for automating builds!</p>]]></description><link>http://blog.reactandbethankful.com/posts/2015/04/18/building-with-grunt-part-1</link><guid isPermaLink="true">http://blog.reactandbethankful.com/posts/2015/04/18/building-with-grunt-part-1</guid><dc:creator><![CDATA[Thomas Roch]]></dc:creator><pubDate>Sat, 18 Apr 2015 14:00:00 GMT</pubDate></item><item><title><![CDATA[Building with Grunt Part 2 Caveats]]></title><description><![CDATA[<p>In <a href="/posts/2015/04/18/building-with-grunt-part-1/">Building with Grunt Part 1</a>, we briefly talked about Grunt <em>&quot;configuration over code&quot;</em> approcah and its limitations (<strong>maintainability</strong>).
 There is also another aspect of Grunt which doesn&#39;t make it the ideal build tool: <code>plugins</code> (tasks) are ranked higher than files. In other words: instead of performing a series
 of operations on a group of files, we can only perform an operation (<code>task</code>) on different groups of files (<code>targets</code>). The consequences of this are:</p>]]></description><link>http://blog.reactandbethankful.com/posts/2015/04/22/building-with-grunt-part-2-caveats</link><guid isPermaLink="true">http://blog.reactandbethankful.com/posts/2015/04/22/building-with-grunt-part-2-caveats</guid><dc:creator><![CDATA[Thomas Roch]]></dc:creator><pubDate>Wed, 22 Apr 2015 00:00:00 GMT</pubDate></item></channel></rss>
