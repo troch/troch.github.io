@@ -22,7 +22,7 @@ Those tools share a few traits in common:
 
 - [Building with Grunt (Part 1)](/posts/2015/04/18/building-with-grunt-part-1/)
 - [Building with Grunt (Part 2: caveats)](posts/2015/04/22/building-with-grunt-part-2-caveats/)
-- [Building with Gulp 3 and 4](Part 1: examples)(/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/)
+- [Building with Gulp 3 and 4 (Part 1: examples)](/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/)
 - Building with Gulp 3 and 4 (Part 2: Gulp's anatomy) _Coming soon_
 - Building with Gulp 3 and 4 (Part 3: writing plugins)
 - Building with Broccoli
