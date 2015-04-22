@@ -46,6 +46,20 @@
     </section> -->
 	</header>
 	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
 		<h1 id="building-with-grunt-part-1-">Building with Grunt (Part 1)</h1>
 		<h2 id="hello-grunt">Hello Grunt</h2>
 		<p><a href="http://www.gruntjs.com">Grunt</a> is (or was) not <em>per se</em> a build automation tool. Or at least, This is how Grunt describe itself: <em>&quot;The JavaScript task runner&quot;</em>.
@@ -149,6 +163,7 @@ $ touch Gruntfile.js
 };
 </code></pre>
 		<p>In a second article about Grunt, we will explore Grunt caveats, how we can deal with them and how it inspired other tools.</p>
+		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-grunt-1.md">Github!</a></p>
 	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->

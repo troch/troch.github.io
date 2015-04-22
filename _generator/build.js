@@ -24,6 +24,7 @@ Metalsmith(__dirname)
         }
     })
     .use(drafts())
+    .use(githubLink())
     .use(collections({posts: '*.md'}))
     .use(fileStats())
     .use(markdown({gfm: true}))
@@ -74,6 +75,16 @@ function noop(err) {
     if (err) throw err;
 }
 
+function githubLink() {
+    return function (files, metalsmith, done) {
+        for (file in files) {
+            files[file].mdLink = 'https://github.com/troch/troch.github.io/tree/master/_generator/src/' + file;
+            console.log(files[file].mdLink);
+        }
+        done();
+    };
+}
+
 function replaceCodeLanguage() {
     return function (files, metalsmith, done) {
         for (file in files) {
@@ -116,7 +127,8 @@ function template() {
                         publishedTime: files[file].date.toISOString(),
                         tags: (files[file].tags || '').split(','),
                         sections: files[file].sections || [],
-                        image: files[file].image
+                        image: files[file].image,
+                        mdLink: files[file].mdLink
                     })
                 );
             }

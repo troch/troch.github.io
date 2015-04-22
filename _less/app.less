@@ -116,6 +116,17 @@ footer {
   }
 }
 
+article.main {
+  background-color: white;
+  position: relative;
+}
+
+section.share {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
 @media (min-width: @break-point-1) {
     body, html {
       background-color: white;
@@ -130,8 +141,12 @@ footer {
       }
     }
 
-    body > article, body > section {
+    body > article {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+      padding: 0 1em;
+    }
+
+    body > article, body > section {
       margin: @article-margin auto;
       max-width: @max-article-width;
     }

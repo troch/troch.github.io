@@ -35,9 +35,6 @@ and `dest()` will write them to disk. Vinyl-fs is also depending on [through2](h
 streams2 comes the `.pipe()` and `.on('error|end|data|readable|close')` methods.
 
 
-
-
-
 ## Gulp plugins
 
 In between `src` and `dest`, vinyl objects are streamed using the `.pipe()` function from plugin to plugin. Plugins are just here to transform streams, i.e. to modify vinyl objects.

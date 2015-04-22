@@ -47,6 +47,20 @@ of operations on a group of files, we can only perform an operation (task) on di
     </section> -->
 	</header>
 	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
 		<h1 id="building-with-grunt-part-2-caveats-">Building with Grunt (Part 2: caveats)</h1>
 		<p>In <a href="/posts/2015/04/18/building-with-grunt-part-1/">Building with Grunt Part 1</a>, we briefly talked about Grunt <em>&quot;configuration over code&quot;</em>			approcah and its limitations (<strong>maintainability</strong>). There is also another aspect of Grunt which doesn&#39;t make it the ideal build tool: <code class="nohighlight">plugins</code>			(tasks) are ranked higher than files. In other words: instead of performing a series of operations on a group of files, we can only perform an operation (
 			<code
@@ -76,6 +90,7 @@ of operations on a group of files, we can only perform an operation (task) on di
 			<li>You only need to perform a small number of operations / transformations per group of file</li>
 			<li>You don&#39;t need to compose tasks</li>
 		</ul>
+		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-grunt-2.md">Github!</a></p>
 	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->

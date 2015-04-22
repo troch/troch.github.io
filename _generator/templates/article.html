@@ -3,7 +3,13 @@
 {% block body %}
     {% include "base/header.html" %}
 
-    <article class="main"> {{ contents }} </article>
+    <article class="main">
+        {% include "base/social.html" %}
+
+        {{ contents }}
+
+        <p>Something wrong? Fix it on <a href="{{ mdLink }}">Github!</a></p>
+    </article>
 
     {% include "base/footer.html" %}
 {% endblock %}
