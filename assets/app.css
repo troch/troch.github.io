@@ -146,9 +146,8 @@ article.main {
   position: relative;
 }
 section.share {
-  position: absolute;
-  right: 1em;
-  top: 1em;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 @media (min-width: 740px) {
   body,
@@ -172,7 +171,7 @@ section.share {
     max-width: 700px;
   }
 }
-@media (min-width: 1020px) {
+@media (min-width: 1160px) {
   body,
   html {
     display: block;
@@ -185,6 +184,11 @@ section.share {
     bottom: 0;
     left: 0;
     padding-top: 20px;
+  }
+  section.share {
+    position: fixed;
+    top: 2rem;
+    left: 1020px;
   }
   footer {
     margin: 20px auto 20px 300px;

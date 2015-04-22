@@ -1,10 +1,10 @@
 ---
 title: Building with Gulp 3 and 4 Part 1 Examples
-draft: true
-date: 2015-04-18 14:00:00
+draft: false
+date: 2015-04-22 23:00:00
 author: Thomas Roch
 tags: node,nodejs,javascript,gulp,gulpjs,build automation,build tool,streams,task runner
-image: http://gruntjs.com/img/grunt-logo.png
+image: https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png
 ---
 
 
@@ -59,7 +59,7 @@ gulp.registerTask('build', ['buildJs', 'copyAssets']);
 
 ## Gulp 3 with _run-sequence_
 
-In Gulp 3, we have to specify task depencies so our tasks are executed in the right order (with maximum concurrency). In the example above, we want to clean our build
+In Gulp 3, we have to specify task depencies so our tasks are executed in the right order (with maximum concurrency). In the above example, we want to clean our build
 directory and then build our application. For each task, we have to add 'clean' as a dependency which makes are build repetitive and not so practical. What if
 I want to re-compile JavaScript files without running _clean_? Rather than defining dependencies, it is preferable to define each task independently and then create _orchestration_
 tasks. In Gulp 3, we could use `gulp.start()` but we would quickly enter a callback hell. Instead We can use [run-sequence](https://www.npmjs.com/package/run-sequence)
@@ -102,7 +102,7 @@ gulp.registerTask('build', function(done) {
 
 ## Gulp 4
 
-In Gulp 4, the example above would be:
+In Gulp 4, the above example would be:
 
 ```javascript
 ////////////////////

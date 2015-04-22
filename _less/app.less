@@ -122,9 +122,8 @@ article.main {
 }
 
 section.share {
-  position: absolute;
-  right: 1em;
-  top: 1em;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 @media (min-width: @break-point-1) {
@@ -165,6 +164,12 @@ section.share {
       bottom: 0;
       left: 0;
       padding-top: @article-margin;
+    }
+
+    section.share {
+      position: fixed;
+      top: 2rem;
+      left: @sidebar-width + @article-margin * 2 + @max-article-width;
     }
 
     footer {
