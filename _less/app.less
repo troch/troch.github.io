@@ -126,6 +126,25 @@ section.share {
   text-align: center;
 }
 
+section.prev-next-links {
+  border-top: 2px solid @gray-lighter;
+  display: flex;
+  flex-direction: row;
+
+  > a {
+    flex: 1;
+    padding: 1em;
+
+    &:hover {
+      background-color: @gray-lighter;
+    }
+
+    &.next {
+      text-align: right;
+    }
+  }
+}
+
 @media (min-width: @break-point-1) {
     body, html {
       background-color: white;

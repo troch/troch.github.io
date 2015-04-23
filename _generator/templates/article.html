@@ -9,6 +9,11 @@
         {{ contents }}
 
         <p>Something wrong? Fix it on <a href="{{ mdLink }}">Github!</a></p>
+
+        <section class="prev-next-links">
+            {% if previous %}<a href="{{previous.path}}/" class="prev"><span class="fa fa-chevron-left"></span> {{previous.title}}</a>{% endif %}
+            {% if next %}<a href="{{next.path}}/" class="next">{{next.title}} <span class="fa fa-chevron-right"></span></a>{% endif %}
+        </section>
     </article>
 
     {% include "base/footer.html" %}

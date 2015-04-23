@@ -23,6 +23,12 @@
 /* makes the font 33% larger relative to the icon container */
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
+.fa-chevron-left:before {
+  content: "\f053";
+}
+.fa-chevron-right:before {
+  content: "\f054";
+}
 .fa-twitter:before {
   content: "\f099";
 }
@@ -148,6 +154,21 @@ article.main {
 section.share {
   margin-bottom: 1rem;
   text-align: center;
+}
+section.prev-next-links {
+  border-top: 2px solid #f1f1f1;
+  display: flex;
+  flex-direction: row;
+}
+section.prev-next-links > a {
+  flex: 1;
+  padding: 1em;
+}
+section.prev-next-links > a:hover {
+  background-color: #f1f1f1;
+}
+section.prev-next-links > a.next {
+  text-align: right;
 }
 @media (min-width: 740px) {
   body,

@@ -79,7 +79,6 @@ function githubLink() {
     return function (files, metalsmith, done) {
         for (file in files) {
             files[file].mdLink = 'https://github.com/troch/troch.github.io/tree/master/_generator/src/' + file;
-            console.log(files[file].mdLink);
         }
         done();
     };
@@ -128,7 +127,9 @@ function template() {
                         tags: (files[file].tags || '').split(','),
                         sections: files[file].sections || [],
                         image: files[file].image,
-                        mdLink: files[file].mdLink
+                        mdLink: files[file].mdLink,
+                        next: files[file].next,
+                        previous: files[file].previous
                     })
                 );
             }
@@ -178,7 +179,10 @@ function generateIndex() {
 
 function debug() {
     return function (files, metalsmith, done) {
-        console.log(Object.keys(files));
+        for (file in files) {
+            // console.log(files[file].previous.path);
+            console.log(file);
+        }
         done();
     }
 }
