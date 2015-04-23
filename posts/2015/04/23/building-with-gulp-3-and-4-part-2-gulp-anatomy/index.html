@@ -21,7 +21,7 @@ do one thing and do it well!">
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-04-23T16:00:00.000Z">
-	<meta property="article:modified_time" content="2015-04-23T22:55:03.000Z">
+	<meta property="article:modified_time" content="2015-04-23T22:56:19.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -78,8 +78,8 @@ do one thing and do it well!">
 			and will have to invoke a callback too. Orchestrator tasks can define their dependencies and Orchestrator will run tasks in maxium concurrency.</p>
 		<p><a href="https://www.npmjs.com/package/undertaker">Undertaker</a> removes task dependencies in favour of two new functions: <code class="nohighlight">.series()</code>			and <code class="nohighlight">.parallel()</code>. In <a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/#gulp-3-with-_run-sequence_">Part 1</a>,
 			we mentioned the disadvantages of specifying task dependencies. Undertaker adresses those issues and provides an easier way to explicitely define in which order
-			tasks should be executed. <code class="nohighlight">.series()</code> and <code class="nohighlight">parallel</code> can take as argument a task name or a function
-			(returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling <code class="nohighlight">tree()</code>. Undertaker
+			tasks should be executed. <code class="nohighlight">.series()</code> and <code class="nohighlight">.parallel()</code> can take as argument a task name or a function
+			(returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling <code class="nohighlight">.tree()</code>. Undertaker
 			also tracks the last time a task was run, accessible with <code class="nohighlight">lastRun()</code>.</p>
 		<h2 id="vinyl-and-vinyl-fs">Vinyl and vinyl-fs</h2>
 		<p>Gulp is built on top of two packages called <code class="nohighlight">vinyl</code> and <code class="nohighlight">vinyl-fs</code>.</p>

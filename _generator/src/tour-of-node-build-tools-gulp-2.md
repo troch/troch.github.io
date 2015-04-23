@@ -23,8 +23,8 @@ invoke a callback too. Orchestrator tasks can define their dependencies and Orch
 
 [Undertaker](https://www.npmjs.com/package/undertaker) removes task dependencies in favour of two new functions: `.series()` and `.parallel()`. In
 [Part 1](/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/#gulp-3-with-_run-sequence_), we mentioned the disadvantages of specifying task dependencies.
-Undertaker adresses those issues and provides an easier way to explicitely define in which order tasks should be executed. `.series()` and `parallel` can take as argument
-a task name or a function (returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling `tree()`. Undertaker also tracks
+Undertaker adresses those issues and provides an easier way to explicitely define in which order tasks should be executed. `.series()` and `.parallel()` can take as argument
+a task name or a function (returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling `.tree()`. Undertaker also tracks
 the last time a task was run, accessible with `lastRun()`.
 
 
