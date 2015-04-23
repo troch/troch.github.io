@@ -4,7 +4,7 @@ draft: false
 date: 2015-04-23 16:00:00
 author: Thomas Roch
 tags: node,nodejs,javascript,gulp,gulpjs,build automation,build tool,streams,task runner,vinyl,vinyl-fs,npm,gulp 4
-image: http://gruntjs.com/img/grunt-logo.png
+image: https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png
 ---
 
 # Building with Gulp 3 and 4 (Part 2: Gulp's anatomy)
