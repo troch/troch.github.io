@@ -10,16 +10,16 @@
 	<meta name="twitter:title" content="Building with Gulp 3 and 4 Part 1 Examples | React and be thankful">
 	<meta name="twitter:description" content="Like Grunt, Gulp is also a task runner but is designed to build applications using streams:Gulp is &quot;the streaming build system&quot; to &quot;automate and enhance your workflow&quot;.">
 	<meta name="twitter:creator" content="@tcroch">
-	<meta name="twitter:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
+	<meta name="twitter:image" content="http://gruntjs.com/img/grunt-logo.png">
 	<!-- Open Graph data -->
 	<meta property="og:title" content="Building with Gulp 3 and 4 Part 1 Examples | React and be thankful">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples">
 	<meta property="og:description" content="Like Grunt, Gulp is also a task runner but is designed to build applications using streams:Gulp is &quot;the streaming build system&quot; to &quot;automate and enhance your workflow&quot;.">
-	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
+	<meta property="og:image" content="http://gruntjs.com/img/grunt-logo.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-04-22T23:00:00.000Z">
-	<meta property="article:modified_time" content="2015-04-22T21:59:29.000Z">
+	<meta property="article:modified_time" content="2015-04-23T15:42:04.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -29,6 +29,7 @@
 	<meta property="article:tag" content="build tool">
 	<meta property="article:tag" content="streams">
 	<meta property="article:tag" content="task runner">
+	<meta property="article:tag" content="gulp 4">
 	<!-- RSS feed -->
 	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
 	<!-- Stylesheets -->
@@ -101,7 +102,7 @@ gulp.registerTask(&#39;build&#39;, [&#39;buildJs&#39;, &#39;copyAssets&#39;]);
 </code></pre>
 		<h2 id="gulp-3-with-_run-sequence_">Gulp 3 with <em>run-sequence</em></h2>
 		<p>In Gulp 3, we have to specify task depencies so our tasks are executed in the right order (with maximum concurrency). In the above example, we want to clean our
-			build directory and then build our application. For each task, we have to add &#39;clean&#39; as a dependency which makes are build repetitive and not so practical.
+			build directory and then build our application. For each task, we have to add &#39;clean&#39; as a dependency which makes our build repetitive and not so practical.
 			What if I want to re-compile JavaScript files without running <em>clean</em>? Rather than defining dependencies, it is preferable to define each task independently
 			and then create <em>orchestration</em> tasks. In Gulp 3, we could use <code class="nohighlight">gulp.start()</code> but we would quickly enter a callback hell.
 			Instead We can use <a href="https://www.npmjs.com/package/run-sequence">run-sequence</a> to avoid to have to specify dependencies and make our build more <strong>maintainable</strong>			and <strong>composable</strong>.</p><pre><code class="nohighlight">$ npm install --save-dev run-sequence
@@ -211,7 +212,10 @@ gulp.task(&#39;copyAssets&#39;, assetsStream);
 </code></pre>
 		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-1.md">Github!</a></p>
 		<section
-		class="prev-next-links"><a href="posts/2015/04/22/building-with-grunt-part-2-caveats/" class="prev"><span class="fa fa-chevron-left"></span> Building with Grunt Part 2 Caveats</a></section>
+		class="prev-next-links"><a href="posts/2015/04/22/building-with-grunt-part-2-caveats/" class="prev"><span class="fa fa-chevron-left"></span> Building with Grunt Part 2 Caveats</a>
+			<a
+			href="posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/" class="next">Building with Gulp 3 and 4 Part 2 Gulp Anatomy <span class="fa fa-chevron-right"></span></a>
+				</section>
 	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->

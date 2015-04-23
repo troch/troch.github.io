@@ -10,7 +10,9 @@
         line-height: 1.4rem;
         text-align: justify;
         text-indent: 1rem;
+    }
 
+    p, ul {
         code {
             padding: 0.2rem 0;
             margin: 0;
@@ -47,6 +49,30 @@
         font-size: 1.25rem;
         color: @gray;
         border-left-color:  @gray;
+    }
+
+    blockquote {
+        display: block;
+        position: relative;
+        margin: 1rem 0;
+        background-color: @gray-lighter;
+        padding: 1rem 1rem 1rem 3.25rem;
+
+        > p {
+            text-indent: 0;
+            margin: 0;
+        }
+
+        &::before {
+            content: "\f10d";
+            font-size: 1.8rem;
+            line-height: 1em;
+            font-family: FontAwesome;
+            position: absolute;
+            top: 1.25rem;
+            left: 1rem;
+            color: @primary;
+        }
     }
 
     pre {

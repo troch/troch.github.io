@@ -249,7 +249,8 @@ section.prev-next-links > a.next {
   text-align: justify;
   text-indent: 1rem;
 }
-.main p code {
+.main p code,
+.main ul code {
   padding: 0.2rem 0;
   margin: 0;
   font-size: 0.8rem;
@@ -259,7 +260,9 @@ section.prev-next-links > a.next {
   white-space: nowrap;
 }
 .main p code:before,
-.main p code:after {
+.main ul code:before,
+.main p code:after,
+.main ul code:after {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   letter-spacing: -0.2em;
   content: "\00a0";
@@ -281,6 +284,27 @@ section.prev-next-links > a.next {
   font-size: 1.25rem;
   color: #aaaaaa;
   border-left-color: #aaaaaa;
+}
+.main blockquote {
+  display: block;
+  position: relative;
+  margin: 1rem 0;
+  background-color: #f1f1f1;
+  padding: 1rem 1rem 1rem 3.25rem;
+}
+.main blockquote > p {
+  text-indent: 0;
+  margin: 0;
+}
+.main blockquote::before {
+  content: "\f10d";
+  font-size: 1.8rem;
+  line-height: 1em;
+  font-family: FontAwesome;
+  position: absolute;
+  top: 1.25rem;
+  left: 1rem;
+  color: #112f90;
 }
 .main pre {
   display: block;
