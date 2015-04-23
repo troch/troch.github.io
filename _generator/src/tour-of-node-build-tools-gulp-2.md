@@ -23,7 +23,7 @@ invoke a callback too. Orchestrator tasks can define their dependencies and Orch
 
 [Undertaker](https://www.npmjs.com/package/undertaker) removes task dependencies in favour of two new functions: `.series()` and `.parallel()`. In
 [Part 1](/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/#gulp-3-with-_run-sequence_), we mentioned the disadvantages of specifying task dependencies.
-Undertaker adresses those issues and provides an easier way to explicitely define in which order tasks should be exectued. `.series()` and `parallel` can take as argument
+Undertaker adresses those issues and provides an easier way to explicitely define in which order tasks should be executed. `.series()` and `parallel` can take as argument
 a task name or a function (returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling `tree()`. Undertaker also tracks
 the last time a task was run, accessible with `lastRun()`.
 
@@ -40,7 +40,7 @@ From [Vinyl-fs](https://www.npmjs.org/package/vinyl-fs) comes the `.src()`, `.wa
 and `dest()` will write them to disk. Vinyl-fs is also depending on [through2](https://www.npmjs.org/package/throught2), a wrapper around Node streams2 (Streams in Node v0.10.x). From
 streams2 comes the `.pipe()` and `.on('error|end|data|readable|close')` methods.
 
-> In most cases, a or vinyl-fs pipeline is simply a **map-reduce** operation on a set of files.
+> In most cases, a vinyl-fs pipeline is simply a **map-reduce** operation on a set of files.
 
 ## Gulp plugins
 
