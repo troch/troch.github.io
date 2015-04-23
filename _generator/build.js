@@ -25,6 +25,7 @@ Metalsmith(__dirname)
     })
     .use(drafts())
     .use(githubLink())
+    .use(extractTitle())
     .use(collections({posts: '*.md'}))
     .use(fileStats())
     .use(markdown({gfm: true}))
@@ -84,6 +85,19 @@ function githubLink() {
     };
 }
 
+function extractTitle() {
+    return function (files, metalsmith, done) {
+        var match;
+        for (file in files) {
+            match = files[file].contents.toString().match(/\n#\s(.+)?/);
+            if (match) {
+                files[file].fullTitle = match[1];
+            }
+        }
+        done();
+    };
+}
+
 function replaceCodeLanguage() {
     return function (files, metalsmith, done) {
         for (file in files) {
@@ -118,7 +132,7 @@ function template() {
                         scriptsSrc: scriptsSrc,
                         scripts: scripts,
                         contents: files[file].contents.toString(),
-                        title: files[file].title + ' | ' + siteTitle,
+                        title: files[file].fullTitle + ' | ' + siteTitle,
                         description: files[file].excerpt.replace(/<\/?[^>]+(>|$)/g, "").trim().replace('\n', ''),
                         url: siteUrl + '/' + files[file].path,
                         isArticle: true,

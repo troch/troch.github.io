@@ -7,7 +7,7 @@
         <h1>Recent posts</h1>
 
         {% for post in posts %}
-            <article><a href="/{{ post.path }}">{{ post.title }}</a></article>
+            <article><a href="/{{ post.path }}">{{ post.fullTitle }}</a></article>
         {% endfor %}
     </section>
 
