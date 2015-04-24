@@ -1,5 +1,6 @@
 ---
 title: Building with Grunt Part 2 Caveats
+lunr: true
 draft: false
 date: 2015-04-22 00:00:00
 author: Thomas Roch

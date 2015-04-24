@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var del  = require('rimraf')
 
-gulp.task('build', ['less', 'copyPosts']);
+gulp.task('build', ['less', 'copyPosts', 'copyAssets']);
 
 gulp.task('less', function () {
     return gulp.src('_less/app.less')
@@ -13,6 +13,11 @@ gulp.task('less', function () {
 
 gulp.task('cleanDist', ['build'], function (done) {
     del('dist/', done);
+});
+
+gulp.task('copyAssets', function () {
+    return gulp.src('./bower_components/kefir/dist/kefir.min.js')
+        .pipe(gulp.dest('./'))
 });
 
 gulp.task('copyPosts', function () {

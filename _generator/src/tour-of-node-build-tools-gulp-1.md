@@ -1,5 +1,6 @@
 ---
 title: Building with Gulp 3 and 4 Part 1 Examples
+lunr: true
 draft: false
 date: 2015-04-22 23:00:00
 author: Thomas Roch

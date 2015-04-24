@@ -1,5 +1,6 @@
 ---
 title: Building with Grunt Part 1
+lunr: true
 draft: false
 date: 2015-04-18 14:00:00
 author: Thomas Roch

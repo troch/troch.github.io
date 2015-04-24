@@ -19,7 +19,7 @@
 	<meta property="og:image" content="http://gruntjs.com/img/grunt-logo.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-04-18T14:00:00.000Z">
-	<meta property="article:modified_time" content="2015-04-19T12:14:24.000Z">
+	<meta property="article:modified_time" content="2015-04-24T14:12:29.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -39,12 +39,69 @@
 
 <body>
 	<header>
-		<h1><a href="/">React and be thankful</a> <a class="rss-feed circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></h1>
-		<section>A blog about building (reactive) web applications.</section>
-		<!-- <section>
-        A panel hoho
-    </section> -->
+		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
+		<section>
+			<input id="searchInput">
+			<button type="button" class="circled-icon hidden" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<!--
+
+     --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
 	</header>
+	<section id="searchResults"></section>
+	<script></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			var searchResultsElm = document.getElementById('searchResults');
+
+			function renderSearchResults(results) {
+				searchResultsElm.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResultsElm.innerHTML = "";
+				results.forEach(function(res) {
+					searchResultsElm.appendChild(renderSearchResult(res));
+				})
+			}
+
+			function renderSearchResult(res) {
+				var elm = document.createElement('div')
+				elm.innerHTML = res.ref;
+				return elm;
+			}
+			var searchInput = document.getElementById('searchInput');
+			var lunrIndex;
+
+			function getLunrIndex() {
+				superagent
+					.get('/searchIndex.json')
+					.end(function(err, res) {
+						if (!err) {
+							lunrIndex = lunr.Index.load(res.body);
+						}
+					});
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (searchInput.classList.contains('revealed')) {
+					searchInput.classList.remove('revealed');
+				} else {
+					searchInput.classList.add('revealed');
+					if (!lunrIndex) getLunrIndex();
+					searchInput.focus();
+				}
+			}, false);
+			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
+			window.addEventListener('scroll', function(evt) {
+				if (window.scrollY > headerPadding / 2) {
+					document.body.classList.add('scrolled');
+				} else {
+					document.body.classList.remove('scrolled');
+				}
+			}, false);
+			searchInput.addEventListener('input', function(evt) {
+				if (lunrIndex) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
+				}
+			}, false);
+		});
+	</script>
 	<article class="main">
 		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
 			<script>
@@ -179,7 +236,9 @@ $ touch Gruntfile.js
 		<section class="info">&copy; Thomas Roch 2015. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
 	</footer>
 	<!-- Script files -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js"></script>
+	<script src="/kefir.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js"></script>

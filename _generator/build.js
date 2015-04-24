@@ -8,7 +8,9 @@ var feed            = require('metalsmith-feed');
 var excerpts        = require('metalsmith-excerpts');
 var minify          = require("metalsmith-html-minifier");
 var beautify        = require('metalsmith-beautify');
+var lunr            = require('metalsmith-lunr');
 // Other modules
+// var lunr            = require('lunr');
 var nunjucks        = require('nunjucks');
 var _               = require('lodash');
 var fs              = require('fs');
@@ -33,6 +35,18 @@ Metalsmith(__dirname)
     .use(replaceCodeLanguage())
     .use(formatDate())
     .use(permalinks('posts/:year/:month/:day/:title'))
+    .use(lunr({
+      fields: {
+          // ref: 'path',
+          contents: 1,
+          tags: 10,
+          title: 10,
+          fullTitle: 10
+      },
+      preprocess: function (content) {
+        return content.replace(/(<(.+?)>)/ig, '');
+      }
+    }))
     .use(template())
     .use(feed({collection: 'posts'}))
     .use(generateIndex())
@@ -59,7 +73,9 @@ var styleSheets = [
     // 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css.map'
 ];
 var scriptsSrc = [
-    'https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js',
+    '/kefir.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js'
@@ -74,6 +90,26 @@ var siteUrl = 'http://blog.reactandbethankful.com';
 // Functions
 function noop(err) {
     if (err) throw err;
+}
+
+function indexArticles() {
+    return function (files, metalsmith, done) {
+        var idx = lunr(function () {
+            this.field('fullTitle', { boost: 10 })
+            this.field('title', { boost: 10 })
+            this.field('contents')
+        })
+        for (file in files) {
+            idx.add(files[file]);
+        }
+        // fs.writeFileSync('index.json')
+        files['lunr.json'] = {
+            mode: '0666',
+            contents: new Buffer(JSON.stringify(idx)),
+            path: ''
+        };
+        done();
+    };
 }
 
 function githubLink() {
@@ -114,9 +150,11 @@ function replaceCodeLanguage() {
 function formatDate() {
     return function (files, metalsmith, done) {
         for (file in files) {
-            files[file].year = files[file].date.getFullYear().toString();
-            files[file].month = formatNumber(files[file].date.getMonth() + 1);
-            files[file].day = formatNumber(files[file].date.getDate());
+            if (files[file].date) {
+                files[file].year = files[file].date.getFullYear().toString();
+                files[file].month = formatNumber(files[file].date.getMonth() + 1);
+                files[file].day = formatNumber(files[file].date.getDate());
+            }
         };
         done();
     };

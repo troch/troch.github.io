@@ -23,6 +23,9 @@
 /* makes the font 33% larger relative to the icon container */
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
+.fa-search:before {
+  content: "\f002";
+}
 .fa-chevron-left:before {
   content: "\f053";
 }
@@ -46,6 +49,32 @@
 }
 .fa-slideshare:before {
   content: "\f1e7";
+}
+.circled-icon {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  background: #2645aa;
+  transition: background-color 0.4s ease-in-out;
+  font-size: 18px;
+  width: 37.4px;
+  height: 37.4px;
+  border-radius: 50%;
+  border-width: 0;
+  color: inherit;
+  cursor: pointer;
+}
+.circled-icon:hover {
+  background-color: #00a124;
+}
+.circled-icon > .fa {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  margin-top: -0.5em;
 }
 html,
 body {
@@ -78,31 +107,31 @@ a:hover,
 a:focus {
   text-decoration: underline;
 }
-.circled-icon {
-  display: inline-block;
+.hidden {
+  display: none;
+}
+#searchInput {
+  width: 0;
+  transition: all 0.2s ease-in;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  border: 0;
+  padding: 0;
+  background-color: #2645aa;
+  color: white;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-  background: #2645aa;
-  transition: background-color 0.4s ease-in-out;
-  font-size: 18px;
-  width: 37.4px;
-  height: 37.4px;
-  border-radius: 50%;
+  right: -37.4px;
+  border-radius: 18.7px;
+  outline: 0;
 }
-.circled-icon:hover {
+#searchInput.revealed {
+  width: 300px;
+  padding: 0 calc(37.4px + 0.5rem) 0 0.5rem;
+  border-radius: 0;
+}
+#searchInput.revealed + .circled-icon {
+  border-radius: 0;
   background-color: #00a124;
-}
-.circled-icon > .fa {
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  top: 50%;
-  margin-top: -9px;
-}
-.circled-icon + .circled-icon {
-  margin-left: 18px;
 }
 header,
 footer {
@@ -117,22 +146,51 @@ footer .info {
   color: #f1f1f1;
   margin: 1rem 0;
 }
-header > h1 {
-  font-size: 1rem;
-  margin-top: 0;
+header {
+  position: fixed;
   display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem;
+  transition: padding 0.1s ease-in;
 }
-header > h1 > a:first-child {
-  padding: 1rem 0;
+header > h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+header > h1 > small {
+  position: absolute;
+  display: block;
+  font-weight: normal;
 }
 header > section {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-  background-color: #2645aa;
-  margin: 1rem 0;
-  padding: 1rem;
+  display: flex;
+}
+header > section .circled-icon + .circled-icon {
+  margin-left: 0.5rem;
+}
+#searchResults {
+  position: fixed;
+  z-index: 2;
+}
+body {
+  padding-top: calc(4rem + 37.4px);
+  transition: padding 0.1s ease-in;
+}
+body.scrolled {
+  padding-top: calc(1rem + 37.4px);
+}
+body.scrolled > header {
+  padding: 0.5rem 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+body.scrolled > header > h1 > small {
+  display: none;
 }
 footer > .about {
   text-align: center;
@@ -147,8 +205,11 @@ footer > .info a {
 footer > .contact-links {
   text-align: center;
 }
-article.main {
-  background-color: white;
+footer > .contact-links .circled-icon + .circled-icon {
+  margin-left: 0.5rem;
+}
+.main {
+  padding: 1rem;
   position: relative;
 }
 section.share {
@@ -162,7 +223,7 @@ section.prev-next-links {
 }
 section.prev-next-links > a {
   flex: 1;
-  padding: 1em;
+  padding: 1.5rem;
 }
 section.prev-next-links > a:hover {
   background-color: #f1f1f1;
@@ -171,7 +232,7 @@ section.prev-next-links > a:hover {
 section.prev-next-links > a.next {
   text-align: right;
 }
-@media (min-width: 740px) {
+@media (min-width: 860px) {
   body,
   html {
     background-color: white;
@@ -183,63 +244,14 @@ section.prev-next-links > a.next {
   footer .info {
     color: #999999;
   }
-  body > article {
+  .main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    padding: 0 1em;
-  }
-  body > article,
-  body > section {
+    padding: 1.5rem 2rem;
     margin: 20px auto;
-    max-width: 700px;
-  }
-}
-@media (min-width: 1160px) {
-  body,
-  html {
-    display: block;
-  }
-  header {
-    position: fixed;
-    top: 0;
-    width: 280px;
-    border-left: 0.35rem solid #2645aa;
-    bottom: 0;
-    left: 0;
-    padding-top: 20px;
-  }
-  section.share {
-    position: fixed;
-    top: 2rem;
-    left: 1020px;
-  }
-  footer {
-    margin: 20px auto 20px 300px;
-    max-width: 700px;
-  }
-  footer > .info {
-    margin: 0;
-    text-align: left;
-  }
-  .contact-links {
-    width: 272px;
-    padding: 1rem;
-    bottom: 0;
-    left: 0.35rem;
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .contact-links .circled-icon + .circled-icon {
-    margin-left: 0;
-  }
-  body > article,
-  body > section {
-    margin: 20px auto 20px 300px;
+    max-width: 840px;
   }
 }
 .main {
-  padding: 1rem;
   background-color: white;
 }
 .main a {

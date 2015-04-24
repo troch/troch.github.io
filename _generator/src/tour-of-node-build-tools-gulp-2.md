@@ -1,5 +1,6 @@
 ---
 title: Building with Gulp 3 and 4 Part 2 Gulp Anatomy
+lunr: true
 draft: false
 date: 2015-04-23 16:00:00
 author: Thomas Roch

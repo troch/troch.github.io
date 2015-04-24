@@ -1,0 +1,28 @@
+.circled-icon {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  background: @primary-light;
+  transition: background-color 0.4s ease-in-out;
+  font-size: @font-size-base;
+  width: @circled-icon-width;
+  height: @circled-icon-width;
+  border-radius: 50%;
+  border-width: 0;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background-color: @secondary;
+  }
+
+  > .fa {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 50%;
+    margin-top: -0.5em;
+  }
+}

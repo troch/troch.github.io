@@ -1,5 +1,6 @@
 ---
 title: Tour of Node building tools
+lunr: true
 draft: false
 date: 2015-04-18 12:00:00
 author: Thomas Roch
