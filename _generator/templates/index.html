@@ -3,13 +3,13 @@
 {% block body %}
     {% include "base/header.html" %}
 
-    <section class="main">
+    <main>
         <h1>Recent posts</h1>
 
         {% for post in posts %}
             <article><a href="/{{ post.path }}">{{ post.fullTitle }}</a></article>
         {% endfor %}
-    </section>
+    </main>
 
     {% include "base/footer.html" %}
 {% endblock %}

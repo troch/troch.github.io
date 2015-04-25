@@ -125,7 +125,7 @@ footer {
   }
 }
 
-.main {
+main, .main {
   padding: 1rem;
   position: relative;
 }
@@ -169,7 +169,7 @@ section.prev-next-links {
       }
     }
 
-    .main {
+    main, .main {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
       padding: 1.5rem 2rem;
       margin: @article-margin auto;
@@ -178,56 +178,33 @@ section.prev-next-links {
     }
 }
 
-// @media (min-width: @break-point-2) {
-//     body, html {
-//       display: block;
-//     }
+@media (min-width: @break-point-2) {
+    section.share {
+      position: fixed;
+      left: calc(50% ~"+" @article-margin ~"+" @max-article-width / 2);
+      top: calc(4rem ~"+" @circled-icon-width ~"+"  @article-margin);
+      transition: top .1s ease-in;
 
-//     header {
-//       position: fixed;
-//       top: 0;
-//       width: @sidebar-width;
-//       border-left: 0.35rem solid @primary-light;
-//       bottom: 0;
-//       left: 0;
-//       padding-top: @article-margin;
-//     }
+      body.scrolled & {
+        top: calc(1rem ~"+" @circled-icon-width ~"+"  @article-margin);
+      }
+    }
 
-//     section.share {
-//       position: fixed;
-//       top: 2rem;
-//       left: @sidebar-width + @article-margin * 2 + @max-article-width;
-//     }
+    // .contact-links {
+    //   width: @sidebar-width - 8px;
+    //   padding: 1rem;
+    //   bottom: 0;
+    //   left: 0.35rem;
+    //   position: fixed;
+    //   display: flex;
+    //   flex-direction: row;
+    //   justify-content: space-between;
 
-//     footer {
-//       margin: @article-margin auto @article-margin @sidebar-width + @article-margin;
-//       max-width: @max-article-width;
-//       // box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-//       > .info {
-//         margin: 0;
-//         text-align: left;
-//       }
-//     }
-
-//     .contact-links {
-//       width: @sidebar-width - 8px;
-//       padding: 1rem;
-//       bottom: 0;
-//       left: 0.35rem;
-//       position: fixed;
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: space-between;
-
-//       .circled-icon + .circled-icon {
-//         margin-left: 0;
-//       }
-//     }
-
-//     body > article, body > section {
-//       margin: @article-margin auto @article-margin @sidebar-width + @article-margin;
-//     }
-// }
+    //   .circled-icon + .circled-icon {
+    //     margin-left: 0;
+    //   }
+    // }
+}
 
 @import "article.less";
 

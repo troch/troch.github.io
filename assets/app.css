@@ -225,6 +225,7 @@ footer > .contact-links {
 footer > .contact-links .circled-icon + .circled-icon {
   margin-left: 0.5rem;
 }
+main,
 .main {
   padding: 1rem;
   position: relative;
@@ -261,6 +262,7 @@ section.prev-next-links > a.next {
   footer .info {
     color: #999999;
   }
+  main,
   .main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
     padding: 1.5rem 2rem;
@@ -268,19 +270,35 @@ section.prev-next-links > a.next {
     max-width: 840px;
   }
 }
-.main {
+@media (min-width: 1200px) {
+  section.share {
+    position: fixed;
+    left: calc(50% + 20px + 420px);
+    top: calc(4rem + 44.2px + 20px);
+    transition: top 0.1s ease-in;
+  }
+  body.scrolled section.share {
+    top: calc(1rem + 44.2px + 20px);
+  }
+}
+main,
+article.main {
   background-color: white;
 }
-.main a {
+main a,
+article.main a {
   color: #112f90;
 }
-.main p {
+main p,
+article.main p {
   line-height: 1.4rem;
   text-align: justify;
   text-indent: 1rem;
 }
-.main p code,
-.main ul code {
+main p code,
+article.main p code,
+main ul code,
+article.main ul code {
   padding: 0.2rem 0;
   margin: 0;
   font-size: 0.8rem;
@@ -289,44 +307,56 @@ section.prev-next-links > a.next {
   color: #00a124;
   white-space: nowrap;
 }
-.main p code:before,
-.main ul code:before,
-.main p code:after,
-.main ul code:after {
+main p code:before,
+article.main p code:before,
+main ul code:before,
+article.main ul code:before,
+main p code:after,
+article.main p code:after,
+main ul code:after,
+article.main ul code:after {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   letter-spacing: -0.2em;
   content: "\00a0";
 }
-.main h1,
-.main h2 {
+main h1,
+article.main h1,
+main h2,
+article.main h2 {
   padding: 0 0 0 0.65rem;
   border-left-width: 0.35rem;
   border-left-style: solid;
 }
-.main h1 {
+main h1,
+article.main h1 {
   margin: 0 0 1rem;
   font-size: 1.6rem;
   color: #00a124;
   border-left-color: #00a124;
+  line-height: 2rem;
 }
-.main h2 {
+main h2,
+article.main h2 {
   margin: 2rem 0 1rem;
   font-size: 1.25rem;
   color: #aaaaaa;
   border-left-color: #aaaaaa;
 }
-.main blockquote {
+main blockquote,
+article.main blockquote {
   display: block;
   position: relative;
   margin: 1rem 0;
   background-color: #f1f1f1;
   padding: 1rem 1rem 1rem 3.25rem;
 }
-.main blockquote > p {
+main blockquote > p,
+article.main blockquote > p {
   text-indent: 0;
   margin: 0;
 }
-.main blockquote::before {
+main blockquote::before,
+article.main blockquote::before {
   content: "\f10d";
   font-size: 1.8rem;
   line-height: 1em;
@@ -336,11 +366,13 @@ section.prev-next-links > a.next {
   left: 1rem;
   color: #112f90;
 }
-.main pre {
+main pre,
+article.main pre {
   display: block;
   width: 100%;
 }
-.main pre > code {
+main pre > code,
+article.main pre > code {
   display: block;
   padding: 0.5em;
   width: 100%;
