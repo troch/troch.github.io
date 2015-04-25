@@ -60,7 +60,7 @@
 					.map(function(res) {
 						return articles[res.ref];
 					}).filter(function(article) {
-						return article !== undefined;
+						return article !== undefined && location.pathname.indexOf(article.path) === -1;
 					});
 				if (results.length) {
 					results.forEach(function(article) {
@@ -131,7 +131,10 @@
 			}
 
 			function onSearchInput(evt) {
-				if (lunrIndex && articles) {
+				if (evt.target.value.length < 2) {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				} else if (lunrIndex && articles) {
 					renderSearchResults(lunrIndex.search(evt.target.value));
 				}
 			}

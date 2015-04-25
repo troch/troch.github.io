@@ -25,11 +25,11 @@
 			"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": ["1", "3", "4", "automation,build", "build", "exampl", "gulp",
 				"node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,gulp", "tool,streams,task"
 			],
-			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["automation,build", "build", "node",
-				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
-			],
 			"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": ["2", "3", "4", "anatomi", "automation,build", "build", "fs,npm,gulp", "gulp",
 				"gulp'", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "tool,streams,task"
+			],
+			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["automation,build", "build", "node",
+				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
 			]
 		},
 		"length": 5
@@ -129,13 +129,13 @@
 																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 																					"tf": 2
 																				},
-																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
-																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-																					"tf": 2.5
-																				},
 																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
 																					"tf": 1.6666666666666665
+																				},
+																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
+																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
+																					"tf": 2.5
 																				}
 																			}
 																		}
@@ -199,13 +199,13 @@
 										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 										"tf": 2.8571428571428568
 									},
-									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
-										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-										"tf": 5
-									},
 									"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
 										"tf": 2.5
+									},
+									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
+										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
+										"tf": 5
 									}
 								}
 							}
