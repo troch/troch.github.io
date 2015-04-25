@@ -20,23 +20,25 @@ Those tools share a few traits in common:
 - A build file needs to be added to your project `Gruntfile.js`, `gulpfile.js`, `brocfile.js`...
 - Plugins (npm packages) wrapping well-known npm packages (uglifyjs, jshint, less, etc...) need to be installed to perform specific tasks
 
-## Posts
 
-**Building with Grunt**
+## Building with Grunt
 
 - [Part 1](/posts/2015/04/18/building-with-grunt-part-1/)
 - [Part 2: caveats](posts/2015/04/22/building-with-grunt-part-2-caveats/)
 
-**Building with Gulp 3 and Gulp 4**
+
+## Building with Gulp 3 and Gulp 4
 
 - [Part 1: examples](/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/)
 - [Part 2: Gulp's anatomy](/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/)
 - Part 3: writing plugins _Coming soon_
 - Part 4: incremental builds
 
-**Building with Brocooli**
+
+## Building with Brocooli
 
 - Part 1: introduction
+
 
 ## Recommended articles on the web
 
