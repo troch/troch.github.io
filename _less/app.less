@@ -66,11 +66,17 @@ header {
   transition: padding .1s ease-in;
 
   > h1 {
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin: 0;
+    font-weight: normal;
+
+    > a:hover {
+      text-decoration: none;
+    }
 
     > small {
-      position: absolute;
+      line-height: 1rem;
+      font-size: 1rem;
       display: block;
       font-weight: normal;
     }
@@ -97,7 +103,8 @@ body {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 
       > h1 > small {
-        display: none;
+        line-height: 0;
+        opacity: 0;
       }
     }
   }
@@ -118,6 +125,10 @@ footer {
 
   > .contact-links {
     text-align: center;
+
+    .circled-icon {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    }
 
     .circled-icon + .circled-icon {
       margin-left: 0.5rem;
