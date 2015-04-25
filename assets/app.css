@@ -58,8 +58,8 @@
   background: #2645aa;
   transition: background-color 0.4s ease-in-out;
   font-size: 22px;
-  width: 57.8px;
-  height: 57.8px;
+  width: 51px;
+  height: 51px;
   border-radius: 50%;
   border-width: 0;
   color: inherit;
@@ -86,13 +86,13 @@
   background-color: #2645aa;
   color: white;
   position: relative;
-  right: -57.8px;
-  border-radius: 28.9px;
+  right: -51px;
+  border-radius: 25.5px;
   outline: 0;
 }
 #searchInput.revealed {
   width: 300px;
-  padding: 0 calc(57.8px + 0.5rem) 0 0.5rem;
+  padding: 0 calc(51px + 0.5rem) 0 0.5rem;
   border-radius: 0;
 }
 #searchInput.revealed ~ #searchButton.circled-icon {
@@ -102,13 +102,13 @@
 #searchResults {
   position: fixed;
   z-index: 2;
-  right: calc(2.5rem + 57.8px);
-  top: calc(2rem + 57.8px);
+  right: calc(2.5rem + 51px);
+  top: calc(2rem + 51px);
   background-color: #112f90;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 body.scrolled #searchResults {
-  top: calc(0.5rem + 57.8px);
+  top: calc(0.5rem + 51px);
 }
 #searchResults > a {
   display: block;
@@ -196,11 +196,11 @@ header > section .circled-icon + .circled-icon {
   margin-left: 0.5rem;
 }
 body {
-  padding-top: calc(4rem + 57.8px);
+  padding-top: calc(4rem + 51px);
   transition: padding 0.1s ease-in;
 }
 body.scrolled {
-  padding-top: calc(1rem + 57.8px);
+  padding-top: calc(1rem + 51px);
 }
 body.scrolled > header {
   padding: 0.5rem 2rem;
@@ -296,11 +296,11 @@ section.prev-next-links > a.next {
   section.share {
     position: fixed;
     left: calc(50% + 20px + 420px);
-    top: calc(4rem + 57.8px + 20px);
+    top: calc(4rem + 51px + 20px);
     transition: top 0.1s ease-in;
   }
   body.scrolled section.share {
-    top: calc(1rem + 57.8px + 20px);
+    top: calc(1rem + 51px + 20px);
   }
   section.prev-next-links {
     display: block;
