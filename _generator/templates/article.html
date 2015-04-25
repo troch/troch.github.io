@@ -11,8 +11,8 @@
         <p>Something wrong? Fix it on <a href="{{ mdLink }}">Github!</a></p>
 
         <section class="prev-next-links">
-            {% if previous %}<a href="{{previous.path}}/" class="prev"><span class="fa fa-chevron-left"></span> {{previous.fullTitle}}</a>{% endif %}
-            {% if next %}<a href="{{next.path}}/" class="next">{{next.fullTitle}} <span class="fa fa-chevron-right"></span></a>{% endif %}
+            {% if previous %}<a href="{{previous.path}}/" class="prev"><span class="fa fa-chevron-left"></span> <span>{{previous.fullTitle}}</span></a>{% endif %}
+            {% if next %}<a href="{{next.path}}/" class="next"><span>{{next.fullTitle}}</span> <span class="fa fa-chevron-right"></span></a>{% endif %}
         </section>
     </article>
 

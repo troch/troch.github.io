@@ -280,6 +280,48 @@ section.prev-next-links > a.next {
   body.scrolled section.share {
     top: calc(1rem + 44.2px + 20px);
   }
+  section.prev-next-links {
+    display: block;
+    flex-direction: none;
+    border: none;
+  }
+  section.prev-next-links > a {
+    color: white !important;
+    position: fixed;
+    display: flex;
+    top: 50%;
+    margin-top: -3rem;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+  }
+  section.prev-next-links > a span:not(.fa) {
+    display: none;
+  }
+  section.prev-next-links > a span.fa {
+    transition: transform .5s;
+    color: #cccccc;
+    font-size: 3rem;
+    width: 4rem;
+  }
+  section.prev-next-links > a.next {
+    right: 0;
+  }
+  section.prev-next-links > a.prev {
+    left: 0;
+  }
+  section.prev-next-links > a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #00a124;
+    text-decoration: none;
+  }
+  section.prev-next-links > a:hover span:not(.fa) {
+    display: block;
+  }
+  section.prev-next-links > a:hover span.fa {
+    transform: rotateX(-180deg);
+    color: #f1f1f1;
+  }
 }
 main,
 article.main {
