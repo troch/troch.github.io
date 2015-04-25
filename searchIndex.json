@@ -7,8 +7,8 @@
 		"name": "tags",
 		"boost": 10
 	}, {
-		"name": "title",
-		"boost": 10
+		"name": "metaTags",
+		"boost": 5
 	}, {
 		"name": "fullTitle",
 		"boost": 10
@@ -16,19 +16,19 @@
 	"ref": "filePath",
 	"documentStore": {
 		"store": {
-			"posts/2015/04/18/building-with-grunt-part-1/index.html": ["1", "automation,build", "build", "grunt", "node,nodejs,javascript,grunt,gruntjs,build", "part",
-				"runner", "tool,task"
-			],
-			"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": ["2", "automation,build", "build", "caveat", "grunt",
+			"posts/2015/04/18/building-with-grunt-part-1/index.html": ["1", "automation,build", "automation,gruntj", "build", "grunt", "javascript,nodejs,build",
 				"node,nodejs,javascript,grunt,gruntjs,build", "part", "runner", "tool,task"
 			],
-			"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": ["1", "3", "4", "automation,build", "build", "exampl", "gulp",
-				"node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,gulp", "tool,streams,task"
+			"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": ["2", "automation,build", "automation,gruntj", "build", "caveat", "grunt",
+				"javascript,nodejs,build", "node,nodejs,javascript,grunt,gruntjs,build", "part", "runner", "tool,task"
 			],
-			"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": ["2", "3", "4", "anatomi", "automation,build", "build", "fs,npm,gulp", "gulp",
-				"gulp'", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "tool,streams,task"
+			"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": ["1", "3", "4", "automation,build", "automation,gulpj", "build", "exampl", "gulp",
+				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,gulp", "tool,streams,task"
 			],
-			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["automation,build", "build", "node",
+			"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": ["2", "3", "4", "anatomi", "automation,build", "automation,gulpj", "build",
+				"fs,npm,gulp", "gulp", "gulp'", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "tool,streams,task"
+			],
+			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["autom", "automation,build", "build", "javascript,nodejs,build", "node",
 				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
 			]
 		},
@@ -40,11 +40,11 @@
 				"docs": {
 					"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 						"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-						"tf": 5
+						"tf": 2.5
 					},
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-						"tf": 2.8571428571428568
+						"tf": 1.4285714285714284
 					}
 				}
 			},
@@ -52,11 +52,11 @@
 				"docs": {
 					"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 						"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-						"tf": 4
+						"tf": 2
 					},
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-						"tf": 2.5
+						"tf": 1.25
 					}
 				}
 			},
@@ -64,11 +64,11 @@
 				"docs": {
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-						"tf": 2.8571428571428568
+						"tf": 1.4285714285714284
 					},
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-						"tf": 2.5
+						"tf": 1.25
 					}
 				}
 			},
@@ -76,11 +76,11 @@
 				"docs": {
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-						"tf": 4.857142857142857
+						"tf": 2.4285714285714284
 					},
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-						"tf": 4.166666666666666
+						"tf": 2.083333333333333
 					}
 				}
 			},
@@ -94,7 +94,12 @@
 						"o": {
 							"docs": {},
 							"m": {
-								"docs": {},
+								"docs": {
+									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
+										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
+										"tf": 5
+									}
+								},
 								"a": {
 									"docs": {},
 									"t": {
@@ -119,23 +124,71 @@
 																			"docs": {
 																				"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 																					"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-																					"tf": 2.5
+																					"tf": 1.25
 																				},
 																				"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 																					"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-																					"tf": 2.5
+																					"tf": 1.25
 																				},
 																				"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-																					"tf": 2
+																					"tf": 1
 																				},
 																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																					"tf": 1.6666666666666665
+																					"tf": 0.8333333333333333
 																				},
 																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-																					"tf": 2.5
+																					"tf": 1.25
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"g": {
+															"docs": {},
+															"r": {
+																"docs": {},
+																"u": {
+																	"docs": {},
+																	"n": {
+																		"docs": {},
+																		"t": {
+																			"docs": {},
+																			"j": {
+																				"docs": {
+																					"posts/2015/04/18/building-with-grunt-part-1/index.html": {
+																						"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
+																						"tf": 5
+																					},
+																					"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
+																						"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
+																						"tf": 5
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															"u": {
+																"docs": {},
+																"l": {
+																	"docs": {},
+																	"p": {
+																		"docs": {},
+																		"j": {
+																			"docs": {
+																				"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+																					"tf": 5
+																				},
+																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+																					"tf": 5
 																				}
 																			}
 																		}
@@ -167,7 +220,7 @@
 										"docs": {
 											"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-												"tf": 2.5
+												"tf": 1.25
 											}
 										}
 									}
@@ -189,23 +242,23 @@
 								"docs": {
 									"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 										"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-										"tf": 5
+										"tf": 2.5
 									},
 									"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 										"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-										"tf": 4
+										"tf": 2
 									},
 									"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-										"tf": 2.8571428571428568
+										"tf": 1.4285714285714284
 									},
 									"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-										"tf": 2.5
+										"tf": 1.25
 									},
 									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-										"tf": 5
+										"tf": 2.5
 									}
 								}
 							}
@@ -225,11 +278,11 @@
 								"docs": {
 									"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 										"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-										"tf": 5
+										"tf": 2.5
 									},
 									"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 										"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-										"tf": 4
+										"tf": 2
 									}
 								}
 							}
@@ -244,11 +297,11 @@
 							"docs": {
 								"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-									"tf": 2.8571428571428568
+									"tf": 1.4285714285714284
 								},
 								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-									"tf": 3.75
+									"tf": 1.25
 								}
 							},
 							"'": {
@@ -256,6 +309,96 @@
 									"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
 										"tf": 1.25
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"j": {
+				"docs": {},
+				"a": {
+					"docs": {},
+					"v": {
+						"docs": {},
+						"a": {
+							"docs": {},
+							"s": {
+								"docs": {},
+								"c": {
+									"docs": {},
+									"r": {
+										"docs": {},
+										"i": {
+											"docs": {},
+											"p": {
+												"docs": {},
+												"t": {
+													"docs": {},
+													",": {
+														"docs": {},
+														"n": {
+															"docs": {},
+															"o": {
+																"docs": {},
+																"d": {
+																	"docs": {},
+																	"e": {
+																		"docs": {},
+																		"j": {
+																			"docs": {},
+																			"s": {
+																				"docs": {},
+																				",": {
+																					"docs": {},
+																					"b": {
+																						"docs": {},
+																						"u": {
+																							"docs": {},
+																							"i": {
+																								"docs": {},
+																								"l": {
+																									"docs": {},
+																									"d": {
+																										"docs": {
+																											"posts/2015/04/18/building-with-grunt-part-1/index.html": {
+																												"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
+																												"tf": 5
+																											},
+																											"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
+																												"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
+																												"tf": 5
+																											},
+																											"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+																												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+																												"tf": 5
+																											},
+																											"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+																												"tf": 5
+																											},
+																											"posts/2015/04/18/tour-of-node-building-tools/index.html": {
+																												"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
+																												"tf": 5
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
 									}
 								}
 							}
@@ -273,7 +416,7 @@
 							"docs": {
 								"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 									"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-									"tf": 5
+									"tf": 2.5
 								}
 							},
 							",": {
@@ -354,11 +497,11 @@
 																																													"docs": {
 																																														"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 																																															"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-																																															"tf": 2.5
+																																															"tf": 1.25
 																																														},
 																																														"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 																																															"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-																																															"tf": 2.5
+																																															"tf": 1.25
 																																														}
 																																													}
 																																												}
@@ -442,7 +585,7 @@
 																																																																													"docs": {
 																																																																														"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																																																																															"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-																																																																															"tf": 2.5
+																																																																															"tf": 1.25
 																																																																														}
 																																																																													}
 																																																																												}
@@ -529,11 +672,11 @@
 																																											"docs": {
 																																												"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																																													"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-																																													"tf": 2
+																																													"tf": 1
 																																												},
 																																												"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 																																													"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																																													"tf": 1.6666666666666665
+																																													"tf": 0.8333333333333333
 																																												}
 																																											}
 																																										}
@@ -586,19 +729,19 @@
 							"docs": {
 								"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 									"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-									"tf": 5
+									"tf": 2.5
 								},
 								"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 									"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-									"tf": 4
+									"tf": 2
 								},
 								"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-									"tf": 2.8571428571428568
+									"tf": 1.4285714285714284
 								},
 								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-									"tf": 2.5
+									"tf": 1.25
 								}
 							}
 						}
@@ -619,15 +762,15 @@
 									"docs": {
 										"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 											"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-											"tf": 2.5
+											"tf": 1.25
 										},
 										"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 											"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-											"tf": 2.5
+											"tf": 1.25
 										},
 										"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 											"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-											"tf": 2.5
+											"tf": 1.25
 										}
 									},
 									",": {
@@ -642,7 +785,7 @@
 														"docs": {
 															"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-																"tf": 2
+																"tf": 1
 															}
 														}
 													}
@@ -673,7 +816,7 @@
 																					"docs": {
 																						"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 																							"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																							"tf": 1.6666666666666665
+																							"tf": 0.8333333333333333
 																						}
 																					}
 																				}
@@ -704,7 +847,7 @@
 							"docs": {
 								"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 									"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-									"tf": 5
+									"tf": 2.5
 								}
 							},
 							",": {
@@ -719,15 +862,15 @@
 												"docs": {
 													"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 														"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-														"tf": 2.5
+														"tf": 1.25
 													},
 													"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 														"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-														"tf": 2.5
+														"tf": 1.25
 													},
 													"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 														"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-														"tf": 2.5
+														"tf": 1.25
 													}
 												}
 											}
@@ -760,11 +903,11 @@
 																				"docs": {
 																					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-																						"tf": 2
+																						"tf": 1
 																					},
 																					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 																						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																						"tf": 1.6666666666666665
+																						"tf": 0.8333333333333333
 																					}
 																				}
 																			}
@@ -788,7 +931,7 @@
 							"docs": {
 								"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 									"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
-									"tf": 5
+									"tf": 2.5
 								}
 							}
 						}
@@ -809,7 +952,7 @@
 									"docs": {
 										"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
 											"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-											"tf": 4
+											"tf": 2
 										}
 									}
 								}
@@ -832,7 +975,7 @@
 									"docs": {
 										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-											"tf": 2.8571428571428568
+											"tf": 1.4285714285714284
 										}
 									}
 								}
@@ -865,7 +1008,7 @@
 														"docs": {
 															"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
 																"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																"tf": 1.6666666666666665
+																"tf": 0.8333333333333333
 															}
 														}
 													}
@@ -880,11 +1023,12 @@
 				}
 			}
 		},
-		"length": 49
+		"length": 59
 	},
-	"corpusTokens": ["1", "2", "3", "4", "anatomi", "automation,build", "build", "caveat", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "node",
-		"node,nodejs,javascript,grunt,gruntjs,build", "node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build",
-		"node,nodejs,javascript,gulp,gulpjs,build", "part", "runner", "runner,gulp", "runner,vinyl,vinyl", "tool", "tool,streams,task", "tool,task", "tour"
+	"corpusTokens": ["1", "2", "3", "4", "anatomi", "autom", "automation,build", "automation,gruntj", "automation,gulpj", "build", "caveat", "exampl",
+		"fs,npm,gulp", "grunt", "gulp", "gulp'", "javascript,nodejs,build", "node", "node,nodejs,javascript,grunt,gruntjs,build",
+		"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner", "runner,gulp",
+		"runner,vinyl,vinyl", "tool", "tool,streams,task", "tool,task", "tour"
 	],
 	"pipeline": ["trimmer", "stopWordFilter", "stemmer"]
 }

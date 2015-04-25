@@ -40,7 +40,7 @@ Metalsmith(__dirname)
           // ref: 'path',
           excerpts: 1,
           tags: 10,
-          title: 10,
+          metaTags: 5,
           fullTitle: 10
       },
       preprocess: function (content) {
@@ -53,7 +53,7 @@ Metalsmith(__dirname)
     .use(generateIndex())
     .use(minify({removeAttributeQuotes: false, removeComments: false}))
     .use(beautify())
-    .use(debug())
+    // .use(debug())
     .destination('../dist')
     .build(noop);
 
@@ -97,6 +97,8 @@ function indexArticles() {
         var articles = {};
         for (file in files) {
             if (files[file].collection && files[file].collection.indexOf('posts') !== -1) {
+                files[file].tags = (files[file].tags || '').split(',');
+                files[file].metaTags = (files[file].metaTags || '').split(',');
                 articles[file] = {
                     path: files[file].path,
                     title: files[file].fullTitle
@@ -174,7 +176,7 @@ function template() {
                         isArticle: true,
                         modifiedTime: files[file].modifiedTime.toISOString(),
                         publishedTime: files[file].date.toISOString(),
-                        tags: (files[file].tags || '').split(','),
+                        tags: files[file].metaTags,
                         sections: files[file].sections || [],
                         image: files[file].image,
                         mdLink: files[file].mdLink,
@@ -208,11 +210,19 @@ function fileStats() {
 
 function generateIndex() {
     return function (files, metalsmith, done) {
+        var posts = Object.keys(files)
+            .map(function (file) {
+                return files[file]
+            })
+            .filter(function (file) {
+                return file.collection && file.collection.indexOf('posts') !== -1;
+            });
+
         var indexPage = nunjucks.render(__dirname + '/templates/index.html', {
             styleSheets: styleSheets,
             scriptsSrc: scriptsSrc,
             scripts: scripts,
-            posts: _.sortBy(files, 'date').reverse(),
+            posts: _.sortBy(posts, 'date').reverse(),
             pageTitle: siteTitle,
             title: siteTitle,
             description: siteDescription,

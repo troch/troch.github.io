@@ -7,7 +7,16 @@
         <h1>Recent posts</h1>
 
         {% for post in posts %}
-            <article><a href="/{{ post.path }}">{{ post.fullTitle }}</a></article>
+            <article>
+                {{ post.year }}-{{ post.month }}-{{ post.day }}
+                <a href="/{{ post.path }}">{{ post.fullTitle }}</a>
+                {% for tag in post.tags %}
+                    <span class="tag">{{ tag }}</span>
+                {% endfor %}
+                <!-- <p>
+                    {{ post.excerpt }}
+                </p> -->
+            </article>
         {% endfor %}
     </main>
 

@@ -130,6 +130,34 @@ main, .main {
   position: relative;
 }
 
+main {
+  article {
+    > a {
+      display: block;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+    }
+    padding: 1rem 0;
+
+    .tag {
+      display: inline-block;
+      background-color: @gray-lighter;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      padding: 0.25rem;
+      margin-top: 0.3rem;
+
+      + .tag {
+        margin-left: 0.1rem;
+      }
+    }
+  }
+
+  article + article {
+    border-top: 2px solid @gray-lighter;
+  }
+}
+
 section.share {
   margin-bottom: 1rem;
   text-align: center;

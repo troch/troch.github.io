@@ -4,7 +4,8 @@ lunr: true
 draft: false
 date: 2015-04-23 16:00:00
 author: Thomas Roch
-tags: node,nodejs,javascript,gulp,gulpjs,build automation,build tool,streams,task runner,vinyl,vinyl-fs,npm,gulp 4
+metaTags: node,nodejs,javascript,gulp,gulpjs,build automation,build tool,streams,task runner,vinyl,vinyl-fs,npm,gulp 4
+tags: javascript,nodejs,build automation,gulpjs
 image: https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png
 ---
 
