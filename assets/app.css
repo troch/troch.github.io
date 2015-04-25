@@ -57,9 +57,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   background: #2645aa;
   transition: background-color 0.4s ease-in-out;
-  font-size: 18px;
-  width: 37.4px;
-  height: 37.4px;
+  font-size: 22px;
+  width: 44.2px;
+  height: 44.2px;
   border-radius: 50%;
   border-width: 0;
   color: inherit;
@@ -76,11 +76,55 @@
   top: 50%;
   margin-top: -0.5em;
 }
+#searchInput {
+  width: 0;
+  transition: all 0.2s ease-in;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  border: 0;
+  padding: 0;
+  background-color: #2645aa;
+  color: white;
+  position: relative;
+  right: -44.2px;
+  border-radius: 22.1px;
+  outline: 0;
+}
+#searchInput.revealed {
+  width: 300px;
+  padding: 0 calc(44.2px + 0.5rem) 0 0.5rem;
+  border-radius: 0;
+}
+#searchInput.revealed ~ #searchButton.circled-icon {
+  border-radius: 0;
+  background-color: #00a124;
+}
+#searchResults {
+  position: fixed;
+  z-index: 2;
+  right: calc(2.5rem + 44.2px);
+  top: calc(2rem + 44.2px);
+  background-color: #112f90;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+body.scrolled #searchResults {
+  top: calc(0.5rem + 44.2px);
+}
+#searchResults > a {
+  display: block;
+  color: white;
+  padding: 1rem;
+}
+#searchResults > a:hover,
+#searchResults > a:focus {
+  text-decoration: none;
+  background-color: #2645aa;
+}
 html,
 body {
   font-family: 'PT Sans', sans-serif;
-  line-height: 22px;
-  font-size: 18px;
+  line-height: 26px;
+  font-size: 22px;
   color: #333333;
   margin: 0;
   padding: 0;
@@ -109,29 +153,6 @@ a:focus {
 }
 .hidden {
   display: none;
-}
-#searchInput {
-  width: 0;
-  transition: all 0.2s ease-in;
-  line-height: 2rem;
-  font-size: 1.2rem;
-  border: 0;
-  padding: 0;
-  background-color: #2645aa;
-  color: white;
-  position: relative;
-  right: -37.4px;
-  border-radius: 18.7px;
-  outline: 0;
-}
-#searchInput.revealed {
-  width: 300px;
-  padding: 0 calc(37.4px + 0.5rem) 0 0.5rem;
-  border-radius: 0;
-}
-#searchInput.revealed + .circled-icon {
-  border-radius: 0;
-  background-color: #00a124;
 }
 header,
 footer {
@@ -174,16 +195,12 @@ header > section {
 header > section .circled-icon + .circled-icon {
   margin-left: 0.5rem;
 }
-#searchResults {
-  position: fixed;
-  z-index: 2;
-}
 body {
-  padding-top: calc(4rem + 37.4px);
+  padding-top: calc(4rem + 44.2px);
   transition: padding 0.1s ease-in;
 }
 body.scrolled {
-  padding-top: calc(1rem + 37.4px);
+  padding-top: calc(1rem + 44.2px);
 }
 body.scrolled > header {
   padding: 0.5rem 2rem;

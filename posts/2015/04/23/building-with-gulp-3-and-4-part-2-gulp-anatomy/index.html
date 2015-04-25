@@ -49,32 +49,45 @@ do one thing and do it well!">
 		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
 		<section>
 			<input id="searchInput">
-			<button type="button" class="circled-icon hidden" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<div id="searchResults"></div>
+			<button type="button" class="circled-icon" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
 			<!--
 
      --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
 	</header>
-	<section id="searchResults"></section>
 	<script></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function(event) {
-			var searchResultsElm = document.getElementById('searchResults');
-
 			function renderSearchResults(results) {
-				searchResultsElm.classList[results.length > 0 ? 'remove' : 'add']('hidden');
-				searchResultsElm.innerHTML = "";
-				results.forEach(function(res) {
-					searchResultsElm.appendChild(renderSearchResult(res));
-				})
+				searchResults.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResults.innerHTML = "";
+				results = results
+					.map(function(res) {
+						return articles[res.ref];
+					}).filter(function(article) {
+						return article !== undefined;
+					});
+				if (results.length) {
+					results.forEach(function(article) {
+						searchResults.appendChild(renderSearchResult(article));
+					});
+					searchResults.classList.remove('hidden');
+				} else {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				}
 			}
 
-			function renderSearchResult(res) {
-				var elm = document.createElement('div')
-				elm.innerHTML = res.ref;
-				return elm;
+			function renderSearchResult(article) {
+				var link = document.createElement('a');
+				link.href = article.path;
+				link.appendChild(document.createTextNode(article.title));
+				return link;
 			}
+			var searchResults = document.getElementById('searchResults');
 			var searchInput = document.getElementById('searchInput');
 			var lunrIndex;
+			var articles;
 
 			function getLunrIndex() {
 				superagent
@@ -85,27 +98,56 @@ do one thing and do it well!">
 						}
 					});
 			}
-			document.getElementById('searchButton').addEventListener('click', function(evt) {
-				if (searchInput.classList.contains('revealed')) {
-					searchInput.classList.remove('revealed');
-				} else {
-					searchInput.classList.add('revealed');
-					if (!lunrIndex) getLunrIndex();
-					searchInput.focus();
+
+			function getArticles() {
+				superagent
+					.get('/articles.json')
+					.end(function(err, res) {
+						if (!err) {
+							articles = res.body;
+						}
+					});
+			}
+
+			function hideSearchInput(evt) {
+				if (evt && evt.keyCode && evt.keyCode !== 27) return;
+				if (evt && (evt.target === searchButton || searchButton.contains(evt.target) || (evt.target === searchInput && evt.keyCode !== 27))) return;
+				searchInput.classList.remove('revealed');
+				searchResults.classList.add('hidden');
+				searchResults.innerHTML = "";
+				searchInput.removeEventListener('input', onSearchInput);
+				window.removeEventListener('click', hideSearchInput);
+				window.removeEventListener('scroll', hideSearchInput);
+				window.removeEventListener('keydown', hideSearchInput);
+				searchInput.removeEventListener('keydown', hideSearchInput);
+				searchInput.value = '';
+			}
+
+			function showSearchInput() {
+				searchInput.classList.add('revealed');
+				if (!lunrIndex) getLunrIndex();
+				if (!articles) getArticles();
+				searchInput.addEventListener('input', onSearchInput, false);
+				window.addEventListener('click', hideSearchInput, false);
+				window.addEventListener('scroll', hideSearchInput, false);
+				window.addEventListener('keydown', hideSearchInput, false);
+				searchInput.addEventListener('keydown', hideSearchInput, false);
+				searchInput.focus();
+			}
+
+			function onSearchInput(evt) {
+				if (lunrIndex && articles) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
 				}
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (!searchInput.classList.contains('revealed')) showSearchInput();
+				else hideSearchInput();
 			}, false);
 			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
 			window.addEventListener('scroll', function(evt) {
-				if (window.scrollY > headerPadding / 2) {
-					document.body.classList.add('scrolled');
-				} else {
-					document.body.classList.remove('scrolled');
-				}
-			}, false);
-			searchInput.addEventListener('input', function(evt) {
-				if (lunrIndex) {
-					renderSearchResults(lunrIndex.search(evt.target.value));
-				}
+				if (window.scrollY > headerPadding / 2) document.body.classList.add('scrolled');
+				else document.body.classList.remove('scrolled');
 			}, false);
 		});
 	</script>
@@ -169,7 +211,6 @@ do one thing and do it well!">
 		<section class="info">&copy; Thomas Roch 2015. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
 	</footer>
 	<!-- Script files -->
-	<script src="/kefir.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>

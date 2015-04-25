@@ -1,6 +1,7 @@
 @import "variables.less";
 @import "fa.less";
 @import "circled-icons.less";
+@import "search.less";
 
 html, body {
   font-family: 'PT Sans', sans-serif;
@@ -36,32 +37,6 @@ a:focus {
 
 .hidden {
   display: none;
-}
-
-#searchInput {
-  width: 0;
-  transition: all 0.2s ease-in;
-  line-height: 2rem;
-  font-size: 1.2rem;
-  border: 0;
-  padding: 0;
-  background-color: @primary-light;
-  color: white;
-  position: relative;
-  right: -@circled-icon-width;
-  border-radius: @circled-icon-width / 2;
-  outline: 0;
-
-  &.revealed {
-    width: 300px;
-    padding: 0 calc(@circled-icon-width ~"+" 0.5rem) 0 0.5rem;
-    border-radius: 0;
-
-    + .circled-icon {
-      border-radius: 0;
-      background-color: @secondary;
-    }
-  }
 }
 
 header, footer {
@@ -108,11 +83,6 @@ header {
       margin-left: 0.5rem;
     }
   }
-}
-
-#searchResults {
-  position: fixed;
-  z-index: 2;
 }
 
 body {

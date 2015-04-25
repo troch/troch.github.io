@@ -38,7 +38,7 @@ Metalsmith(__dirname)
     .use(lunr({
       fields: {
           // ref: 'path',
-          contents: 1,
+          excerpts: 1,
           tags: 10,
           title: 10,
           fullTitle: 10
@@ -47,6 +47,7 @@ Metalsmith(__dirname)
         return content.replace(/(<(.+?)>)/ig, '');
       }
     }))
+    .use(indexArticles())
     .use(template())
     .use(feed({collection: 'posts'}))
     .use(generateIndex())
@@ -73,7 +74,6 @@ var styleSheets = [
     // 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css.map'
 ];
 var scriptsSrc = [
-    '/kefir.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js',
@@ -94,20 +94,17 @@ function noop(err) {
 
 function indexArticles() {
     return function (files, metalsmith, done) {
-        var idx = lunr(function () {
-            this.field('fullTitle', { boost: 10 })
-            this.field('title', { boost: 10 })
-            this.field('contents')
-        })
+        var articles = {};
         for (file in files) {
-            idx.add(files[file]);
+            if (files[file].collection && files[file].collection.indexOf('posts') !== -1) {
+                articles[file] = {
+                    path: files[file].path,
+                    title: files[file].fullTitle
+                }
+            }
         }
         // fs.writeFileSync('index.json')
-        files['lunr.json'] = {
-            mode: '0666',
-            contents: new Buffer(JSON.stringify(idx)),
-            path: ''
-        };
+        fs.writeFileSync('articles.json', JSON.stringify(articles));
         done();
     };
 }
