@@ -36,11 +36,12 @@ Gulp is built on top of two packages called `vinyl` and `vinyl-fs`.
 
 [Vinyl](https://www.npmjs.org/package/vinyl) is an object used for modelling files. It has four properties (`cwd`, `base`, `path`, and `contents`).
 `contents` is a [Node Buffer](https://nodejs.org/api/buffer.html), and other properties describe a file path. If you have used Grunt your are no stranger to them:
-`base` + `cwd` + `path` = full path.
+
+    base + cwd + path = full path
 
 From [Vinyl-fs](https://www.npmjs.org/package/vinyl-fs) comes the `.src()`, `.watch()` and `.dest()` functions exposed by Gulp: `src()` will create vinyl objects from your file system,
 and `dest()` will write them to disk. Vinyl-fs is also depending on [through2](https://www.npmjs.org/package/throught2), a wrapper around Node streams2 (Streams in Node v0.10.x). From
-streams2 comes the `.pipe()` and `.on('error|end|data|readable|close')` methods.
+streams2 comes the `.pipe()` and `.on()` methods.
 
 > In most cases, a vinyl-fs pipeline is simply a **map-reduce** operation on a set of files.
 

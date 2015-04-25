@@ -21,7 +21,7 @@ do one thing and do it well!">
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-04-23T16:00:00.000Z">
-	<meta property="article:modified_time" content="2015-04-25T12:47:17.000Z">
+	<meta property="article:modified_time" content="2015-04-25T13:13:51.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -188,10 +188,11 @@ do one thing and do it well!">
 		<p><a href="https://www.npmjs.org/package/vinyl">Vinyl</a> is an object used for modelling files. It has four properties (<code class="nohighlight">cwd</code>,
 			<code
 			class="nohighlight">base</code>, <code class="nohighlight">path</code>, and <code class="nohighlight">contents</code>). <code class="nohighlight">contents</code> is a <a href="https://nodejs.org/api/buffer.html">Node Buffer</a>,
-				and other properties describe a file path. If you have used Grunt your are no stranger to them: <code class="nohighlight">base</code> + <code class="nohighlight">cwd</code>				+ <code class="nohighlight">path</code> = full path.</p>
+				and other properties describe a file path. If you have used Grunt your are no stranger to them:</p><pre><code class="nohighlight">base + cwd + path = full path
+</code></pre>
 		<p>From <a href="https://www.npmjs.org/package/vinyl-fs">Vinyl-fs</a> comes the <code class="nohighlight">.src()</code>, <code class="nohighlight">.watch()</code>			and <code class="nohighlight">.dest()</code> functions exposed by Gulp: <code class="nohighlight">src()</code> will create vinyl objects from your file system,
 			and <code class="nohighlight">dest()</code> will write them to disk. Vinyl-fs is also depending on <a href="https://www.npmjs.org/package/throught2">through2</a>,
-			a wrapper around Node streams2 (Streams in Node v0.10.x). From streams2 comes the <code class="nohighlight">.pipe()</code> and <code class="nohighlight">.on(&#39;error|end|data|readable|close&#39;)</code>			methods.</p>
+			a wrapper around Node streams2 (Streams in Node v0.10.x). From streams2 comes the <code class="nohighlight">.pipe()</code> and <code class="nohighlight">.on()</code>			methods.</p>
 		<blockquote>
 			<p>In most cases, a vinyl-fs pipeline is simply a <strong>map-reduce</strong> operation on a set of files.</p>
 		</blockquote>

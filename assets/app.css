@@ -58,8 +58,8 @@
   background: #2645aa;
   transition: background-color 0.4s ease-in-out;
   font-size: 22px;
-  width: 44.2px;
-  height: 44.2px;
+  width: 57.8px;
+  height: 57.8px;
   border-radius: 50%;
   border-width: 0;
   color: inherit;
@@ -86,13 +86,13 @@
   background-color: #2645aa;
   color: white;
   position: relative;
-  right: -44.2px;
-  border-radius: 22.1px;
+  right: -57.8px;
+  border-radius: 28.9px;
   outline: 0;
 }
 #searchInput.revealed {
   width: 300px;
-  padding: 0 calc(44.2px + 0.5rem) 0 0.5rem;
+  padding: 0 calc(57.8px + 0.5rem) 0 0.5rem;
   border-radius: 0;
 }
 #searchInput.revealed ~ #searchButton.circled-icon {
@@ -102,13 +102,13 @@
 #searchResults {
   position: fixed;
   z-index: 2;
-  right: calc(2.5rem + 44.2px);
-  top: calc(2rem + 44.2px);
+  right: calc(2.5rem + 57.8px);
+  top: calc(2rem + 57.8px);
   background-color: #112f90;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 body.scrolled #searchResults {
-  top: calc(0.5rem + 44.2px);
+  top: calc(0.5rem + 57.8px);
 }
 #searchResults > a {
   display: block;
@@ -123,7 +123,7 @@ body.scrolled #searchResults {
 html,
 body {
   font-family: 'PT Sans', sans-serif;
-  line-height: 26px;
+  line-height: 34px;
   font-size: 22px;
   color: #333333;
   margin: 0;
@@ -196,11 +196,11 @@ header > section .circled-icon + .circled-icon {
   margin-left: 0.5rem;
 }
 body {
-  padding-top: calc(4rem + 44.2px);
+  padding-top: calc(4rem + 57.8px);
   transition: padding 0.1s ease-in;
 }
 body.scrolled {
-  padding-top: calc(1rem + 44.2px);
+  padding-top: calc(1rem + 57.8px);
 }
 body.scrolled > header {
   padding: 0.5rem 2rem;
@@ -296,11 +296,11 @@ section.prev-next-links > a.next {
   section.share {
     position: fixed;
     left: calc(50% + 20px + 420px);
-    top: calc(4rem + 44.2px + 20px);
+    top: calc(4rem + 57.8px + 20px);
     transition: top 0.1s ease-in;
   }
   body.scrolled section.share {
-    top: calc(1rem + 44.2px + 20px);
+    top: calc(1rem + 57.8px + 20px);
   }
   section.prev-next-links {
     display: block;
@@ -355,7 +355,7 @@ article.main a {
 }
 main p,
 article.main p {
-  line-height: 1.4rem;
+  line-height: 1.5rem;
   text-align: justify;
   text-indent: 1rem;
 }
@@ -363,12 +363,12 @@ main p code,
 article.main p code,
 main ul code,
 article.main ul code {
-  padding: 0.2rem 0;
+  padding: 0.1rem 0;
   margin: 0;
   font-size: 0.8rem;
   background-color: rgba(0, 0, 0, 0.06);
   border-radius: 3px;
-  color: #00a124;
+  color: #666666;
   white-space: nowrap;
 }
 main p code:before,
@@ -379,8 +379,7 @@ main p code:after,
 article.main p code:after,
 main ul code:after,
 article.main ul code:after {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  letter-spacing: -0.2em;
+  letter-spacing: -0.2rem;
   content: "\00a0";
 }
 main h1,

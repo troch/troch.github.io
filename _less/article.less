@@ -6,26 +6,27 @@ main, article.main {
     }
 
     p {
-        line-height: 1.4rem;
+        line-height: 1.5rem;
         text-align: justify;
         text-indent: 1rem;
     }
 
     p, ul {
         code {
-            padding: 0.2rem 0;
+            padding: 0.1rem 0;
             margin: 0;
             font-size: 0.8rem;
             background-color: rgba(0,0,0,0.06);
             border-radius: 3px;
-            color: @secondary;
+            color: @gray-darker;
+            // color: @secondary;
             white-space: nowrap;
         }
 
         code:before,
         code:after {
-            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            letter-spacing: -0.2em;
+            // font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            letter-spacing: -0.2rem;
             content: "\00a0";
         }
     }
