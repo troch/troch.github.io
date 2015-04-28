@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base href="/">
+	<title>Building with Gulp 3 and 4 (Part 3: Writing transformers) | React and be thankful</title>
+	<meta name="description" content="When building with Gulp, we rely on available plugins for atomic or specific operations (like adding a file header or footer, concatenating files,&hellip;">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Building with Gulp 3 and 4 (Part 3: Writing transformers)">
+	<meta name="twitter:description" content="When building with Gulp, we rely on available plugins for atomic or specific operations (like adding a file header or footer, concatenating files, ...). But what ifthere is no plugin for what&hellip;">
+	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Building with Gulp 3 and 4 (Part 3: Writing transformers)">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers">
+	<meta property="og:description" content="When building with Gulp, we rely on available plugins for atomic or specific operations (like adding a file header or footer, concatenating files, ...). But what ifthere is no plugin for what you are trying to achieve? It is fairly simply to write a custom stream transformer, and if you think it can benefit others then publish
+your gulp plugin using npm. Make sure you first read the guidelines.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
+	<!-- Article meta data -->
+	<meta property="article:published_time" content="2015-04-28T22:30:00.000Z">
+	<meta property="article:modified_time" content="2015-04-28T21:41:31.000Z">
+	<meta property="article:tag" content="node">
+	<meta property="article:tag" content="nodejs">
+	<meta property="article:tag" content="javascript">
+	<meta property="article:tag" content="gulp">
+	<meta property="article:tag" content="gulpjs">
+	<meta property="article:tag" content="build automation">
+	<meta property="article:tag" content="build tool">
+	<meta property="article:tag" content="streams">
+	<meta property="article:tag" content="task runner">
+	<meta property="article:tag" content="vinyl">
+	<meta property="article:tag" content="vinyl-fs">
+	<meta property="article:tag" content="npm">
+	<meta property="article:tag" content="gulp 4">
+	<meta property="article:tag" content="event-stream">
+	<meta property="article:tag" content="map-stream">
+	<!-- RSS feed -->
+	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="assets/app.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
+		<section>
+			<input id="searchInput">
+			<div id="searchResults"></div>
+			<button type="button" class="circled-icon" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<!--
+
+     --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
+	</header>
+	<script></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			function renderSearchResults(results) {
+				searchResults.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResults.innerHTML = "";
+				results = results
+					.map(function(res) {
+						return articles[res.ref];
+					}).filter(function(article) {
+						return article !== undefined && location.pathname.indexOf(article.path) === -1;
+					});
+				if (results.length) {
+					results.forEach(function(article) {
+						searchResults.appendChild(renderSearchResult(article));
+					});
+					searchResults.classList.remove('hidden');
+				} else {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				}
+			}
+
+			function renderSearchResult(article) {
+				var link = document.createElement('a');
+				link.href = article.path;
+				link.appendChild(document.createTextNode(article.title));
+				return link;
+			}
+			var searchResults = document.getElementById('searchResults');
+			var searchInput = document.getElementById('searchInput');
+			var lunrIndex;
+			var articles;
+
+			function getLunrIndex() {
+				superagent
+					.get('/searchIndex.json')
+					.end(function(err, res) {
+						if (!err) {
+							lunrIndex = lunr.Index.load(res.body);
+						}
+					});
+			}
+
+			function getArticles() {
+				superagent
+					.get('/articles.json')
+					.end(function(err, res) {
+						if (!err) {
+							articles = res.body;
+						}
+					});
+			}
+
+			function hideSearchInput(evt) {
+				if (evt && evt.keyCode && evt.keyCode !== 27) return;
+				if (evt && (evt.target === searchButton || searchButton.contains(evt.target) || (evt.target === searchInput && evt.keyCode !== 27))) return;
+				searchInput.classList.remove('revealed');
+				searchResults.classList.add('hidden');
+				searchResults.innerHTML = "";
+				searchInput.removeEventListener('input', onSearchInput);
+				window.removeEventListener('click', hideSearchInput);
+				window.removeEventListener('scroll', hideSearchInput);
+				window.removeEventListener('keydown', hideSearchInput);
+				searchInput.removeEventListener('keydown', hideSearchInput);
+				searchInput.value = '';
+			}
+
+			function showSearchInput() {
+				searchInput.classList.add('revealed');
+				if (!lunrIndex) getLunrIndex();
+				if (!articles) getArticles();
+				searchInput.addEventListener('input', onSearchInput, false);
+				window.addEventListener('click', hideSearchInput, false);
+				window.addEventListener('scroll', hideSearchInput, false);
+				window.addEventListener('keydown', hideSearchInput, false);
+				searchInput.addEventListener('keydown', hideSearchInput, false);
+				searchInput.focus();
+			}
+
+			function onSearchInput(evt) {
+				if (evt.target.value.length < 2) {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				} else if (lunrIndex && articles) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
+				}
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (!searchInput.classList.contains('revealed')) showSearchInput();
+				else hideSearchInput();
+			}, false);
+			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
+			window.addEventListener('scroll', function(evt) {
+				if (window.scrollY > headerPadding / 2) document.body.classList.add('scrolled');
+				else document.body.classList.remove('scrolled');
+			}, false);
+		});
+	</script>
+	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
+		<h1 id="building-with-gulp-3-and-4-part-3-writing-transformers-">Building with Gulp 3 and 4 (Part 3: Writing transformers)</h1>
+		<p>When building with Gulp, we rely on available plugins for <em>atomic or specific operations</em> (like adding a file header or footer, concatenating files, ...).
+			But what if there is no plugin for what you are trying to achieve? It is fairly simply to write a custom stream transformer, and if you think it can benefit others
+			then publish your gulp plugin using npm. Make sure you first read the <a href="https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/guidelines.md">guidelines</a>.</p>
+		<p>When writing this article, I was trying to find a plugin idea for illustrating this article but could not find something simple which doesn&#39;t already exist
+			in the large Gulp plugins ecosystem. Instead, I will use a <em>replace</em> operation as example (covered by <code class="nohighlight">gulp-replace</code>) and
+			then finish with a concatenation example using a reduce plugin.</p>
+		<h2 id="in-and-out">In and out</h2>
+		<p>Each Gulp plugin receives vinyl objects (representing files) and is expected to pipe to the next plugin transformed vinyl objects. Depending on what a plugin does,
+			it could return:</p>
+		<ul>
+			<li>No vinyl objects at all</li>
+			<li>Only one vinyl object (<em>gulp-concat</em>)</li>
+			<li>The same untouched vinyl objects (<em>gulp-jshint</em>)</li>
+			<li>The same vinyl objects with transformed contents (<em>gulp-header</em>)</li>
+			<li>Extra vinyl objects</li>
+		</ul>
+		<p>All (or almost all) Gulp plugins will need to access contents of a file. In <a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/">Part 2: Gulp&#39;s anatomy</a>,
+			we briefly mentionned the <code class="nohighlight">contents</code> priority being a buffer. Contents are not always buffers and can also be streams. Most of
+			Gulp plugins will only deal with buffers and throw an exception if used with streams (like <code class="nohighlight">gulp-concat</code>), <code class="nohighlight">gulp.src()</code>			itself will return vinyl ojbects with buffered contents by default. On top of that, most of the common building tasks I can think of will need to read the whole
+			contents of a file before carrying on:</p>
+		<ul>
+			<li>If <em>replace</em> was used with streams, portions of a file to replace could be split over two chunks of data</li>
+			<li>Javascript linters and uglifiers need to parse entire scripts to get their Abstract Syntax Tree (AST)</li>
+			<li>CSS pre-processors can not compile one chunk at a time</li>
+			<li>Etc...</li>
+		</ul>
+		<p>I hear you are confused. Isn&#39;t Gulp <em>the streaming build system</em> afterall? Yes it is, don&#39;t forget vinyl objects are streamed through the pipeline.
+			Then file contents can be streamed or buffered, you can see this as a <em>two dimension stream</em>. So why bother with streaming contents? When building an application,
+			sooner or later files will need to be buffered. However for certain tasks like copying files, streams can be used.</p>
+		<p>If you want to use streams <code class="nohighlight">gulp.src()</code> with <code class="nohighlight">{buffer: false}</code> will return non-buffered vinyl objects.
+			In this article, we won&#39;t deal with streams but if you&#39;d like to explore further, you can look at Gulp official documentation on <a href="httpss://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/dealing-with-streams.md">dealing with streams</a>.</p>
+		<h2
+		id="using-map-stream">Using map-stream</h2>
+			<p>Using <a href="https://www.npmjs.com/package/map-stream">map-stream</a> is the quickest way to get going. First install <em>map-stream</em>:</p><pre><code class="nohighlight">$ npm install --save-dev map-stream
+</code></pre>
+			<p>Let&#39;s see an example where we want to replace all instances &#39;abc&#39; by &#39;123&#39; (I know this is totally pointless):</p><pre><code class="javascript">var gulp = require(&#39;gulp&#39;);
+var map  = require(&#39;map-stream&#39;);
+
+gulp.task(&#39;replace&#39;, function() {
+    return gulp.src(&#39;src/**/*.js&#39;)
+        .pipe(map(function (file, cb) {
+            var contents = file.contents.toString(&#39;utf8&#39;);
+            contents = contents.replace(/abc/g, &#39;123&#39;);
+            file.contents = new Buffer(contents, &#39;utf8&#39;);
+            cb();
+        }));
+});
+</code></pre>
+			<h2 id="using-through2">Using through2</h2>
+			<p><a href="https://www.npmjs.org/rvagg/through2">through2</a> has an <code class="nohighlight">.obj()</code> function for object streams:</p><pre><code class="nohighlight">$ npm install --save-dev map-stream
+</code></pre><pre><code class="javascript">var gulp    = require(&#39;gulp&#39;);
+var through = require(&#39;through2&#39;);
+
+gulp.task(&#39;replace&#39;, function() {
+    return gulp.src(&#39;src/**/*.js&#39;)
+        .pipe(through.obj(function (file, enc, cb) {
+            // Replacing takes place here
+            cb();
+        }));
+});
+</code></pre>
+			<h2 id="using-event-stream">Using event-stream</h2>
+			<p><a href="https://www.npmjs.com/package/event-stream">event-stream</a> is a package containing various functions to write more functional code when working with
+				streams. <em>event-stream</em> creates Node 0.8 streams (compatible with Node 0.10 streams) but since we are only interested in mapping functions, this is not
+				an issue. <em>event-stream</em> has a <code class="nohighlight">.mapSync()</code> function as well as a <code class="nohighlight">.map()</code> function, <em>mapSync</em>				is useful in our example as it removes one line of code to our transformer:</p><pre><code class="nohighlight">$ npm install --save-dev through2
+</code></pre><pre><code class="javascript">var gulp = require(&#39;gulp&#39;);
+var es   = require(&#39;event-stream&#39;);
+
+gulp.task(&#39;replace&#39;, function() {
+    return gulp.src(&#39;src/**/*.js&#39;)
+        .pipe(es.mapSync(function (file) {
+            // Replacing takes place here
+        }));
+    });
+</code></pre>
+			<h2 id="a-plugin-example-reduce">A plugin example: reduce</h2>
+			<p>Let&#39;s write a plugin for performing reduce operations on files. It takes two arguments:</p>
+			<ul>
+				<li><code class="nohighlight">fileName</code>: the file name we want to give to our concatenated file (String)</li>
+				<li><code class="nohighlight">iteratee</code>: a function called for each value in the array (except the first one). It takes 3 arguments: <code class="nohighlight">firstFile</code>,
+					<code class="nohighlight">file</code> and <code class="nohighlight">cb</code>.</li>
+			</ul><pre><code class="javascript">var through2 = require(&#39;through2&#39;);
+var File = require(&#39;vinyl&#39;);
+var path = require(&#39;path&#39;);
+
+// This is our plugin
+function myReducePlugin(fileName, iteratee) {
+    var firstFile;
+
+    return through2.obj(function(file, enc, cb) {
+        if (!firstFile) {
+            firstFile = file;
+            cb();
+            return;
+        }
+        iteratee(firstFile, file, cb);
+    }, function () {
+        firstFile.path = path.join(firstFile.base, fileName);
+        this.push(firstFile);
+    });
+}
+</code></pre>
+			<p>Now we can use this practical plugin for concatenating files (you can try it):</p><pre><code class="javascript">gulp.task(&#39;concat&#39;, function () {
+    return gulp.src(&#39;src/**/*.js&#39;)
+        .pipe(myReducePlugin(&#39;concat.js&#39;, function (firstFile, file, cb) {
+                firstFile.contents = Buffer.concat([
+                    firstFile.contents,
+                    file.contents
+                ]);
+                cb();
+            }
+        ))
+        .pipe(gulp.dest(&#39;./build&#39;));
+})
+</code></pre>
+			<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-3.md">Github!</a></p>
+			<section
+			class="prev-next-links"><a href="posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 3 and 4 (Part 2: Gulp's anatomy)</span></a></section>
+	</article>
+	<footer>
+		<!-- <div class="about">About the author</div> -->
+		<section class="contact-links"><a class="circled-icon" href="https://github.com/troch" target="_blank" aria-label="Github (troch)" title="Github (troch)"><i class="fa fa-github"></i></a>
+			<a
+			class="circled-icon" href="https://uk.linkedin.com/in/thomasroch" target="_blank" aria-label="Linkedin (Thomas Roch)" title="Linkedin (Thomas Roch)"><i class="fa fa-linkedin"></i></a>
+				<a class="circled-icon" href="https://twitter.com/tcroch" target="_blank" aria-label="Twitter (tcroch)" title="Twitter (tcroch)"><i class="fa fa-twitter"></i></a> <a class="circled-icon" href="https://stackoverflow.com/users/3114505/thomas-roch" target="_blank" aria-label="Stackoverflow (Thomas Roch)"
+				title="Stackoverflow (Thomas Roch)"><i class="fa fa-stack-overflow"></i></a> <a class="circled-icon" href="http://www.slideshare.net/ThomasRoch" target="_blank"
+				aria-label="SlideShare (Thomas Roch)" title="SlideShare (Thomas Roch)"><i class="fa fa-slideshare"></i></a></section>
+		<section class="info">&copy; Thomas Roch 2015. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
+	</footer>
+	<!-- Script files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js"></script>
+	<!-- Scripts -->
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<!-- Analytics -->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-61970524-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

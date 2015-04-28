@@ -281,7 +281,7 @@ section.prev-next-links > a:hover {
 section.prev-next-links > a.next {
   text-align: right;
 }
-@media (min-width: 860px) {
+@media (min-width: 920px) {
   body,
   html {
     background-color: white;
@@ -298,13 +298,13 @@ section.prev-next-links > a.next {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
     padding: 1.5rem 2rem;
     margin: 20px auto;
-    max-width: 840px;
+    max-width: 900px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1260px) {
   section.share {
     position: fixed;
-    left: calc(50% + 20px + 420px);
+    left: calc(50% + 20px + 450px);
     top: calc(4rem + 51px + 20px);
     transition: top 0.1s ease-in;
   }
