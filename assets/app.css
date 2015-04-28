@@ -57,9 +57,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   background: #2645aa;
   transition: background-color 0.4s ease-in-out;
-  font-size: 22px;
-  width: 51px;
-  height: 51px;
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border-width: 0;
   color: inherit;
@@ -86,13 +86,13 @@
   background-color: #2645aa;
   color: white;
   position: relative;
-  right: -51px;
-  border-radius: 25.5px;
+  right: -36px;
+  border-radius: 18px;
   outline: 0;
 }
 #searchInput.revealed {
   width: 300px;
-  padding: 0 calc(51px + 0.5rem) 0 0.5rem;
+  padding: 0 calc(36px + 0.5rem) 0 0.5rem;
   border-radius: 0;
 }
 #searchInput.revealed ~ #searchButton.circled-icon {
@@ -102,13 +102,13 @@
 #searchResults {
   position: fixed;
   z-index: 2;
-  right: calc(2.5rem + 51px);
-  top: calc(2rem + 51px);
+  right: calc(2.5rem + 36px);
+  top: calc(2rem + 36px);
   background-color: #112f90;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 body.scrolled #searchResults {
-  top: calc(0.5rem + 51px);
+  top: calc(0.5rem + 36px);
 }
 #searchResults > a {
   display: block;
@@ -122,9 +122,10 @@ body.scrolled #searchResults {
 }
 html,
 body {
+  width: 100%;
   font-family: 'PT Sans', sans-serif;
-  line-height: 34px;
-  font-size: 22px;
+  line-height: 24px;
+  font-size: 16px;
   color: #333333;
   margin: 0;
   padding: 0;
@@ -174,10 +175,9 @@ header {
   right: 0;
   left: 0;
   z-index: 1;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
+  flex-direction: column-reverse;
+  justify-content: center;
+  padding: 2rem 1rem;
   transition: padding 0.1s ease-in;
 }
 header > h1 {
@@ -196,19 +196,23 @@ header > h1 > small {
 }
 header > section {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: .5rem;
 }
 header > section .circled-icon + .circled-icon {
   margin-left: 0.5rem;
 }
 body {
-  padding-top: calc(4rem + 51px);
+  padding-top: calc(7rem + 36px);
   transition: padding 0.1s ease-in;
 }
 body.scrolled {
-  padding-top: calc(1rem + 51px);
+  padding-top: calc(1rem + 36px);
 }
 body.scrolled > header {
-  padding: 0.5rem 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 body.scrolled > header > h1 > small {
@@ -285,6 +289,18 @@ section.prev-next-links > a.next {
   body,
   html {
     background-color: white;
+    line-height: 27px;
+    font-size: 18px;
+  }
+  body {
+    padding-top: calc(5rem + 36px);
+  }
+  header {
+    padding: 2rem;
+    flex-direction: row;
+  }
+  header > h1 {
+    flex: 1;
   }
   footer {
     background-color: transparent;
@@ -302,14 +318,19 @@ section.prev-next-links > a.next {
   }
 }
 @media (min-width: 1260px) {
+  body,
+  html {
+    line-height: 30px;
+    font-size: 20px;
+  }
   section.share {
     position: fixed;
     left: calc(50% + 20px + 450px);
-    top: calc(4rem + 51px + 20px);
+    top: calc(4rem + 36px + 20px);
     transition: top 0.1s ease-in;
   }
   body.scrolled section.share {
-    top: calc(1rem + 51px + 20px);
+    top: calc(1rem + 36px + 20px);
   }
   section.prev-next-links {
     display: block;

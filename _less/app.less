@@ -4,6 +4,7 @@
 @import "search.less";
 
 html, body {
+  width: 100%;
   font-family: 'PT Sans', sans-serif;
   line-height: @line-height-base;
   font-size: @font-size-base;
@@ -59,10 +60,9 @@ header {
   right: 0;
   left: 0;
   z-index: 1;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items:center;
-  padding: 2rem;
+  flex-direction: column-reverse;
+  justify-content: center;
+  padding: 2rem 1rem;
   transition: padding .1s ease-in;
 
   > h1 {
@@ -84,6 +84,9 @@ header {
 
   > section {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: .5rem;
 
     .circled-icon + .circled-icon {
       margin-left: 0.5rem;
@@ -92,14 +95,15 @@ header {
 }
 
 body {
-  padding-top: calc(4rem ~"+" @circled-icon-width);
+  padding-top: calc(7rem ~"+" @circled-icon-width);
   transition: padding .1s ease-in;
 
   &.scrolled {
     padding-top: calc(1rem ~"+" @circled-icon-width);
 
     > header {
-      padding: 0.5rem 2rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 
       > h1 > small {
@@ -197,6 +201,21 @@ section.prev-next-links {
 @media (min-width: @break-point-1) {
     body, html {
       background-color: white;
+      line-height: @line-height-base-1;
+      font-size: @font-size-base-1;
+    }
+
+    body {
+      padding-top: calc(5rem ~"+" @circled-icon-width);
+    }
+
+    header {
+      padding: 2rem;
+      flex-direction: row;
+
+      > h1 {
+        flex: 1;
+      }
     }
 
     footer {
@@ -218,6 +237,11 @@ section.prev-next-links {
 }
 
 @media (min-width: @break-point-2) {
+    body, html {
+      line-height: @line-height-base-2;
+      font-size: @font-size-base-2;
+    }
+
     section.share {
       position: fixed;
       left: calc(50% ~"+" @article-margin ~"+" @max-article-width / 2);
