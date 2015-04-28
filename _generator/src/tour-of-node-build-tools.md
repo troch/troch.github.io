@@ -31,8 +31,8 @@ Those tools share a few traits in common:
 
 - [Part 1: examples](/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/)
 - [Part 2: Gulp's anatomy](/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/)
-- Part 3: writing plugins _Coming soon_
-- Part 4: incremental builds
+- [Part 3: writing transformers](/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/)
+- Part 4: incremental builds (_Coming soon_)
 
 
 ## Building with Brocooli
