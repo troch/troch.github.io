@@ -20,7 +20,7 @@ your gulp plugin using npm. Make sure you first read the guidelines.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-04-28T22:30:00.000Z">
-	<meta property="article:modified_time" content="2015-04-28T21:50:31.000Z">
+	<meta property="article:modified_time" content="2015-04-28T21:52:08.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -247,10 +247,10 @@ gulp.task(&#39;replace&#39;, function() {
     });
 </code></pre>
 			<h2 id="a-plugin-example-reduce">A plugin example: reduce</h2>
-			<p>Let&#39;s write a plugin for performing reduce operations on files. It takes two arguments:</p>
+			<p>Let&#39;s now write a plugin for performing reduce operations on files. It takes two arguments:</p>
 			<ul>
-				<li><code class="nohighlight">fileName</code>: the file name we want to give to our concatenated file (String)</li>
-				<li><code class="nohighlight">iteratee</code>: a function called for each value in the array (except the first one). It takes 3 arguments: <code class="nohighlight">firstFile</code>,
+				<li><code class="nohighlight">fileName</code>: the file name we want to give to our reduced file (String)</li>
+				<li><code class="nohighlight">iteratee</code>: a reduce function called for each value in the array (except the first one). It takes 3 arguments: <code class="nohighlight">firstFile</code>,
 					<code class="nohighlight">file</code> and <code class="nohighlight">cb</code>.</li>
 			</ul><pre><code class="javascript">var through2 = require(&#39;through2&#39;);
 var File = require(&#39;vinyl&#39;);

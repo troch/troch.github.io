@@ -112,9 +112,9 @@ gulp.task('replace', function() {
 
 ## A plugin example: reduce
 
-Let's write a plugin for performing reduce operations on files. It takes two arguments:
-- `fileName`: the file name we want to give to our concatenated file (String)
-- `iteratee`: a function called for each value in the array (except the first one). It takes 3 arguments: `firstFile`, `file` and `cb`.
+Let's now write a plugin for performing reduce operations on files. It takes two arguments:
+- `fileName`: the file name we want to give to our reduced file (String)
+- `iteratee`: a reduce function called for each value in the array (except the first one). It takes 3 arguments: `firstFile`, `file` and `cb`.
 
 ```javascript
 var through2 = require('through2');
