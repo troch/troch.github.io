@@ -20,7 +20,7 @@ your gulp plugin using npm. Make sure you first read the guidelines.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-04-28T22:30:00.000Z">
-	<meta property="article:modified_time" content="2015-04-28T21:41:31.000Z">
+	<meta property="article:modified_time" content="2015-04-28T21:50:31.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -188,9 +188,9 @@ your gulp plugin using npm. Make sure you first read the guidelines.">
 			<li>Extra vinyl objects</li>
 		</ul>
 		<p>All (or almost all) Gulp plugins will need to access contents of a file. In <a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/">Part 2: Gulp&#39;s anatomy</a>,
-			we briefly mentionned the <code class="nohighlight">contents</code> priority being a buffer. Contents are not always buffers and can also be streams. Most of
-			Gulp plugins will only deal with buffers and throw an exception if used with streams (like <code class="nohighlight">gulp-concat</code>), <code class="nohighlight">gulp.src()</code>			itself will return vinyl ojbects with buffered contents by default. On top of that, most of the common building tasks I can think of will need to read the whole
-			contents of a file before carrying on:</p>
+			we briefly mentionned the <code class="nohighlight">contents</code> property being a buffer. Contents are not always buffers and can also be streams. Most of
+			Gulp plugins will only deal with buffers and throw an exception if used with streams (like <code class="nohighlight">gulp-concat</code>), <code class="nohighlight">gulp.src()</code>			itself will return vinyl ojbects with buffered contents by default. Most of the common building tasks I can think of will need to read the whole contents of a
+			file before carrying on:</p>
 		<ul>
 			<li>If <em>replace</em> was used with streams, portions of a file to replace could be split over two chunks of data</li>
 			<li>Javascript linters and uglifiers need to parse entire scripts to get their Abstract Syntax Tree (AST)</li>
@@ -200,8 +200,8 @@ your gulp plugin using npm. Make sure you first read the guidelines.">
 		<p>I hear you are confused. Isn&#39;t Gulp <em>the streaming build system</em> afterall? Yes it is, don&#39;t forget vinyl objects are streamed through the pipeline.
 			Then file contents can be streamed or buffered, you can see this as a <em>two dimension stream</em>. So why bother with streaming contents? When building an application,
 			sooner or later files will need to be buffered. However for certain tasks like copying files, streams can be used.</p>
-		<p>If you want to use streams <code class="nohighlight">gulp.src()</code> with <code class="nohighlight">{buffer: false}</code> will return non-buffered vinyl objects.
-			In this article, we won&#39;t deal with streams but if you&#39;d like to explore further, you can look at Gulp official documentation on <a href="httpss://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/dealing-with-streams.md">dealing with streams</a>.</p>
+		<p>If you want to use streams, use <code class="nohighlight">gulp.src()</code> with option <code class="nohighlight">{buffer: false}</code> to return non-buffered
+			vinyl objects. In this article, we won&#39;t deal with streams but if you&#39;d like to explore further, you can look at Gulp official documentation on <a href="httpss://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/dealing-with-streams.md">dealing with streams</a>.</p>
 		<h2
 		id="using-map-stream">Using map-stream</h2>
 			<p>Using <a href="https://www.npmjs.com/package/map-stream">map-stream</a> is the quickest way to get going. First install <em>map-stream</em>:</p><pre><code class="nohighlight">$ npm install --save-dev map-stream
@@ -235,7 +235,7 @@ gulp.task(&#39;replace&#39;, function() {
 			<h2 id="using-event-stream">Using event-stream</h2>
 			<p><a href="https://www.npmjs.com/package/event-stream">event-stream</a> is a package containing various functions to write more functional code when working with
 				streams. <em>event-stream</em> creates Node 0.8 streams (compatible with Node 0.10 streams) but since we are only interested in mapping functions, this is not
-				an issue. <em>event-stream</em> has a <code class="nohighlight">.mapSync()</code> function as well as a <code class="nohighlight">.map()</code> function, <em>mapSync</em>				is useful in our example as it removes one line of code to our transformer:</p><pre><code class="nohighlight">$ npm install --save-dev through2
+				an issue. <em>event-stream</em> has a <code class="nohighlight">.mapSync()</code> function as well as a <code class="nohighlight">.map()</code> function, <em>mapSync</em>				is useful in our example as it removes one line of code in our transformer:</p><pre><code class="nohighlight">$ npm install --save-dev through2
 </code></pre><pre><code class="javascript">var gulp = require(&#39;gulp&#39;);
 var es   = require(&#39;event-stream&#39;);
 

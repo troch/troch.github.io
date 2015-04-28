@@ -31,8 +31,8 @@ return:
 - Extra vinyl objects
 
 All (or almost all) Gulp plugins will need to access contents of a file. In [Part 2: Gulp's anatomy](/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/), we briefly
-mentionned the `contents` priority being a buffer. Contents are not always buffers and can also be streams. Most of Gulp plugins will only deal with buffers and
-throw an exception if used with streams (like `gulp-concat`), `gulp.src()` itself will return vinyl ojbects with buffered contents by default. On top of that, most of the common
+mentionned the `contents` property being a buffer. Contents are not always buffers and can also be streams. Most of Gulp plugins will only deal with buffers and
+throw an exception if used with streams (like `gulp-concat`), `gulp.src()` itself will return vinyl ojbects with buffered contents by default. Most of the common
 building tasks I can think of will need to read the whole contents of a file before carrying on:
 
 - If _replace_ was used with streams, portions of a file to replace could be split over two chunks of data
@@ -44,7 +44,7 @@ I hear you are confused. Isn't Gulp _the streaming build system_ afterall? Yes i
 you can see this as a _two dimension stream_. So why bother with streaming contents? When building an application, sooner or later files will need to be buffered. However for certain tasks like
 copying files, streams can be used.
 
-If you want to use streams `gulp.src()` with `{buffer: false}` will return non-buffered vinyl objects. In this article, we won't deal with streams but if you'd like to explore further,
+If you want to use streams, use `gulp.src()` with option `{buffer: false}` to return non-buffered vinyl objects. In this article, we won't deal with streams but if you'd like to explore further,
 you can look at Gulp official documentation on [dealing with streams](httpss://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/dealing-with-streams.md).
 
 ## Using map-stream
@@ -93,7 +93,7 @@ gulp.task('replace', function() {
 
 [event-stream](https://www.npmjs.com/package/event-stream) is a package containing various functions to write more functional code when working with streams.
 _event-stream_ creates Node 0.8 streams (compatible with Node 0.10 streams) but since we are only interested in mapping functions, this is not an issue.
-_event-stream_ has a `.mapSync()` function as well as a `.map()` function, _mapSync_ is useful in our example as it removes one line of code to our transformer:
+_event-stream_ has a `.mapSync()` function as well as a `.map()` function, _mapSync_ is useful in our example as it removes one line of code in our transformer:
 
     $ npm install --save-dev through2
 
