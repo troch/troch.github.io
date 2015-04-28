@@ -289,8 +289,8 @@ section.prev-next-links > a.next {
   body,
   html {
     background-color: white;
-    line-height: 27px;
-    font-size: 18px;
+    line-height: 30px;
+    font-size: 20px;
   }
   body {
     padding-top: calc(5rem + 36px);
@@ -320,8 +320,8 @@ section.prev-next-links > a.next {
 @media (min-width: 1260px) {
   body,
   html {
-    line-height: 30px;
-    font-size: 20px;
+    line-height: 34px;
+    font-size: 22px;
   }
   section.share {
     position: fixed;
