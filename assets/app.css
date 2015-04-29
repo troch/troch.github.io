@@ -321,7 +321,7 @@ section.prev-next-links > a.next {
 #searchResults {
   position: fixed;
   z-index: 2;
-  right: calc(2.5rem + 36px);
+  right: calc(1.5rem + 36px);
   top: calc(2rem + 36px);
   background-color: #112f90;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -338,6 +338,30 @@ body.scrolled #searchResults {
 #searchResults > a:focus {
   text-decoration: none;
   background-color: #2645aa;
+}
+@media (min-width: 920px) {
+  #searchInput.revealed {
+    padding-right: calc(45px + 0.5rem);
+  }
+  #searchResults {
+    right: calc(2.5rem + 45px);
+    top: calc(2rem + 45px);
+  }
+  body.scrolled #searchResults {
+    top: calc(0.5rem + 45px);
+  }
+}
+@media (min-width: 1260px) {
+  #searchInput.revealed {
+    padding-right: calc(51px + 0.5rem);
+  }
+  #searchResults {
+    right: calc(2.5rem + 51px);
+    top: calc(2rem + 51px);
+  }
+  body.scrolled #searchResults {
+    top: calc(0.5rem + 51px);
+  }
 }
 header {
   position: fixed;
