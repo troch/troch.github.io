@@ -1,0 +1,79 @@
+@import "search.less";
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  padding: 2rem 1rem;
+  transition: padding .1s ease-in;
+  min-height: calc(1rem ~"+" @circled-icon-width);
+
+  > h1 {
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: normal;
+
+    > a:hover {
+      text-decoration: none;
+    }
+
+    > small {
+      display: none;
+      line-height: 1rem;
+      font-size: 1rem;
+      display: block;
+      font-weight: normal;
+    }
+  }
+
+  > section {
+    position: absolute;
+    display: flex;
+    right: 1rem;
+    top: 2rem;
+    transition: top .1s ease-in;
+
+    .circled-icon + .circled-icon {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: @break-point-1) {
+    header {
+      padding: 2rem;
+
+      > section {
+        right: 2rem;
+      }
+    }
+
+    body.scrolled > header {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+      > h1 {
+        line-height: @circled-icon-width-1;
+      }
+
+      > h1 > small {
+        line-height: 0;
+        opacity: 0;
+      }
+
+      > section {
+        top: 0.5rem;
+      }
+    }
+}
+
+@media (min-width: @break-point-2) {
+    body.scrolled > header {
+      > h1 {
+        line-height: @circled-icon-width-2;
+      }
+    }
+}

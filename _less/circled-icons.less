@@ -5,7 +5,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   background: @primary-light;
   transition: background-color 0.4s ease-in-out;
-  font-size: @font-size-base;
+  font-size: 1rem;
   width: @circled-icon-width;
   height: @circled-icon-width;
   border-radius: 50%;
@@ -24,5 +24,19 @@
     text-align: center;
     top: 50%;
     margin-top: -0.5em;
+  }
+}
+
+@media (min-width: @break-point-1) {
+  .circled-icon {
+    width: @circled-icon-width-1;
+    height: @circled-icon-width-1;
+  }
+}
+
+@media (min-width: @break-point-2) {
+  .circled-icon {
+    width: @circled-icon-width-2;
+    height: @circled-icon-width-2;
   }
 }
