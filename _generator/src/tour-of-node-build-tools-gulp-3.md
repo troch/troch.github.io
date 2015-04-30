@@ -65,7 +65,7 @@ gulp.task('replace', function() {
             var contents = file.contents.toString('utf8');
             contents = contents.replace(/abc/g, '123');
             file.contents = new Buffer(contents, 'utf8');
-            cb();
+            cb(null, file);
         }));
 });
 ```
@@ -84,7 +84,10 @@ gulp.task('replace', function() {
     return gulp.src('src/**/*.js')
         .pipe(through.obj(function (file, enc, cb) {
             // Replacing takes place here
-            cb();
+            cb(null, file);
+            // Or
+            // this.push(file);
+            // cb();
         }));
 });
 ```
