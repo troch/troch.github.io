@@ -22,24 +22,21 @@
 			"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": ["2", "automation,build", "automation,gruntj", "build", "caveat", "grunt",
 				"javascript,nodejs,build", "node,nodejs,javascript,grunt,gruntjs,build", "part", "runner", "tool,task"
 			],
-			"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": ["2", "3", "4", "anatomi", "automation,build", "automation,gulpj", "build",
-				"fs,npm,gulp", "gulp", "gulp'", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "tool,streams,task"
-			],
 			"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": ["1", "3", "4", "automation,build", "automation,gulpj", "build", "exampl", "gulp",
 				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,gulp", "tool,streams,task"
+			],
+			"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": ["2", "3", "4", "anatomi", "automation,build", "automation,gulpj", "build",
+				"fs,npm,gulp", "gulp", "gulp'", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "tool,streams,task"
 			],
 			"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": ["3", "4", "4,event", "automation,build", "automation,gulpj", "build",
 				"fs,npm,gulp", "gulp", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "stream", "stream,map",
 				"tool,streams,task", "transform", "write"
 			],
-			"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": ["4", "4,increment", "automation,build", "automation,gulpj", "build",
-				"fs,npm,gulp", "gulp", "increment", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner,vinyl,vinyl", "tool,streams,task"
-			],
 			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["autom", "automation,build", "build", "javascript,nodejs,build", "node",
 				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
 			]
 		},
-		"length": 7
+		"length": 6
 	},
 	"tokenStore": {
 		"root": {
@@ -69,13 +66,13 @@
 			},
 			"3": {
 				"docs": {
-					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-						"tf": 1.25
-					},
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 						"tf": 1.4285714285714284
+					},
+					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+						"tf": 1.25
 					},
 					"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 						"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
@@ -85,21 +82,17 @@
 			},
 			"4": {
 				"docs": {
-					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-						"tf": 2.083333333333333
-					},
 					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 						"tf": 2.4285714285714284
 					},
+					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+						"tf": 2.083333333333333
+					},
 					"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 						"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 						"tf": 1.25
-					},
-					"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-						"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-						"tf": 2
 					}
 				},
 				",": {
@@ -117,38 +110,6 @@
 											"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 												"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 												"tf": 0.625
-											}
-										}
-									}
-								}
-							}
-						}
-					},
-					"i": {
-						"docs": {},
-						"n": {
-							"docs": {},
-							"c": {
-								"docs": {},
-								"r": {
-									"docs": {},
-									"e": {
-										"docs": {},
-										"m": {
-											"docs": {},
-											"e": {
-												"docs": {},
-												"n": {
-													"docs": {},
-													"t": {
-														"docs": {
-															"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-																"tf": 0.7142857142857142
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -204,21 +165,17 @@
 																					"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
 																					"tf": 1.25
 																				},
-																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																					"tf": 0.8333333333333333
-																				},
 																				"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 																					"tf": 1
 																				},
+																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+																					"tf": 0.8333333333333333
+																				},
 																				"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 																					"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																					"tf": 0.625
-																				},
-																				"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																					"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-																					"tf": 0.7142857142857142
 																				},
 																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -264,20 +221,16 @@
 																		"docs": {},
 																		"j": {
 																			"docs": {
-																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																					"tf": 5
-																				},
 																				"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 																					"tf": 5
 																				},
-																				"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
-																					"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
+																				"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																					"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
 																					"tf": 5
 																				},
-																				"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																					"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
+																				"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
+																					"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																					"tf": 5
 																				}
 																			}
@@ -338,21 +291,17 @@
 										"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
 										"tf": 2
 									},
-									"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-										"tf": 1.25
-									},
 									"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 										"tf": 1.4285714285714284
 									},
+									"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+										"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+										"tf": 1.25
+									},
 									"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 										"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 										"tf": 1.25
-									},
-									"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-										"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-										"tf": 4.714285714285714
 									},
 									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -393,21 +342,17 @@
 						"docs": {},
 						"p": {
 							"docs": {
-								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-									"tf": 1.25
-								},
 								"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 									"tf": 1.4285714285714284
 								},
+								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+									"tf": 1.25
+								},
 								"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 									"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 									"tf": 1.25
-								},
-								"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-									"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-									"tf": 2
 								}
 							},
 							"'": {
@@ -476,20 +421,16 @@
 																												"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
 																												"tf": 5
 																											},
-																											"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-																												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																												"tf": 5
-																											},
 																											"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 																												"tf": 5
 																											},
-																											"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
-																												"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
+																											"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
 																												"tf": 5
 																											},
-																											"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																												"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
+																											"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
+																												"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																												"tf": 5
 																											},
 																											"posts/2015/04/18/tour-of-node-building-tools/index.html": {
@@ -784,21 +725,17 @@
 																																										"docs": {},
 																																										"d": {
 																																											"docs": {
-																																												"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-																																													"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																																													"tf": 0.8333333333333333
-																																												},
 																																												"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																																													"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 																																													"tf": 1
 																																												},
+																																												"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																																													"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+																																													"tf": 0.8333333333333333
+																																												},
 																																												"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 																																													"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																																													"tf": 0.625
-																																												},
-																																												"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																																													"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-																																													"tf": 0.7142857142857142
 																																												}
 																																											}
 																																										}
@@ -857,13 +794,13 @@
 									"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
 									"tf": 2
 								},
-								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-									"tf": 1.25
-								},
 								"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 									"tf": 1.4285714285714284
+								},
+								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+									"tf": 1.25
 								},
 								"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 									"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
@@ -901,6 +838,23 @@
 									},
 									",": {
 										"docs": {},
+										"g": {
+											"docs": {},
+											"u": {
+												"docs": {},
+												"l": {
+													"docs": {},
+													"p": {
+														"docs": {
+															"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+																"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+																"tf": 1
+															}
+														}
+													}
+												}
+											}
+										},
 										"v": {
 											"docs": {},
 											"i": {
@@ -930,10 +884,6 @@
 																						"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 																							"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																							"tf": 0.625
-																						},
-																						"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																							"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-																							"tf": 0.7142857142857142
 																						}
 																					}
 																				}
@@ -941,23 +891,6 @@
 																		}
 																	}
 																}
-															}
-														}
-													}
-												}
-											}
-										},
-										"g": {
-											"docs": {},
-											"u": {
-												"docs": {},
-												"l": {
-													"docs": {},
-													"p": {
-														"docs": {
-															"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
-																"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-																"tf": 1
 															}
 														}
 													}
@@ -1035,21 +968,17 @@
 																			"docs": {},
 																			"k": {
 																				"docs": {
-																					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-																						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-																						"tf": 0.8333333333333333
-																					},
 																					"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
 																						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
 																						"tf": 1
 																					},
+																					"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+																						"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+																						"tf": 0.8333333333333333
+																					},
 																					"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 																						"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																						"tf": 0.625
-																					},
-																					"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																						"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-																						"tf": 0.7142857142857142
 																					}
 																				}
 																			}
@@ -1132,6 +1061,29 @@
 					}
 				}
 			},
+			"e": {
+				"docs": {},
+				"x": {
+					"docs": {},
+					"a": {
+						"docs": {},
+						"m": {
+							"docs": {},
+							"p": {
+								"docs": {},
+								"l": {
+									"docs": {
+										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+											"tf": 1.4285714285714284
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
 			"f": {
 				"docs": {},
 				"s": {
@@ -1161,38 +1113,11 @@
 															"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
 																"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																"tf": 0.625
-															},
-															"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-																"tf": 0.7142857142857142
 															}
 														}
 													}
 												}
 											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"e": {
-				"docs": {},
-				"x": {
-					"docs": {},
-					"a": {
-						"docs": {},
-						"m": {
-							"docs": {},
-							"p": {
-								"docs": {},
-								"l": {
-									"docs": {
-										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
-											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-											"tf": 1.4285714285714284
 										}
 									}
 								}
@@ -1260,44 +1185,12 @@
 						}
 					}
 				}
-			},
-			"i": {
-				"docs": {},
-				"n": {
-					"docs": {},
-					"c": {
-						"docs": {},
-						"r": {
-							"docs": {},
-							"e": {
-								"docs": {},
-								"m": {
-									"docs": {},
-									"e": {
-										"docs": {},
-										"n": {
-											"docs": {},
-											"t": {
-												"docs": {
-													"posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html": {
-														"ref": "posts/2015/04/30/building-with-gulp-4-part-4-incremental-builds/index.html",
-														"tf": 2
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
 			}
 		},
-		"length": 88
+		"length": 76
 	},
-	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "anatomi", "autom", "automation,build", "automation,gruntj", "automation,gulpj", "build",
-		"caveat", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "increment", "javascript,nodejs,build", "node", "node,nodejs,javascript,grunt,gruntjs,build",
+	"corpusTokens": ["1", "2", "3", "4", "4,event", "anatomi", "autom", "automation,build", "automation,gruntj", "automation,gulpj", "build", "caveat", "exampl",
+		"fs,npm,gulp", "grunt", "gulp", "gulp'", "javascript,nodejs,build", "node", "node,nodejs,javascript,grunt,gruntjs,build",
 		"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner", "runner,gulp",
 		"runner,vinyl,vinyl", "stream", "stream,map", "tool", "tool,streams,task", "tool,task", "tour", "transform", "write"
 	],
