@@ -20,7 +20,7 @@
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-05-01T15:00:00.000Z">
-	<meta property="article:modified_time" content="2015-05-01T14:29:45.000Z">
+	<meta property="article:modified_time" content="2015-05-01T14:58:15.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -228,7 +228,7 @@ gulp.task(&#39;build&#39;, gulp.series(&#39;jshint&#39;, &#39;watch&#39;));
 				Let&#39;s consider the following example:</p><pre><code class="javascript">gulp.task(&#39;buildJs&#39;, function () {
     return gulp.src(&#39;src/**/*.js&#39;)
         .pipe(jshint())
-        .pipe(concat())
+        .pipe(concat(&#39;app.js&#39;))
         .pipe(gulp.dest(&#39;build&#39;));
 });
 </code></pre>
@@ -243,7 +243,7 @@ gulp.task(&#39;buildJs&#39;, function () {
     return gulp.src(&#39;src/**/*.js&#39;, {since: cache.lastMtime(&#39;js&#39;)})
         .pipe(jshint())
         .pipe(cache(&#39;js&#39;))
-        .pipe(concat())
+        .pipe(concat(&#39;app.js&#39;))
         .pipe(gulp.dest(&#39;build&#39;));
 });
 </code></pre>

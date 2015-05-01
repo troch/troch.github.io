@@ -14,7 +14,7 @@ image: https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png
 
 ## Who are you Gulp?
 
-Like [Grunt](/posts/2015/04/18/building-with-grunt-part-1/), [Gulp](http://gulpjs.com) is also a task runner but is designed to build applications using streams:
+Like [Grunt](/posts/2015/04/18building-with-grunt-part-1/), [Gulp](http://gulpjs.com) is also a task runner but is designed to build applications using streams:
 Gulp is __"the streaming build system"__ to __"automate and enhance your workflow"__.
 
 Gulp was first released in July 2013 (v0.0.1), v3.0.0 was released in December 2013. Current version is 3.8.x released in June 2014 and Gulp 4 is now almost ready.
@@ -47,8 +47,8 @@ gulp.task('clean', function (done) {
 gulp.task('buildJs', ['clean'], function () {
     return gulp.src('src/**/*.js')
         .pipe(jshint())
-        .pipe(concat())
-        .pipe(gulp.dest('/build'));
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('copyAssets', ['clean'], function () {
@@ -88,8 +88,8 @@ gulp.task('clean', function (done) {
 gulp.task('buildJs', function () {
     return gulp.src('src/**/*.js')
         .pipe(jshint())
-        .pipe(concat())
-        .pipe(gulp.dest('/build'));
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('copyAssets', function () {
@@ -123,8 +123,8 @@ gulp.task('clean', function (done) {
 gulp.task('buildJs', function () {
     return gulp.src('src/**/*.js')
         .pipe(jshint())
-        .pipe(concat())
-        .pipe(gulp.dest('/build'));
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('copyAssets', function () {
@@ -141,7 +141,7 @@ gulp.registerTask('build', gulp.series(
 ## Splitting the gulpfile
 
 When a build increases in complexity and size, it is a good idea to leverage Node modules for spliting up our gulpfile. There are two ways one can split
-a gulpfile: by tasks or by streams. For an idea of how to split by task, you can look at [how it can be done in Grunt](/posts/2015/04/18/building-with-grunt-part-1/),
+a gulpfile: by tasks or by streams. For an idea of how to split by task, you can look at [how it can be done in Grunt](/posts/2015/04/18building-with-grunt-part-1/),
 the idea is the same. I prefer to split by streams so all the task registration is done in the gulpfile and it leaves room for reusing streams or parts of a stream.
 It feels anyway a lot more functional:
 
@@ -166,8 +166,8 @@ var concat = require('gulp-concat');
 module.exports = function () {
     return gulp.src('src/**/*.js')
         .pipe(jshint())
-        .pipe(concat())
-        .pipe(gulp.dest('/build'));
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('build'));
 };
 ```
 

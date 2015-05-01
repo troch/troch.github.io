@@ -72,7 +72,7 @@ For `1:1` operations, that's all we need to do. However for MANY:1, we need to k
 gulp.task('buildJs', function () {
     return gulp.src('src/**/*.js')
         .pipe(jshint())
-        .pipe(concat())
+        .pipe(concat('app.js'))
         .pipe(gulp.dest('build'));
 });
 ```
@@ -91,7 +91,7 @@ gulp.task('buildJs', function () {
     return gulp.src('src/**/*.js', {since: cache.lastMtime('js')})
         .pipe(jshint())
         .pipe(cache('js'))
-        .pipe(concat())
+        .pipe(concat('app.js'))
         .pipe(gulp.dest('build'));
 });
 ```
