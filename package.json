@@ -2,7 +2,7 @@
   "name": "troch.github.io",
   "repository": "https://github.com/troch/troch.github.io.git",
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "gulpjs/gulp#4.0",
     "gulp-less": "^3.0.2",
     "highlight.js": "^8.5.0",
     "lodash": "^3.6.0",

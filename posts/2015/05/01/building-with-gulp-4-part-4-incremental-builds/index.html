@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base href="/">
+	<title>Building with Gulp 4: Incremental builds | React and be thankful</title>
+	<meta name="description" content="When it comes to building an application, developers don&#39;t want to have to run a build script all the time a change is made. Build tools like &hellip;">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Building with Gulp 4: Incremental builds">
+	<meta name="twitter:description" content="When it comes to building an application, developers don&#39;t want to have to run a build script all the time a change is made. Build tools like Grunt, Gulp or Broccoli provide file watch ca&hellip;">
+	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Building with Gulp 4: Incremental builds">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds">
+	<meta property="og:description" content="When it comes to building an application, developers don&#39;t want to have to run a build script all the time a change is made. Build tools like Grunt, Gulp or Broccoli provide file watch capabilities to help rebuilding an application if a change is detected. But rebuilding can bring performance penalties and instead many file operations could be avoided by limiting build operations to a minimum. Sounds nice? That is what incremental builds are about.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
+	<!-- Article meta data -->
+	<meta property="article:published_time" content="2015-05-01T15:00:00.000Z">
+	<meta property="article:modified_time" content="2015-05-01T14:29:45.000Z">
+	<meta property="article:tag" content="node">
+	<meta property="article:tag" content="nodejs">
+	<meta property="article:tag" content="javascript">
+	<meta property="article:tag" content="gulp">
+	<meta property="article:tag" content="gulpjs">
+	<meta property="article:tag" content="build automation">
+	<meta property="article:tag" content="build tool">
+	<meta property="article:tag" content="streams">
+	<meta property="article:tag" content="task runner">
+	<meta property="article:tag" content="vinyl">
+	<meta property="article:tag" content="vinyl-fs">
+	<meta property="article:tag" content="npm">
+	<meta property="article:tag" content="gulp 4">
+	<meta property="article:tag" content="incremental build">
+	<!-- RSS feed -->
+	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="assets/app.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
+		<section>
+			<input id="searchInput">
+			<div id="searchResults"></div>
+			<button type="button" class="circled-icon" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<!--
+
+     --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
+	</header>
+	<script></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			function renderSearchResults(results) {
+				searchResults.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResults.innerHTML = "";
+				results = results
+					.map(function(res) {
+						return articles[res.ref];
+					}).filter(function(article) {
+						return article !== undefined && location.pathname.indexOf(article.path) === -1;
+					});
+				if (results.length) {
+					results.forEach(function(article) {
+						searchResults.appendChild(renderSearchResult(article));
+					});
+					searchResults.classList.remove('hidden');
+				} else {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				}
+			}
+
+			function renderSearchResult(article) {
+				var link = document.createElement('a');
+				link.href = article.path;
+				link.appendChild(document.createTextNode(article.title));
+				return link;
+			}
+			var searchResults = document.getElementById('searchResults');
+			var searchInput = document.getElementById('searchInput');
+			var lunrIndex;
+			var articles;
+
+			function getLunrIndex() {
+				superagent
+					.get('/searchIndex.json')
+					.end(function(err, res) {
+						if (!err) {
+							lunrIndex = lunr.Index.load(res.body);
+						}
+					});
+			}
+
+			function getArticles() {
+				superagent
+					.get('/articles.json')
+					.end(function(err, res) {
+						if (!err) {
+							articles = res.body;
+						}
+					});
+			}
+
+			function hideSearchInput(evt) {
+				if (evt && evt.keyCode && evt.keyCode !== 27) return;
+				if (evt && (evt.target === searchButton || searchButton.contains(evt.target) || (evt.target === searchInput && evt.keyCode !== 27))) return;
+				searchInput.classList.remove('revealed');
+				searchResults.classList.add('hidden');
+				searchResults.innerHTML = "";
+				searchInput.removeEventListener('input', onSearchInput);
+				window.removeEventListener('click', hideSearchInput);
+				window.removeEventListener('scroll', hideSearchInput);
+				window.removeEventListener('keydown', hideSearchInput);
+				searchInput.removeEventListener('keydown', hideSearchInput);
+				searchInput.value = '';
+			}
+
+			function showSearchInput() {
+				searchInput.classList.add('revealed');
+				if (!lunrIndex) getLunrIndex();
+				if (!articles) getArticles();
+				searchInput.addEventListener('input', onSearchInput, false);
+				window.addEventListener('click', hideSearchInput, false);
+				window.addEventListener('scroll', hideSearchInput, false);
+				window.addEventListener('keydown', hideSearchInput, false);
+				searchInput.addEventListener('keydown', hideSearchInput, false);
+				searchInput.focus();
+			}
+
+			function onSearchInput(evt) {
+				if (evt.target.value.length < 2) {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				} else if (lunrIndex && articles) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
+				}
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (!searchInput.classList.contains('revealed')) showSearchInput();
+				else hideSearchInput();
+			}, false);
+			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
+			window.addEventListener('scroll', function(evt) {
+				if (window.scrollY > headerPadding / 2) document.body.classList.add('scrolled');
+				else document.body.classList.remove('scrolled');
+			}, false);
+		});
+	</script>
+	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
+		<h1 id="building-with-gulp-4-incremental-builds">Building with Gulp 4: Incremental builds</h1>
+		<p>When it comes to building an application, developers don&#39;t want to have to run a build script all the time a change is made. Build tools like Grunt, Gulp or
+			Broccoli provide file watch capabilities to help rebuilding an application if a change is detected. But rebuilding can bring performance penalties and instead
+			many file operations could be avoided by limiting build operations to a minimum. Sounds nice? That is what incremental builds are about.</p>
+		<p>If you are familiar with <a href="https://facebook.github.io/react/">ReactJs</a>, its virtual DOM performs incremental builds by applying the minimum set of changes
+			needed to update the DOM rather than fully re-rendering an application each time something changes. ReactJs proceeds that way because DOM manipulations are expensive.</p>
+		<blockquote>
+			<p>The same logic applies for building applications: we want to reduce the number of operations needed to update a build to the minimum so we can do it faster.</p>
+		</blockquote>
+		<p>Inremental builds will seek to limit:</p>
+		<ul>
+			<li>File <strong>reading / writing</strong></li>
+			<li>File <strong>contents processing</strong></li>
+		</ul>
+		<h2 id="smarter-pipelines">Smarter pipelines</h2>
+		<p>Limiting file operations and processing in Gulp means for <code class="nohighlight">gulp.src()</code> to only create vinyl objects for recently modified files,
+			for <code class="nohighlight">.pipe()</code> to only stream files needing to be processed, and for <code class="nohighlight">.dest()</code> to only have to write
+			to disk files which need to be. In other words, we need to make our pipelines smarter.</p>
+		<p>In practice, incremental builds are confronted to two scenarios:</p>
+		<ul>
+			<li><code class="nohighlight">1:1</code> transformations (mapping a list of files: linting, copying, etc...)</li>
+			<li><code class="nohighlight">MANY:1</code> transformations (reducing a list of files: concatenation, compilation, etc...)</li>
+		</ul>
+		<p>The first case is quite straight forward: files can be transformed in isolation and we only need to process recently changed or created source files. The second
+			case is different because we need all files (recently changed or not) in order to proceed. For example with concatenation, if one file changes the whole concatenation
+			needs to be done again. So where can we optimise? When we concat files, we have to read all the files from disk, concat their contents into one buffer (or string)
+			and then write the result to disk. We cannot avoid having to concatenate all files and write the result to disk, but we can avoid having to read all unchanged
+			files from disk by <strong>caching</strong> them.</p>
+		<h2 id="in-gulp-3">In Gulp 3</h2>
+		<p>In Gulp 3 incremental builds are possible using the following packages: <a href="https://www.npmjs.com/package/gulp-cached">gulp-cached</a>, <a href="https://www.npmjs.com/package/gulp-newer">gulp-newer</a>,
+			<a href="https://www.npmjs.com/package/gulp-remember">gulp-remember</a> or/and <a href="https://www.npmjs.com/package/gulp-changed">gulp-changed</a>. However,
+			Gulp 3 is missing an essential feature we just talked about above: reading from disk only recently changed files. It is possible to overcome or work around this
+			hurdle but we will focus instead on what Gulp 4 offers out of the box by the addition of <code class="nohighlight">since</code>.</p>
+		<h2 id="since-last-run">Since last run</h2>
+		<p><code class="nohighlight">vinyl-fs@1.0.0</code> (used by Gulp 4) introduced a new option in <code class="nohighlight">.src()</code>: since. It tells <code class="nohighlight">vinyl-fs</code>			to only emit files which have been modified since the time specified (it can be a date or a number). <a href="https://www.npmjs.com/package/undertaker">Undertaker</a>			(see <a href="/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers">Part 2: Gulp&#39;s anatomy</a>) exposes a new API function <code class="nohighlight">lastRun(task, [timeResolution])</code>			wchich returns a timestamp of the last time a task was run successfully (in milliseconds). <code class="nohighlight">timeResolution</code> can be used to floor
+			that timestamp to the specified resolution to match the resolution returned by fs.stat (according to Undertaker README, on node v0.10 or with file systems like
+			HFS or FAT, file time attributes have a resolution of one second).</p>
+		<p>In Gulp 4 it is then possible to do the following:</p><pre><code class="javascript">var gulp   = require(&#39;gulp&#39;);
+var jshint = require(&#39;gulp-jshint&#39;);
+
+gulp.task(&#39;jshint&#39;, function () {
+    return gulp.src(&#39;src/**/*.js&#39;, {since: gulp.lastRun(&#39;jshint&#39;)})
+        .pipe(jshint());
+});
+
+gulp.task(&#39;watch&#39;, function () {
+    return gulp.watch(&#39;src/**/*.js&#39;, gulp.series(&#39;jshint&#39;));
+});
+
+gulp.task(&#39;build&#39;, gulp.series(&#39;jshint&#39;, &#39;watch&#39;));
+</code></pre>
+		<p>In the example above, our build task will lint all files using jshint. Then Gulp will watch changes and invoke jshint if it detects a change on a javascript source.
+			The jshint task only lints modified files since its last run: you can clearly see the benefits for a code base containing a large number of files or large files.</p>
+		<h2
+		id="caching-files">Caching files</h2>
+			<p>For <code class="nohighlight">1:1</code> operations, that&#39;s all we need to do. However for MANY:1, we need to keep a cached copy of files to be re-used later.
+				Let&#39;s consider the following example:</p><pre><code class="javascript">gulp.task(&#39;buildJs&#39;, function () {
+    return gulp.src(&#39;src/**/*.js&#39;)
+        .pipe(jshint())
+        .pipe(concat())
+        .pipe(gulp.dest(&#39;build&#39;));
+});
+</code></pre>
+			<p>From source to destination, this is a MANY:1 pipeline, composed of a 1:1 (jshint) and a MANY:1 (concat) operations. We want to only lint modified files, and then
+				concat all files. <a href="https://www.npmjs.com/package/gulp-memory-cache">gulp-memory-cache</a> or <a href="https://www.npmjs.com/package/gulp-remember">gulp-remember</a>				can perfectly handle this.</p>
+			<p>The example below is with <code class="nohighlight">gulp-memory-cache</code> (<strong>I am the author</strong>, that&#39;s why I promote its use!):</p><pre><code class="javascript">var gulp   = require(&#39;gulp&#39;);
+var jshint = require(&#39;gulp-jshint&#39;);
+var concat = require(&#39;gulp-concat&#39;);
+var cache  = require(&#39;gulp-memory-cache&#39;);
+
+gulp.task(&#39;buildJs&#39;, function () {
+    return gulp.src(&#39;src/**/*.js&#39;, {since: cache.lastMtime(&#39;js&#39;)})
+        .pipe(jshint())
+        .pipe(cache(&#39;js&#39;))
+        .pipe(concat())
+        .pipe(gulp.dest(&#39;build&#39;));
+});
+</code></pre>
+			<p>In this example, files streamed to cache are added or updated in their cache, and <code class="nohighlight">cache()</code> will stream to concat all the files
+				it has in cache. Simple!</p>
+			<h2 id="invalidating-cached-files">Invalidating cached files</h2>
+			<p>With plugins like <code class="nohighlight">gulp-memory-cache</code> or <code class="nohighlight">gulp-remember</code>, recently modified files are added to cache
+				or update their previous cache entry. When a file is deleted, we need a way to invalidate their cache entry:</p><pre><code class="javascript">var gulp = require(&#39;gulp&#39;);
+
+gulp.task(&#39;buildJs&#39;, function () {
+    // Task
+});
+
+gulp.watch(&#39;src/**/*.js&#39;, gulp.series(&#39;buildJs&#39;))
+    .on(&#39;change&#39;, function (evt) {
+        if (evt.type === &#39;deleted&#39;) {
+            // Invalidate cache for evt.path
+        }
+    });
+</code></pre>
+			<p><a href="https://www.npmjs.org/package/gulp-memory-cache">gulp-memory-cache</a> has a <code class="nohighlight">.update(cacheName)</code> method for dealing with
+				file deletion and avoiding boilerplate code. Be aware that if your file has been processed before being cached and if that processing has <strong>altered its path name</strong>,
+				forgetting files won&#39;t work.</p><pre><code class="javascript">gulp.watch(&#39;src/**/*.js&#39;, gulp.series(&#39;buildJs&#39;))
+    .on(&#39;change&#39;, cache.update(&#39;js&#39;));
+</code></pre>
+			<h2 id="new-files">New files</h2>
+			<p>Newly created files are automatically added to cache. However, they are <strong>added in last position</strong> as opposed to other files which appear in cache
+				in the order set by <code class="nohighlight">gulp.src()</code>. If order matters (for concatenation for example), you can use <a href="https://www.npmjs.com/package/gulp-order">gulp-order</a>.</p>
+			<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-4.md">Github!</a></p>
+			<section
+			class="prev-next-links"><a href="posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 3 and 4 (Part 3: Writing transformers)</span></a>				<a href="posts/2015/05/01/how-to-install-gulp-4/" class="next"><span>How to install Gulp 4</span> <span class="fa fa-chevron-right"></span></a></section>
+	</article>
+	<footer>
+		<!-- <div class="about">About the author</div> -->
+		<section class="contact-links"><a class="circled-icon" href="https://github.com/troch" target="_blank" aria-label="Github (troch)" title="Github (troch)"><i class="fa fa-github"></i></a>
+			<a
+			class="circled-icon" href="https://uk.linkedin.com/in/thomasroch" target="_blank" aria-label="Linkedin (Thomas Roch)" title="Linkedin (Thomas Roch)"><i class="fa fa-linkedin"></i></a>
+				<a class="circled-icon" href="https://twitter.com/tcroch" target="_blank" aria-label="Twitter (tcroch)" title="Twitter (tcroch)"><i class="fa fa-twitter"></i></a> <a class="circled-icon" href="https://stackoverflow.com/users/3114505/thomas-roch" target="_blank" aria-label="Stackoverflow (Thomas Roch)"
+				title="Stackoverflow (Thomas Roch)"><i class="fa fa-stack-overflow"></i></a> <a class="circled-icon" href="http://www.slideshare.net/ThomasRoch" target="_blank"
+				aria-label="SlideShare (Thomas Roch)" title="SlideShare (Thomas Roch)"><i class="fa fa-slideshare"></i></a></section>
+		<section class="info">&copy; Thomas Roch 2015. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
+	</footer>
+	<!-- Script files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js"></script>
+	<!-- Scripts -->
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<!-- Analytics -->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-61970524-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

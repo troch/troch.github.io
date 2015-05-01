@@ -3,19 +3,34 @@
 
 <head>
 	<base href="/">
-	<title>React and be thankful</title>
-	<meta name="description" content="A blog about building reactive web applications">
+	<title>How to install Gulp 4 | React and be thankful</title>
+	<meta name="description" content="Gulp 4 is not released yet and if you cannot wait to get your hands on it, here is how to install Gulp 4.">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<!-- Twitter Card data -->
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="React and be thankful">
-	<meta name="twitter:description" content="A blog about building reactive web applications">
+	<meta name="twitter:title" content="How to install Gulp 4">
+	<meta name="twitter:description" content="Gulp 4 is not released yet and if you cannot wait to get your hands on it, here is how to install Gulp 4.">
 	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Open Graph data -->
-	<meta property="og:title" content="React and be thankful">
+	<meta property="og:title" content="How to install Gulp 4">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="http://blog.reactandbethankful.com">
-	<meta property="og:description" content="A blog about building reactive web applications">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/05/01/how-to-install-gulp-4">
+	<meta property="og:description" content="Gulp 4 is not released yet and if you cannot wait to get your hands on it, here is how to install Gulp 4.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
+	<!-- Article meta data -->
+	<meta property="article:published_time" content="2015-05-01T16:00:00.000Z">
+	<meta property="article:modified_time" content="2015-05-01T14:56:28.000Z">
+	<meta property="article:tag" content="node">
+	<meta property="article:tag" content="nodejs">
+	<meta property="article:tag" content="javascript">
+	<meta property="article:tag" content="gulp">
+	<meta property="article:tag" content="gulpjs">
+	<meta property="article:tag" content="build automation">
+	<meta property="article:tag" content="build tool">
+	<meta property="article:tag" content="streams">
+	<meta property="article:tag" content="task runner">
+	<meta property="article:tag" content="gulp 4">
 	<!-- RSS feed -->
 	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
 	<!-- Stylesheets -->
@@ -135,7 +150,7 @@
 			}, false);
 		});
 	</script>
-	<main>
+	<article class="main">
 		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
 			<script>
 				! function(d, s, id) {
@@ -150,64 +165,21 @@
 				}(document, 'script', 'twitter-wjs');
 			</script>
 		</section>
-		<h1>Recent posts</h1>
-		<article>2015-05-01 <a href="/posts/2015/05/01/how-to-install-gulp-4">How to install Gulp 4</a> <span class="tag">javascript</span> <span class="tag">nodejs</span>
-			<span
-			class="tag">build automation</span> <span class="tag">gulpjs</span> <span class="tag">incremental build</span>
-				<!-- <p>
-                    <p><a href="https://github.com/gulpjs/gulp">Gulp 4</a> is not released yet and if you cannot wait to get your hands on it, here is how to install Gulp 4.</p>
-                </p> -->
-		</article>
-		<article>2015-05-01 <a href="/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds">Building with Gulp 4: Incremental builds</a> <span class="tag">javascript</span>			<span class="tag">nodejs</span> <span class="tag">build automation</span> <span class="tag">gulpjs</span> <span class="tag">incremental build</span>
-			<!-- <p>
-                    <p>When it comes to building an application, developers don&#39;t want to have to run a build script all the time a change is made. Build tools like Grunt, Gulp or Broccoli provide file watch capabilities to help rebuilding an application if a change is detected. But rebuilding can bring performance penalties and instead many file operations could be avoided by limiting build operations to a minimum. Sounds nice? That is what incremental builds are about.</p>
-                </p> -->
-		</article>
-		<article>2015-04-28 <a href="/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers">Building with Gulp 3 and 4 (Part 3: Writing transformers)</a>
-			<span
-			class="tag">javascript</span> <span class="tag">nodejs</span> <span class="tag">build automation</span> <span class="tag">gulpjs</span>
-				<!-- <p>
-                    <p>When building with Gulp, we rely on available plugins for <em>atomic or specific operations</em> (like adding a file header or footer, concatenating files, ...). But what if
-there is no plugin for what you are trying to achieve? It is fairly simply to write a custom stream transformer, and if you think it can benefit others then publish
-your gulp plugin using npm. Make sure you first read the <a href="https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/guidelines.md">guidelines</a>.</p>
-                </p> -->
-		</article>
-		<article>2015-04-23 <a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy">Building with Gulp 3 and 4 (Part 2: Gulp's anatomy)</a> <span class="tag">javascript</span>			<span class="tag">nodejs</span> <span class="tag">build automation</span> <span class="tag">gulpjs</span>
-			<!-- <p>
-                    <p>Gulp itself is a pretty bare package: it integrates a few packages to create a simple but performant tool by exposing an API and adding a CLI.
-The packages Gulp is composed of are from the same authors and embrace the <em>single responsability</em> and <em>separation of concerns</em> principles: Gulp parts are <em>loosely coupled</em>,
-are individually tested to ensure they fulfill their duties and can easily be re-used in other projects. These principles are also the main guidelines for Gulp plugins:
-do one thing and do it well!</p>
-                </p> -->
-		</article>
-		<article>2015-04-23 <a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples">Building with Gulp 3 and 4 (Part 1: examples)</a> <span class="tag">javascript</span>			<span class="tag">nodejs</span> <span class="tag">build automation</span> <span class="tag">gulpjs</span>
-			<!-- <p>
-                    <p>Like <a href="/posts/2015/04/18/building-with-grunt-part-1/">Grunt</a>, <a href="http://gulpjs.com">Gulp</a> is also a task runner but is designed to build applications using streams:
-Gulp is <strong>&quot;the streaming build system&quot;</strong> to <strong>&quot;automate and enhance your workflow&quot;</strong>.</p>
-                </p> -->
-		</article>
-		<article>2015-04-22 <a href="/posts/2015/04/22/building-with-grunt-part-2-caveats">Building with Grunt (Part 2: caveats)</a> <span class="tag">javascript</span> <span class="tag">nodejs</span>			<span class="tag">build automation</span> <span class="tag">gruntjs</span>
-			<!-- <p>
-                    <p>In <a href="/posts/2015/04/18/building-with-grunt-part-1/">Building with Grunt Part 1</a>, we briefly talked about Grunt <em>&quot;configuration over code&quot;</em> approcah and its limitations (<strong>maintainability</strong>).
-There is also another aspect of Grunt which doesn&#39;t make it the ideal build tool: <code>plugins</code> (tasks) are ranked higher than files. In other words: instead of performing a series
-of operations on a group of files, we can only perform an operation (<code>task</code>) on different groups of files (<code>targets</code>). The consequences of this are:</p>
-                </p> -->
-		</article>
-		<article>2015-04-18 <a href="/posts/2015/04/18/building-with-grunt-part-1">Building with Grunt (Part 1)</a> <span class="tag">javascript</span> <span class="tag">nodejs</span>			<span class="tag">build automation</span> <span class="tag">gruntjs</span>
-			<!-- <p>
-                    <p><a href="http://www.gruntjs.com">Grunt</a> is (or was) not <em>per se</em> a build automation tool. Or at least, This is how Grunt describe itself: <em>&quot;The JavaScript task runner&quot;</em>.
-So what is exactly Grunt? Since 4.0, Grunt is definitely a task runner... running tasks for automating builds!</p>
-                </p> -->
-		</article>
-		<article>2015-04-18 <a href="/posts/2015/04/18/tour-of-node-building-tools">A tour of Node building tools</a> <span class="tag">javascript</span> <span class="tag">nodejs</span>			<span class="tag">build automation</span>
-			<!-- <p>
-                    <p>In this series of articles, we&#39;ll explore popular Node based tools for building web applications.
-Although <code>npm</code> itself can be used for build automation (see <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">&quot;How to use npm as a build tool&quot;</a>),
-we will focus on specialised npm packages: <code>grunt</code>, <code>gulp</code> and <code>broccoli</code>. We will try to understand what problems they solve, how to use them
-and what their limitations are.</p>
-                </p> -->
-		</article>
-	</main>
+		<h1 id="how-to-install-gulp-4">How to install Gulp 4</h1>
+		<p><a href="https://github.com/gulpjs/gulp">Gulp 4</a> is not released yet and if you cannot wait to get your hands on it, here is how to install Gulp 4.</p>
+		<h2 id="install-gulp-globally">Install Gulp globally</h2>
+		<p>If you have a previous version of Gulp installed, uninstall it first. You might need run this command as an administrator or a superuser, depending on your system.
+			On my machine (Linux Mint Rebecca), I had no problems continuing using Gulp 3.8.11 after installing Gulp 4.</p><pre><code class="bash">$ npm uninstall -g gulp
+$ npm install -g &quot;gulpjs/gulp-cli#4.0&quot;
+</code></pre>
+		<h2 id="add-gulp-4-to-your-repositories">Add Gulp 4 to your repositories</h2>
+		<p>If you use a previous version of Gulp (i.e. Gulp 3.8.x or earlier), remove it from the repositories you want to upgrade. Don&#39;t forget to specify <code class="nohighlight">--save-dev</code>			or <code class="nohighlight">--save</code> so your <code class="nohighlight">package.json</code> gets updated.</p><pre><code class="bash">$ cd &lt;your_repo&gt;
+$ npm uninstall gulp [--save-dev|--save]
+$ npm install &quot;gulpjs/gulp#4.0&quot; [--save-dev|--save]
+</code></pre>
+		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/install-gulp-4.md">Github!</a></p>
+		<section class="prev-next-links"><a href="posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 4: Incremental builds</span></a></section>
+	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->
 		<section class="contact-links"><a class="circled-icon" href="https://github.com/troch" target="_blank" aria-label="Github (troch)" title="Github (troch)"><i class="fa fa-github"></i></a>

@@ -29,15 +29,17 @@ Those tools share a few traits in common:
 
 ## Building with Gulp 3 and Gulp 4
 
+Gulp 4 is not released yet, in the mean time you can install it following these instructions: [Install Gulp 4](/posts/2015/05/01/how-to-install-gulp-4/)
+
 - [Part 1: examples](/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/)
 - [Part 2: Gulp's anatomy](/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/)
 - [Part 3: writing transformers](/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/)
-- Part 4: incremental builds (_Coming soon_)
+- [Part 4: incremental builds](/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/)
 
 
 ## Building with Brocooli
 
-- Part 1: introduction
+- Part 1: introduction (_Coming soon_)
 
 
 ## Recommended articles on the web
