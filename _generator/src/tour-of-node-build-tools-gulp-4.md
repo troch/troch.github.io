@@ -42,7 +42,7 @@ In Gulp 3 incremental builds are possible using the following packages: [gulp-ca
 
 ## Since last run
 
-`vinyl-fs@1.0.0` (used by Gulp 4) introduced a new option in `.src()`: since. It tells `vinyl-fs` to only emit files which have been modified since the time specified (it can be a date or a number). [Undertaker](https://www.npmjs.com/package/undertaker) (see [Part 2: Gulp's anatomy](/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers)) exposes a new API function `lastRun(task, [timeResolution])` wchich returns a timestamp of the last time a task was run successfully (in milliseconds). `timeResolution` can be used to floor that timestamp to the specified resolution to match the resolution returned by fs.stat (according to Undertaker README, on node v0.10 or with file systems like HFS or FAT, file time attributes have a resolution of one second).
+`vinyl-fs@1.0.0` (used by Gulp 4) introduced a new option in `.src()`: since. It tells `vinyl-fs` to only emit files which have been modified since the time specified (it can be a date or a number). [Undertaker](https://www.npmjs.com/package/undertaker) (see [Part 2: Gulp's anatomy](/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers)) exposes a new API function `lastRun(task, [timeResolution])` which returns a timestamp of the last time a task was run successfully (in milliseconds). `timeResolution` can be used to floor that timestamp to the specified resolution to match the resolution returned by fs.stat (according to Undertaker README, on node v0.10 or with file systems like HFS or FAT, file time attributes have a resolution of one second).
 
 In Gulp 4 it is then possible to do the following:
 

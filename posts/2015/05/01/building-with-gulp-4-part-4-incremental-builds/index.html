@@ -20,7 +20,7 @@
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-05-01T15:00:00.000Z">
-	<meta property="article:modified_time" content="2015-05-01T14:58:15.000Z">
+	<meta property="article:modified_time" content="2015-05-01T15:05:39.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -203,7 +203,7 @@
 			Gulp 3 is missing an essential feature we just talked about above: reading from disk only recently changed files. It is possible to overcome or work around this
 			hurdle but we will focus instead on what Gulp 4 offers out of the box by the addition of <code class="nohighlight">since</code>.</p>
 		<h2 id="since-last-run">Since last run</h2>
-		<p><code class="nohighlight">vinyl-fs@1.0.0</code> (used by Gulp 4) introduced a new option in <code class="nohighlight">.src()</code>: since. It tells <code class="nohighlight">vinyl-fs</code>			to only emit files which have been modified since the time specified (it can be a date or a number). <a href="https://www.npmjs.com/package/undertaker">Undertaker</a>			(see <a href="/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers">Part 2: Gulp&#39;s anatomy</a>) exposes a new API function <code class="nohighlight">lastRun(task, [timeResolution])</code>			wchich returns a timestamp of the last time a task was run successfully (in milliseconds). <code class="nohighlight">timeResolution</code> can be used to floor
+		<p><code class="nohighlight">vinyl-fs@1.0.0</code> (used by Gulp 4) introduced a new option in <code class="nohighlight">.src()</code>: since. It tells <code class="nohighlight">vinyl-fs</code>			to only emit files which have been modified since the time specified (it can be a date or a number). <a href="https://www.npmjs.com/package/undertaker">Undertaker</a>			(see <a href="/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers">Part 2: Gulp&#39;s anatomy</a>) exposes a new API function <code class="nohighlight">lastRun(task, [timeResolution])</code>			which returns a timestamp of the last time a task was run successfully (in milliseconds). <code class="nohighlight">timeResolution</code> can be used to floor
 			that timestamp to the specified resolution to match the resolution returned by fs.stat (according to Undertaker README, on node v0.10 or with file systems like
 			HFS or FAT, file time attributes have a resolution of one second).</p>
 		<p>In Gulp 4 it is then possible to do the following:</p><pre><code class="javascript">var gulp   = require(&#39;gulp&#39;);
