@@ -9,6 +9,7 @@ var excerpts        = require('metalsmith-excerpts');
 var minify          = require("metalsmith-html-minifier");
 var beautify        = require('metalsmith-beautify');
 var lunr            = require('metalsmith-lunr');
+var sitemap         = require('metalsmith-sitemap');
 // Other modules
 // var lunr            = require('lunr');
 var nunjucks        = require('nunjucks');
@@ -53,6 +54,17 @@ Metalsmith(__dirname)
     .use(generateIndex())
     .use(minify({removeAttributeQuotes: false, removeComments: false}))
     .use(beautify())
+    .use(sitemap({
+        ignoreFiles: [/test.xml/], // Matched files will be ignored
+        output: 'sitemap.xml', // The location where the final sitemap should be placed
+        urlProperty: 'path', // Key for URL property
+        hostname: 'http://blog.reactandbethankful.com', // hostname to use for URL, if needed
+        modifiedProperty: 'modified', // Key for last modified property
+        defaults: { // You can provide default values for any property in here
+            priority: 0.5,
+            changefreq: 'daily'
+        }
+    }))
     // .use(debug())
     .destination('../dist')
     .build(noop);
