@@ -62,7 +62,7 @@ gulp.task('watch', function () {
 gulp.task('build', gulp.series('jshint', 'watch'));
 ```
 
-In the example above, our build task will lint all files using jshint. Then Gulp will watch changes and invoke jshint   if it detects a change on a javascript source. The jshint task only lints modified files since its last run: you can clearly see the benefits for a code base containing a large number of files or large files.
+In the example above, our build task will lint all files using jshint. Then Gulp will watch changes and invoke jshint   if it detects a change on a javascript source. The jshint task only lints modified files since its last run: you can clearly think of the benefits for a code base containing a large number of files (or large files).
 
 ## Caching files
 
@@ -77,7 +77,7 @@ gulp.task('buildJs', function () {
 });
 ```
 
-From source to destination, this is a MANY:1 pipeline, composed of a 1:1 (jshint) and a MANY:1 (concat) operations. We want to only lint modified files, and then concat all files. [gulp-memory-cache](https://www.npmjs.com/package/gulp-memory-cache) or [gulp-remember](https://www.npmjs.com/package/gulp-remember) can perfectly handle this.
+From source to destination, this is a `MANY:1` pipeline, composed of a `1:1` (jshint) and a `MANY:1` (concat) operations. We want to only lint modified files, and then concat all files. [gulp-memory-cache](https://www.npmjs.com/package/gulp-memory-cache) or [gulp-remember](https://www.npmjs.com/package/gulp-remember) can perfectly handle this.
 
 The example below is with `gulp-memory-cache` (**I am the author**, that's why I promote its use!):
 

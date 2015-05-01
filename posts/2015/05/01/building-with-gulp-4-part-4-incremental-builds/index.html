@@ -20,7 +20,7 @@
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-05-01T15:00:00.000Z">
-	<meta property="article:modified_time" content="2015-05-01T15:05:39.000Z">
+	<meta property="article:modified_time" content="2015-05-01T15:08:03.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -221,20 +221,21 @@ gulp.task(&#39;watch&#39;, function () {
 gulp.task(&#39;build&#39;, gulp.series(&#39;jshint&#39;, &#39;watch&#39;));
 </code></pre>
 		<p>In the example above, our build task will lint all files using jshint. Then Gulp will watch changes and invoke jshint if it detects a change on a javascript source.
-			The jshint task only lints modified files since its last run: you can clearly see the benefits for a code base containing a large number of files or large files.</p>
-		<h2
-		id="caching-files">Caching files</h2>
-			<p>For <code class="nohighlight">1:1</code> operations, that&#39;s all we need to do. However for MANY:1, we need to keep a cached copy of files to be re-used later.
-				Let&#39;s consider the following example:</p><pre><code class="javascript">gulp.task(&#39;buildJs&#39;, function () {
+			The jshint task only lints modified files since its last run: you can clearly think of the benefits for a code base containing a large number of files (or large
+			files).</p>
+		<h2 id="caching-files">Caching files</h2>
+		<p>For <code class="nohighlight">1:1</code> operations, that&#39;s all we need to do. However for MANY:1, we need to keep a cached copy of files to be re-used later.
+			Let&#39;s consider the following example:</p><pre><code class="javascript">gulp.task(&#39;buildJs&#39;, function () {
     return gulp.src(&#39;src/**/*.js&#39;)
         .pipe(jshint())
         .pipe(concat(&#39;app.js&#39;))
         .pipe(gulp.dest(&#39;build&#39;));
 });
 </code></pre>
-			<p>From source to destination, this is a MANY:1 pipeline, composed of a 1:1 (jshint) and a MANY:1 (concat) operations. We want to only lint modified files, and then
-				concat all files. <a href="https://www.npmjs.com/package/gulp-memory-cache">gulp-memory-cache</a> or <a href="https://www.npmjs.com/package/gulp-remember">gulp-remember</a>				can perfectly handle this.</p>
-			<p>The example below is with <code class="nohighlight">gulp-memory-cache</code> (<strong>I am the author</strong>, that&#39;s why I promote its use!):</p><pre><code class="javascript">var gulp   = require(&#39;gulp&#39;);
+		<p>From source to destination, this is a <code class="nohighlight">MANY:1</code> pipeline, composed of a <code class="nohighlight">1:1</code> (jshint) and a
+			<code
+			class="nohighlight">MANY:1</code> (concat) operations. We want to only lint modified files, and then concat all files. <a href="https://www.npmjs.com/package/gulp-memory-cache">gulp-memory-cache</a>				or <a href="https://www.npmjs.com/package/gulp-remember">gulp-remember</a> can perfectly handle this.</p>
+		<p>The example below is with <code class="nohighlight">gulp-memory-cache</code> (<strong>I am the author</strong>, that&#39;s why I promote its use!):</p><pre><code class="javascript">var gulp   = require(&#39;gulp&#39;);
 var jshint = require(&#39;gulp-jshint&#39;);
 var concat = require(&#39;gulp-concat&#39;);
 var cache  = require(&#39;gulp-memory-cache&#39;);
@@ -247,11 +248,11 @@ gulp.task(&#39;buildJs&#39;, function () {
         .pipe(gulp.dest(&#39;build&#39;));
 });
 </code></pre>
-			<p>In this example, files streamed to cache are added or updated in their cache, and <code class="nohighlight">cache()</code> will stream to concat all the files
-				it has in cache. Simple!</p>
-			<h2 id="invalidating-cached-files">Invalidating cached files</h2>
-			<p>With plugins like <code class="nohighlight">gulp-memory-cache</code> or <code class="nohighlight">gulp-remember</code>, recently modified files are added to cache
-				or update their previous cache entry. When a file is deleted, we need a way to invalidate their cache entry:</p><pre><code class="javascript">var gulp = require(&#39;gulp&#39;);
+		<p>In this example, files streamed to cache are added or updated in their cache, and <code class="nohighlight">cache()</code> will stream to concat all the files
+			it has in cache. Simple!</p>
+		<h2 id="invalidating-cached-files">Invalidating cached files</h2>
+		<p>With plugins like <code class="nohighlight">gulp-memory-cache</code> or <code class="nohighlight">gulp-remember</code>, recently modified files are added to cache
+			or update their previous cache entry. When a file is deleted, we need a way to invalidate their cache entry:</p><pre><code class="javascript">var gulp = require(&#39;gulp&#39;);
 
 gulp.task(&#39;buildJs&#39;, function () {
     // Task
@@ -264,17 +265,17 @@ gulp.watch(&#39;src/**/*.js&#39;, gulp.series(&#39;buildJs&#39;))
         }
     });
 </code></pre>
-			<p><a href="https://www.npmjs.org/package/gulp-memory-cache">gulp-memory-cache</a> has a <code class="nohighlight">.update(cacheName)</code> method for dealing with
-				file deletion and avoiding boilerplate code. Be aware that if your file has been processed before being cached and if that processing has <strong>altered its path name</strong>,
-				forgetting files won&#39;t work.</p><pre><code class="javascript">gulp.watch(&#39;src/**/*.js&#39;, gulp.series(&#39;buildJs&#39;))
+		<p><a href="https://www.npmjs.org/package/gulp-memory-cache">gulp-memory-cache</a> has a <code class="nohighlight">.update(cacheName)</code> method for dealing with
+			file deletion and avoiding boilerplate code. Be aware that if your file has been processed before being cached and if that processing has <strong>altered its path name</strong>,
+			forgetting files won&#39;t work.</p><pre><code class="javascript">gulp.watch(&#39;src/**/*.js&#39;, gulp.series(&#39;buildJs&#39;))
     .on(&#39;change&#39;, cache.update(&#39;js&#39;));
 </code></pre>
-			<h2 id="new-files">New files</h2>
-			<p>Newly created files are automatically added to cache. However, they are <strong>added in last position</strong> as opposed to other files which appear in cache
-				in the order set by <code class="nohighlight">gulp.src()</code>. If order matters (for concatenation for example), you can use <a href="https://www.npmjs.com/package/gulp-order">gulp-order</a>.</p>
-			<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-4.md">Github!</a></p>
-			<section
-			class="prev-next-links"><a href="posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 3 and 4 (Part 3: Writing transformers)</span></a>				<a href="posts/2015/05/01/how-to-install-gulp-4/" class="next"><span>How to install Gulp 4</span> <span class="fa fa-chevron-right"></span></a></section>
+		<h2 id="new-files">New files</h2>
+		<p>Newly created files are automatically added to cache. However, they are <strong>added in last position</strong> as opposed to other files which appear in cache
+			in the order set by <code class="nohighlight">gulp.src()</code>. If order matters (for concatenation for example), you can use <a href="https://www.npmjs.com/package/gulp-order">gulp-order</a>.</p>
+		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-4.md">Github!</a></p>
+		<section
+		class="prev-next-links"><a href="posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 3 and 4 (Part 3: Writing transformers)</span></a>			<a href="posts/2015/05/01/how-to-install-gulp-4/" class="next"><span>How to install Gulp 4</span> <span class="fa fa-chevron-right"></span></a></section>
 	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->
