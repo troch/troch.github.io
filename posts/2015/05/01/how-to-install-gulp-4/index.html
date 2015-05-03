@@ -20,7 +20,7 @@
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-05-01T16:00:00.000Z">
-	<meta property="article:modified_time" content="2015-05-01T14:56:28.000Z">
+	<meta property="article:modified_time" content="2015-05-03T14:21:35.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -168,14 +168,32 @@
 		<h1 id="how-to-install-gulp-4">How to install Gulp 4</h1>
 		<p><a href="https://github.com/gulpjs/gulp">Gulp 4</a> is not released yet and if you cannot wait to get your hands on it, here is how to install Gulp 4.</p>
 		<h2 id="install-gulp-globally">Install Gulp globally</h2>
-		<p>If you have a previous version of Gulp installed, uninstall it first. You might need run this command as an administrator or a superuser, depending on your system.
-			On my machine (Linux Mint Rebecca), I had no problems continuing using Gulp 3.8.11 after installing Gulp 4.</p><pre><code class="bash">$ npm uninstall -g gulp
-$ npm install -g &quot;gulpjs/gulp-cli#4.0&quot;
+		<p>If you have a previous version of Gulp installed, uninstall it first. You might need run this command as an administrator or a superuser, depending on your system.</p><pre><code class="nohighlight">npm uninstall -g gulp
+npm install -g &quot;gulpjs/gulp-cli#4.0&quot;
 </code></pre>
+		<p>On my machine (Linux Mint Rebecca), I had no problems continuing using Gulp &lt; 4 after globally installing Gulp 4.</p>
 		<h2 id="add-gulp-4-to-your-repositories">Add Gulp 4 to your repositories</h2>
-		<p>If you use a previous version of Gulp (i.e. Gulp 3.8.x or earlier), remove it from the repositories you want to upgrade. Don&#39;t forget to specify <code class="nohighlight">--save-dev</code>			or <code class="nohighlight">--save</code> so your <code class="nohighlight">package.json</code> gets updated.</p><pre><code class="bash">$ cd &lt;your_repo&gt;
-$ npm uninstall gulp [--save-dev|--save]
-$ npm install &quot;gulpjs/gulp#4.0&quot; [--save-dev|--save]
+		<p>If you use a previous version of Gulp (i.e. Gulp 3.8.x or earlier), remove it from the repositories you want to upgrade. Don&#39;t forget to specify <code class="nohighlight">--save-dev</code>			or <code class="nohighlight">--save</code> so your <code class="nohighlight">package.json</code> gets updated.</p><pre><code class="nohighlight">cd YOUR_REPO
+npm uninstall gulp --save-dev
+npm install &quot;gulpjs/gulp#4.0&quot; --save-dev
+</code></pre>
+		<h2 id="possible-issues-uninstalling-gulp">Possible issues uninstalling Gulp</h2>
+		<p>On my machine, previous version of Gulp hadn&#39;t been properly removed and I started to get that error when trying to run Gulp:</p><pre><code class="nohighlight">/usr/local/lib/node_modules/gulp/bin/gulp.js:129
+    gulpInst.start.apply(gulpInst, toRun);
+                   ^
+TypeError: Cannot call method &#39;apply&#39; of undefined
+    at /usr/local/lib/node_modules/gulp/bin/gulp.js:129:20
+    at process._tickDomainCallback (node.js:492:13)
+</code></pre>
+		<p>What does this error trace tell use? <code class="nohighlight">gulp.start()</code> is no longer in Gulp 4 and shouldn&#39;t be called, and <code class="nohighlight">gulp-cli</code>			package should be called rather than an old <code class="nohighlight">gulp</code> package.</p>
+		<p>I ran the following command:</p><pre><code class="nohighlight">ls -l $`whereis gulp`
+</code></pre>
+		<p>And realise I still had an old Gulp file in a bin folder:</p><pre><code class="nohighlight">lrwxrwxrwx 1 root root 40 May  3 11:17 /usr/bin/gulp -&gt; ../lib/node_modules/gulp-cli/bin/gulp.js
+lrwxrwxrwx 1 root root 40 May  3 11:17 /usr/bin/X11/gulp -&gt; ../lib/node_modules/gulp-cli/bin/gulp.js
+lrwxrwxrwx 1 root root 36 Apr  3 21:41 /usr/local/bin/gulp -&gt; ../lib/node_modules/gulp/bin/gulp.js
+</code></pre>
+		<p>Simply remove old files and you will be good to go:</p><pre><code class="nohighlight">$ sudo rm /usr/local/bin/gulp
+$ sudo rm -rf /usr/local/lib/node_modules/gulp
 </code></pre>
 		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/install-gulp-4.md">Github!</a></p>
 		<section class="prev-next-links"><a href="posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 4: Incremental builds</span></a></section>

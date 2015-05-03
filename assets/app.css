@@ -526,4 +526,5 @@ article.main pre > code {
   font-size: 0.9rem;
   padding-left: 0.65rem !important;
   background-color: #f8f8f8;
+  overflow: auto;
 }
