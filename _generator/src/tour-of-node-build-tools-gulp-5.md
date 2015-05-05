@@ -11,7 +11,7 @@ image: https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png
 
 # Building with Gulp: Caveats
 
-After all those parts extolling Gulp's capabilities on how much it is an improvement from Grunt, it is now only fair to discuss Gulp's limitations. Remember, in the fast evolving world of software development, tools are created to overcome limitations from their predecessors as well as trying to be as much future-proof as possible. It would be presumptuous to think that Gulp is a silver bullet (nothing is) and Gulp has also its own limitations and caveats, edge cases were its architecture is not so suitable.
+After extolling Gulp's capabilities and highlighting how much it is an improvement from Grunt, it is only fair to discuss Gulp's limitations. Remember, in the fast evolving world of software development, tools are created to overcome limitations from their predecessors as well as trying to be as much future-proof as possible. It would be presumptuous to think that Gulp is a silver bullet (nothing is) and Gulp has also its own limitations and caveats, edge cases were its architecture is not so suitable.
 
 
 ## Error management in Gulp 3
