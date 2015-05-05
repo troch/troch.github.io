@@ -29,6 +29,9 @@ Undertaker adresses those issues and provides an easier way to explicitely defin
 a task name or a function (returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling `.tree()`. Undertaker also tracks
 the last time a task was run, accessible with `.lastRun()`.
 
+If you wish to go further, you can look at [async-done](https://www.npmjs.com/package/async-done) and [bach](https://www.npmjs.com/package/bach) which are the two main
+packages behind _Undertaker_. _Bach_ helps composing async functions in series and parallel, and use _async-done_ to know when something is completed.
+
 
 ## Vinyl and vinyl-fs
 

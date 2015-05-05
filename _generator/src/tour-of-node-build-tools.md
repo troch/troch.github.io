@@ -35,6 +35,7 @@ Gulp 4 is not released yet, in the mean time you can install it following these 
 - [Part 2: Gulp's anatomy](/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/)
 - [Part 3: writing transformers](/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/)
 - [Part 4: incremental builds](/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/)
+- [Part 5: caveats](/posts/2015/05/05/building-with-gulp-part-5-caveats/)
 
 
 ## Building with Brocooli

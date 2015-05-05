@@ -26,13 +26,19 @@
 </url>
 <url>
     <loc>http://blog.reactandbethankful.com/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy</loc>
-    <lastmod>2015-05-01</lastmod>
+    <lastmod>2015-05-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>http://blog.reactandbethankful.com/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers</loc>
     <lastmod>2015-04-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>http://blog.reactandbethankful.com/posts/2015/05/05/building-with-gulp-part-5-caveats</loc>
+    <lastmod>2015-05-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>
@@ -44,7 +50,7 @@
 </url>
 <url>
     <loc>http://blog.reactandbethankful.com/posts/2015/04/18/tour-of-node-building-tools</loc>
-    <lastmod>2015-05-01</lastmod>
+    <lastmod>2015-05-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>

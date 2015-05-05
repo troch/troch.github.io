@@ -3,26 +3,24 @@
 
 <head>
 	<base href="/">
-	<title>Building with Gulp 3 and 4 (Part 2: Gulp's anatomy) | React and be thankful</title>
-	<meta name="description" content="Gulp itself is a pretty bare package: it integrates a few packages to create a simple but performant tool by exposing an API and adding a CLI.The &hellip;">
+	<title>Building with Gulp: Caveats | React and be thankful</title>
+	<meta name="description" content="After all those parts extolling Gulp&#39;s capabilities on how much it is an improvement from Grunt, it is now only fair to discuss Gulp&#39;s lim&hellip;">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<!-- Twitter Card data -->
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Building with Gulp 3 and 4 (Part 2: Gulp's anatomy)">
-	<meta name="twitter:description" content="Gulp itself is a pretty bare package: it integrates a few packages to create a simple but performant tool by exposing an API and adding a CLI.The packages Gulp is composed of are from the sam&hellip;">
+	<meta name="twitter:title" content="Building with Gulp: Caveats">
+	<meta name="twitter:description" content="After all those parts extolling Gulp&#39;s capabilities on how much it is an improvement from Grunt, it is now only fair to discuss Gulp&#39;s limitations. Remember, in the fast evolving worl&hellip;">
 	<meta name="twitter:creator" content="@tcroch">
 	<meta name="twitter:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Open Graph data -->
-	<meta property="og:title" content="Building with Gulp 3 and 4 (Part 2: Gulp's anatomy)">
+	<meta property="og:title" content="Building with Gulp: Caveats">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy">
-	<meta property="og:description" content="Gulp itself is a pretty bare package: it integrates a few packages to create a simple but performant tool by exposing an API and adding a CLI.The packages Gulp is composed of are from the same authors and embrace the single responsability and separation of concerns principles: Gulp parts are loosely coupled,
-are individually tested to ensure they fulfill their duties and can easily be re-used in other projects. These principles are also the main guidelines for Gulp plugins:
-do one thing and do it well!">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/05/05/building-with-gulp-part-5-caveats">
+	<meta property="og:description" content="After all those parts extolling Gulp&#39;s capabilities on how much it is an improvement from Grunt, it is now only fair to discuss Gulp&#39;s limitations. Remember, in the fast evolving world of software development, tools are created to overcome limitations from their predecessors as well as trying to be as much future-proof as possible. It would be presumptuous to think that Gulp is a silver bullet (nothing is) and Gulp has also its own limitations and caveats, edge cases were its architecture is not so suitable.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png">
 	<!-- Article meta data -->
-	<meta property="article:published_time" content="2015-04-23T16:00:00.000Z">
-	<meta property="article:modified_time" content="2015-05-05T11:28:09.000Z">
+	<meta property="article:published_time" content="2015-05-05T15:00:00.000Z">
+	<meta property="article:modified_time" content="2015-05-05T14:02:21.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
@@ -32,10 +30,6 @@ do one thing and do it well!">
 	<meta property="article:tag" content="build tool">
 	<meta property="article:tag" content="streams">
 	<meta property="article:tag" content="task runner">
-	<meta property="article:tag" content="vinyl">
-	<meta property="article:tag" content="vinyl-fs">
-	<meta property="article:tag" content="npm">
-	<meta property="article:tag" content="gulp 4">
 	<!-- RSS feed -->
 	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
 	<!-- Stylesheets -->
@@ -170,41 +164,35 @@ do one thing and do it well!">
 				}(document, 'script', 'twitter-wjs');
 			</script>
 		</section>
-		<h1 id="building-with-gulp-3-and-4-part-2-gulp-s-anatomy-">Building with Gulp 3 and 4 (Part 2: Gulp&#39;s anatomy)</h1>
-		<p>Gulp itself is a pretty bare package: it integrates a few packages to create a simple but performant tool by exposing an API and adding a CLI. The packages Gulp
-			is composed of are from the same authors and embrace the <em>single responsability</em> and <em>separation of concerns</em> principles: Gulp parts are <em>loosely coupled</em>,
-			are individually tested to ensure they fulfill their duties and can easily be re-used in other projects. These principles are also the main guidelines for Gulp
-			plugins: do one thing and do it well!</p>
-		<h2 id="orchestrator-gulp-3-and-undertaker-gulp-4-">Orchestrator (Gulp 3) and Undertaker (Gulp 4)</h2>
-		<p><a href="https://www.npmjs.com/package/orchestrator">Orchestrator</a> is a module for registring tasks, specifying their dependencies and running them in maximum
-			concurrency. Tasks created with Orchestrator need to return a Promise or a stream, or invoke a done callback to ensure completion. Synchronous tasks are not supported
-			and will have to invoke a callback too. Orchestrator tasks can define their dependencies and Orchestrator will run tasks in maxium concurrency.</p>
-		<p><a href="https://www.npmjs.com/package/undertaker">Undertaker</a> removes task dependencies in favour of two new functions: <code class="nohighlight">.series()</code>			and <code class="nohighlight">.parallel()</code>. In <a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/#gulp-3-with-_run-sequence_">Part 1</a>,
-			we mentioned the disadvantages of specifying task dependencies. Undertaker adresses those issues and provides an easier way to explicitely define in which order
-			tasks should be executed. <code class="nohighlight">.series()</code> and <code class="nohighlight">.parallel()</code> can take as argument a task name or a function
-			(returning a promise, a stream or invoking a done callback). The tree of registerd tasks can be retrieved calling <code class="nohighlight">.tree()</code>. Undertaker
-			also tracks the last time a task was run, accessible with <code class="nohighlight">.lastRun()</code>.</p>
-		<p>If you wish to go further, you can look at <a href="https://www.npmjs.com/package/async-done">async-done</a> and <a href="https://www.npmjs.com/package/bach">bach</a>			which are the two main packages behind <em>Undertaker</em>. <em>Bach</em> helps composing async functions in series and parallel, and use <em>async-done</em>			to know when something is completed.</p>
-		<h2 id="vinyl-and-vinyl-fs">Vinyl and vinyl-fs</h2>
-		<p>Gulp is built on top of two packages called <code class="nohighlight">vinyl</code> and <code class="nohighlight">vinyl-fs</code>.</p>
-		<p><a href="https://www.npmjs.org/package/vinyl">Vinyl</a> is an object used for modelling files. It has four properties (<code class="nohighlight">cwd</code>,
-			<code
-			class="nohighlight">base</code>, <code class="nohighlight">path</code>, and <code class="nohighlight">contents</code>). <code class="nohighlight">contents</code> is a <a href="https://nodejs.org/api/buffer.html">Node Buffer</a>,
-				and other properties describe a file path. If you have used Grunt your are no stranger to them:</p><pre><code class="nohighlight">base + cwd + path = full path
-</code></pre>
-		<p>From <a href="https://www.npmjs.org/package/vinyl-fs">Vinyl-fs</a> comes the <code class="nohighlight">.src()</code>, <code class="nohighlight">.watch()</code>			and <code class="nohighlight">.dest()</code> functions exposed by Gulp: <code class="nohighlight">src()</code> will create vinyl objects from your file system,
-			and <code class="nohighlight">dest()</code> will write them to disk. Vinyl-fs is also depending on <a href="https://www.npmjs.org/package/throught2">through2</a>,
-			a wrapper around Node streams2 (Streams in Node v0.10.x). From streams2 comes the <code class="nohighlight">.pipe()</code> and <code class="nohighlight">.on()</code>			methods.</p>
-		<blockquote>
-			<p>In most cases, a vinyl-fs pipeline is simply a <strong>map-reduce</strong> operation on a set of files.</p>
-		</blockquote>
-		<h2 id="gulp-plugins">Gulp plugins</h2>
-		<p>In between <code class="nohighlight">src</code> and <code class="nohighlight">dest</code>, vinyl objects are streamed using the <code class="nohighlight">.pipe()</code>			function from plugin to plugin. Plugins are just here to transform streams, i.e. to modify vinyl objects. Gulp plugins can therefore be truly specialised, by
-			contrast to <a href="/posts/2015/04/18/building-with-grunt-part-2/">Grunt</a>. This is what makes Gulp so attractive for many developers: being fully in control
-			of the build process, step by step, by <strong>composing</strong> multiple plugins to create a pipeline.</p>
-		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-2.md">Github!</a></p>
+		<h1 id="building-with-gulp-caveats">Building with Gulp: Caveats</h1>
+		<p>After all those parts extolling Gulp&#39;s capabilities on how much it is an improvement from Grunt, it is now only fair to discuss Gulp&#39;s limitations. Remember,
+			in the fast evolving world of software development, tools are created to overcome limitations from their predecessors as well as trying to be as much future-proof
+			as possible. It would be presumptuous to think that Gulp is a silver bullet (nothing is) and Gulp has also its own limitations and caveats, edge cases were its
+			architecture is not so suitable.</p>
+		<h2 id="error-management-in-gulp-3">Error management in Gulp 3</h2>
+		<p>In Gulp 3, error management is an issue. In Gulp 3 it is unclear what strategy needs to be adopted when a piece of pipeline or a task fails. This is most problematic
+			when using <code class="nohighlight">.watch()</code> and in most cases developers are forced to re-start the build process manually either because the process
+			exited, or because watching got messed up. Watch can stop working as expected because by design, when an event error is raised, a Node stream stops accepting
+			data coming in. <a href="https://www.npmjs.com/package/gulp-plumber">gulp-plumber</a> is a monkey-patch preventing Node stream&#39;s default behavious on error
+			(it prevents streams to unpipe on error).</p>
+		<p>However, this is not the only case where error management is not efficient. With linters, errors are raised when encountered and all linting errors are not all
+			logged at once. If we use a <em>jshint</em> + <em>uglify</em> combination, ideally <em>jshint</em> would log all errors encountered but wouldn&#39;t write downstream
+			so <em>uglify</em> itself wouldn&#39;t raise an exception if the AST cannot be parsed.</p>
+		<p>Gulp&#39;s team told its community error management is a priority in Gulp 4.</p>
+		<h2 id="-many-1-disguised-as-a-1-1-"><code class="nohighlight">MANY:1</code> disguised as a <code class="nohighlight">1:1</code></h2>
+		<p>In <a href="/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/">Part 4: incremental builds</a>, I deliberately eclipsed one case which makes Gulp
+			suck at incremental builds: I call those cases the <code class="nohighlight">MANY:1</code> disguised as a <code class="nohighlight">1:1</code>. Those are the
+			cases where a plugin will receive one file, but will end up processing many for finally passing downstream one file. Examples of this include: LESS, SASS or Browserify.
+			LESS and SASS will need to follow <code class="nohighlight">@import</code> files and read them from disk, and <em>Browserify</em> will track down module dependencies
+			on your file system. Streams are bypassed and consequently incremental builds are not always possible.</p>
+		<h2 id="conclusion">Conclusion</h2>
+		<p>Gulp is an amazing tool, don&#39;t get me wrong, and its syntax is awesome. Using <code class="nohighlight">.pipe()</code> to create a transformation pipeline
+			on a group of files is very nice and Gulp is a massive step forward from Grunt. But I don&#39;t think Gulp is the ultimate build tool of today (it doesn&#39;t
+			mean it cannot become the ultimate build tool of tomorrow). Why is that? Simply because Gulp is <em>NOT</em> a build tool out of the box: you still have after
+			having defined your tasks to tell Gulp how to clean, how to build, how to watch and how to increment.</p>
+		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-gulp-5.md">Github!</a></p>
 		<section
-		class="prev-next-links"><a href="posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp 3 and 4 (Part 1: examples)</span></a>			<a href="posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/" class="next"><span>Building with Gulp 3 and 4 (Part 3: Writing transformers)</span> <span class="fa fa-chevron-right"></span></a></section>
+		class="prev-next-links"><a href="posts/2015/05/01/how-to-install-gulp-4/" class="prev"><span class="fa fa-chevron-left"></span> <span>How to install Gulp 4</span></a></section>
 	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->
