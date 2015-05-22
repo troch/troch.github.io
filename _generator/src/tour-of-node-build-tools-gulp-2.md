@@ -51,5 +51,5 @@ streams2 comes the `.pipe()` and `.on()` methods.
 ## Gulp plugins
 
 In between `src` and `dest`, vinyl objects are streamed using the `.pipe()` function from plugin to plugin. Plugins are just here to transform streams, i.e. to modify vinyl objects.
-Gulp plugins can therefore be truly specialised, by contrast to [Grunt](/posts/2015/04/18/building-with-grunt-part-2/).
+Gulp plugins can therefore be truly specialised, by contrast to [Grunt](/posts/2015/04/22/building-with-grunt-part-2-caveats/).
 This is what makes Gulp so attractive for many developers: being fully in control of the build process, step by step, by **composing** multiple plugins to create a pipeline.

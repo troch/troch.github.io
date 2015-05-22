@@ -14,7 +14,7 @@ image: https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png
 
 ## Who are you Gulp?
 
-Like [Grunt](/posts/2015/04/18building-with-grunt-part-1/), [Gulp](http://gulpjs.com) is also a task runner but is designed to build applications using streams:
+Like [Grunt](/posts/2015/04/18/building-with-grunt-part-1/), [Gulp](http://gulpjs.com) is also a task runner but is designed to build applications using streams:
 Gulp is __"the streaming build system"__ to __"automate and enhance your workflow"__.
 
 Gulp was first released in July 2013 (v0.0.1), v3.0.0 was released in December 2013. Current version is 3.8.x released in June 2014 and Gulp 4 is now almost ready.

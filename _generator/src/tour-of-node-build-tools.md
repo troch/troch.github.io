@@ -24,7 +24,7 @@ Those tools share a few traits in common:
 ## Building with Grunt
 
 - [Part 1](/posts/2015/04/18/building-with-grunt-part-1/)
-- [Part 2: caveats](posts/2015/04/22/building-with-grunt-part-2-caveats/)
+- [Part 2: caveats](/posts/2015/04/22/building-with-grunt-part-2-caveats/)
 
 
 ## Building with Gulp 3 and Gulp 4
