@@ -4,60 +4,36 @@
     <title>Angular Multi Step Form Examples</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/angular-multi-step-form/app.css" rel="stylesheet">
+    <link href="/angular-multi-step-form/examples.css" rel="stylesheet">
 </head>
 
 <body ng-app="msfDemo">
-    <h1>Angular Multi Step Form Examples</h1>
+    <header>
+        <strong><a href="#/home">Angular Multi Step Form Examples</a></strong>
 
+        <a href="https://github.com/troch/angular-multi-step-form" class="fa fa-github" title="View on GitHub" aria-label="View on GitHub"></a>
+    </header>
 
-    <h2>This page is work in progress, come back to check later!</h2>
+    <nav>
+        <section>Examples</section>
 
-    <a class="btn btn-primary" href="#/home">Click me</a>
+        <ul>
+            <li>
+                <a href="#/how-to-use">How to use</a>
+            </li>
+        </ul>
+    </nav>
 
-    <a class="btn btn-primary" href="#/example/123">Example</a>
-
-    <ng-view></ng-view>
+    <main>
+        <ng-view></ng-view>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-route.min.js"></script>
     <script src="/angular-multi-step-form/scripts/angular-multi-step-form.min.js"></script>
-    <script>
-        var app = angular.module('msfDemo', ['ngAnimate', 'ngRoute', 'multiStepForm']);
-
-        app.config([
-            '$routeProvider',
-            function ($routeProvider) {
-                $routeProvider
-                    .when('/home', {
-                        template: 'Welcome'
-                        // controller: ''
-                    })
-                    .when('/example/:example', {
-                        controller: [
-                            '$scope',
-                            function ($scope) {
-                                $scope.steps = [
-                                    {
-                                        template: 'Step 1'
-                                    },
-                                    {
-                                        template: 'Step 2'
-                                    },
-                                    {
-                                        template: 'Step 3'
-                                    },
-                                    {
-                                        template: 'Step 4'
-                                    }
-                                ];
-                            }
-                        ],
-                        template: '<multi-step-container steps="steps"><button class="btn btn-default" ng-click="$previousStep()">Previous</button><button class="btn btn-default" ng-click="$nextStep()">Next</button> </multi-step-container>'
-                    });
-            }
-        ]);
-    </script>
+    <script src="/angular-multi-step-form/scripts/examples.js"></script>
 
     <!-- Analytics -->
     <script>
