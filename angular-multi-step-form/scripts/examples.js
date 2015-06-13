@@ -25,16 +25,20 @@ angular
     function ($scope) {
         $scope.steps = [
             {
-                template: '<div class="well">Install with bower, or download sources</div>'
+                template: '<div class="well">Install with bower, or download sources</div>',
+                title: 'Get the source'
             },
             {
-                template: '<div class="well">Include source in your app and add dependency</div>'
+                template: '<div class="well">Include source in your app and add dependency</div>',
+                title: 'Add it to your app'
             },
             {
-                template: '<div class="well">Configure your multi step form</div>'
+                template: '<div class="well">Configure your multi step form</div>',
+                title: 'Create your multi step forms / wizzards'
             },
             {
-                template: '<div class="well">More docs available on Github</div>'
+                template: '<div class="well">More docs available on Github</div>',
+                title: 'Read the docs'
             }
         ];
     }

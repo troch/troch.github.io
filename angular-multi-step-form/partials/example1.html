@@ -1,10 +1,12 @@
 <multi-step-container steps="steps" class="simple-prev-next">
-    <button class="btn btn-default" ng-click="$previousStep()">
+    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">
         <span class="fa fa-chevron-left"></span>
         Previous
     </button>
 
-    <button class="btn btn-default" ng-click="$nextStep()">
+    <strong ng-bind-template="{{$getActiveIndex()}}. {{$getActiveStep().title}}"></strong>
+
+    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">
         Next
         <span class="fa fa-chevron-right"></span>
     </button>
