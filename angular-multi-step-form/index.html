@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>Angular Multi Step Form Examples</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="msfDemo">
+    <h1>Angular Multi Step Form Examples</h1>
+
+
+    <h2>This page is work in progress, come back to check later!</h2>
+
+    <a class="btn btn-primary" href="#/home">Click me</a>
+
+    <a class="btn btn-primary" href="#/example/123">Example</a>
+
+    <ng-view></ng-view>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-route.min.js"></script>
+    <script src="/angular-multi-step-form/scripts/angular-multi-step-form.min.js"></script>
+    <script>
+        var app = angular.module('msfDemo', ['ngAnimate', 'ngRoute', 'multiStepForm']);
+
+        app.config([
+            '$routeProvider',
+            function ($routeProvider) {
+                $routeProvider
+                    .when('/home', {
+                        template: 'Welcome'
+                        // controller: ''
+                    })
+                    .when('/example/:example', {
+                        controller: [
+                            '$scope',
+                            function ($scope) {
+                                $scope.steps = [
+                                    {
+                                        template: 'Step 1'
+                                    },
+                                    {
+                                        template: 'Step 2'
+                                    },
+                                    {
+                                        template: 'Step 3'
+                                    },
+                                    {
+                                        template: 'Step 4'
+                                    }
+                                ];
+                            }
+                        ],
+                        template: '<multi-step-container steps="steps"><button class="btn btn-default" ng-click="$previousStep()">Previous</button><button class="btn btn-default" ng-click="$nextStep()">Next</button> </multi-step-container>'
+                    });
+            }
+        ]);
+    </script>
+
+    <!-- Analytics -->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-61970524-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>
