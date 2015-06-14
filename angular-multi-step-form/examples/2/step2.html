@@ -1,0 +1,17 @@
+<div class="well">
+    <p>
+        However if you want to allow step navigation in your header or footer, you will need to share form validation information from your step view to the rest of
+        the component. There are a few ways to do this:
+    </p>
+
+    <p>
+        From within the scope of your step, your can invoke <strong>$setStepValidity</strong>:
+    </p>
+
+        <div hljs include="'examples/2/toggle-validity.html'" language="html"></div>
+
+    <p>
+        <button class="btn btn-primary" ng-click="$setValidity(!$getActiveStep().valid)">Toggle Validity</button>
+        {{$getActiveStep().valid ? 'valid' : 'non-valid'}}
+    </p>
+</div>

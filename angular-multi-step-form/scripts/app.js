@@ -9,11 +9,15 @@ angular
     function ($routeProvider) {
         $routeProvider
             .when('/home', {
-                template: '<div class="alert alert-warning">This page is work in progress, come back to check later!</div>'
+                templateUrl: '/angular-multi-step-form/partials/home.html'
                 // controller: ''
             })
             .when('/getting-started', {
                 controller: 'GettingStartedCtrl',
+                templateUrl: '/angular-multi-step-form/partials/example.html',
+            })
+            .when('/using-forms', {
+                controller: 'UsingFormsCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
             })
             .otherwise('/home');
@@ -45,3 +49,31 @@ angular
         ];
     }
 ])
+
+.controller('UsingFormsCtrl', [
+    '$scope',
+    function ($scope) {
+        $scope.exampleId = 2;
+
+        $scope.steps = [
+            {
+                templateUrl: '/angular-multi-step-form/examples/2/step1.html',
+                title: 'Introduction'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/2/step2.html',
+                hasForm: true,
+                title: 'Update validity'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/2/step3.html',
+                hasForm: true,
+                title: 'Automatically update validity'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/2/step4.html',
+                title: 'Congratulations'
+            }
+        ];
+    }
+]);

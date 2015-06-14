@@ -1,0 +1,13 @@
+<multi-step-container steps="steps" class="simple-prev-next">
+    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">
+        <span class="fa fa-chevron-left"></span>
+        Previous
+    </button>
+
+    <strong ng-if="$getActiveStep().hasForm" class="fa" ng-class="$getActiveStep().valid ? 'fa-check' : 'fa-times'"></strong>
+
+    <button ng-disabled="$isLast() || ($getActiveStep().hasForm && !$getActiveStep().valid)" class="btn btn-default" ng-click="$nextStep()">
+        Next
+        <span class="fa fa-chevron-right"></span>
+    </button>
+</multi-step-container>
