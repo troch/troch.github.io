@@ -3,7 +3,9 @@
   "repository": "https://github.com/troch/troch.github.io.git",
   "devDependencies": {
     "gulp": "gulpjs/gulp#4.0",
+    "gulp-concat": "^2.5.2",
     "gulp-less": "^3.0.2",
+    "gulp-ng-html2js": "^0.2.0",
     "highlight.js": "^8.5.0",
     "lodash": "^3.6.0",
     "lunr": "^0.5.8",

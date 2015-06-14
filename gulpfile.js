@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
-var del  = require('rimraf')
+var del  = require('rimraf');
+var html2js = require('gulp-ng-html2js');
+var concat = require('gulp-concat');
 
 gulp.task('less', function () {
     return gulp.src('_less/app.less')
@@ -32,3 +34,14 @@ gulp.task('deploy', gulp.series(
     gulp.parallel('less', 'copyPosts', 'copyAssets'),
     'cleanDist'
 ));
+
+gulp.task('html2js', function () {
+    return gulp.src('./angular-multi-step-form/*/**/*.html')
+        .pipe(html2js({
+            moduleName: 'msfDemo',
+            declareModule: false,
+            prefix: "/angular-multi-step-form/"
+        }))
+        .pipe(concat('partials.js'))
+        .pipe(gulp.dest('angular-multi-step-form/scripts'));
+});
