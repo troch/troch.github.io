@@ -36,6 +36,10 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
+    '        <a href="#/using-forms"><strong>Saving data:</strong> how to save data entered at each step</a>\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
     '        More to come\n' +
     '    </li>\n' +
     '</ul>\n' +
