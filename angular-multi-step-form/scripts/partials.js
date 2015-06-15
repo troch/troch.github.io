@@ -221,3 +221,112 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '<button class="btn btn-primary" ng-click="$setValidity(!$getActiveStep().valid)">Toggle Validity</button>\n' +
     '');
 }]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/3/input.html',
+    '<input type="text" ng-model="model.firstName" name="firstName" class="form-control" placeholder="Enter your first name">\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/3/partial.html',
+    '<multi-step-container steps="steps" class="simple-prev-next">\n' +
+    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '        <span class="fa fa-chevron-left"></span>\n' +
+    '        Previous\n' +
+    '    </button>\n' +
+    '\n' +
+    '    <strong ng-bind-template="Your name is {{model.firstName}} {{model.lastName}}"></strong>\n' +
+    '\n' +
+    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '        Next\n' +
+    '        <span class="fa fa-chevron-right"></span>\n' +
+    '    </button>\n' +
+    '</multi-step-container>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/3/step1.html',
+    '<div class="well">\n' +
+    '    <h3>Steps are like modals...</h3>\n' +
+    '\n' +
+    '    <p>\n' +
+    '        If you have played with the previous example (<a href="#/using-forms">Using forms</a>), you have noticed that if you entered an email and a name and then press next followed by previous, your data is no longer there.\n' +
+    '    </p>\n' +
+    '\n' +
+    '    <p>\n' +
+    '        This is because a step is like a view: it is instanciated when called. In other words, if you press "Next" and then "Previous", you are back where you were except that\n' +
+    '        the step you are viewing has been freshly instanciated. And any data living in a step\'s scope will disappear.\n' +
+    '    </p>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/3/step2.html',
+    '<div class="well">\n' +
+    '    <h3>Using scope inheritence</h3>\n' +
+    '\n' +
+    '    <p>\n' +
+    '        By default, step scopes inherit from their parent scope. In our example, we have defined in our parent scope (the view scope)\n' +
+    '        a <strong>model object</strong>. That model object is used directly by the ngModel directive of the form element below:\n' +
+    '    </p>\n' +
+    '\n' +
+    '    <div hljs include="\'examples/3/input.html\'" language="html"></div>\n' +
+    '\n' +
+    '    <form name="MyForm" class="form-horizontal">\n' +
+    '        <div class="form-group">\n' +
+    '            <label class="control-label col-sm-3">First name:</label>\n' +
+    '\n' +
+    '            <div class="col-sm-7">\n' +
+    '                <input type="text" ng-model="model.firstName" name="firstName" class="form-control" placeholder="Enter your first name">\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    </form>\n' +
+    '<div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/3/step3.html',
+    '<div class="well">\n' +
+    '    <h3>Isolated step scope</h3>\n' +
+    '\n' +
+    '    <p>\n' +
+    '        This step has an isolated step scope, which means we cannot manipulate our data directly. Instead, we need to grab our data\n' +
+    '        when a step is instanciated (i.e. when our step controller is instanciated), and we need to save our changes when we navigate\n' +
+    '        away.\n' +
+    '    </p>\n' +
+    '\n' +
+    '    <p>\n' +
+    '        In an isolated step controller, we can inject <strong>multiStepFormScope</strong> which is our directive\'s scope. And we can\n' +
+    '        use the $destroy event to save any data which has been modified by the user.\n' +
+    '\n' +
+    '        <div hljs include="\'examples/3/isolated.js\'" language="javascript"></div>\n' +
+    '    </p>\n' +
+    '\n' +
+    '    <form name="MyForm" class="form-horizontal">\n' +
+    '        <div class="form-group">\n' +
+    '            <label class="control-label col-sm-3">Last name:</label>\n' +
+    '\n' +
+    '            <div class="col-sm-7">\n' +
+    '                <input type="text" ng-model="model.lastName" name="lastName" class="form-control" placeholder="Enter your last name">\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    </form>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/3/step4.html',
+    '<div class="well">\n' +
+    '    <h3>And here we are...</h3>\n' +
+    '\n' +
+    '    <p>The previous step destruction triggered our data to be updated!</p>\n' +
+    '\n' +
+    '    <p>Your name is: <strong ng-bind-template="{{model.firstName}} {{model.lastName}}"></strong></p>\n' +
+    '</div>\n' +
+    '');
+}]);

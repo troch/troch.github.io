@@ -1,0 +1,26 @@
+<div class="well">
+    <h3>Isolated step scope</h3>
+
+    <p>
+        This step has an isolated step scope, which means we cannot manipulate our data directly. Instead, we need to grab our data
+        when a step is instanciated (i.e. when our step controller is instanciated), and we need to save our changes when we navigate
+        away.
+    </p>
+
+    <p>
+        In an isolated step controller, we can inject <strong>multiStepFormScope</strong> which is our directive's scope. And we can
+        use the $destroy event to save any data which has been modified by the user.
+
+        <div hljs include="'examples/3/isolated.js'" language="javascript"></div>
+    </p>
+
+    <form name="MyForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-3">Last name:</label>
+
+            <div class="col-sm-7">
+                <input type="text" ng-model="model.lastName" name="lastName" class="form-control" placeholder="Enter your last name">
+            </div>
+        </div>
+    </form>
+</div>
