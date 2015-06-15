@@ -1,4 +1,4 @@
-.controller('IsolateStepCtrl', [
+.controller('IsolatedStepCtrl', [
     '$scope',
     'multiStepFormScope',
     function ($scope, multiStepForm) {
