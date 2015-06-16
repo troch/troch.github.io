@@ -14,7 +14,7 @@
 
 <body ng-app="msfDemo">
     <header>
-        <strong><a href="#/home">Angular Multi Step Form Examples</a></strong>
+        <strong><a href="#/home"><span class="fa fa-home"></span> Angular Multi Step Form Examples</a></strong>
 
         <a href="https://github.com/troch/angular-multi-step-form" class="fa fa-github" title="View on GitHub" aria-label="View on GitHub"></a>
     </header>
@@ -23,12 +23,23 @@
         <section>Examples</section>
 
         <ul>
-            <li>
+            <li ng-class="{active: $location.path() === '/getting-started'}">
                 <a href="#/getting-started">Getting started</a>
+            </li>
+            <li ng-class="{active: $location.path() === '/using-forms'}">
                 <a href="#/using-forms">Using forms</a>
+            </li>
+            <li ng-class="{active: $location.path() === '/saving-data'}">
                 <a href="#/saving-data">Saving data</a>
+            </li>
+            <li ng-class="{active: $location.path() === '/css-transitions'}">
                 <a href="#/css-transitions">CSS transitions</a>
+            </li>
+            <li ng-class="{active: $location.path() === '/cancel-finish'}">
                 <a href="#/cancel-finish">Cancel and Finish</a>
+            </li>
+            <li ng-class="{active: $location.path() === '/browser-navigation'}">
+                <a href="#/browser-navigation">Browser navigation</a>
             </li>
         </ul>
     </nav>

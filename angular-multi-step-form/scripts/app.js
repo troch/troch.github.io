@@ -32,7 +32,19 @@ angular
                 controller: 'CancelFinishCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
             })
+            .when('/browser-navigation', {
+                controller: 'BrowserNavigationCtrl',
+                templateUrl: '/angular-multi-step-form/partials/example.html',
+            })
             .otherwise('/home');
+    }
+])
+
+.run([
+    '$location',
+    '$rootScope',
+    function ($location, $rootScope) {
+        $rootScope.$location = $location;
     }
 ])
 
@@ -183,5 +195,32 @@ angular
             alert('Finish has been called. You are going to be redirected home!');
             $location.path('/home');
         };
+    }
+])
+
+
+.controller('BrowserNavigationCtrl', [
+    '$scope',
+    '$location',
+    '$route',
+    function ($scope, $location, $route) {
+        $scope.exampleId = 6;
+
+        $scope.$route = $route;
+
+        $scope.steps = [
+            {
+                templateUrl: '/angular-multi-step-form/examples/6/step1.html'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/6/step.html'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/6/step.html'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/6/step.html'
+            }
+        ];
     }
 ]);

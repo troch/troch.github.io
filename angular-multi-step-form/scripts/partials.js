@@ -52,7 +52,19 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
-    '        <a href="#/using-forms"><strong>Saving data:</strong> how to save data entered at each step</a>\n' +
+    '        <a href="#/saving-data"><strong>Saving data:</strong> how to save data entered at each step</a>\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
+    '        <a href="#/css-transitions"><strong>CSS transitions:</strong> how to animate step transitions</a>\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
+    '        <a href="#/cancel-finish"><strong>Cancel and finish:</strong> how to define and use ending callbacks</a>\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
+    '        <a href="#/browser-navigation"><strong>Browser navigation:</strong> how to enable URL navigation</a>\n' +
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
@@ -504,6 +516,42 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <button class="btn btn-success" ng-click="$finish()">Finish me!</button>\n' +
     '    <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/6/partial.html',
+    '<multi-step-container steps="steps" class="simple-prev-next" search-id="\'step\'">\n' +
+    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '        <span class="fa fa-chevron-left"></span>\n' +
+    '        Previous\n' +
+    '    </button>\n' +
+    '\n' +
+    '    <strong ng-bind-template="{{$getActiveIndex()}} / {{$getSteps().length}}"></strong>\n' +
+    '\n' +
+    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '        Next\n' +
+    '        <span class="fa fa-chevron-right"></span>\n' +
+    '    </button>\n' +
+    '</multi-step-container>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/6/step.html',
+    '<div class="well">\n' +
+    '    <h3>This is step {{$getActiveIndex()}}</h3>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/6/step1.html',
+    '<div class="well">\n' +
+    '    <h3>Enabling browser navigation</h3>\n' +
+    '\n' +
+    '    <p>By adding a <code>searchId</code>, we enable browser navigation</p>\n' +
     '</div>\n' +
     '');
 }]);

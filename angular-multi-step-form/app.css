@@ -44,7 +44,8 @@ body > nav > ul > li > a {
     display: block;
 }
 body > nav > ul > li > a:hover,
-body > nav > ul > li > a:focus {
+body > nav > ul > li > a:focus,
+body > nav > ul > li.active > a {
     color: #333;
     background-color: #ddd;
 }
@@ -146,4 +147,8 @@ body > main {
 
 .fa-times:before {
   content: "\f00d";
+}
+
+.fa-home:before {
+  content: "\f015";
 }
