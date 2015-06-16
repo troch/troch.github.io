@@ -58,37 +58,49 @@ body > nav > ul > li > a {
     font-size: 16px;
     display: block;
 }
+
+body > nav > section {
+    background-color: #204d74;
+}
+
 body > nav > ul > li > a:hover,
-body > nav > ul > li > a:focus,
+body > nav > ul > li > a:focus {
+    color: #fff;
+    background-color: #204d74;
+}
+
 body > nav > ul > li.active > a {
-    color: #333;
+    color: #204d74;
     background-color: #ddd;
 }
 
 body > header {
+    background-color: #ddd;
+}
+
+body > header > .content {
     padding: 0 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #ddd;
     min-height: 75px;
 }
 
-body > header > strong {
+body > header strong {
     font-weight: bold;
     font-size: 18px;
 }
 
-body > header > .fa {
+body > header > .content > .fa {
     font-size: 32px;
 }
 
-body > main {
+body > main > .content {
     padding: 20px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     body > nav {
         position: absolute;
         top: 0;
@@ -98,7 +110,6 @@ body > main {
     }
 
     body > nav > section {
-        background-color: #204d74;
         line-height: 25px;
         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
         padding: 25px 0;
@@ -120,6 +131,11 @@ body > main {
         bottom: 0;
         left: 300px;
         overflow: auto;
+    }
+
+    body > header > .content,
+    body > main > .content {
+        max-width: 1200px;
     }
 }
 

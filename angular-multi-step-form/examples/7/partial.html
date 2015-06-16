@@ -1,0 +1,9 @@
+<div class="modal-body">
+    <multi-step-container steps="steps" on-cancel="$dismiss()" on-finish="$close()" use-footer>
+        <div class="text-right">
+                <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>
+
+                <button class="btn btn-success" ng-click="$finish()" ng-if="$isLast()">Finish</button>
+        </div>
+    </multi-step-container>
+</div>

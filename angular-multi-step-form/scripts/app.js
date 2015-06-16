@@ -36,6 +36,10 @@ angular
                 controller: 'BrowserNavigationCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
             })
+            .when('/inside-modal', {
+                controller: 'InsideModalCtrl',
+                templateUrl: '/angular-multi-step-form/partials/example-modal.html',
+            })
             .otherwise('/home');
     }
 ])
@@ -222,5 +226,32 @@ angular
                 templateUrl: '/angular-multi-step-form/examples/6/step.html'
             }
         ];
+    }
+])
+
+.controller('InsideModalCtrl', [
+    '$scope',
+    '$modal',
+    function ($scope, $modal) {
+        $scope.exampleId = 7;
+
+        $scope.openModal = function () {
+            $modal.open({
+                controller: ['$scope', function ($scope) {
+                    $scope.steps = [
+                        {
+                            templateUrl: '/angular-multi-step-form/examples/7/step.html'
+                        },
+                        {
+                            templateUrl: '/angular-multi-step-form/examples/7/step.html'
+                        },
+                        {
+                            templateUrl: '/angular-multi-step-form/examples/7/step.html'
+                        }
+                    ];
+                }],
+                templateUrl: '/angular-multi-step-form/examples/7/partial.html'
+            });
+        };
     }
 ]);
