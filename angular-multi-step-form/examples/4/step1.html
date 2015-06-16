@@ -1,0 +1,23 @@
+<div class="well">
+    <h3>Markup structure and class names</h3>
+
+    <p>Creating step transitions is made easy by the markup structure and class names
+    added by this module.</p>
+
+    <div hljs include="'/angular-multi-step-form/examples/4/markup-structure.html'" language="html"></div>
+
+    <p>Animations are performed with <strong>$animate</strong>. You need to add <code>ngAnimate</code>
+    as an application dependency:</p>
+
+    <ul>
+        <li>
+            A leaving step <code>.form-step</code> will have <code>.ng-leave</code> and <code>.ng-leave-active</code>
+            classes added to its main element if a CSS transition is detected.
+        </li>
+
+        <li>
+            An entering step will have <code>.ng-enter</code> and <code>.ng-enter-active</code>
+            classes added to its main element if a CSS transition is detected.
+        </li>
+    </ul>
+</div>

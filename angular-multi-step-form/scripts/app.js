@@ -24,6 +24,10 @@ angular
                 controller: 'SavingDataCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
             })
+            .when('/css-transitions', {
+                controller: 'CSSTransitionsCtrl',
+                templateUrl: '/angular-multi-step-form/partials/example-css.html',
+            })
             .otherwise('/home');
     }
 ])
@@ -123,5 +127,21 @@ angular
         $scope.$on('$destroy', function () {
             multiStepForm.model = angular.copy($scope.model);
         });
+    }
+])
+
+.controller('CSSTransitionsCtrl', [
+    '$scope',
+    function ($scope) {
+        $scope.exampleId = 4;
+
+        $scope.steps = [
+            {
+                templateUrl: '/angular-multi-step-form/examples/4/step1.html'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/4/step2.html'
+            }
+        ];
     }
 ]);

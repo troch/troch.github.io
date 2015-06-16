@@ -1,0 +1,23 @@
+<div class="well">
+    <h3>First step and transition direction</h3>
+
+    <p>Depending on the animation you want to perform, you might want to have access
+    to more information about a step transition. For example, if you have a sliding
+    animation like this current example, you want to know if you are transitioning
+    to the next step or to the previous step. That way you can slide left the leaving
+    step and slide from the right the entering step if it is a forward transition, and
+    the opposite if it is a backward transition.
+    </p>
+
+    <p>Also you might want to treat the first loaded step as a special case, either by
+    not performing a transition or performing a different effect.</p>
+
+    <ul>
+        The following classes are added to <code>.multi-step-body</code> element:
+
+        <li><code>.step-initial</code> for the first loaded step by the directive</li>
+        <li><code>.step-forward</code> for a transition going forwards. This class is
+        not added for the initial step</li>
+        <li><code>.step-backward</code> for a transition going backwards.</li>
+    </ul>
+</div>

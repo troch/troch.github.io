@@ -1,4 +1,20 @@
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/partials/example-css.html',
+    '<div ng-include="\'examples/\' + exampleId + \'/partial.html\'"></div>\n' +
+    '\n' +
+    '<tabset>\n' +
+    '    <tab heading="CSS">\n' +
+    '        <div hljs include="\'examples/\' + exampleId + \'/styles.css\'" language="css"></div>\n' +
+    '    </tab>\n' +
+    '\n' +
+    '    <tab heading="HTML">\n' +
+    '        <div hljs include="\'examples/\' + exampleId + \'/partial.html\'" language="html"></div>\n' +
+    '    </tab>\n' +
+    '</tabset>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/partials/example.html',
     '<div ng-include="\'examples/\' + exampleId + \'/partial.html\'"></div>\n' +
     '\n' +
@@ -83,7 +99,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '<div class="well">\n' +
     '    <h4>Include it in your application</h4>\n' +
     '\n' +
-    '    <div hljs include="\'examples/1/include-in-app\'" language="javascript"></div>\n' +
+    '    <div hljs include="\'/angular-multi-step-form/examples/1/include-in-app\'" language="javascript"></div>\n' +
     '</div>\n' +
     '\n' +
     '<script type="text/ng-template" id="examples/1/include-in-app">\n' +
@@ -99,11 +115,11 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '<div class="well">\n' +
     '    <h4>Create your steps:</h4>\n' +
     '\n' +
-    '    <div hljs include="\'examples/1/create-your-steps\'" language="javascript"></div>\n' +
+    '    <div hljs include="\'/angular-multi-step-form/examples/1/create-your-steps\'" language="javascript"></div>\n' +
     '\n' +
     '    <h4>Run them in your view:</h4>\n' +
     '\n' +
-    '    <div hljs include="\'examples/1/run-your-steps\'" language="html"></div>\n' +
+    '    <div hljs include="\'/angular-multi-step-form/examples/1/run-your-steps\'" language="html"></div>\n' +
     '</div>\n' +
     '\n' +
     '<script type="text/ng-template" id="examples/1/create-your-steps">\n' +
@@ -170,7 +186,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '        From within the scope of your step, your can invoke <strong>$setStepValidity</strong>:\n' +
     '    </p>\n' +
     '\n' +
-    '        <div hljs include="\'examples/2/toggle-validity.html\'" language="html"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/2/toggle-validity.html\'" language="html"></div>\n' +
     '\n' +
     '    <p>\n' +
     '        <button class="btn btn-primary" ng-click="$setValidity(!$getActiveStep().valid)">Toggle Validity</button>\n' +
@@ -188,7 +204,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '        the <strong>formStepValidity</strong> directive does just that for you. Simply put it on your form element (or inside your\n' +
     '        form element)\n' +
     '\n' +
-    '        <div hljs include="\'examples/2/set-validity.html\'" language="html"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/2/set-validity.html\'" language="html"></div>\n' +
     '    </p>\n' +
     '\n' +
     '    <form name="MyForm" class="form-horizontal" form-step-validity>\n' +
@@ -277,7 +293,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '        a <strong>model object</strong>. That model object is used directly by the ngModel directive of the form element below:\n' +
     '    </p>\n' +
     '\n' +
-    '    <div hljs include="\'examples/3/input.html\'" language="html"></div>\n' +
+    '    <div hljs include="\'/angular-multi-step-form/examples/3/input.html\'" language="html"></div>\n' +
     '\n' +
     '    <form name="MyForm" class="form-horizontal">\n' +
     '        <div class="form-group">\n' +
@@ -307,7 +323,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '        In an isolated step controller, we can inject <strong>multiStepFormScope</strong> which is our directive\'s scope. And we can\n' +
     '        use the $destroy event to save any data which has been modified by the user.\n' +
     '\n' +
-    '        <div hljs include="\'examples/3/isolated.js\'" language="javascript"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/3/isolated.js\'" language="javascript"></div>\n' +
     '    </p>\n' +
     '\n' +
     '    <form name="MyForm" class="form-horizontal">\n' +
@@ -331,6 +347,92 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '    <p>The previous step destruction triggered our data to be updated!</p>\n' +
     '\n' +
     '    <p>Your name is: <strong ng-bind-template="{{model.firstName}} {{model.lastName}}"></strong></p>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/4/markup-structure.html',
+    '<section class="multi-step-container" steps="steps">\n' +
+    '    <!-- Possible header -->\n' +
+    '\n' +
+    '    <main class="multi-step-body">\n' +
+    '        <div class="form-step"></div>\n' +
+    '    </main>\n' +
+    '\n' +
+    '    <!-- Possible footer -->\n' +
+    '</section>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/4/partial.html',
+    '<multi-step-container steps="steps" class="sliding-steps simple-prev-next">\n' +
+    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '        <span class="fa fa-chevron-left"></span>\n' +
+    '        Previous\n' +
+    '    </button>\n' +
+    '\n' +
+    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '        Next\n' +
+    '        <span class="fa fa-chevron-right"></span>\n' +
+    '    </button>\n' +
+    '</multi-step-container>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/4/step1.html',
+    '<div class="well">\n' +
+    '    <h3>Markup structure and class names</h3>\n' +
+    '\n' +
+    '    <p>Creating step transitions is made easy by the markup structure and class names\n' +
+    '    added by this module.</p>\n' +
+    '\n' +
+    '    <div hljs include="\'/angular-multi-step-form/examples/4/markup-structure.html\'" language="html"></div>\n' +
+    '\n' +
+    '    <p>Animations are performed with <strong>$animate</strong>. You need to add <code>ngAnimate</code>\n' +
+    '    as an application dependency:</p>\n' +
+    '\n' +
+    '    <ul>\n' +
+    '        <li>\n' +
+    '            A leaving step <code>.form-step</code> will have <code>.ng-leave</code> and <code>.ng-leave-active</code>\n' +
+    '            classes added to its main element if a CSS transition is detected.\n' +
+    '        </li>\n' +
+    '\n' +
+    '        <li>\n' +
+    '            An entering step will have <code>.ng-enter</code> and <code>.ng-enter-active</code>\n' +
+    '            classes added to its main element if a CSS transition is detected.\n' +
+    '        </li>\n' +
+    '    </ul>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/4/step2.html',
+    '<div class="well">\n' +
+    '    <h3>First step and transition direction</h3>\n' +
+    '\n' +
+    '    <p>Depending on the animation you want to perform, you might want to have access\n' +
+    '    to more information about a step transition. For example, if you have a sliding\n' +
+    '    animation like this current example, you want to know if you are transitioning\n' +
+    '    to the next step or to the previous step. That way you can slide left the leaving\n' +
+    '    step and slide from the right the entering step if it is a forward transition, and\n' +
+    '    the opposite if it is a backward transition.\n' +
+    '    </p>\n' +
+    '\n' +
+    '    <p>Also you might want to treat the first loaded step as a special case, either by\n' +
+    '    not performing a transition or performing a different effect.</p>\n' +
+    '\n' +
+    '    <ul>\n' +
+    '        The following classes are added to <code>.multi-step-body</code> element:\n' +
+    '\n' +
+    '        <li><code>.step-initial</code> for the first loaded step by the directive</li>\n' +
+    '        <li><code>.step-forward</code> for a transition going forwards. This class is\n' +
+    '        not added for the initial step</li>\n' +
+    '        <li><code>.step-backward</code> for a transition going backwards.</li>\n' +
+    '    </ul>\n' +
     '</div>\n' +
     '');
 }]);
