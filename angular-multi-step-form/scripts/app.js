@@ -2,7 +2,7 @@
 
 angular
 
-.module('msfDemo', ['ngAnimate', 'ngRoute', 'multiStepForm', 'ui.bootstrap', 'hljs'])
+.module('msfDemo', ['ngAnimate', 'ngRoute', 'multiStepForm', 'ui.bootstrap', 'hljs', 'angulartics', 'angulartics.google.analytics'])
 
 .config([
     '$routeProvider',
