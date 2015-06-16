@@ -339,8 +339,8 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '    </p>\n' +
     '\n' +
     '    <p>\n' +
-    '        This is because a step is like a view: it is instanciated when called. In other words, if you press "Next" and then "Previous", you are back where you were except that\n' +
-    '        the step you are viewing has been freshly instanciated. And any data living in a step\'s scope will disappear.\n' +
+    '        This is because a step is like a view: it is instantiated when called. In other words, if you press "Next" and then "Previous", you are back where you were except that\n' +
+    '        the step you are viewing has been freshly instantiated. And any data living in a step\'s scope will disappear.\n' +
     '    </p>\n' +
     '</div>\n' +
     '');
@@ -378,7 +378,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <p>\n' +
     '        This step has an isolated step scope, which means we cannot manipulate our data directly. Instead, we need to grab our data\n' +
-    '        when a step is instanciated (i.e. when our step controller is instanciated), and we need to save our changes when we navigate\n' +
+    '        when a step is instantiated (i.e. when our step controller is instantiated), and we need to save our changes when we navigate\n' +
     '        away.\n' +
     '    </p>\n' +
     '\n' +
