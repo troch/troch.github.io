@@ -1,20 +1,20 @@
 <div class="well">
-    <h4>Create your steps:</h4>
+    <h3>Create your steps:</h3>
 
     <div hljs include="'/angular-multi-step-form/examples/1/create-your-steps'" language="javascript"></div>
 
-    <h4>Run them in your view:</h4>
+    <h3>Run them in your view:</h3>
 
     <div hljs include="'/angular-multi-step-form/examples/1/run-your-steps'" language="html"></div>
 </div>
 
-<script type="text/ng-template" id="examples/1/create-your-steps">
-    $scope.steps = [
-        {template: 'Hello <button class="btn btn-default" ng-click="$nextStep()">Next</button>'},
-        {template: 'World <button class="btn btn-default" ng-click="$previousStep()">Previous</button>'}
-    ];
+<script type="text/ng-template" id="/angular-multi-step-form/examples/1/create-your-steps">
+$scope.steps = [
+    {template: 'Hello <button class="btn btn-default" ng-click="$nextStep()">Next</button>'},
+    {template: 'World <button class="btn btn-default" ng-click="$previousStep()">Previous</button>'}
+];
 </script>
 
-<script type="text/ng-template" id="examples/1/run-your-steps">
-    <multi-step-container steps="steps"></multi-step-container>
+<script type="text/ng-template" id="/angular-multi-step-form/examples/1/run-your-steps">
+<multi-step-container steps="steps"></multi-step-container>
 </script>
