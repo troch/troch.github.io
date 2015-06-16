@@ -1,0 +1,19 @@
+<div class="well">
+    <h3>How to invoke finish or cancel</h3>
+
+    <p>A multi-step form instance is ended by invoking <code>cancel()</code> or
+    <code>finish()</code> on <code>multiStepFormInstance</code>. Those two functions
+    are also available in your scopes: <code>$cancel()</code> and <code>$finish()</code></p>
+
+    <p>By default, if a multi-step form is ended, it will be destroyed and will disappear.
+    There is no possibility to bring it back and reloading the view will only create a new instance of it.</p>
+
+    <p>This example has two instances running of a multi-step form (it demonstrates we can
+    run multiple multi-step forms in the same view). The first one (this one) has no callbacks
+    defined and finishing or cancelling with destroy it. The later one has
+    <code>onCancel</code> and <code>onFinish</code> callbacks defined: they will alert you on
+    the outcome, and navigate away.</p>
+
+    <button class="btn btn-success" ng-click="$finish()">Finish me!</button>
+    <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>
+</div>

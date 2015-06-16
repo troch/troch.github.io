@@ -436,3 +436,74 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '</div>\n' +
     '');
 }]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/5/partial.html',
+    '<multi-step-container steps="steps" class="simple-prev-next">\n' +
+    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '        <span class="fa fa-chevron-left"></span>\n' +
+    '        Previous\n' +
+    '    </button>\n' +
+    '\n' +
+    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '        Next\n' +
+    '        <span class="fa fa-chevron-right"></span>\n' +
+    '    </button>\n' +
+    '</multi-step-container>\n' +
+    '\n' +
+    '<multi-step-container steps="steps2" on-cancel="cancel()" on-finish="finish()"></multi-step-container>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/5/step1.html',
+    '<div class="well">\n' +
+    '    <h3>Cancelling or finishing a multi-step form</h3>\n' +
+    '\n' +
+    '    <p>In all previous examples, we demonstrated how we can allow a User to move\n' +
+    '    forwards and backwards between steps.</p>\n' +
+    '\n' +
+    '    <p>When you have a multi-step form, it is very likely that you will want a User\n' +
+    '    to either confirm the completion of a multi-step form, or cancel the operation.</p>\n' +
+    '\n' +
+    '    <p>You can supply to <code>multi-step-container</code> the <code>on-cancel</code>\n' +
+    '    and <code>on-finish</code> expressions.</p>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/5/step2-2.html',
+    '<div class="well">\n' +
+    '    <h3>Example with callbacks</h3>\n' +
+    '\n' +
+    '    <button class="btn btn-success" ng-click="$finish()">Finish me!</button>\n' +
+    '    <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>\n' +
+    '    <button class="btn btn-default" ng-click="$route.reload()">Reload view</button>\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('msfDemo').run(['$templateCache', function($templateCache) {
+  $templateCache.put('/angular-multi-step-form/examples/5/step2.html',
+    '<div class="well">\n' +
+    '    <h3>How to invoke finish or cancel</h3>\n' +
+    '\n' +
+    '    <p>A multi-step form instance is ended by invoking <code>cancel()</code> or\n' +
+    '    <code>finish()</code> on <code>multiStepFormInstance</code>. Those two functions\n' +
+    '    are also available in your scopes: <code>$cancel()</code> and <code>$finish()</code></p>\n' +
+    '\n' +
+    '    <p>By default, if a multi-step form is ended, it will be destroyed and will disappear.\n' +
+    '    There is no possibility to bring it back and reloading the view will only create a new instance of it.</p>\n' +
+    '\n' +
+    '    <p>This example has two instances running of a multi-step form (it demonstrates we can\n' +
+    '    run multiple multi-step forms in the same view). The first one (this one) has no callbacks\n' +
+    '    defined and finishing or cancelling with destroy it. The later one has\n' +
+    '    <code>onCancel</code> and <code>onFinish</code> callbacks defined: they will alert you on\n' +
+    '    the outcome, and navigate away.</p>\n' +
+    '\n' +
+    '    <button class="btn btn-success" ng-click="$finish()">Finish me!</button>\n' +
+    '    <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>\n' +
+    '</div>\n' +
+    '');
+}]);

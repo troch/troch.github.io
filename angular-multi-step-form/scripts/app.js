@@ -28,6 +28,10 @@ angular
                 controller: 'CSSTransitionsCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example-css.html',
             })
+            .when('/cancel-finish', {
+                controller: 'CancelFinishCtrl',
+                templateUrl: '/angular-multi-step-form/partials/example.html',
+            })
             .otherwise('/home');
     }
 ])
@@ -143,5 +147,41 @@ angular
                 templateUrl: '/angular-multi-step-form/examples/4/step2.html'
             }
         ];
+    }
+])
+
+.controller('CancelFinishCtrl', [
+    '$scope',
+    '$location',
+    '$route',
+    function ($scope, $location, $route) {
+        $scope.exampleId = 5;
+
+        $scope.$route = $route;
+
+        $scope.steps = [
+            {
+                templateUrl: '/angular-multi-step-form/examples/5/step1.html'
+            },
+            {
+                templateUrl: '/angular-multi-step-form/examples/5/step2.html'
+            }
+        ];
+
+        $scope.steps2 = [
+            {
+                templateUrl: '/angular-multi-step-form/examples/5/step2-2.html'
+            }
+        ];
+
+        $scope.cancel = function () {
+            alert('Cancel has been called. You are going to be redirected home!');
+            $location.path('/home');
+        };
+
+        $scope.finish = function () {
+            alert('Finish has been called. You are going to be redirected home!');
+            $location.path('/home');
+        };
     }
 ]);
