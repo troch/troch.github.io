@@ -4,11 +4,11 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '\n' +
     '<tabset>\n' +
     '    <tab heading="HTML">\n' +
-    '        <div hljs include="\'examples/\' + exampleId + \'/partial.html\'" language="html"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/\' + exampleId + \'/partial.html\'" language="html"></div>\n' +
     '    </tab>\n' +
     '\n' +
     '    <tab heading="CSS">\n' +
-    '        <div hljs include="\'examples/\' + exampleId + \'/styles.css\'" language="css"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/\' + exampleId + \'/styles.css\'" language="css"></div>\n' +
     '    </tab>\n' +
     '</tabset>\n' +
     '');
@@ -20,11 +20,11 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
     '\n' +
     '<tabset>\n' +
     '    <tab heading="HTML">\n' +
-    '        <div hljs include="\'examples/\' + exampleId + \'/partial.html\'" language="html"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/\' + exampleId + \'/partial.html\'" language="html"></div>\n' +
     '    </tab>\n' +
     '\n' +
     '    <tab heading="JavaScript">\n' +
-    '        <div hljs include="\'examples/\' + exampleId + \'/steps.js\'" language="javascript"></div>\n' +
+    '        <div hljs include="\'/angular-multi-step-form/examples/\' + exampleId + \'/steps.js\'" language="javascript"></div>\n' +
     '    </tab>\n' +
     '</tabset>\n' +
     '');
