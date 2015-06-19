@@ -1,13 +1,17 @@
 <multi-step-container steps="steps" class="simple-prev-next">
-    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">
-        <span class="fa fa-chevron-left"></span>
-        Previous
-    </button>
+    <header>
+        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">
+            <span class="fa fa-chevron-left"></span>
+            Previous
+        </button>
 
-    <strong ng-bind-template="{{$getActiveIndex()}}. {{$getActiveStep().title}}"></strong>
+        <strong ng-bind-template="{{$getActiveIndex()}}. {{$getActiveStep().title}}"></strong>
 
-    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">
-        Next
-        <span class="fa fa-chevron-right"></span>
-    </button>
+        <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">
+            Next
+            <span class="fa fa-chevron-right"></span>
+        </button>
+    </header>
+
+    <main step-container></main>
 </multi-step-container>

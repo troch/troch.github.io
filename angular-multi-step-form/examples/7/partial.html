@@ -1,9 +1,15 @@
 <div class="modal-body">
-    <multi-step-container steps="steps" on-cancel="$dismiss()" on-finish="$close()" use-footer>
-        <div class="text-right">
+    <multi-step-container steps="steps" on-cancel="$dismiss()" on-finish="$close()">
+        <header class="text-center">
+            <strong>Step {{$getActiveIndex()}} / {{$getSteps().length}}</strong>
+        </header>
+
+        <main step-container></main>
+
+        <footer class="text-right">
                 <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>
 
                 <button class="btn btn-success" ng-click="$finish()" ng-if="$isLast()">Finish</button>
-        </div>
+        </footer>
     </multi-step-container>
 </div>
