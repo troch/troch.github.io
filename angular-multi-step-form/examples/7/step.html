@@ -1,8 +1,6 @@
 <p style="display:flex;flex-direction:row;justify-content:space-between">
     <button class="btn btn-default" ng-click="$previousStep()" ng-disabled="$isFirst()">Previous</button>
 
-    <strong>Step {{$getActiveIndex()}} / {{$getSteps().length}}</strong>
-
     <button class="btn btn-default" ng-click="$nextStep()" ng-disabled="$isLast()">Next</button>
 </p>
 

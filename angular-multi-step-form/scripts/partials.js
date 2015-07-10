@@ -1,6 +1,6 @@
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/partials/example-css.html',
-    '<div ng-include="\'examples/\' + exampleId + \'/partial.html\'"></div>\n' +
+    '<div ng-include="\'/angular-multi-step-form/examples/\' + exampleId + \'/partial.html\'"></div>\n' +
     '\n' +
     '<tabset>\n' +
     '    <tab heading="HTML">\n' +
@@ -36,7 +36,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/partials/example.html',
-    '<div ng-include="\'examples/\' + exampleId + \'/partial.html\'"></div>\n' +
+    '<div ng-include="\'/angular-multi-step-form/examples/\' + exampleId + \'/partial.html\'"></div>\n' +
     '\n' +
     '<tabset>\n' +
     '    <tab heading="HTML">\n' +
@@ -120,17 +120,21 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/1/partial.html',
     '<multi-step-container steps="steps" class="simple-prev-next">\n' +
-    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
-    '        <span class="fa fa-chevron-left"></span>\n' +
-    '        Previous\n' +
-    '    </button>\n' +
+    '    <header>\n' +
+    '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '            <span class="fa fa-chevron-left"></span>\n' +
+    '            Previous\n' +
+    '        </button>\n' +
     '\n' +
-    '    <strong ng-bind-template="{{$getActiveIndex()}}. {{$getActiveStep().title}}"></strong>\n' +
+    '        <strong ng-bind-template="{{$getActiveIndex()}}. {{$getActiveStep().title}}"></strong>\n' +
     '\n' +
-    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
-    '        Next\n' +
-    '        <span class="fa fa-chevron-right"></span>\n' +
-    '    </button>\n' +
+    '        <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '            Next\n' +
+    '            <span class="fa fa-chevron-right"></span>\n' +
+    '        </button>\n' +
+    '    </header>\n' +
+    '\n' +
+    '    <main step-container></main>\n' +
     '</multi-step-container>\n' +
     '');
 }]);
@@ -193,17 +197,21 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/2/partial.html',
     '<multi-step-container steps="steps" class="simple-prev-next">\n' +
-    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
-    '        <span class="fa fa-chevron-left"></span>\n' +
-    '        Previous\n' +
-    '    </button>\n' +
+    '    <header>\n' +
+    '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '            <span class="fa fa-chevron-left"></span>\n' +
+    '            Previous\n' +
+    '        </button>\n' +
     '\n' +
-    '    <strong ng-if="$getActiveStep().hasForm" class="fa" ng-class="$getActiveStep().valid ? \'fa-check\' : \'fa-times\'"></strong>\n' +
+    '        <strong ng-if="$getActiveStep().hasForm" class="fa" ng-class="$getActiveStep().valid ? \'fa-check\' : \'fa-times\'"></strong>\n' +
     '\n' +
-    '    <button ng-disabled="$isLast() || ($getActiveStep().hasForm && !$getActiveStep().valid)" class="btn btn-default" ng-click="$nextStep()">\n' +
-    '        Next\n' +
-    '        <span class="fa fa-chevron-right"></span>\n' +
-    '    </button>\n' +
+    '        <button ng-disabled="$isLast() || ($getActiveStep().hasForm && !$getActiveStep().valid)" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '            Next\n' +
+    '            <span class="fa fa-chevron-right"></span>\n' +
+    '        </button>\n' +
+    '    </header>\n' +
+    '\n' +
+    '    <main step-container></main>\n' +
     '</multi-step-container>\n' +
     '');
 }]);
@@ -314,17 +322,21 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/3/partial.html',
     '<multi-step-container steps="steps" class="simple-prev-next">\n' +
-    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
-    '        <span class="fa fa-chevron-left"></span>\n' +
-    '        Previous\n' +
-    '    </button>\n' +
+    '    <header>\n' +
+    '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '            <span class="fa fa-chevron-left"></span>\n' +
+    '            Previous\n' +
+    '        </button>\n' +
     '\n' +
-    '    <strong ng-bind-template="Your name is {{model.firstName}} {{model.lastName}}"></strong>\n' +
+    '        <strong ng-bind-template="Your name is {{model.firstName}} {{model.lastName}}"></strong>\n' +
     '\n' +
-    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
-    '        Next\n' +
-    '        <span class="fa fa-chevron-right"></span>\n' +
-    '    </button>\n' +
+    '        <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '            Next\n' +
+    '            <span class="fa fa-chevron-right"></span>\n' +
+    '        </button>\n' +
+    '    </header>\n' +
+    '\n' +
+    '    <main step-container></main>\n' +
     '</multi-step-container>\n' +
     '');
 }]);
@@ -416,30 +428,34 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/4/markup-structure.html',
-    '<section class="multi-step-container" steps="steps">\n' +
+    '<multi-step-container class="multi-step-container" steps="steps">\n' +
     '    <!-- Possible header -->\n' +
     '\n' +
-    '    <main class="multi-step-body">\n' +
+    '    <step-container class="multi-step-body">\n' +
     '        <div class="form-step"></div>\n' +
-    '    </main>\n' +
+    '    </step-container>\n' +
     '\n' +
     '    <!-- Possible footer -->\n' +
-    '</section>\n' +
+    '</multi-step-container>\n' +
     '');
 }]);
 
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/4/partial.html',
     '<multi-step-container steps="steps" class="sliding-steps simple-prev-next">\n' +
-    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
-    '        <span class="fa fa-chevron-left"></span>\n' +
-    '        Previous\n' +
-    '    </button>\n' +
+    '    <header>\n' +
+    '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '            <span class="fa fa-chevron-left"></span>\n' +
+    '            Previous\n' +
+    '        </button>\n' +
     '\n' +
-    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
-    '        Next\n' +
-    '        <span class="fa fa-chevron-right"></span>\n' +
-    '    </button>\n' +
+    '        <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '            Next\n' +
+    '            <span class="fa fa-chevron-right"></span>\n' +
+    '        </button>\n' +
+    '    </header>\n' +
+    '\n' +
+    '    <main step-container></main>\n' +
     '</multi-step-container>\n' +
     '');
 }]);
@@ -503,18 +519,24 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/5/partial.html',
     '<multi-step-container steps="steps" class="simple-prev-next">\n' +
-    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
-    '        <span class="fa fa-chevron-left"></span>\n' +
-    '        Previous\n' +
-    '    </button>\n' +
+    '    <header>\n' +
+    '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '            <span class="fa fa-chevron-left"></span>\n' +
+    '            Previous\n' +
+    '        </button>\n' +
     '\n' +
-    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
-    '        Next\n' +
-    '        <span class="fa fa-chevron-right"></span>\n' +
-    '    </button>\n' +
+    '        <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '            Next\n' +
+    '            <span class="fa fa-chevron-right"></span>\n' +
+    '        </button>\n' +
+    '    </header>\n' +
+    '\n' +
+    '    <main step-container></main>\n' +
     '</multi-step-container>\n' +
     '\n' +
-    '<multi-step-container steps="steps2" on-cancel="cancel()" on-finish="finish()"></multi-step-container>\n' +
+    '<multi-step-container steps="steps2" on-cancel="cancel()" on-finish="finish()">\n' +
+    '    <step-container></step-container>\n' +
+    '</multi-step-container>\n' +
     '');
 }]);
 
@@ -574,17 +596,21 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/6/partial.html',
     '<multi-step-container steps="steps" class="simple-prev-next" search-id="\'step\'">\n' +
-    '    <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
-    '        <span class="fa fa-chevron-left"></span>\n' +
-    '        Previous\n' +
-    '    </button>\n' +
+    '    <header>\n' +
+    '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
+    '            <span class="fa fa-chevron-left"></span>\n' +
+    '            Previous\n' +
+    '        </button>\n' +
     '\n' +
-    '    <strong ng-bind-template="{{$getActiveIndex()}} / {{$getSteps().length}}"></strong>\n' +
+    '        <strong ng-bind-template="{{$getActiveIndex()}} / {{$getSteps().length}}"></strong>\n' +
     '\n' +
-    '    <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
-    '        Next\n' +
-    '        <span class="fa fa-chevron-right"></span>\n' +
-    '    </button>\n' +
+    '        <button ng-disabled="$isLast()" class="btn btn-default" ng-click="$nextStep()">\n' +
+    '            Next\n' +
+    '            <span class="fa fa-chevron-right"></span>\n' +
+    '        </button>\n' +
+    '    </header>\n' +
+    '\n' +
+    '    <main step-container></main>\n' +
     '</multi-step-container>\n' +
     '');
 }]);
@@ -610,12 +636,18 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/7/partial.html',
     '<div class="modal-body">\n' +
-    '    <multi-step-container steps="steps" on-cancel="$dismiss()" on-finish="$close()" use-footer>\n' +
-    '        <div class="text-right">\n' +
+    '    <multi-step-container steps="steps" on-cancel="$dismiss()" on-finish="$close()">\n' +
+    '        <header class="text-center">\n' +
+    '            <strong>Step {{$getActiveIndex()}} / {{$getSteps().length}}</strong>\n' +
+    '        </header>\n' +
+    '\n' +
+    '        <main step-container></main>\n' +
+    '\n' +
+    '        <footer class="text-right">\n' +
     '                <button class="btn btn-danger" ng-click="$cancel()">Cancel</button>\n' +
     '\n' +
     '                <button class="btn btn-success" ng-click="$finish()" ng-if="$isLast()">Finish</button>\n' +
-    '        </div>\n' +
+    '        </footer>\n' +
     '    </multi-step-container>\n' +
     '</div>\n' +
     '');
@@ -625,8 +657,6 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/7/step.html',
     '<p style="display:flex;flex-direction:row;justify-content:space-between">\n' +
     '    <button class="btn btn-default" ng-click="$previousStep()" ng-disabled="$isFirst()">Previous</button>\n' +
-    '\n' +
-    '    <strong>Step {{$getActiveIndex()}} / {{$getSteps().length}}</strong>\n' +
     '\n' +
     '    <button class="btn btn-default" ng-click="$nextStep()" ng-disabled="$isLast()">Next</button>\n' +
     '</p>\n' +
