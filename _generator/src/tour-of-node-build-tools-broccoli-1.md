@@ -12,6 +12,9 @@ image: https://github.com/broccolijs/broccoli/blob/master/logo/broccoli-logo.gen
 
 # Building with Broccoli (Part 1: Introduction)
 
+After having looked at Grunt and Gulp (full list of articles [here](/posts/2015/04/18/tour-of-node-building-tools)), this articles
+is a brief introduction about Broccoli.
+
 ## What is Broccoli?
 
 [Broccoli](http://broccolijs.com/) was first released (beta) in February 2014. Broccoli is a post-Grunt build tool and part of a new breed of Node based
