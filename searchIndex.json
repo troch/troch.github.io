@@ -19,6 +19,9 @@
 			"posts/2015/05/01/how-to-install-gulp-4/index.html": ["4", "automation,build", "automation,gulpjs,increment", "build", "gulp", "instal",
 				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner,gulp", "tool,streams,task"
 			],
+			"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": ["1", "automation,broccoli,broccoli", "automation,build", "broccoli", "build",
+				"introduct", "javascript,nodejs,build", "js", "js,build", "node,nodejs,javascript,broccolijs,broccoli,broccoli", "part", "tool"
+			],
 			"posts/2015/04/18/building-with-grunt-part-1/index.html": ["1", "automation,build", "automation,gruntj", "build", "grunt", "javascript,nodejs,build",
 				"node,nodejs,javascript,grunt,gruntjs,build", "part", "runner", "tool,task"
 			],
@@ -46,12 +49,16 @@
 				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
 			]
 		},
-		"length": 9
+		"length": 10
 	},
 	"tokenStore": {
 		"root": {
 			"1": {
 				"docs": {
+					"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+						"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+						"tf": 2
+					},
 					"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 						"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
 						"tf": 2.5
@@ -211,6 +218,10 @@
 																					"ref": "posts/2015/05/01/how-to-install-gulp-4/index.html",
 																					"tf": 1
 																				},
+																				"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+																					"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+																					"tf": 1.25
+																				},
 																				"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 																					"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
 																					"tf": 1.25
@@ -242,6 +253,59 @@
 																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
 																					"tf": 1.25
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															"r": {
+																"docs": {},
+																"o": {
+																	"docs": {},
+																	"c": {
+																		"docs": {},
+																		"c": {
+																			"docs": {},
+																			"o": {
+																				"docs": {},
+																				"l": {
+																					"docs": {},
+																					"i": {
+																						"docs": {},
+																						",": {
+																							"docs": {},
+																							"b": {
+																								"docs": {},
+																								"r": {
+																									"docs": {},
+																									"o": {
+																										"docs": {},
+																										"c": {
+																											"docs": {},
+																											"c": {
+																												"docs": {},
+																												"o": {
+																													"docs": {},
+																													"l": {
+																														"docs": {},
+																														"i": {
+																															"docs": {
+																																"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+																																	"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+																																	"tf": 3.333333333333333
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
 																				}
 																			}
 																		}
@@ -395,6 +459,10 @@
 										"ref": "posts/2015/05/01/how-to-install-gulp-4/index.html",
 										"tf": 3.333333333333333
 									},
+									"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+										"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+										"tf": 2
+									},
 									"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 										"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
 										"tf": 2.5
@@ -426,6 +494,32 @@
 									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
 										"tf": 2.5
+									}
+								}
+							}
+						}
+					}
+				},
+				"r": {
+					"docs": {},
+					"o": {
+						"docs": {},
+						"c": {
+							"docs": {},
+							"c": {
+								"docs": {},
+								"o": {
+									"docs": {},
+									"l": {
+										"docs": {},
+										"i": {
+											"docs": {
+												"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+													"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+													"tf": 2
+												}
+											}
+										}
 									}
 								}
 							}
@@ -520,6 +614,32 @@
 							}
 						}
 					},
+					"t": {
+						"docs": {},
+						"r": {
+							"docs": {},
+							"o": {
+								"docs": {},
+								"d": {
+									"docs": {},
+									"u": {
+										"docs": {},
+										"c": {
+											"docs": {},
+											"t": {
+												"docs": {
+													"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+														"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+														"tf": 2
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
 					"c": {
 						"docs": {},
 						"r": {
@@ -598,6 +718,10 @@
 																												"ref": "posts/2015/05/01/how-to-install-gulp-4/index.html",
 																												"tf": 3.333333333333333
 																											},
+																											"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+																												"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+																												"tf": 3.333333333333333
+																											},
 																											"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 																												"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
 																												"tf": 5
@@ -644,6 +768,37 @@
 															}
 														}
 													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"s": {
+					"docs": {
+						"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+							"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+							"tf": 3.333333333333333
+						}
+					},
+					",": {
+						"docs": {},
+						"b": {
+							"docs": {},
+							"u": {
+								"docs": {},
+								"i": {
+									"docs": {},
+									"l": {
+										"docs": {},
+										"d": {
+											"docs": {
+												"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+													"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+													"tf": 1.25
 												}
 											}
 										}
@@ -959,6 +1114,95 @@
 																													}
 																												}
 																											}
+																										},
+																										"b": {
+																											"docs": {},
+																											"r": {
+																												"docs": {},
+																												"o": {
+																													"docs": {},
+																													"c": {
+																														"docs": {},
+																														"c": {
+																															"docs": {},
+																															"o": {
+																																"docs": {},
+																																"l": {
+																																	"docs": {},
+																																	"i": {
+																																		"docs": {},
+																																		"j": {
+																																			"docs": {},
+																																			"s": {
+																																				"docs": {},
+																																				",": {
+																																					"docs": {},
+																																					"b": {
+																																						"docs": {},
+																																						"r": {
+																																							"docs": {},
+																																							"o": {
+																																								"docs": {},
+																																								"c": {
+																																									"docs": {},
+																																									"c": {
+																																										"docs": {},
+																																										"o": {
+																																											"docs": {},
+																																											"l": {
+																																												"docs": {},
+																																												"i": {
+																																													"docs": {},
+																																													",": {
+																																														"docs": {},
+																																														"b": {
+																																															"docs": {},
+																																															"r": {
+																																																"docs": {},
+																																																"o": {
+																																																	"docs": {},
+																																																	"c": {
+																																																		"docs": {},
+																																																		"c": {
+																																																			"docs": {},
+																																																			"o": {
+																																																				"docs": {},
+																																																				"l": {
+																																																					"docs": {},
+																																																					"i": {
+																																																						"docs": {
+																																																							"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+																																																								"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+																																																								"tf": 1.25
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
 																										}
 																									}
 																								}
@@ -1096,6 +1340,10 @@
 						"docs": {},
 						"l": {
 							"docs": {
+								"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+									"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+									"tf": 1.25
+								},
 								"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 									"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
 									"tf": 2.5
@@ -1242,6 +1490,10 @@
 						"docs": {},
 						"t": {
 							"docs": {
+								"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+									"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+									"tf": 2
+								},
 								"posts/2015/04/18/building-with-grunt-part-1/index.html": {
 									"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
 									"tf": 2.5
@@ -1424,11 +1676,12 @@
 				}
 			}
 		},
-		"length": 107
+		"length": 119
 	},
-	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "anatomi", "autom", "automation,build", "automation,gruntj", "automation,gulpj",
-		"automation,gulpjs,increment", "build", "caveat", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "increment", "instal", "javascript,nodejs,build",
-		"node", "node,nodejs,javascript,grunt,gruntjs,build", "node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build",
+	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "anatomi", "autom", "automation,broccoli,broccoli", "automation,build", "automation,gruntj",
+		"automation,gulpj", "automation,gulpjs,increment", "broccoli", "build", "caveat", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "increment", "instal",
+		"introduct", "javascript,nodejs,build", "js", "js,build", "node", "node,nodejs,javascript,broccolijs,broccoli,broccoli",
+		"node,nodejs,javascript,grunt,gruntjs,build", "node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build",
 		"node,nodejs,javascript,gulp,gulpjs,build", "part", "runner", "runner,gulp", "runner,vinyl,vinyl", "stream", "stream,map", "tool", "tool,streams,task",
 		"tool,task", "tour", "transform", "write"
 	],

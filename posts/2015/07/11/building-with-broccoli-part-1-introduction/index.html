@@ -3,36 +3,33 @@
 
 <head>
 	<base href="/">
-	<title>A tour of Node building tools | React and be thankful</title>
-	<meta name="description" content="In this series of articles, we&#39;ll explore popular Node based tools for building web applications.Although npm itself can be used for build aut&hellip;">
+	<title>Building with Broccoli (Part 1: Introduction) | React and be thankful</title>
+	<meta name="description" content="Broccoli was first released (beta) in February 2014. Broccoli is a post-Grunt build tool and part of a new breed of Node basedbuild tools: Broccol&hellip;">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<!-- Twitter Card data -->
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="A tour of Node building tools">
-	<meta name="twitter:description" content="In this series of articles, we&#39;ll explore popular Node based tools for building web applications.Although npm itself can be used for build automation (see &quot;How to use npm as a build &hellip;">
+	<meta name="twitter:title" content="Building with Broccoli (Part 1: Introduction)">
+	<meta name="twitter:description" content="Broccoli was first released (beta) in February 2014. Broccoli is a post-Grunt build tool and part of a new breed of Node basedbuild tools: Broccoli is not a task runner but is a dedicated bui&hellip;">
 	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://github.com/broccolijs/broccoli/blob/master/logo/broccoli-logo.generated.png">
 	<!-- Open Graph data -->
-	<meta property="og:title" content="A tour of Node building tools">
+	<meta property="og:title" content="Building with Broccoli (Part 1: Introduction)">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/04/18/tour-of-node-building-tools">
-	<meta property="og:description" content="In this series of articles, we&#39;ll explore popular Node based tools for building web applications.Although npm itself can be used for build automation (see &quot;How to use npm as a build tool&quot;),
-we will focus on specialised npm packages: grunt, gulp and broccoli. We will try to understand what problems they solve, how to use them
-and what their limitations are.">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/07/11/building-with-broccoli-part-1-introduction">
+	<meta property="og:description" content="Broccoli was first released (beta) in February 2014. Broccoli is a post-Grunt build tool and part of a new breed of Node basedbuild tools: Broccoli is not a task runner but is a dedicated build tool. It makes the asumption that you have all source files
+in a directory (which can contain sub-directories) and that you want to build those files into a build directory of your choice.">
+	<meta property="og:image" content="https://github.com/broccolijs/broccoli/blob/master/logo/broccoli-logo.generated.png">
 	<!-- Article meta data -->
-	<meta property="article:published_time" content="2015-04-18T12:00:00.000Z">
-	<meta property="article:modified_time" content="2015-07-10T21:53:30.000Z">
+	<meta property="article:published_time" content="2015-07-10T23:00:00.000Z">
+	<meta property="article:modified_time" content="2015-07-10T21:57:51.000Z">
 	<meta property="article:tag" content="node">
 	<meta property="article:tag" content="nodejs">
 	<meta property="article:tag" content="javascript">
-	<meta property="article:tag" content="grunt">
-	<meta property="article:tag" content="gruntjs">
-	<meta property="article:tag" content="gulp">
-	<meta property="article:tag" content="gulpjs">
-	<meta property="article:tag" content="broccoli">
 	<meta property="article:tag" content="broccolijs">
+	<meta property="article:tag" content="broccoli">
+	<meta property="article:tag" content="broccoli js">
 	<meta property="article:tag" content="build automation">
 	<meta property="article:tag" content="build tool">
-	<meta property="article:tag" content="task runner">
 	<!-- RSS feed -->
 	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
 	<!-- Stylesheets -->
@@ -167,42 +164,26 @@ and what their limitations are.">
 				}(document, 'script', 'twitter-wjs');
 			</script>
 		</section>
-		<h1 id="a-tour-of-node-building-tools">A tour of Node building tools</h1>
-		<p>In this series of articles, we&#39;ll explore popular Node based tools for building web applications. Although <code class="nohighlight">npm</code> itself can
-			be used for build automation (see <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">&quot;How to use npm as a build tool&quot;</a>), we
-			will focus on specialised npm packages: <code class="nohighlight">grunt</code>, <code class="nohighlight">gulp</code> and <code class="nohighlight">broccoli</code>.
-			We will try to understand what problems they solve, how to use them and what their limitations are.</p>
-		<p>Those tools share a few traits in common:</p>
-		<ul>
-			<li>They are npm packages exposing an API</li>
-			<li>A build file needs to be added to your project <code class="nohighlight">Gruntfile.js</code>, <code class="nohighlight">gulpfile.js</code>, <code class="nohighlight">brocfile.js</code>...</li>
-			<li>Plugins (npm packages) wrapping well-known npm packages (uglifyjs, jshint, less, etc...) need to be installed to perform specific tasks</li>
-		</ul>
-		<h2 id="building-with-grunt">Building with Grunt</h2>
-		<ul>
-			<li><a href="/posts/2015/04/18/building-with-grunt-part-1/">Part 1</a></li>
-			<li><a href="/posts/2015/04/22/building-with-grunt-part-2-caveats/">Part 2: caveats</a></li>
-		</ul>
-		<h2 id="building-with-gulp-3-and-gulp-4">Building with Gulp 3 and Gulp 4</h2>
-		<p>Gulp 4 is not released yet, in the mean time you can install it following these instructions: <a href="/posts/2015/05/01/how-to-install-gulp-4/">Install Gulp 4</a></p>
-		<ul>
-			<li><a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/">Part 1: examples</a></li>
-			<li><a href="/posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/">Part 2: Gulp&#39;s anatomy</a></li>
-			<li><a href="/posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/">Part 3: writing transformers</a></li>
-			<li><a href="/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/">Part 4: incremental builds</a></li>
-			<li><a href="/posts/2015/05/05/building-with-gulp-part-5-caveats/">Part 5: caveats</a></li>
-		</ul>
-		<h2 id="building-with-brocooli">Building with Brocooli</h2>
-		<ul>
-			<li><a href="posts/2015/07/11/building-with-broccoli-part-1-presentation/">Part 1: introduction</a></li>
-		</ul>
-		<h2 id="recommended-articles-on-the-web">Recommended articles on the web</h2>
-		<ul>
-			<li><a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">How to use npm as a build tool</a></li>
-			<li><a href="http://scm.io/blog/hack/2014/07/why-gulp-might-not-be-the-answer/">Why gulp might not be the answer</a></li>
-		</ul>
-		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools.md">Github!</a></p>
-		<section class="prev-next-links"><a href="posts/2015/04/18/building-with-grunt-part-1/" class="next"><span>Building with Grunt (Part 1)</span> <span class="fa fa-chevron-right"></span></a></section>
+		<h1 id="building-with-broccoli-part-1-introduction-">Building with Broccoli (Part 1: Introduction)</h1>
+		<h2 id="what-is-broccoli-">What is Broccoli?</h2>
+		<p><a href="http://broccolijs.com/">Broccoli</a> was first released (beta) in February 2014. Broccoli is a post-Grunt build tool and part of a new breed of Node based
+			build tools: Broccoli is not a task runner but is a <strong>dedicated build tool</strong>. It makes the asumption that you have all source files in a directory
+			(which can contain sub-directories) and that you want to build those files into a <em>build</em> directory of your choice.</p>
+		<p>With Broccoli, you only have to specified the varioius steps you need to go from your source directory to your build directory: it will automatically take care
+			of cleaning your <em>build</em> directory, watching your <em>source</em> directory and perform incremental builds. Although you cannot run a specific task / operation
+			independently, it provides great confort by not having to define how to build <em>and</em> rebuild.</p>
+		<p>Broccoli has gained popularity amongst the Ember community by being included in <a href="http://www.ember-cli.com/">ember-cli</a> and will get even more wind in
+			its sails with the probable backing of <a href="https://docs.google.com/document/d/150lerb1LmNLuau_a_EznPV1I1UHMTbEl61t4hZ7ZpS0/mobilebasic">Angular 2</a>.</p>
+		<h2
+		id="trees">Trees</h2>
+			<p>Like Gulp, Broccoli seeks to reduce file I/O operations and to compose build operations, which we have seen is a major caveat of <a href="/posts/2015/04/22/building-with-grunt-part-2-caveats/">Grunt</a>.
+				Like Gulp, Broccoli uses memory to speed up and compose operations. Gulp uses vinyl objects and streams for describing sources, while Broccoli uses <strong>trees</strong>				and simply pass them from module to module: not using streams reduces complexity. Trees contain files and subdirectories and the first tree Broccoli will create
+				is a representation of your <em>source</em> directory.</p>
+			<p>Each broccoli plugin receives a tree and outputs a new tree, Broccoli will pass around / merge trees until all operations have been performed. The final tree
+				will be written to your <em>build</em> directory. In a way, this is simply a <strong>map-reduce</strong> operation from <em>source</em> to <em>build</em>.</p>
+			<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/tour-of-node-build-tools-broccoli-1.md">Github!</a></p>
+			<section
+			class="prev-next-links"><a href="posts/2015/05/05/building-with-gulp-part-5-caveats/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Gulp: Caveats</span></a></section>
 	</article>
 	<footer>
 		<!-- <div class="about">About the author</div> -->
