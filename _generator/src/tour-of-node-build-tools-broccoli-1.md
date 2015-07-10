@@ -5,7 +5,7 @@ draft: false
 date: 2015-07-10 23:00:00
 author: Thomas Roch
 metaTags: node,nodejs,javascript,broccolijs,broccoli,broccoli js,build automation,build tool
-tags: javascript,nodejs,build automation,broccoli,broccoli js
+tags: javascript,nodejs,build automation,broccolijs
 image: https://github.com/broccolijs/broccoli/blob/master/logo/broccoli-logo.generated.png
 ---
 
