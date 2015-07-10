@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base href="/">
+	<title>Router5: a new HTML5 router | React and be thankful</title>
+	<meta name="description" content="I imagine a lot of developers who will see for the first time router5 will ask themselves the following question:is it yet another router? is it a&hellip;">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Router5: a new HTML5 router">
+	<meta name="twitter:description" content="I imagine a lot of developers who will see for the first time router5 will ask themselves the following question:is it yet another router? is it any good? Why oh why do people keep writing ne&hellip;">
+	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/router5/router5.github.io/master/logo/r5_128.png">
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Router5: a new HTML5 router">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router">
+	<meta property="og:description" content="I imagine a lot of developers who will see for the first time router5 will ask themselves the following question:is it yet another router? is it any good? Why oh why do people keep writing new routers all the time?">
+	<meta property="og:image" content="https://raw.githubusercontent.com/router5/router5.github.io/master/logo/r5_128.png">
+	<!-- Article meta data -->
+	<meta property="article:published_time" content="2015-07-11T00:00:00.000Z">
+	<meta property="article:modified_time" content="2015-07-10T22:54:57.000Z">
+	<meta property="article:tag" content="router">
+	<meta property="article:tag" content="html5">
+	<meta property="article:tag" content="nested">
+	<meta property="article:tag" content="routes">
+	<meta property="article:tag" content="path">
+	<meta property="article:tag" content="tree">
+	<meta property="article:tag" content="component">
+	<meta property="article:tag" content="reactive">
+	<meta property="article:tag" content="react">
+	<meta property="article:tag" content="framework-agnostic">
+	<!-- RSS feed -->
+	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="assets/app.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
+		<section>
+			<input id="searchInput">
+			<div id="searchResults"></div>
+			<button type="button" class="circled-icon" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<!--
+
+     --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
+	</header>
+	<script></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			function renderSearchResults(results) {
+				searchResults.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResults.innerHTML = "";
+				results = results
+					.map(function(res) {
+						return articles[res.ref];
+					}).filter(function(article) {
+						return article !== undefined && location.pathname.indexOf(article.path) === -1;
+					});
+				if (results.length) {
+					results.forEach(function(article) {
+						searchResults.appendChild(renderSearchResult(article));
+					});
+					searchResults.classList.remove('hidden');
+				} else {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				}
+			}
+
+			function renderSearchResult(article) {
+				var link = document.createElement('a');
+				link.href = article.path;
+				link.appendChild(document.createTextNode(article.title));
+				return link;
+			}
+			var searchResults = document.getElementById('searchResults');
+			var searchInput = document.getElementById('searchInput');
+			var lunrIndex;
+			var articles;
+
+			function getLunrIndex() {
+				superagent
+					.get('/searchIndex.json')
+					.end(function(err, res) {
+						if (!err) {
+							lunrIndex = lunr.Index.load(res.body);
+						}
+					});
+			}
+
+			function getArticles() {
+				superagent
+					.get('/articles.json')
+					.end(function(err, res) {
+						if (!err) {
+							articles = res.body;
+						}
+					});
+			}
+
+			function hideSearchInput(evt) {
+				if (evt && evt.keyCode && evt.keyCode !== 27) return;
+				if (evt && (evt.target === searchButton || searchButton.contains(evt.target) || (evt.target === searchInput && evt.keyCode !== 27))) return;
+				searchInput.classList.remove('revealed');
+				searchResults.classList.add('hidden');
+				searchResults.innerHTML = "";
+				searchInput.removeEventListener('input', onSearchInput);
+				window.removeEventListener('click', hideSearchInput);
+				window.removeEventListener('scroll', hideSearchInput);
+				window.removeEventListener('keydown', hideSearchInput);
+				searchInput.removeEventListener('keydown', hideSearchInput);
+				searchInput.value = '';
+			}
+
+			function showSearchInput() {
+				searchInput.classList.add('revealed');
+				if (!lunrIndex) getLunrIndex();
+				if (!articles) getArticles();
+				searchInput.addEventListener('input', onSearchInput, false);
+				window.addEventListener('click', hideSearchInput, false);
+				window.addEventListener('scroll', hideSearchInput, false);
+				window.addEventListener('keydown', hideSearchInput, false);
+				searchInput.addEventListener('keydown', hideSearchInput, false);
+				searchInput.focus();
+			}
+
+			function onSearchInput(evt) {
+				if (evt.target.value.length < 2) {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				} else if (lunrIndex && articles) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
+				}
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (!searchInput.classList.contains('revealed')) showSearchInput();
+				else hideSearchInput();
+			}, false);
+			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
+			window.addEventListener('scroll', function(evt) {
+				if (window.scrollY > headerPadding / 2) document.body.classList.add('scrolled');
+				else document.body.classList.remove('scrolled');
+			}, false);
+		});
+	</script>
+	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
+		<h1 id="router5-a-new-html5-router">Router5: a new HTML5 router</h1>
+		<p>I imagine a lot of developers who will see for the first time <a href="http://router5.github.io">router5</a> will ask themselves the following question: is it
+			yet another router? is it any good? Why oh why do people keep writing new routers all the time?</p>
+		<p>It is not always easy to see the potential of something straight away, or understand the motivations behind. I therefore decided to try to tell you more about
+			router5, why I decided to develop an entire new routing solution, and what problems it tries to solve.</p>
+		<h2 id="being-reactive">Being reactive</h2>
+		<p>Observable patterns and functional reactive programming are becoming more and more popular. So I started to use React. Before React, I have heavily used Angular.
+			I still do, and I&#39;ll probably continue to do so with Angular2. Coming from Angular, I started to look for a routing solution in React and used the most popular
+			one: <a href="https://github.com/rackt/react-router">react-router</a>. React-router is a great tool, and it is easy to use: like in <a href="https://github.com/angular-ui/ui-router">ui-router</a>			or ngRoute, I can simply tell it what component / view to render for each route.</p>
+		<p>I became increasingly keen on using more observables and observers in my application, testing Flux patterns. Very soon, I found my application disjointed: using
+			nice observable patterns for data with sideways data loading, but giving away control on routing.</p>
+		<p>I realised that in order to treat route changes like data changes, I would need a router which would favour <strong>convention over configuration</strong>.</p>
+		<h2
+		id="existing-routers-are-black-boxes">Existing routers are black boxes</h2>
+			<p>The most popular routers those days are tied to frameworks (or libraries) and are fairly large pieces of software, tightly coupled together. Angular2 and Aurelia,
+				for example, include their own routing solution with exciting new functionalities: activation / deactivation, use of pipelines, etc...</p>
+			<p>Routers in Angular1, Angular2, Aurelia, Ember, React... have all something in common: they implement everything from path recognition to navigation and history
+				management. They all share similar concepts or technical hurdles, but share very little code or conventions.</p>
+			<h2 id="making-the-same-mistakes-">Making the same mistakes?</h2>
+			<p>I came across <a href="https://github.com/pillarjs/routington">routington</a> thanks to the late <a href="http://dailyjs.com/">DailyJS</a>. It is a trie-based
+				URL router: it organises URLs in a tree. The concept is great, and I thought it could be enhanced by organising named routes in a tree rather than URL segments.
+				That way, every branch of a named routes tree is a valid route. From an application point of view, it also means it is more maintainable: you reference routes
+				by name rather than URL.</p>
+			<blockquote>
+				<p>Using a tree makes building and matching paths easy. It also goes hand in hand with a component tree. If one can do sideways data loading, why not do sideways
+					route loading, or compose the two?</p>
+			</blockquote>
+			<p>From routington came <a href="https://github.com/troch/router5">route-node</a>. I then needed to use a URL parsing library. I looked at <a href="https://github.com/rcs/route-parser">route-parser</a>,
+				<a href="https://github.com/snd/url-pattern">url-pattern</a> and <a href="https://github.com/pillarjs/path-to-regexp">path-to-regexp</a>. Having routes in a
+				tree, I needed a library which could match URLs fully or partially (going down the tree until a match is found), I also needed to generate URLs by passing parameters.</p>
+			<p>None of the libraries mentioned could do all of that, so I wrote <a href="https://github.com/troch/path-parser">path-parser</a>.</p>
+			<p><img src="https://imgs.xkcd.com/comics/standards.png" alt="Standards"></p>
+			<h2 id="router5-framework-agnostic-and-reactive">router5: framework-agnostic and reactive</h2>
+			<p><em>router5</em> is built on tope of route-node and path-parser. It delegates route management and route matching / building and focus on navigation, history
+				and triggering listeners. Its strength comes from the three different types of listeners it can register:</p>
+			<ul>
+				<li>Listeners triggered for every route change</li>
+				<li>Listeners listening to a specific route</li>
+				<li>Listeners being triggered on the lowest common node between the previous and the current route: this listener is aimed at minimizing an application re-render
+					on a route change.</li>
+			</ul>
+			<p><img src="https://raw.githubusercontent.com/router5/router5.github.io/master/img/deactivation-activation-path.png" alt="Navigation from &#39;users.view&#39; to &#39;orders.completed&#39;"></p>
+			<p>When navigation from <em>users.view</em> to <em>orders.completed</em>:</p>
+			<ul>
+				<li>&#x2713; <code class="nohighlight">.addListener(fn)</code> will be called</li>
+				<li>&#x2713; <code class="nohighlight">.addNodeListener(&#39;&#39;, fn)</code> will be called</li>
+				<li>&#x2713; <code class="nohighlight">.addRouteListener(&#39;orders.completed&#39;, fn)</code> will be called</li>
+			</ul>
+			<p><img src="https://raw.githubusercontent.com/router5/router5.github.io/master/img/deactivation-activation-path-2.png" alt="Navigation from &#39;orders.completed&#39; to &#39;orders.pending&#39;"></p>
+			<p>When navigation from orders.pending<em>to _orders.pending</em>:</p>
+			<ul>
+				<li>&#x2713; <code class="nohighlight">.addListener(fn)</code> will be called</li>
+				<li>&#x2713; <code class="nohighlight">.addNodeListener(&#39;orders&#39;, fn)</code> will be called</li>
+				<li>&#x2713; <code class="nohighlight">.addRouteListener(&#39;orders.pending&#39;, fn)</code> will be called</li>
+			</ul>
+			<h2 id="links">Links</h2>
+			<ul>
+				<li><a href="http://router5.github.io">router5 on Github</a></li>
+				<li><a href="http://router5.github.io">router5 website</a></li>
+				<li><a href="http://router5.github.io/docs/with-react.html">Example with React</a></li>
+				<li><a href="http://router5.github.io/docs/with-deku.html">Example with Deku</a></li>
+			</ul>
+			<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/router5-a-new-html5-router.md">Github!</a></p>
+			<section
+			class="prev-next-links"><a href="posts/2015/07/11/building-with-broccoli-part-1-introduction/" class="prev"><span class="fa fa-chevron-left"></span> <span>Building with Broccoli (Part 1: Introduction)</span></a></section>
+	</article>
+	<footer>
+		<!-- <div class="about">About the author</div> -->
+		<section class="contact-links"><a class="circled-icon" href="https://github.com/troch" target="_blank" aria-label="Github (troch)" title="Github (troch)"><i class="fa fa-github"></i></a>
+			<a
+			class="circled-icon" href="https://uk.linkedin.com/in/thomasroch" target="_blank" aria-label="Linkedin (Thomas Roch)" title="Linkedin (Thomas Roch)"><i class="fa fa-linkedin"></i></a>
+				<a class="circled-icon" href="https://twitter.com/tcroch" target="_blank" aria-label="Twitter (tcroch)" title="Twitter (tcroch)"><i class="fa fa-twitter"></i></a> <a class="circled-icon" href="https://stackoverflow.com/users/3114505/thomas-roch" target="_blank" aria-label="Stackoverflow (Thomas Roch)"
+				title="Stackoverflow (Thomas Roch)"><i class="fa fa-stack-overflow"></i></a> <a class="circled-icon" href="http://www.slideshare.net/ThomasRoch" target="_blank"
+				aria-label="SlideShare (Thomas Roch)" title="SlideShare (Thomas Roch)"><i class="fa fa-slideshare"></i></a></section>
+		<section class="info">&copy; Thomas Roch 2015. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
+	</footer>
+	<!-- Script files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js"></script>
+	<!-- Scripts -->
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<!-- Analytics -->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-61970524-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

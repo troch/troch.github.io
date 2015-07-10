@@ -440,6 +440,11 @@ article.main p {
   text-align: justify;
   text-indent: 1rem;
 }
+main img,
+article.main img {
+  display: block;
+  margin: 0 auto;
+}
 main p code,
 article.main p code,
 main ul code,

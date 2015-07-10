@@ -19,6 +19,9 @@
 			"posts/2015/05/01/how-to-install-gulp-4/index.html": ["4", "automation,build", "automation,gulpjs,increment", "build", "gulp", "instal",
 				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner,gulp", "tool,streams,task"
 			],
+			"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": ["agnost", "end", "html5", "javascript,router,html5,front", "new", "router",
+				"router,html5,nested,routes,path,tree,component,reactive,react,framework", "router5"
+			],
 			"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": ["1", "automation,broccolij", "automation,build", "broccoli", "build", "introduct",
 				"javascript,nodejs,build", "js,build", "node,nodejs,javascript,broccolijs,broccoli,broccoli", "part", "tool"
 			],
@@ -38,18 +41,18 @@
 				"fs,npm,gulp", "gulp", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "stream", "stream,map",
 				"tool,streams,task", "transform", "write"
 			],
+			"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": ["automation,build", "automation,gulpj", "build", "caveat", "gulp",
+				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner", "tool,streams,task"
+			],
 			"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": ["4", "4,increment", "automation,build", "automation,gulpjs,increment",
 				"build", "fs,npm,gulp", "gulp", "increment", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner,vinyl,vinyl",
 				"tool,streams,task"
-			],
-			"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": ["automation,build", "automation,gulpj", "build", "caveat", "gulp",
-				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner", "tool,streams,task"
 			],
 			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["autom", "automation,build", "build", "javascript,nodejs,build", "node",
 				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
 			]
 		},
-		"length": 10
+		"length": 11
 	},
 	"tokenStore": {
 		"root": {
@@ -242,13 +245,13 @@
 																					"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																					"tf": 0.625
 																				},
-																				"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																					"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
-																					"tf": 0.7142857142857142
-																				},
 																				"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 																					"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 																					"tf": 1.25
+																				},
+																				"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
+																					"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
+																					"tf": 0.7142857142857142
 																				},
 																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -397,6 +400,26 @@
 						}
 					}
 				},
+				"g": {
+					"docs": {},
+					"n": {
+						"docs": {},
+						"o": {
+							"docs": {},
+							"s": {
+								"docs": {},
+								"t": {
+									"docs": {
+										"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+											"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+											"tf": 2.5
+										}
+									}
+								}
+							}
+						}
+					}
+				},
 				"n": {
 					"docs": {},
 					"a": {
@@ -459,13 +482,13 @@
 										"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 										"tf": 1.25
 									},
-									"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
-										"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
-										"tf": 8.047619047619047
-									},
 									"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 										"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 										"tf": 3.333333333333333
+									},
+									"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
+										"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
+										"tf": 8.047619047619047
 									},
 									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -527,13 +550,13 @@
 									"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 									"tf": 1.25
 								},
-								"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
-									"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
-									"tf": 2
-								},
 								"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 									"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 									"tf": 3.333333333333333
+								},
+								"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
+									"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
+									"tf": 2
 								}
 							},
 							"'": {
@@ -718,13 +741,13 @@
 																												"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																												"tf": 5
 																											},
-																											"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																												"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
-																												"tf": 3.333333333333333
-																											},
 																											"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 																												"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 																												"tf": 5
+																											},
+																											"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
+																												"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
+																												"tf": 3.333333333333333
 																											},
 																											"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																												"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -732,6 +755,65 @@
 																											}
 																										}
 																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"r": {
+															"docs": {},
+															"o": {
+																"docs": {},
+																"u": {
+																	"docs": {},
+																	"t": {
+																		"docs": {},
+																		"e": {
+																			"docs": {},
+																			"r": {
+																				"docs": {},
+																				",": {
+																					"docs": {},
+																					"h": {
+																						"docs": {},
+																						"t": {
+																							"docs": {},
+																							"m": {
+																								"docs": {},
+																								"l": {
+																									"5": {
+																										"docs": {},
+																										",": {
+																											"docs": {},
+																											"f": {
+																												"docs": {},
+																												"r": {
+																													"docs": {},
+																													"o": {
+																														"docs": {},
+																														"n": {
+																															"docs": {},
+																															"t": {
+																																"docs": {
+																																	"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+																																		"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+																																		"tf": 5
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									},
+																									"docs": {}
 																								}
 																							}
 																						}
@@ -881,13 +963,13 @@
 																																													"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																																													"tf": 0.625
 																																												},
-																																												"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																																													"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
-																																													"tf": 0.7142857142857142
-																																												},
 																																												"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 																																													"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 																																													"tf": 1.25
+																																												},
+																																												"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
+																																													"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
+																																													"tf": 0.7142857142857142
 																																												}
 																																											}
 																																										}
@@ -1196,6 +1278,17 @@
 							}
 						}
 					}
+				},
+				"e": {
+					"docs": {},
+					"w": {
+						"docs": {
+							"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+								"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+								"tf": 2.5
+							}
+						}
+					}
 				}
 			},
 			"r": {
@@ -1301,6 +1394,234 @@
 							}
 						}
 					}
+				},
+				"o": {
+					"docs": {},
+					"u": {
+						"docs": {},
+						"t": {
+							"docs": {},
+							"e": {
+								"docs": {},
+								"r": {
+									"5": {
+										"docs": {
+											"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+												"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+												"tf": 2.5
+											}
+										}
+									},
+									"docs": {
+										"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+											"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+											"tf": 2.5
+										}
+									},
+									",": {
+										"docs": {},
+										"h": {
+											"docs": {},
+											"t": {
+												"docs": {},
+												"m": {
+													"docs": {},
+													"l": {
+														"5": {
+															"docs": {},
+															",": {
+																"docs": {},
+																"n": {
+																	"docs": {},
+																	"e": {
+																		"docs": {},
+																		"s": {
+																			"docs": {},
+																			"t": {
+																				"docs": {},
+																				"e": {
+																					"docs": {},
+																					"d": {
+																						"docs": {},
+																						",": {
+																							"docs": {},
+																							"r": {
+																								"docs": {},
+																								"o": {
+																									"docs": {},
+																									"u": {
+																										"docs": {},
+																										"t": {
+																											"docs": {},
+																											"e": {
+																												"docs": {},
+																												"s": {
+																													"docs": {},
+																													",": {
+																														"docs": {},
+																														"p": {
+																															"docs": {},
+																															"a": {
+																																"docs": {},
+																																"t": {
+																																	"docs": {},
+																																	"h": {
+																																		"docs": {},
+																																		",": {
+																																			"docs": {},
+																																			"t": {
+																																				"docs": {},
+																																				"r": {
+																																					"docs": {},
+																																					"e": {
+																																						"docs": {},
+																																						"e": {
+																																							"docs": {},
+																																							",": {
+																																								"docs": {},
+																																								"c": {
+																																									"docs": {},
+																																									"o": {
+																																										"docs": {},
+																																										"m": {
+																																											"docs": {},
+																																											"p": {
+																																												"docs": {},
+																																												"o": {
+																																													"docs": {},
+																																													"n": {
+																																														"docs": {},
+																																														"e": {
+																																															"docs": {},
+																																															"n": {
+																																																"docs": {},
+																																																"t": {
+																																																	"docs": {},
+																																																	",": {
+																																																		"docs": {},
+																																																		"r": {
+																																																			"docs": {},
+																																																			"e": {
+																																																				"docs": {},
+																																																				"a": {
+																																																					"docs": {},
+																																																					"c": {
+																																																						"docs": {},
+																																																						"t": {
+																																																							"docs": {},
+																																																							"i": {
+																																																								"docs": {},
+																																																								"v": {
+																																																									"docs": {},
+																																																									"e": {
+																																																										"docs": {},
+																																																										",": {
+																																																											"docs": {},
+																																																											"r": {
+																																																												"docs": {},
+																																																												"e": {
+																																																													"docs": {},
+																																																													"a": {
+																																																														"docs": {},
+																																																														"c": {
+																																																															"docs": {},
+																																																															"t": {
+																																																																"docs": {},
+																																																																",": {
+																																																																	"docs": {},
+																																																																	"f": {
+																																																																		"docs": {},
+																																																																		"r": {
+																																																																			"docs": {},
+																																																																			"a": {
+																																																																				"docs": {},
+																																																																				"m": {
+																																																																					"docs": {},
+																																																																					"e": {
+																																																																						"docs": {},
+																																																																						"w": {
+																																																																							"docs": {},
+																																																																							"o": {
+																																																																								"docs": {},
+																																																																								"r": {
+																																																																									"docs": {},
+																																																																									"k": {
+																																																																										"docs": {
+																																																																											"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+																																																																												"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+																																																																												"tf": 2.5
+																																																																											}
+																																																																										}
+																																																																									}
+																																																																								}
+																																																																							}
+																																																																						}
+																																																																					}
+																																																																				}
+																																																																			}
+																																																																		}
+																																																																	}
+																																																																}
+																																																															}
+																																																														}
+																																																													}
+																																																												}
+																																																											}
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"docs": {}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"t": {
@@ -1362,13 +1683,13 @@
 																						"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																						"tf": 0.625
 																					},
-																					"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
-																						"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
-																						"tf": 0.7142857142857142
-																					},
 																					"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 																						"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 																						"tf": 1.25
+																					},
+																					"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
+																						"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
+																						"tf": 0.7142857142857142
 																					}
 																				}
 																			}
@@ -1453,6 +1774,60 @@
 					}
 				}
 			},
+			"e": {
+				"docs": {},
+				"n": {
+					"docs": {},
+					"d": {
+						"docs": {
+							"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+								"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+								"tf": 5
+							}
+						}
+					}
+				},
+				"x": {
+					"docs": {},
+					"a": {
+						"docs": {},
+						"m": {
+							"docs": {},
+							"p": {
+								"docs": {},
+								"l": {
+									"docs": {
+										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+											"tf": 1.4285714285714284
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"h": {
+				"docs": {},
+				"t": {
+					"docs": {},
+					"m": {
+						"docs": {},
+						"l": {
+							"5": {
+								"docs": {
+									"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+										"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+										"tf": 2.5
+									}
+								}
+							},
+							"docs": {}
+						}
+					}
+				}
+			},
 			"p": {
 				"docs": {},
 				"a": {
@@ -1509,29 +1884,6 @@
 										"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
 											"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
 											"tf": 3.333333333333333
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"e": {
-				"docs": {},
-				"x": {
-					"docs": {},
-					"a": {
-						"docs": {},
-						"m": {
-							"docs": {},
-							"p": {
-								"docs": {},
-								"l": {
-									"docs": {
-										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
-											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-											"tf": 1.4285714285714284
 										}
 									}
 								}
@@ -1647,14 +1999,15 @@
 				}
 			}
 		},
-		"length": 118
+		"length": 126
 	},
-	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "anatomi", "autom", "automation,broccolij", "automation,build", "automation,gruntj",
-		"automation,gulpj", "automation,gulpjs,increment", "broccoli", "build", "caveat", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "increment", "instal",
-		"introduct", "javascript,nodejs,build", "js,build", "node", "node,nodejs,javascript,broccolijs,broccoli,broccoli",
-		"node,nodejs,javascript,grunt,gruntjs,build", "node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build",
-		"node,nodejs,javascript,gulp,gulpjs,build", "part", "runner", "runner,gulp", "runner,vinyl,vinyl", "stream", "stream,map", "tool", "tool,streams,task",
-		"tool,task", "tour", "transform", "write"
+	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "agnost", "anatomi", "autom", "automation,broccolij", "automation,build", "automation,gruntj",
+		"automation,gulpj", "automation,gulpjs,increment", "broccoli", "build", "caveat", "end", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "html5",
+		"increment", "instal", "introduct", "javascript,nodejs,build", "javascript,router,html5,front", "js,build", "new", "node",
+		"node,nodejs,javascript,broccolijs,broccoli,broccoli", "node,nodejs,javascript,grunt,gruntjs,build",
+		"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "router",
+		"router,html5,nested,routes,path,tree,component,reactive,react,framework", "router5", "runner", "runner,gulp", "runner,vinyl,vinyl", "stream", "stream,map",
+		"tool", "tool,streams,task", "tool,task", "tour", "transform", "write"
 	],
 	"pipeline": ["trimmer", "stopWordFilter", "stemmer"]
 }
