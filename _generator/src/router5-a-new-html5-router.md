@@ -85,7 +85,7 @@ When navigation from _users.view_ to _orders.completed_:
 
 ![Navigation from 'orders.completed' to 'orders.pending'](https://raw.githubusercontent.com/router5/router5.github.io/master/img/deactivation-activation-path-2.png)
 
-When navigation from orders.pending_ to _orders.pending_:
+When navigation from _orders.pending_ to _orders.pending_:
 
 - &#x2713; `.addListener(fn)` will be called
 - &#x2713; `.addNodeListener('orders', fn)` will be called

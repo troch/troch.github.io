@@ -49,14 +49,14 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>http://blog.reactandbethankful.com/posts/2015/05/05/building-with-gulp-part-5-caveats</loc>
-    <lastmod>2015-05-05</lastmod>
+    <loc>http://blog.reactandbethankful.com/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds</loc>
+    <lastmod>2015-05-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>http://blog.reactandbethankful.com/posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds</loc>
-    <lastmod>2015-05-01</lastmod>
+    <loc>http://blog.reactandbethankful.com/posts/2015/05/05/building-with-gulp-part-5-caveats</loc>
+    <lastmod>2015-05-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>

@@ -41,12 +41,12 @@
 				"fs,npm,gulp", "gulp", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "runner,vinyl,vinyl", "stream", "stream,map",
 				"tool,streams,task", "transform", "write"
 			],
-			"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": ["automation,build", "automation,gulpj", "build", "caveat", "gulp",
-				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner", "tool,streams,task"
-			],
 			"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": ["4", "4,increment", "automation,build", "automation,gulpjs,increment",
 				"build", "fs,npm,gulp", "gulp", "increment", "javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner,vinyl,vinyl",
 				"tool,streams,task"
+			],
+			"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": ["automation,build", "automation,gulpj", "build", "caveat", "gulp",
+				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner", "tool,streams,task"
 			],
 			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["autom", "automation,build", "build", "javascript,nodejs,build", "node",
 				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
@@ -245,13 +245,13 @@
 																					"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																					"tf": 0.625
 																				},
-																				"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
-																					"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
-																					"tf": 1.25
-																				},
 																				"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
 																					"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
 																					"tf": 0.7142857142857142
+																				},
+																				"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
+																					"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
+																					"tf": 1.25
 																				},
 																				"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																					"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -482,13 +482,13 @@
 										"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 										"tf": 1.25
 									},
-									"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
-										"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
-										"tf": 3.333333333333333
-									},
 									"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
 										"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
 										"tf": 8.047619047619047
+									},
+									"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
+										"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
+										"tf": 3.333333333333333
 									},
 									"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 										"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -550,13 +550,13 @@
 									"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 									"tf": 1.25
 								},
-								"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
-									"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
-									"tf": 3.333333333333333
-								},
 								"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
 									"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
 									"tf": 2
+								},
+								"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
+									"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
+									"tf": 3.333333333333333
 								}
 							},
 							"'": {
@@ -741,13 +741,13 @@
 																												"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																												"tf": 5
 																											},
-																											"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
-																												"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
-																												"tf": 5
-																											},
 																											"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
 																												"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
 																												"tf": 3.333333333333333
+																											},
+																											"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
+																												"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
+																												"tf": 5
 																											},
 																											"posts/2015/04/18/tour-of-node-building-tools/index.html": {
 																												"ref": "posts/2015/04/18/tour-of-node-building-tools/index.html",
@@ -963,13 +963,13 @@
 																																													"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																																													"tf": 0.625
 																																												},
-																																												"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
-																																													"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
-																																													"tf": 1.25
-																																												},
 																																												"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
 																																													"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
 																																													"tf": 0.7142857142857142
+																																												},
+																																												"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
+																																													"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
+																																													"tf": 1.25
 																																												}
 																																											}
 																																										}
@@ -1683,13 +1683,13 @@
 																						"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
 																						"tf": 0.625
 																					},
-																					"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
-																						"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
-																						"tf": 1.25
-																					},
 																					"posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html": {
 																						"ref": "posts/2015/05/01/building-with-gulp-4-part-4-incremental-builds/index.html",
 																						"tf": 0.7142857142857142
+																					},
+																					"posts/2015/05/05/building-with-gulp-part-5-caveats/index.html": {
+																						"ref": "posts/2015/05/05/building-with-gulp-part-5-caveats/index.html",
+																						"tf": 1.25
 																					}
 																				}
 																			}
