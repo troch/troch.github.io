@@ -94,7 +94,7 @@ When navigation from _orders.completed_ to _orders.pending_:
 
 ## Links
 
-- [router5 on Github](http://router5.github.io)
+- [router5 on Github](https://github.com/router)
 - [router5 website](http://router5.github.io)
 - [Example with React](http://router5.github.io/docs/with-react.html)
 - [Example with Deku](http://router5.github.io/docs/with-deku.html)
