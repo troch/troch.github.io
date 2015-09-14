@@ -1,5 +1,5 @@
 {
-	"version": "0.5.8",
+	"version": "0.5.12",
 	"fields": [{
 		"name": "excerpts",
 		"boost": 1
@@ -50,9 +50,13 @@
 			],
 			"posts/2015/04/18/tour-of-node-building-tools/index.html": ["autom", "automation,build", "build", "javascript,nodejs,build", "node",
 				"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "runner", "tool", "tool,task", "tour"
+			],
+			"posts/2015/09/15/understanding-the-functional-revolution/index.html": ["applic", "end", "end,applications,funct", "flow,streams,promis", "front",
+				"function", "javascript,applications,funct", "program", "programming,flux,unidirectional,data", "programming,fp,frp,funct", "reactiv", "revolut",
+				"understand"
 			]
 		},
-		"length": 11
+		"length": 12
 	},
 	"tokenStore": {
 		"root": {
@@ -442,6 +446,26 @@
 							}
 						}
 					}
+				},
+				"p": {
+					"docs": {},
+					"p": {
+						"docs": {},
+						"l": {
+							"docs": {},
+							"i": {
+								"docs": {},
+								"c": {
+									"docs": {
+										"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+											"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+											"tf": 1.6666666666666665
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"b": {
@@ -814,6 +838,65 @@
 																										}
 																									},
 																									"docs": {}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"a": {
+															"docs": {},
+															"p": {
+																"docs": {},
+																"p": {
+																	"docs": {},
+																	"l": {
+																		"docs": {},
+																		"i": {
+																			"docs": {},
+																			"c": {
+																				"docs": {},
+																				"a": {
+																					"docs": {},
+																					"t": {
+																						"docs": {},
+																						"i": {
+																							"docs": {},
+																							"o": {
+																								"docs": {},
+																								"n": {
+																									"docs": {},
+																									"s": {
+																										"docs": {},
+																										",": {
+																											"docs": {},
+																											"f": {
+																												"docs": {},
+																												"u": {
+																													"docs": {},
+																													"n": {
+																														"docs": {},
+																														"c": {
+																															"docs": {},
+																															"t": {
+																																"docs": {
+																																	"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+																																		"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+																																		"tf": 5
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
 																								}
 																							}
 																						}
@@ -1622,6 +1705,49 @@
 							}
 						}
 					}
+				},
+				"e": {
+					"docs": {},
+					"a": {
+						"docs": {},
+						"c": {
+							"docs": {},
+							"t": {
+								"docs": {},
+								"i": {
+									"docs": {},
+									"v": {
+										"docs": {
+											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+												"tf": 0.8333333333333333
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"v": {
+						"docs": {},
+						"o": {
+							"docs": {},
+							"l": {
+								"docs": {},
+								"u": {
+									"docs": {},
+									"t": {
+										"docs": {
+											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+												"tf": 1.6666666666666665
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"t": {
@@ -1783,6 +1909,72 @@
 							"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
 								"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
 								"tf": 5
+							},
+							"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+								"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+								"tf": 1.6666666666666665
+							}
+						},
+						",": {
+							"docs": {},
+							"a": {
+								"docs": {},
+								"p": {
+									"docs": {},
+									"p": {
+										"docs": {},
+										"l": {
+											"docs": {},
+											"i": {
+												"docs": {},
+												"c": {
+													"docs": {},
+													"a": {
+														"docs": {},
+														"t": {
+															"docs": {},
+															"i": {
+																"docs": {},
+																"o": {
+																	"docs": {},
+																	"n": {
+																		"docs": {},
+																		"s": {
+																			"docs": {},
+																			",": {
+																				"docs": {},
+																				"f": {
+																					"docs": {},
+																					"u": {
+																						"docs": {},
+																						"n": {
+																							"docs": {},
+																							"c": {
+																								"docs": {},
+																								"t": {
+																									"docs": {
+																										"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+																											"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+																											"tf": 0.8333333333333333
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
 							}
 						}
 					}
@@ -1863,6 +2055,159 @@
 							}
 						}
 					}
+				},
+				"r": {
+					"docs": {},
+					"o": {
+						"docs": {},
+						"g": {
+							"docs": {},
+							"r": {
+								"docs": {},
+								"a": {
+									"docs": {},
+									"m": {
+										"docs": {
+											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+												"tf": 5
+											}
+										},
+										"m": {
+											"docs": {},
+											"i": {
+												"docs": {},
+												"n": {
+													"docs": {},
+													"g": {
+														"docs": {},
+														",": {
+															"docs": {},
+															"f": {
+																"docs": {},
+																"l": {
+																	"docs": {},
+																	"u": {
+																		"docs": {},
+																		"x": {
+																			"docs": {},
+																			",": {
+																				"docs": {},
+																				"u": {
+																					"docs": {},
+																					"n": {
+																						"docs": {},
+																						"i": {
+																							"docs": {},
+																							"d": {
+																								"docs": {},
+																								"i": {
+																									"docs": {},
+																									"r": {
+																										"docs": {},
+																										"e": {
+																											"docs": {},
+																											"c": {
+																												"docs": {},
+																												"t": {
+																													"docs": {},
+																													"i": {
+																														"docs": {},
+																														"o": {
+																															"docs": {},
+																															"n": {
+																																"docs": {},
+																																"a": {
+																																	"docs": {},
+																																	"l": {
+																																		"docs": {},
+																																		",": {
+																																			"docs": {},
+																																			"d": {
+																																				"docs": {},
+																																				"a": {
+																																					"docs": {},
+																																					"t": {
+																																						"docs": {},
+																																						"a": {
+																																							"docs": {
+																																								"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+																																									"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+																																									"tf": 0.8333333333333333
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																},
+																"p": {
+																	"docs": {},
+																	",": {
+																		"docs": {},
+																		"f": {
+																			"docs": {},
+																			"r": {
+																				"docs": {},
+																				"p": {
+																					"docs": {},
+																					",": {
+																						"docs": {},
+																						"f": {
+																							"docs": {},
+																							"u": {
+																								"docs": {},
+																								"n": {
+																									"docs": {},
+																									"c": {
+																										"docs": {},
+																										"t": {
+																											"docs": {
+																												"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+																													"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+																													"tf": 0.8333333333333333
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"c": {
@@ -1936,6 +2281,108 @@
 							}
 						}
 					}
+				},
+				"l": {
+					"docs": {},
+					"o": {
+						"docs": {},
+						"w": {
+							"docs": {},
+							",": {
+								"docs": {},
+								"s": {
+									"docs": {},
+									"t": {
+										"docs": {},
+										"r": {
+											"docs": {},
+											"e": {
+												"docs": {},
+												"a": {
+													"docs": {},
+													"m": {
+														"docs": {},
+														"s": {
+															"docs": {},
+															",": {
+																"docs": {},
+																"p": {
+																	"docs": {},
+																	"r": {
+																		"docs": {},
+																		"o": {
+																			"docs": {},
+																			"m": {
+																				"docs": {},
+																				"i": {
+																					"docs": {},
+																					"s": {
+																						"docs": {
+																							"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+																								"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+																								"tf": 0.8333333333333333
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"r": {
+					"docs": {},
+					"o": {
+						"docs": {},
+						"n": {
+							"docs": {},
+							"t": {
+								"docs": {
+									"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+										"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+										"tf": 2.5
+									}
+								}
+							}
+						}
+					}
+				},
+				"u": {
+					"docs": {},
+					"n": {
+						"docs": {},
+						"c": {
+							"docs": {},
+							"t": {
+								"docs": {},
+								"i": {
+									"docs": {},
+									"o": {
+										"docs": {},
+										"n": {
+											"docs": {
+												"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+													"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+													"tf": 1.6666666666666665
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"s": {
@@ -1997,17 +2444,54 @@
 						}
 					}
 				}
+			},
+			"u": {
+				"docs": {},
+				"n": {
+					"docs": {},
+					"d": {
+						"docs": {},
+						"e": {
+							"docs": {},
+							"r": {
+								"docs": {},
+								"s": {
+									"docs": {},
+									"t": {
+										"docs": {},
+										"a": {
+											"docs": {},
+											"n": {
+												"docs": {},
+												"d": {
+													"docs": {
+														"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+															"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+															"tf": 1.6666666666666665
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		},
-		"length": 126
+		"length": 139
 	},
-	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "agnost", "anatomi", "autom", "automation,broccolij", "automation,build", "automation,gruntj",
-		"automation,gulpj", "automation,gulpjs,increment", "broccoli", "build", "caveat", "end", "exampl", "fs,npm,gulp", "grunt", "gulp", "gulp'", "html5",
-		"increment", "instal", "introduct", "javascript,nodejs,build", "javascript,router,html5,front", "js,build", "new", "node",
+	"corpusTokens": ["1", "2", "3", "4", "4,event", "4,increment", "agnost", "anatomi", "applic", "autom", "automation,broccolij", "automation,build",
+		"automation,gruntj", "automation,gulpj", "automation,gulpjs,increment", "broccoli", "build", "caveat", "end", "end,applications,funct", "exampl",
+		"flow,streams,promis", "front", "fs,npm,gulp", "function", "grunt", "gulp", "gulp'", "html5", "increment", "instal", "introduct",
+		"javascript,applications,funct", "javascript,nodejs,build", "javascript,router,html5,front", "js,build", "new", "node",
 		"node,nodejs,javascript,broccolijs,broccoli,broccoli", "node,nodejs,javascript,grunt,gruntjs,build",
-		"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "router",
+		"node,nodejs,javascript,grunt,gruntjs,gulp,gulpjs,broccoli,broccolijs,build", "node,nodejs,javascript,gulp,gulpjs,build", "part", "program",
+		"programming,flux,unidirectional,data", "programming,fp,frp,funct", "reactiv", "revolut", "router",
 		"router,html5,nested,routes,path,tree,component,reactive,react,framework", "router5", "runner", "runner,gulp", "runner,vinyl,vinyl", "stream", "stream,map",
-		"tool", "tool,streams,task", "tool,task", "tour", "transform", "write"
+		"tool", "tool,streams,task", "tool,task", "tour", "transform", "understand", "write"
 	],
 	"pipeline": ["trimmer", "stopWordFilter", "stemmer"]
 }

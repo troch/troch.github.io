@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base href="/">
+	<title>Understanding the functional revolution in front-end applications | React and be thankful</title>
+	<meta name="description" content="Being a front-end developer can be overwhelming at times, and for many reasons: browsers are competing and adopting standards fairly quickly,stand&hellip;">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Understanding the functional revolution in front-end applications">
+	<meta name="twitter:description" content="Being a front-end developer can be overwhelming at times, and for many reasons: browsers are competing and adopting standards fairly quickly,standards themselves are ever changing and moving &hellip;">
+	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Understanding the functional revolution in front-end applications">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2015/09/15/understanding-the-functional-revolution">
+	<meta property="og:description" content="Being a front-end developer can be overwhelming at times, and for many reasons: browsers are competing and adopting standards fairly quickly,standards themselves are ever changing and moving fast. But also npm, Github and other tools make it very easy to write your own package / library / framework
+and to ship it. Therefore, competition is now very fierceful and, standards aside, a lot of new ideas and concepts have entered the UI and are
+spreading quickly.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
+	<!-- Article meta data -->
+	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
+	<meta property="article:modified_time" content="2015-09-14T23:39:19.730Z">
+	<meta property="article:tag" content="front-end">
+	<meta property="article:tag" content="applications">
+	<meta property="article:tag" content="functional programming">
+	<meta property="article:tag" content="fp">
+	<meta property="article:tag" content="frp">
+	<meta property="article:tag" content="functional reactive programming">
+	<meta property="article:tag" content="flux">
+	<meta property="article:tag" content="unidirectional">
+	<meta property="article:tag" content="data flow">
+	<meta property="article:tag" content="streams">
+	<meta property="article:tag" content="promises">
+	<!-- RSS feed -->
+	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="assets/app.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
+		<section>
+			<input id="searchInput">
+			<div id="searchResults"></div>
+			<button type="button" class="circled-icon" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<!--
+
+     --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
+	</header>
+	<script></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			function renderSearchResults(results) {
+				searchResults.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResults.innerHTML = "";
+				results = results
+					.map(function(res) {
+						return articles[res.ref];
+					}).filter(function(article) {
+						return article !== undefined && location.pathname.indexOf(article.path) === -1;
+					});
+				if (results.length) {
+					results.forEach(function(article) {
+						searchResults.appendChild(renderSearchResult(article));
+					});
+					searchResults.classList.remove('hidden');
+				} else {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				}
+			}
+
+			function renderSearchResult(article) {
+				var link = document.createElement('a');
+				link.href = article.path;
+				link.appendChild(document.createTextNode(article.title));
+				return link;
+			}
+			var searchResults = document.getElementById('searchResults');
+			var searchInput = document.getElementById('searchInput');
+			var lunrIndex;
+			var articles;
+
+			function getLunrIndex() {
+				superagent
+					.get('/searchIndex.json')
+					.end(function(err, res) {
+						if (!err) {
+							lunrIndex = lunr.Index.load(res.body);
+						}
+					});
+			}
+
+			function getArticles() {
+				superagent
+					.get('/articles.json')
+					.end(function(err, res) {
+						if (!err) {
+							articles = res.body;
+						}
+					});
+			}
+
+			function hideSearchInput(evt) {
+				if (evt && evt.keyCode && evt.keyCode !== 27) return;
+				if (evt && (evt.target === searchButton || searchButton.contains(evt.target) || (evt.target === searchInput && evt.keyCode !== 27))) return;
+				searchInput.classList.remove('revealed');
+				searchResults.classList.add('hidden');
+				searchResults.innerHTML = "";
+				searchInput.removeEventListener('input', onSearchInput);
+				window.removeEventListener('click', hideSearchInput);
+				window.removeEventListener('scroll', hideSearchInput);
+				window.removeEventListener('keydown', hideSearchInput);
+				searchInput.removeEventListener('keydown', hideSearchInput);
+				searchInput.value = '';
+			}
+
+			function showSearchInput() {
+				searchInput.classList.add('revealed');
+				if (!lunrIndex) getLunrIndex();
+				if (!articles) getArticles();
+				searchInput.addEventListener('input', onSearchInput, false);
+				window.addEventListener('click', hideSearchInput, false);
+				window.addEventListener('scroll', hideSearchInput, false);
+				window.addEventListener('keydown', hideSearchInput, false);
+				searchInput.addEventListener('keydown', hideSearchInput, false);
+				searchInput.focus();
+			}
+
+			function onSearchInput(evt) {
+				if (evt.target.value.length < 2) {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				} else if (lunrIndex && articles) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
+				}
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (!searchInput.classList.contains('revealed')) showSearchInput();
+				else hideSearchInput();
+			}, false);
+			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
+			window.addEventListener('scroll', function(evt) {
+				if (window.scrollY > headerPadding / 2) document.body.classList.add('scrolled');
+				else document.body.classList.remove('scrolled');
+			}, false);
+		});
+	</script>
+	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
+		<h1 id="understanding-the-functional-revolution-in-front-end-applications">Understanding the functional revolution in front-end applications</h1>
+		<p>Being a front-end developer can be overwhelming at times, and for many reasons: browsers are competing and adopting standards fairly quickly, standards themselves
+			are ever changing and moving fast. But also npm, Github and other tools make it very easy to write your own package / library / framework and to ship it. Therefore,
+			competition is now very fierceful and, standards aside, a lot of new ideas and concepts have entered the UI and are spreading quickly.</p>
+		<p>Today, the main web development trends are about innovations around functional programming. This is why I don&#39;t agree much about people calling for a moratorium
+			or a slower pace in &quot;pushing forward&quot;. Some technologies we see today could well have been developed many years ago, but at that time some of the paradigms
+			behind them were simply not mainstream enough. Requirements for front-end applications are also a lot more demanding today.</p>
+		<p>In this jungle, trying to find your way without a map will reduce your chances of success and will increase the likelihood of a burn-out. Instead, it is best to
+			master the basics and understand key concepts about the different paradigms fueling the web. With this article, I hope I will give you, if you need it, a better
+			understanding of functional programming and how it influences front-end applications evolution.</p>
+		<h2 id="functional-programming-at-the-language-level">Functional programming at the language level</h2>
+		<p>Functional programming is a style of programming which discourages the use of imperative programming. In practice that means:</p>
+		<ul>
+			<li>Functions are at the heart of it</li>
+			<li>Use of block statements (if, for, while...) should be limited in favour of functions</li>
+			<li>Data mutations should be avoided</li>
+		</ul>
+		<p>It turns out JavaScript has a lot to offer to help you writing your code in a more functional style, mainly because <strong>functions are first-class citizens</strong>			and are treated like any other variable: a function can be easily passed around, return a function, have functions as arguments, etc... And that is one of the
+			key of FP because it makes code composable.</p>
+		<h3 id="composability">Composability</h3>
+		<p>100% of developers use functional programming at some degree: we all wrap some of our code in functions to avoid repetitions and to help make it more readable.
+			We tend to instinctively break our code in small specialised units that we can use and re-use together: this is called <strong>composability</strong>.</p>
+		<p>Let see an example with validating a required string of at least 5 characters: we create <code class="nohighlight">a isRequired</code> and a <code class="nohighlight">isLongerThan</code>			functions, and compose them in a <code class="nohighlight">isValid</code> function. All of that without using <code class="nohighlight">if</code> or creating
+			additional variables (apart from the functions themselves).</p><pre><code class="javascript">function isRequired(val) {
+    return val !== undefined &amp;&amp; val !== null &amp;&amp; val !== &#39;&#39;
+}
+
+function isLongerThan(len, val) {
+    return val.length &gt; len
+}
+
+function isValid(val) {
+    return isRequired(val) &amp;&amp; isLongerThan(5, val);
+}
+
+isValid()          // =&gt; false
+isValid(null)      // =&gt; false
+isValid(&#39;&#39;)        // =&gt; false
+isValid(&#39;hello&#39;)   // =&gt; false
+isValid(&#39;bonjour&#39;) // =&gt; true
+</code></pre>
+		<h3 id="purity-and-high-order-functions">Purity and high-order functions</h3>
+		<p>There is a bit of jargon around functional programming, below are two important concepts:</p>
+		<ul>
+			<li><em>Purity</em>, or _pure functions_are functions which are free of side-effects and don&#39;t mutate their own arguments. Functions which are free of side-effects
+				are functions which don&#39;t access external variables or resources to produce their result. This increases <strong>predictablility</strong> and <strong>testability</strong>.</li>
+			<li><em>Higher-order functions</em> are functions which take another function as an argument and / or returns a function.</li>
+		</ul>
+		<p>JavScript is a friendly language for functional programming afficionados. It contains (thanks to ES5) a bunch of higher-order functions which can help write concise
+			code in a functional style.</p>
+		<p>Let me show you a brief example of a <strong>mapReduce</strong> operation: it first normalises an array (<em>map</em>), and adds up its values (<em>reduce</em>).</p><pre><code class="javascript">function sumArray(values) {
+    return values
+        .map(Number)
+        .reduce((total, value) =&gt; total + value);
+}
+
+sumArray([1, &#39;2&#39;, &#39;30&#39;]); // 33
+</code></pre>
+		<p><code class="nohighlight">map</code> and <code class="nohighlight">reduce</code> (can also be called <code class="nohighlight">fold</code>) are two well known
+			higher-order functions in FP. What is interesting to notice is that our initial array is never mutated. <code class="nohighlight">sumArray</code> is a pure function
+			which returns a value for any given array.</p>
+		<p>If at this point you feel you need to learn more about functional programming in JavaScript, I highly recommend <a href="https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">mpjme&#39;s youtube playlist about functional programming</a>.
+			It is straight to the point and also very pleasant to watch!</p>
+		<h3 id="are-functions-always-functional-">Are functions always functional?</h3>
+		<p>Functions are not always considered functional if they mutate some of their arguments, don&#39;t return a meaningful result, have side-effects, etc... For instance,
+			JavaScript can have two or more ways of doing the same thing with a functional and non functional way.</p>
+		<p>It is the case of <code class="nohighlight">push</code> and <code class="nohighlight">concat</code>. <code class="nohighlight">push</code> will add an element
+			to itself, and then return the added element. <code class="nohighlight">concat</code> will instead return a new array with the added element(s): this is called
+			<strong>immutability</strong>. Looking at the pseudo-code below, it is easy to see which one is the most advantageous.</p><pre><code class="javascript">function push(array, element) {
+    // Add new element to array
+    array.push(element);
+    return element;
+}
+
+function concat(array, elements) {
+    // Create new array with all values
+    return array.concat(elements);
+}
+</code></pre>
+		<p>An example:</p><pre><code class="javascript">let arr = [1, 2, 3];
+let addMore = true;
+
+// Adding elements:
+arr.push(4);
+arr.push(5);
+if (addMore) {
+    arr.push(6);
+    arr.push(7);
+}
+
+// Or the functional way
+arr = arr
+    .concat(4)
+    .concat(5)
+    .concat(addMore ? [6, 7] : []);
+</code></pre>
+		<h2 id="functional-programming-at-the-application-level">Functional programming at the application level</h2>
+		<p>So far we have talked about FP at the language level. We have seen functional programming can help structuring our code, can make it shorter and will overall make
+			things more predictable and therefore easier to test.</p>
+		<blockquote>
+			<p>When writing an application, a new dimension appears: <strong>time</strong>.</p>
+		</blockquote>
+		<p><strong>Asynchronicity</strong> can be hard if not dealt with the right tools. Fortunately for us functional programming can provide them. if you think hard about
+			it, what is the difference between calling a function <code class="nohighlight">a()</code> now or later? There is none, we only need to make sure our functions
+			are called at the right time: <strong>when the arguments we need are available</strong>.</p>
+		<p>There are a few ways to deal with asynchronous code. Callbacks are not an elegant way to do it, mainly because you cannot compose them nicely together unless you
+			use a control flow library. They also don&#39;t return a meaningful value, and create so called <em>pyramids of doom</em>.</p>
+		<p>Instead I will talk about two essential tools of today: <strong>promises</strong> and <strong>streams</strong>.</p>
+		<h3 id="promises">Promises</h3>
+		<p>If you are not familiar with promises, I encourage you reading more about them. In a nutshell, a promise is an object wrapping a future result. It is a nice way
+			to abstract asynchronous operations.</p>
+		<p>Promises provide functions to help compose asynchronous operations together, some of those functions (<code class="nohighlight">.then</code>, <code class="nohighlight">.catch</code>)
+			are higher-order functions. They are well suited to network requests because of their resolved / rejected status, but can be used anywhere else.</p>
+		<p>Let&#39;s say we have a <code class="nohighlight">getUserId(name)</code> and a <code class="nohighlight">getUserData(id)</code> functions, each contacting a server
+			and returning a promise. If we have a user name and we want to access its associated data, we will first need to ask for its ID and then its data:</p><pre><code class="javascript">getUserId(&#39;thomas&#39;)
+    .then(function(userId) {
+        return getUserData(userId);
+    })
+    .then(function(userData) {
+        // We have our userData and we can use it!
+    });
+</code></pre>
+		<p>We can also do it for multiple users, in parallel, thanks to <code class="nohighlight">.all</code>. <em>.all</em> takes an array of promises and will return a
+			promise containing an array with all resolved values. In other words, it is mapping promises to their result.</p><pre><code class="javascript">Promise
+    .all([
+        getUserId(&#39;thomas&#39;),
+        getUserId(&#39;octocat&#39;),
+        getUserId(&#39;red-panda&#39;)
+    ])
+    .then(function(userIds) {
+        return userIds.map(id =&gt; getUserData(id));
+    })
+    .then(function(userData) {
+        let [thomasData, octocatData, redPandaData] = userData;
+    });
+</code></pre>
+		<h3 id="streams">Streams</h3>
+		<p>With streams we enter the world of functional reactive programming.</p>
+		<p>Streams are simply values published over time. They are basically like array with an extra time dimention. They are indefinite in size: when you have an array,
+			all values are available immediately and it has a finite size. With streams it is slightly different: once you open a stream, you can push as many values over
+			time until someone decides to close it. Because we cannot forsee the future, you wouldn&#39;t be able to determine the size of a streamed collection. An array
+			can even be infinite if you decide to never close it!</p>
+		<p>Streams are observables where a publisher pushes values, and subscribers listen to changes. There are many many stream implementations available: <a href="http://reactivex.io/">Rx</a>,
+			<a href="https://baconjs.github.io/">Bacon.js</a>, <a href="http://rpominov.github.io/kefir/">Kefir.js</a>, <a href="https://github.com/paldepind/flyd">Flyd</a>,
+			<a href="https://github.com/cujojs/most">Most</a>, <a href="http://highlandjs.org/">Highland</a>... Node.js has also its own implementation, which is used by
+			Gulp.</p>
+		<p>A common point between all of them? They provide higher-order functions to compose functions over time, and their names are similar to the ones used with arrays:
+			<code class="nohighlight">.map</code>, <code class="nohighlight">.concat</code>, <code class="nohighlight">.reduce</code>, <code class="nohighlight">.merge</code>...</p>
+		<p>Below is a pseudo-code example of a counter (a click on a button increments a counter):</p><pre><code class="javascript">createStreamFromEvent($(&#39;#button&#39;).click)
+    .startWith(0)
+    .map(() =&gt; 1)
+    .reduce((total, increment) =&gt; total + increment);
+</code></pre>
+		<p>The created stream will stream the counter value, starting from 0. Each time our button is clicked, a new <code class="nohighlight">+1</code> will be streamed
+			which will cause a new total value to be streamed.</p>
+		<p>If you want a good introduction and fly over what FRP is all about, I recommend reading <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">The introduction to Reactive Programming you&#39;ve been missing</a>			by Andre Staltz.</p>
+		<h2 id="functional-programming-at-the-view-level-ui-">Functional programming at the view level (UI)</h2>
+		<p>So here we are, after talking about functional programming in synchronous and asynchronous situations, let&#39;s talk about how this way of thinking can dictate
+			how we build UIs.</p>
+		<p>First things first, what is a User interface? it is a way to present data and functionalities into something a User can visualize, understand and interact with.
+			Do you see it coming? a UI can simply be seen as a function of data: <code class="nohighlight">ui = f(data)</code>. If you pass the exact same data to such a
+			function, you would expect to get the exact same result.</p>
+		<p>That is our first box ticked: a UI is <strong>predictable</strong>.</p>
+		<h3 id="components">Components</h3>
+		<p>I could ask the same question: what is a component? But I think you now get it: components are a way to divide a UI into small bits. A component is simply a function
+			returning a rendered component: <code class="nohighlight">rendered_component = f(data)</code>.</p>
+		<p>Components are composed together by having a parent / child relationship. Like in any other GUI, components are organised in a tree. Each component has a parent,
+			and compoents can have children and siblings. In the front-end, we traditionally use HTML to describe how elements are organised together and it gets rendered
+			into DOM elements (<code class="nohighlight">Element</code> objects). A rendered component can consist of one or more DOM elements, depending on how we want to
+			break down our UI. If we keep following this reasonning, our UI is a component itself made of a other components... This is another box ticked: an UI is <strong>composable</strong>.</p>
+		<p>If you remember what higher-order functions are, we can also have higher-order components:</p>
+		<ul>
+			<li>A component taking a component as an argument and wrapping aditional content around it to provide some context. This would be the case of a modal component.</li>
+			<li>A component returning another component (i.e. a factory). This would be the case if you want to reuse the functionality of a base component into a new component.</li>
+		</ul>
+		<p>Higher-order components give us more code <strong>reusability</strong> and increase <em>composability</em>.</p>
+		<h3 id="virtual-dom">Virtual DOM</h3>
+		<p>In practice, having such components would create an under-performing UI which would not scale. This is because DOM operations are expensive and the whole thing
+			wasn&#39;t designed for dynamic UIs in the first place.</p>
+		<p>When we re-render a component, it will always return a new instance of a DOM element (that is the principle of a function, remember!). The old element would then
+			be removed from the tree and the new one would be added. With no existing mechanisms for the DOM to know if those two elements are related, we would have to re-render
+			it completely.</p>
+		<p>This is why virtual DOM technologies were created: a component is a function creating virtual DOM elements instead of real DOM elements. When a re-rendering occurs,
+			the virtual DOM runs a <strong>diff algorithm</strong> to create a set of changes to apply to the real DOM (a <em>patch</em>): a new listener to add, an element
+			to remove, some inner text to modify, a class to add, etc...</p>
+		<p>You can relate this concept to incremental builds or commits in version control systems: only what changes is handled, to limit use of resources available.</p>
+		<h2
+		id="functional-programming-for-front-end-applications">Functional programming for front-end applications</h2>
+			<p>All of this is influencing front-end applications today:</p>
+			<ul>
+				<li>An application has a state</li>
+				<li>This state is rendered in a tree of components, using a Virtual DOM. Data is flowing down the tree.</li>
+				<li>The rendered UI will generate events from user interactions which will update the application state.</li>
+				<li>Following the state update, the UI will be updated</li>
+				<li>The application state can also receive updates from the server</li>
+			</ul>
+			<p>We obtain an unidirectional data flow:</p>
+			<p><img src="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow.png" alt="A front-end application architecture"></p>
+			<h3 id="going-further">Going further</h3>
+			<ul>
+				<li>A centralised state with nested data (tree) is easier to reason about. It also makes time travel debugging easier, and can be serialised for universal JavaScript
+					applications.</li>
+				<li>An application state can be seen as an observable stream too.</li>
+				<li>Flux is one way to organise data flow from components to state.</li>
+				<li>You can also model users as a function: <a href="https://www.youtube.com/watch?v=1zj7M1LnJV4">What if the user was a function? by Andre Staltz</a></li>
+			</ul>
+			<h3 id="recommended-links">Recommended links</h3>
+			<p>There are tons of ressources available online and competing tools / libraries / framework:</p>
+			<ul>
+				<li>View: <a href="http://facebook.github.io/react/">React</a>, <a href="https://github.com/dekujs/deku">deku</a></li>
+				<li>State management: <a href="https://github.com/Yomguithereal/baobab">Baobab</a>, <a href="http://rackt.github.io/redux/">Redux</a></li>
+				<li>Frameworks, integrated libraries: <a href="http://elm-lang.org/">Elm</a>, <a href="http://cycle.js.org/">Cycle.js</a></li>
+				<li>Router: <a href="http://router5.github.io">Router5</a></li>
+				<li>Virtual DOM: <a href="https://github.com/Matt-Esch/virtual-dom">virtual-dom</a>, <a href="https://github.com/paldepind/snabbdom">snabbdom</a></li>
+			</ul>
+			<p>This article was inspired by many sources, one of which is <a href="https://www.youtube.com/watch?v=ZZUY37RQS-k">Stay relevant as a programmer</a>.</p>
+			<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/understanding-fp-revolution.md">Github!</a></p>
+			<section
+			class="prev-next-links"><a href="posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/" class="prev"><span class="fa fa-chevron-left"></span> <span>Router5: a new HTML5 router</span></a></section>
+	</article>
+	<footer>
+		<!-- <div class="about">About the author</div> -->
+		<section class="contact-links"><a class="circled-icon" href="https://github.com/troch" target="_blank" aria-label="Github (troch)" title="Github (troch)"><i class="fa fa-github"></i></a>
+			<a
+			class="circled-icon" href="https://uk.linkedin.com/in/thomasroch" target="_blank" aria-label="Linkedin (Thomas Roch)" title="Linkedin (Thomas Roch)"><i class="fa fa-linkedin"></i></a>
+				<a class="circled-icon" href="https://twitter.com/tcroch" target="_blank" aria-label="Twitter (tcroch)" title="Twitter (tcroch)"><i class="fa fa-twitter"></i></a> <a class="circled-icon" href="https://stackoverflow.com/users/3114505/thomas-roch" target="_blank" aria-label="Stackoverflow (Thomas Roch)"
+				title="Stackoverflow (Thomas Roch)"><i class="fa fa-stack-overflow"></i></a> <a class="circled-icon" href="http://www.slideshare.net/ThomasRoch" target="_blank"
+				aria-label="SlideShare (Thomas Roch)" title="SlideShare (Thomas Roch)"><i class="fa fa-slideshare"></i></a></section>
+		<section class="info">&copy; Thomas Roch 2015. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
+	</footer>
+	<!-- Script files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js"></script>
+	<!-- Scripts -->
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<!-- Analytics -->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-61970524-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

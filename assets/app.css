@@ -444,6 +444,7 @@ main img,
 article.main img {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
 }
 main p code,
 article.main p code,
@@ -487,10 +488,10 @@ article.main h1 {
 }
 main h2,
 article.main h2 {
-  margin: 2rem 0 1rem;
-  font-size: 1.25rem;
-  color: #aaaaaa;
-  border-left-color: #aaaaaa;
+  margin: 3rem 0 1.5rem;
+  font-size: 1.4rem;
+  color: #999999;
+  border-left-color: #999999;
 }
 main blockquote,
 article.main blockquote {
