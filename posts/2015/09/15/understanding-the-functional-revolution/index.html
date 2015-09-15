@@ -22,7 +22,7 @@ spreading quickly.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
-	<meta property="article:modified_time" content="2015-09-15T08:15:21.321Z">
+	<meta property="article:modified_time" content="2015-09-15T08:18:20.153Z">
 	<meta property="article:tag" content="front-end">
 	<meta property="article:tag" content="applications">
 	<meta property="article:tag" content="functional programming">
@@ -229,14 +229,14 @@ sumArray([1, &#39;2&#39;, &#39;30&#39;]); // 33
 </code></pre>
 		<p><code class="nohighlight">map</code> and <code class="nohighlight">reduce</code> are two well known higher-order functions in FP. What is interesting to notice
 			is that our initial array is never mutated. <code class="nohighlight">sumArray</code> is a pure function which returns a value for any given array.</p>
-		<p>If at this point you feel you need to learn more about functional programming in JavaScript, I highly recommend <a href="https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">mpjme&#39;s youtube playlist about functional programming</a>.
-			It is straight to the point and also very pleasant to watch!</p>
+		<p>If at this point you feel you need to learn more about functional programming in JavaScript, I highly recommend <a href="https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">mpjme&#39;s seires about functional programming</a>.
+			It is straight to the point and funny to watch!</p>
 		<h3 id="are-functions-always-functional-">Are functions always functional?</h3>
-		<p>Functions are not always considered functional if they mutate some of their own arguments, don&#39;t return a meaningful result, have side-effects, etc... For
-			instance, JavaScript can have two or more ways of doing the same thing with a functional and non functional way.</p>
+		<p>Functions are not always considered functional if they mutate their own arguments, don&#39;t return a meaningful result, have side-effects, etc... For instance,
+			JavaScript can have two or more ways of doing the same thing with a functional and non functional way.</p>
 		<p>It is the case of <code class="nohighlight">push</code> and <code class="nohighlight">concat</code>. <code class="nohighlight">push</code> will add an element
 			to itself, and then return the added element. <code class="nohighlight">concat</code> will instead return a new array with the added element(s): this is called
-			<strong>immutability</strong>. Looking at the pseudo-code below, it is easy to see which one is the most advantageous.</p><pre><code class="javascript">function push(array, element) {
+			<strong>immutability</strong>. Looking at the code below, it is easy to see which one is the most advantageous.</p><pre><code class="javascript">function push(array, element) {
     // Add new element to array
     array.push(element);
     return element;
@@ -247,7 +247,7 @@ function concat(array, elements) {
     return array.concat(elements);
 }
 </code></pre>
-		<p>An example:</p><pre><code class="javascript">let arr = [1, 2, 3];
+		<p>An example with push:</p><pre><code class="javascript">let arr = [1, 2, 3];
 let addMore = true;
 
 // Adding elements:
@@ -260,13 +260,12 @@ if (addMore) {
 
 // Or the functional way
 arr = arr
-    .concat(4)
-    .concat(5)
+    .concat([4, 5])
     .concat(addMore ? [6, 7] : []);
 </code></pre>
 		<h2 id="functional-programming-at-the-application-level">Functional programming at the application level</h2>
 		<p>So far we have talked about FP at the language level. We have seen functional programming can help structuring our code, can make it shorter and will overall make
-			things more predictable and therefore easier to test.</p>
+			things more predictable and therefore easier to understand and easier to test.</p>
 		<blockquote>
 			<p>When writing an application, a new dimension appears: <strong>time</strong>.</p>
 		</blockquote>

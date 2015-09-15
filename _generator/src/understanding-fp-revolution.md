@@ -95,18 +95,18 @@ sumArray([1, '2', '30']); // 33
 array is never mutated. `sumArray` is a pure function which returns a value for any given array.
 
 If at this point you feel you need to learn more about functional programming in JavaScript, I highly recommend
-[mpjme's youtube playlist about functional programming](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84).
-It is straight to the point and also very pleasant to watch!
+[mpjme's seires about functional programming](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84).
+It is straight to the point and funny to watch!
 
 
 ### Are functions always functional?
 
-Functions are not always considered functional if they mutate some of their own arguments, don't return a meaningful result, have side-effects, etc...
+Functions are not always considered functional if they mutate their own arguments, don't return a meaningful result, have side-effects, etc...
 For instance, JavaScript can have two or more ways of doing the same thing with a functional and non functional way.
 
 It is the case of `push` and `concat`. `push` will add an element to itself, and then return the added element.
 `concat` will instead return a new array with the added element(s): this is called __immutability__.
-Looking at the pseudo-code below, it is easy to see which one is the most advantageous.
+Looking at the code below, it is easy to see which one is the most advantageous.
 
 ```javascript
 function push(array, element) {
@@ -121,7 +121,7 @@ function concat(array, elements) {
 }
 ```
 
-An example:
+An example with push:
 
 ```javascript
 let arr = [1, 2, 3];
@@ -137,8 +137,7 @@ if (addMore) {
 
 // Or the functional way
 arr = arr
-    .concat(4)
-    .concat(5)
+    .concat([4, 5])
     .concat(addMore ? [6, 7] : []);
 ```
 
@@ -146,7 +145,7 @@ arr = arr
 ## Functional programming at the application level
 
 So far we have talked about FP at the language level. We have seen functional programming can help
-structuring our code, can make it shorter and will overall make things more predictable and therefore easier to test.
+structuring our code, can make it shorter and will overall make things more predictable and therefore easier to understand and easier to test.
 
 > When writing an application, a new dimension appears: __time__.
 
