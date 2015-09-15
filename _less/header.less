@@ -1,13 +1,8 @@
 @import "search.less";
 
 header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1;
+  position: relative;
   padding: 2rem 1rem;
-  transition: padding .1s ease-in;
   min-height: calc(1rem ~"+" @circled-icon-width);
 
   > h1 {
@@ -43,6 +38,12 @@ header {
 
 @media (min-width: @break-point-1) {
     header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      transition: padding .1s ease-in;
       padding: 2rem;
 
       > section {

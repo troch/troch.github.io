@@ -13,7 +13,6 @@ header, footer {
 }
 
 body {
-  padding-top: calc(4rem ~"+" @circled-icon-width);
   transition: padding .1s ease-in;
 }
 
@@ -204,4 +203,11 @@ section.prev-next-links {
         }
       }
     }
+}
+
+
+@media (min-width: @break-point-1) {
+  body {
+    padding-top: calc(4rem ~"+" @circled-icon-width);
+  }
 }

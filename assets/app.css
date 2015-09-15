@@ -137,7 +137,6 @@ footer .info {
   margin: 1rem 0;
 }
 body {
-  padding-top: calc(4rem + 36px);
   transition: padding 0.1s ease-in;
 }
 footer > .about {
@@ -295,6 +294,11 @@ section.prev-next-links > a.next {
     color: #f1f1f1;
   }
 }
+@media (min-width: 920px) {
+  body {
+    padding-top: calc(4rem + 36px);
+  }
+}
 #searchInput {
   width: 0;
   transition: all 0.2s ease-in;
@@ -364,13 +368,8 @@ body.scrolled #searchResults {
   }
 }
 header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1;
+  position: relative;
   padding: 2rem 1rem;
-  transition: padding 0.1s ease-in;
   min-height: calc(1rem + 36px);
 }
 header > h1 {
@@ -400,6 +399,12 @@ header > section .circled-icon + .circled-icon {
 }
 @media (min-width: 920px) {
   header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    transition: padding 0.1s ease-in;
     padding: 2rem;
   }
   header > section {
