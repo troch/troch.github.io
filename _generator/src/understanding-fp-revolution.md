@@ -13,7 +13,7 @@ image: https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_
 
 Being a front-end developer can be overwhelming at times, and for many reasons: browsers are competing and adopting standards fairly quickly,
 standards themselves are ever changing and moving fast. But also npm, Github and other tools make it very easy to write your own package / library / framework
-and to ship it. Therefore, competition is now very fierceful and, standards aside, a lot of new ideas and concepts have entered the UI and are
+and to ship it. Therefore, competition is now very fierce and, standards aside, a lot of new ideas and concepts have entered the UI and are
 spreading quickly.
 
 Today, the main web development trends are about innovations around functional programming. This is why I don't agree much about people calling
