@@ -43,40 +43,40 @@ have functions as arguments, etc... And that is one of the key of FP because it 
 make it more readable. We tend to instinctively break our code in small specialised units that we can use and re-use together:
 this is called __composability__.
 
-Let see an example with validating a required string of at least 5 characters: we create `a isRequired` and a `isLongerThan` functions,
+Let see an example with validating a required string of at least 5 characters: we create a `isRequired` and a `isLongerThan` functions,
 and compose them in a `isValid` function. All of that without using `if` or creating additional variables (apart from the functions
 themselves).
 
 ```javascript
 function isRequired(val) {
-    return val !== undefined && val !== null && val !== ''
+    return val !== undefined && val !== null && val !== '';
 }
 
 function isLongerThan(len, val) {
-    return val.length > len
+    return val.length > len;
 }
 
 function isValid(val) {
     return isRequired(val) && isLongerThan(5, val);
 }
 
-isValid()          // => false
-isValid(null)      // => false
-isValid('')        // => false
-isValid('hello')   // => false
-isValid('bonjour') // => true
+isValid();          // => false
+isValid(null);      // => false
+isValid('');        // => false
+isValid('hello');   // => false
+isValid('bonjour'); // => true
 ```
 
 ### Purity and high-order functions
 
 There is a bit of jargon around functional programming, below are two important concepts:
 
-- _Purity_, or _pure functions_are functions which are free of side-effects and don't mutate their own arguments.
+- _Purity_, or _pure functions_ are functions which are free of side-effects and don't mutate their own arguments.
 Functions which are free of side-effects are functions which don't access external variables or resources to produce their result.
 This increases __predictablility__ and __testability__.
 - _Higher-order functions_ are functions which take another function as an argument and / or returns a function.
 
-JavScript is a friendly language for functional programming afficionados. It contains (thanks to ES5)
+JavaScript is a friendly language for functional programming afficionados. It contains (thanks to ES5)
 a bunch of higher-order functions which can help write concise code in a functional style.
 
 Let me show you a brief example of a __mapReduce__ operation: it first normalises an array (_map_), and adds up its values (_reduce_).
@@ -91,7 +91,7 @@ function sumArray(values) {
 sumArray([1, '2', '30']); // 33
 ```
 
-`map` and `reduce` (can also be called `fold`) are two well known higher-order functions in FP. What is interesting to notice is that our initial
+`map` and `reduce` are two well known higher-order functions in FP. What is interesting to notice is that our initial
 array is never mutated. `sumArray` is a pure function which returns a value for any given array.
 
 If at this point you feel you need to learn more about functional programming in JavaScript, I highly recommend
@@ -101,7 +101,7 @@ It is straight to the point and also very pleasant to watch!
 
 ### Are functions always functional?
 
-Functions are not always considered functional if they mutate some of their arguments, don't return a meaningful result, have side-effects, etc...
+Functions are not always considered functional if they mutate some of their own arguments, don't return a meaningful result, have side-effects, etc...
 For instance, JavaScript can have two or more ways of doing the same thing with a functional and non functional way.
 
 It is the case of `push` and `concat`. `push` will add an element to itself, and then return the added element.

@@ -22,7 +22,7 @@ spreading quickly.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
-	<meta property="article:modified_time" content="2015-09-14T23:39:19.730Z">
+	<meta property="article:modified_time" content="2015-09-15T08:15:21.321Z">
 	<meta property="article:tag" content="front-end">
 	<meta property="article:tag" content="applications">
 	<meta property="article:tag" content="functional programming">
@@ -190,33 +190,34 @@ spreading quickly.">
 		<h3 id="composability">Composability</h3>
 		<p>100% of developers use functional programming at some degree: we all wrap some of our code in functions to avoid repetitions and to help make it more readable.
 			We tend to instinctively break our code in small specialised units that we can use and re-use together: this is called <strong>composability</strong>.</p>
-		<p>Let see an example with validating a required string of at least 5 characters: we create <code class="nohighlight">a isRequired</code> and a <code class="nohighlight">isLongerThan</code>			functions, and compose them in a <code class="nohighlight">isValid</code> function. All of that without using <code class="nohighlight">if</code> or creating
+		<p>Let see an example with validating a required string of at least 5 characters: we create a <code class="nohighlight">isRequired</code> and a <code class="nohighlight">isLongerThan</code>			functions, and compose them in a <code class="nohighlight">isValid</code> function. All of that without using <code class="nohighlight">if</code> or creating
 			additional variables (apart from the functions themselves).</p><pre><code class="javascript">function isRequired(val) {
-    return val !== undefined &amp;&amp; val !== null &amp;&amp; val !== &#39;&#39;
+    return val !== undefined &amp;&amp; val !== null &amp;&amp; val !== &#39;&#39;;
 }
 
 function isLongerThan(len, val) {
-    return val.length &gt; len
+    return val.length &gt; len;
 }
 
 function isValid(val) {
     return isRequired(val) &amp;&amp; isLongerThan(5, val);
 }
 
-isValid()          // =&gt; false
-isValid(null)      // =&gt; false
-isValid(&#39;&#39;)        // =&gt; false
-isValid(&#39;hello&#39;)   // =&gt; false
-isValid(&#39;bonjour&#39;) // =&gt; true
+isValid();          // =&gt; false
+isValid(null);      // =&gt; false
+isValid(&#39;&#39;);        // =&gt; false
+isValid(&#39;hello&#39;);   // =&gt; false
+isValid(&#39;bonjour&#39;); // =&gt; true
 </code></pre>
 		<h3 id="purity-and-high-order-functions">Purity and high-order functions</h3>
 		<p>There is a bit of jargon around functional programming, below are two important concepts:</p>
 		<ul>
-			<li><em>Purity</em>, or _pure functions_are functions which are free of side-effects and don&#39;t mutate their own arguments. Functions which are free of side-effects
-				are functions which don&#39;t access external variables or resources to produce their result. This increases <strong>predictablility</strong> and <strong>testability</strong>.</li>
+			<li><em>Purity</em>, or <em>pure functions</em> are functions which are free of side-effects and don&#39;t mutate their own arguments. Functions which are free of
+				side-effects are functions which don&#39;t access external variables or resources to produce their result. This increases <strong>predictablility</strong> and
+				<strong>testability</strong>.</li>
 			<li><em>Higher-order functions</em> are functions which take another function as an argument and / or returns a function.</li>
 		</ul>
-		<p>JavScript is a friendly language for functional programming afficionados. It contains (thanks to ES5) a bunch of higher-order functions which can help write concise
+		<p>JavaScript is a friendly language for functional programming afficionados. It contains (thanks to ES5) a bunch of higher-order functions which can help write concise
 			code in a functional style.</p>
 		<p>Let me show you a brief example of a <strong>mapReduce</strong> operation: it first normalises an array (<em>map</em>), and adds up its values (<em>reduce</em>).</p><pre><code class="javascript">function sumArray(values) {
     return values
@@ -226,14 +227,13 @@ isValid(&#39;bonjour&#39;) // =&gt; true
 
 sumArray([1, &#39;2&#39;, &#39;30&#39;]); // 33
 </code></pre>
-		<p><code class="nohighlight">map</code> and <code class="nohighlight">reduce</code> (can also be called <code class="nohighlight">fold</code>) are two well known
-			higher-order functions in FP. What is interesting to notice is that our initial array is never mutated. <code class="nohighlight">sumArray</code> is a pure function
-			which returns a value for any given array.</p>
+		<p><code class="nohighlight">map</code> and <code class="nohighlight">reduce</code> are two well known higher-order functions in FP. What is interesting to notice
+			is that our initial array is never mutated. <code class="nohighlight">sumArray</code> is a pure function which returns a value for any given array.</p>
 		<p>If at this point you feel you need to learn more about functional programming in JavaScript, I highly recommend <a href="https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84">mpjme&#39;s youtube playlist about functional programming</a>.
 			It is straight to the point and also very pleasant to watch!</p>
 		<h3 id="are-functions-always-functional-">Are functions always functional?</h3>
-		<p>Functions are not always considered functional if they mutate some of their arguments, don&#39;t return a meaningful result, have side-effects, etc... For instance,
-			JavaScript can have two or more ways of doing the same thing with a functional and non functional way.</p>
+		<p>Functions are not always considered functional if they mutate some of their own arguments, don&#39;t return a meaningful result, have side-effects, etc... For
+			instance, JavaScript can have two or more ways of doing the same thing with a functional and non functional way.</p>
 		<p>It is the case of <code class="nohighlight">push</code> and <code class="nohighlight">concat</code>. <code class="nohighlight">push</code> will add an element
 			to itself, and then return the added element. <code class="nohighlight">concat</code> will instead return a new array with the added element(s): this is called
 			<strong>immutability</strong>. Looking at the pseudo-code below, it is easy to see which one is the most advantageous.</p><pre><code class="javascript">function push(array, element) {
