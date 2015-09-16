@@ -22,7 +22,7 @@ spreading quickly.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
-	<meta property="article:modified_time" content="2015-09-16T07:25:36.255Z">
+	<meta property="article:modified_time" content="2015-09-16T14:39:21.823Z">
 	<meta property="article:tag" content="front-end">
 	<meta property="article:tag" content="applications">
 	<meta property="article:tag" content="functional programming">
@@ -304,9 +304,9 @@ arr = arr
 </code></pre>
 		<h3 id="streams">Streams</h3>
 		<p>With streams we enter the world of functional reactive programming.</p>
-		<p>Streams are simply values published over time. They are basically like array with an extra time dimention. They are indefinite in size: when you have an array,
+		<p>Streams are simply values published over time. They are basically like arrays with an extra time dimention. They are indefinite in size: when you have an array,
 			all values are available immediately and it has a finite size. With streams it is slightly different: once you open a stream, you can push as many values over
-			time until someone decides to close it. Because we cannot forsee the future, you wouldn&#39;t be able to determine the size of a streamed collection. An array
+			time until someone decides to close it. Because we cannot forsee the future, you wouldn&#39;t be able to determine the size of a streamed collection. A stream
 			can even be infinite if you decide to never close it!</p>
 		<p>Streams are observables where a publisher pushes values, and subscribers listen to changes. There are many many stream implementations available: <a href="http://reactivex.io/">Rx</a>,
 			<a href="https://baconjs.github.io/">Bacon.js</a>, <a href="http://rpominov.github.io/kefir/">Kefir.js</a>, <a href="https://github.com/paldepind/flyd">Flyd</a>,

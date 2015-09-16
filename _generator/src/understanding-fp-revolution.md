@@ -202,10 +202,10 @@ Promise
 
 With streams we enter the world of functional reactive programming.
 
-Streams are simply values published over time. They are basically like array with an extra time dimention. They are indefinite in size: when you have an array,
+Streams are simply values published over time. They are basically like arrays with an extra time dimention. They are indefinite in size: when you have an array,
 all values are available immediately and it has a finite size. With streams it is slightly different: once you open a stream, you can push as many values over time
 until someone decides to close it. Because we cannot forsee the future, you wouldn't be able to determine the size of a streamed collection.
-An array can even be infinite if you decide to never close it!
+A stream can even be infinite if you decide to never close it!
 
 Streams are observables where a publisher pushes values, and subscribers listen to changes. There are many many stream implementations available:
 [Rx](http://reactivex.io/), [Bacon.js](https://baconjs.github.io/),
