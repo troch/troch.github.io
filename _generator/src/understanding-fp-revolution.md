@@ -30,7 +30,6 @@ if you need it, a better understanding of functional programming and how it infl
 Functional programming is a style of programming which discourages the use of imperative programming. In practice that means:
 
 - Functions are at the heart of it
-- Use of block statements (if, for, while...) should be limited in favour of functions
 - Data mutations should be avoided
 
 It turns out JavaScript has a lot to offer to help you writing your code in a more functional style, mainly because __functions
@@ -44,8 +43,8 @@ make it more readable. We tend to instinctively break our code in small speciali
 this is called __composability__.
 
 Let see an example with validating a required string of at least 5 characters: we create a `isRequired` and a `isLongerThan` functions,
-and compose them in a `isValid` function. All of that without using `if` or creating additional variables (apart from the functions
-themselves).
+and compose them in a `isValid` function. All of that without creating additional variables (apart from the functions
+themselves) and without using `if`: use of block statements (if, for, while...) is naturally reduced when using functional programming.
 
 ```javascript
 function isRequired(val) {

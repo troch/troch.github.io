@@ -22,7 +22,7 @@ spreading quickly.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
-	<meta property="article:modified_time" content="2015-09-15T16:01:46.990Z">
+	<meta property="article:modified_time" content="2015-09-16T07:25:36.255Z">
 	<meta property="article:tag" content="front-end">
 	<meta property="article:tag" content="applications">
 	<meta property="article:tag" content="functional programming">
@@ -182,7 +182,6 @@ spreading quickly.">
 		<p>Functional programming is a style of programming which discourages the use of imperative programming. In practice that means:</p>
 		<ul>
 			<li>Functions are at the heart of it</li>
-			<li>Use of block statements (if, for, while...) should be limited in favour of functions</li>
 			<li>Data mutations should be avoided</li>
 		</ul>
 		<p>It turns out JavaScript has a lot to offer to help you writing your code in a more functional style, mainly because <strong>functions are first-class citizens</strong>			and are treated like any other variable: a function can be easily passed around, return a function, have functions as arguments, etc... And that is one of the
@@ -190,8 +189,8 @@ spreading quickly.">
 		<h3 id="composability">Composability</h3>
 		<p>100% of developers use functional programming at some degree: we all wrap some of our code in functions to avoid repetitions and to help make it more readable.
 			We tend to instinctively break our code in small specialised units that we can use and re-use together: this is called <strong>composability</strong>.</p>
-		<p>Let see an example with validating a required string of at least 5 characters: we create a <code class="nohighlight">isRequired</code> and a <code class="nohighlight">isLongerThan</code>			functions, and compose them in a <code class="nohighlight">isValid</code> function. All of that without using <code class="nohighlight">if</code> or creating
-			additional variables (apart from the functions themselves).</p><pre><code class="javascript">function isRequired(val) {
+		<p>Let see an example with validating a required string of at least 5 characters: we create a <code class="nohighlight">isRequired</code> and a <code class="nohighlight">isLongerThan</code>			functions, and compose them in a <code class="nohighlight">isValid</code> function. All of that without creating additional variables (apart from the functions
+			themselves) and without using <code class="nohighlight">if</code>: use of block statements (if, for, while...) is naturally reduced when using functional programming.</p><pre><code class="javascript">function isRequired(val) {
     return val !== undefined &amp;&amp; val !== null &amp;&amp; val !== &#39;&#39;;
 }
 
