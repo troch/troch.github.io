@@ -55,20 +55,20 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>http://blog.reactandbethankful.com/posts/2015/05/05/building-with-gulp-part-5-caveats</loc>
-    <lastmod>2015-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>http://blog.reactandbethankful.com/posts/2015/04/18/tour-of-node-building-tools</loc>
     <lastmod>2015-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>http://blog.reactandbethankful.com/posts/2015/05/05/building-with-gulp-part-5-caveats</loc>
+    <lastmod>2015-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>http://blog.reactandbethankful.com/posts/2015/09/15/understanding-the-functional-revolution</loc>
-    <lastmod>2015-09-16</lastmod>
+    <lastmod>2015-09-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
 </url>

@@ -22,7 +22,7 @@ spreading quickly.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
-	<meta property="article:modified_time" content="2015-09-16T14:39:21.823Z">
+	<meta property="article:modified_time" content="2015-09-17T07:46:29.717Z">
 	<meta property="article:tag" content="front-end">
 	<meta property="article:tag" content="applications">
 	<meta property="article:tag" content="functional programming">
@@ -333,9 +333,9 @@ arr = arr
 		<p>I could ask the same question: what is a component? But I think you now get it: components are a way to divide a UI into small bits. A component is simply a function
 			returning a rendered component: <code class="nohighlight">rendered_component = f(data)</code>.</p>
 		<p>Components are composed together by having a parent / child relationship. Like in any other GUI, components are organised in a tree. Each component has a parent,
-			and compoents can have children and siblings. In the front-end, we traditionally use HTML to describe how elements are organised together and it gets rendered
-			into DOM elements (<code class="nohighlight">Element</code> objects). A rendered component can consist of one or more DOM elements, depending on how we want to
-			break down our UI. If we keep following this reasonning, our UI is a component itself made of a other components... This is another box ticked: an UI is <strong>composable</strong>.</p>
+			and components can have children and siblings. In the front-end, we traditionally use HTML to describe how elements are organised together. HTML is compiled to
+			DOM elements (<code class="nohighlight">Element</code> objects). A rendered component can consist of one or more DOM elements, depending on how we want to break
+			down our UI. If we keep following this reasonning, our UI is a component itself made of other components... This is another box ticked: an UI is <strong>composable</strong>.</p>
 		<p>If you remember what higher-order functions are, we can also have higher-order components:</p>
 		<ul>
 			<li>A component taking a component as an argument and wrapping aditional content around it to provide some context. This would be the case of a modal component.</li>
@@ -375,7 +375,7 @@ arr = arr
 			<h3 id="recommended-links">Recommended links</h3>
 			<p>There are tons of ressources available online and competing tools / libraries / framework:</p>
 			<ul>
-				<li>View: <a href="http://facebook.github.io/react/">React</a>, <a href="https://github.com/dekujs/deku">deku</a></li>
+				<li>View: <a href="http://facebook.github.io/react/">React</a>, <a href="https://github.com/dekujs/deku">deku</a>, <a href="https://github.com/omcljs/om">Om</a></li>
 				<li>State management: <a href="https://github.com/Yomguithereal/baobab">Baobab</a>, <a href="http://rackt.github.io/redux/">Redux</a></li>
 				<li>Frameworks, integrated libraries: <a href="http://elm-lang.org/">Elm</a>, <a href="http://cycle.js.org/">Cycle.js</a></li>
 				<li>Router: <a href="http://router5.github.io">Router5</a></li>
