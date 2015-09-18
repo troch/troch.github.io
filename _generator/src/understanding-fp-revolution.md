@@ -300,7 +300,7 @@ serialised for universal JavaScript applications.
 
 ### Recommended links
 
-There are tons of ressources available online and competing tools / libraries / framework:
+There are tons of resources available online and competing tools / libraries / framework:
 
 - View: [React](http://facebook.github.io/react/), [deku](https://github.com/dekujs/deku), [Om](https://github.com/omcljs/om)
 - State management: [Baobab](https://github.com/Yomguithereal/baobab), [Redux](http://rackt.github.io/redux/)
