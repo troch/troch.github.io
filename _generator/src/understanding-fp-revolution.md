@@ -103,7 +103,7 @@ It is straight to the point and funny to watch!
 Functions are not always considered functional if they mutate their own arguments, don't return a meaningful result, have side-effects, etc...
 For instance, JavaScript can have two or more ways of doing the same thing with a functional and non functional way.
 
-It is the case of `push` and `concat`. `push` will add an element to itself, and then return the added element.
+It is the case of `push` and `concat`. `push` will add one or more elements to itself, and then return the new array length.
 `concat` will instead return a new array with the added element(s): this is called __immutability__.
 Looking at the code below, it is easy to see which one is the most advantageous.
 
