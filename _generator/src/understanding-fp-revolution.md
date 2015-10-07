@@ -127,11 +127,9 @@ let arr = [1, 2, 3];
 let addMore = true;
 
 // Adding elements:
-arr.push(4);
-arr.push(5);
+arr.push(4, 5);
 if (addMore) {
-    arr.push(6);
-    arr.push(7);
+    arr.push(6, 7);
 }
 
 // Or the functional way
