@@ -22,7 +22,7 @@ spreading quickly.">
 	<meta property="og:image" content="https://raw.githubusercontent.com/troch/troch.github.io/master/assets/fp_data_flow_small.png">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2015-09-15T00:00:00.000Z">
-	<meta property="article:modified_time" content="2015-09-18T17:30:54.419Z">
+	<meta property="article:modified_time" content="2015-10-07T12:33:07.763Z">
 	<meta property="article:tag" content="front-end">
 	<meta property="article:tag" content="applications">
 	<meta property="article:tag" content="functional programming">
@@ -233,9 +233,9 @@ sumArray([1, &#39;2&#39;, &#39;30&#39;]); // 33
 		<h3 id="are-functions-always-functional-">Are functions always functional?</h3>
 		<p>Functions are not always considered functional if they mutate their own arguments, don&#39;t return a meaningful result, have side-effects, etc... For instance,
 			JavaScript can have two or more ways of doing the same thing with a functional and non functional way.</p>
-		<p>It is the case of <code class="nohighlight">push</code> and <code class="nohighlight">concat</code>. <code class="nohighlight">push</code> will add an element
-			to itself, and then return the added element. <code class="nohighlight">concat</code> will instead return a new array with the added element(s): this is called
-			<strong>immutability</strong>. Looking at the code below, it is easy to see which one is the most advantageous.</p><pre><code class="javascript">function push(array, element) {
+		<p>It is the case of <code class="nohighlight">push</code> and <code class="nohighlight">concat</code>. <code class="nohighlight">push</code> will add one or more
+			elements to itself, and then return the new array length. <code class="nohighlight">concat</code> will instead return a new array with the added element(s): this
+			is called <strong>immutability</strong>. Looking at the code below, it is easy to see which one is the most advantageous.</p><pre><code class="javascript">function push(array, element) {
     // Add new element to array
     array.push(element);
     return element;
