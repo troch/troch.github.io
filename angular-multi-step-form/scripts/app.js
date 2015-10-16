@@ -140,12 +140,13 @@ angular
 
 .controller('IsolatedStepCtrl', [
     '$scope',
+    'multiStepFormInstance',
     'multiStepFormScope',
-    function ($scope, multiStepForm) {
-        $scope.model = angular.copy(multiStepForm.model);
+    function ($scope, multiStepFormInstance, mmultiStepFormScope) {
+        $scope.model = angular.copy(mmultiStepFormScope.model);
 
         $scope.$on('$destroy', function () {
-            multiStepForm.model = angular.copy($scope.model);
+            mmultiStepFormScope.model = angular.copy($scope.model);
         });
     }
 ])
