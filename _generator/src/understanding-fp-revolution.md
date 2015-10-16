@@ -188,7 +188,9 @@ Promise
         getUserId('red-panda')
     ])
     .then(function(userIds) {
-        return userIds.map(id => getUserData(id));
+        return Promise.all(
+	        userIds.map(id => getUserData(id))
+        );
     })
     .then(function(userData) {
         let [thomasData, octocatData, redPandaData] = userData;
