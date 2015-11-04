@@ -40,7 +40,7 @@ Gulp 4 is not released yet, in the mean time you can install it following these 
 
 ## Building with Brocooli
 
-- [Part 1: introduction](posts/2015/07/11/building-with-broccoli-part-1-presentation/)
+- [Part 1: introduction](posts/2015/07/11/building-with-broccoli-part-1-introduction/)
 
 
 ## Recommended articles on the web
