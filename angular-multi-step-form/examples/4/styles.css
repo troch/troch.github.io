@@ -1,5 +1,19 @@
+.sliding-steps main,
 .sliding-steps main .well {
     min-height: 500px;
+    margin: 0;
+}
+
+.sliding-steps main {
+    position: relative;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.sliding-steps main .well {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .sliding-steps .form-step.ng-enter, .sliding-steps .form-step.ng-leave {
