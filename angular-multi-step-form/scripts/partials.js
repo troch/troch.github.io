@@ -428,7 +428,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/4/markup-structure.html',
-    '<multi-step-container class="multi-step-container" steps="steps">\n' +
+    '<multi-step-container class="multi-step-container" steps="steps" search-id="\'check\'">\n' +
     '    <!-- Possible header -->\n' +
     '\n' +
     '    <step-container class="multi-step-body">\n' +
@@ -442,7 +442,7 @@ angular.module('msfDemo').run(['$templateCache', function($templateCache) {
 
 angular.module('msfDemo').run(['$templateCache', function($templateCache) {
   $templateCache.put('/angular-multi-step-form/examples/4/partial.html',
-    '<multi-step-container steps="steps" class="sliding-steps simple-prev-next">\n' +
+    '<multi-step-container steps="steps" class="sliding-steps simple-prev-next" search-id="\'check\'">\n' +
     '    <header>\n' +
     '        <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">\n' +
     '            <span class="fa fa-chevron-left"></span>\n' +

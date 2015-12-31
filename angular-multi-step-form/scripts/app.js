@@ -9,36 +9,44 @@ angular
     function ($routeProvider) {
         $routeProvider
             .when('/home', {
-                templateUrl: '/angular-multi-step-form/partials/home.html'
+                templateUrl: '/angular-multi-step-form/partials/home.html',
+                reloadOnSearch: false
                 // controller: ''
             })
             .when('/getting-started', {
                 controller: 'GettingStartedCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
+                reloadOnSearch: false
             })
             .when('/using-forms', {
                 controller: 'UsingFormsCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
+                reloadOnSearch: false
             })
             .when('/saving-data', {
                 controller: 'SavingDataCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
+                reloadOnSearch: false
             })
             .when('/css-transitions', {
                 controller: 'CSSTransitionsCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example-css.html',
+                reloadOnSearch: false
             })
             .when('/cancel-finish', {
                 controller: 'CancelFinishCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
+                reloadOnSearch: false
             })
             .when('/browser-navigation', {
                 controller: 'BrowserNavigationCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example.html',
+                reloadOnSearch: false
             })
             .when('/inside-modal', {
                 controller: 'InsideModalCtrl',
                 templateUrl: '/angular-multi-step-form/partials/example-modal.html',
+                reloadOnSearch: false
             })
             .otherwise('/home');
     }
