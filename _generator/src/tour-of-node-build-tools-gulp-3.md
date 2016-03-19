@@ -98,7 +98,7 @@ gulp.task('replace', function() {
 _event-stream_ creates Node 0.8 streams (compatible with Node 0.10 streams) but since we are only interested in mapping functions, this is not an issue.
 _event-stream_ has a `.mapSync()` function as well as a `.map()` function, _mapSync_ is useful in our example as it removes one line of code in our transformer:
 
-    $ npm install --save-dev through2
+    $ npm install --save-dev event-stream
 
 ```javascript
 var gulp = require('gulp');
