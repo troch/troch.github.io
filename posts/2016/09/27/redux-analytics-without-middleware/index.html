@@ -20,7 +20,7 @@
 	<meta property="og:image" content="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2016-09-27T14:00:00.000Z">
-	<meta property="article:modified_time" content="2016-09-27T13:39:29.389Z">
+	<meta property="article:modified_time" content="2016-09-27T13:45:09.913Z">
 	<meta property="article:tag" content="react">
 	<meta property="article:tag" content="functional">
 	<meta property="article:tag" content="reactive">
@@ -186,9 +186,9 @@
 		<p>Middlewares are also static and cannot be added and removed after store creation.</p>
 		<h2 id="observing-state-changes">Observing state changes</h2>
 		<p>In the example above, there is a quite obvious thing to do: observe the current user in state. Instead of looking at actions, we want to look at the effects they
-			have on the appplication state. And redux provides already everything we need: <code class="nohighlight">store.subscribe</code>.</p>
-		<p>What we need: a function wrapping <code class="nohighlight">store.subscribe</code> to which we provide a selector (a function of state returning a path of the
-			state) and a callback to be executed when a change has been detected.</p><pre><code class="javascript">const subscribe = (selector, callback, invokeImmediately = true) =&gt; (store) =&gt; {
+			have on the appplication state. And redux already provides everything we need: <code class="nohighlight">store.subscribe</code>. For our purpose, we can wrap
+			<code class="nohighlight">store.subscribe</code> with a function to which we provide a selector (a function of state returning a path of the state) and a callback
+			to be executed when a change has been detected.</p><pre><code class="javascript">const subscribe = (selector, callback, invokeImmediately = true) =&gt; (store) =&gt; {
     let previousValue;
 
     const invokeCallback = () =&gt; {
@@ -218,9 +218,9 @@ const setUserInGA = (user) =&gt; {
 const unsubscribe = subscribe(getUser, setUserInGA)(store);
 </code></pre>
 		<h2 id="listening-to-actions">Listening to actions</h2>
-		<p>Most of the time, observing changes in state is what one needs for analytics. However, sometimes, you just want to react to an action being dispatched. Considering
+		<p>Observing changes in state for analytics will get you there most of the time. However, sometimes reacting to an action being dispatched is what you need. Considering
 			the same example, I also need to call an affiliate when a user has just signed up. I can&#39;t observe the current user value changing: I would have no idea if
-			it changed because of an acquisition. I just need to react to the action dispatched by successful sign up.</p>
+			it changed because of an acquisition, a log in or a password reset. I just need to react to the action dispatched by a successful sign up.</p>
 		<p>Actions are like events, and the way we listen to events is by adding event listeners (<code class="nohighlight">addEventListener(eventType, listener)</code>).
 			Why not have an <code class="nohighlight">addActionListener(actionType, listener)</code>? We just need to make use of an absolute brilliant feature of redux:
 			store enhancers.</p><pre><code class="javascript">function actionListenersStoreEnhancer(createStore) {
@@ -257,10 +257,10 @@ const unsubscribe = subscribe(getUser, setUserInGA)(store);
 </code></pre>
 		<h2 id="attaching-analytics-behaviours-to-components">Attaching analytics behaviours to components</h2>
 		<p>Finally, we need to be able to add and remove analytics observers and action listeners during the lifetime of an application. Analytics can easily be organised
-			by domain and attached to business-level views or components. Using a higher-order component, we can create components which will create store subscriptions and
+			by domain and attached to business-level views or components. Using a higher-order component, we can create components which will subscribe to your store and
 			add action listeners when mounted, and which will unsubscribe / remove them when unmounted. This is a great approach: we have reactive analytics, but we are still
-			able to organize our code at the component-level, wherever it makes sense for you. We don&#39;t imped our ability to do code splitting, we can have test different
-			components with slight analytics variations to perform A/B testing...</p>
+			able to organize our code at the component-level, wherever it makes sense for you. We don&#39;t imped our ability to do code splitting, we can A/B test variations
+			of components with different analytics...</p>
 		<p>But first, we need to have a better subscribe method. Instead create a subscription for each value we want to observe, we can share the same subscription at the
 			component level (a bit like the way connect works).</p><pre><code class="javascript">const getValuesAndCallback(state, observers, previousValues) =&gt;
     Object.keys(observers).reduce(
@@ -336,7 +336,7 @@ const subscribe = (observers, invokeImmediately = true) =&gt; (store) =&gt; {
 export default withAnalytics;
 </code></pre>
 		<p>And that&#39;s it! A fairly simple solution to bring reactive analytics to redux, observing state changes and listening to actions, and attaching analytics to
-			components!</p>
+			components! All of that without a middleware.</p>
 		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/redux-analytics-without-middleware.md">Github!</a></p>
 		<section
 		class="prev-next-links"><a href="posts/2015/09/15/understanding-the-functional-revolution/" class="prev"><span class="fa fa-chevron-left"></span> <span>Understanding the functional revolution in front-end applications</span></a></section>

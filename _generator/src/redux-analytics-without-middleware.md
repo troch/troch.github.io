@@ -31,9 +31,7 @@ Middlewares are also static and cannot be added and removed after store creation
 
 ## Observing state changes
 
-In the example above, there is a quite obvious thing to do: observe the current user in state. Instead of looking at actions, we want to look at the effects they have on the appplication state. And redux provides already everything we need: `store.subscribe`.
-
-What we need: a function wrapping `store.subscribe` to which we provide a selector (a function of state returning a path of the state) and a callback to be executed when a change has been detected.
+In the example above, there is a quite obvious thing to do: observe the current user in state. Instead of looking at actions, we want to look at the effects they have on the appplication state. And redux already provides everything we need: `store.subscribe`. For our purpose, we can wrap `store.subscribe` with a function to which we provide a selector (a function of state returning a path of the state) and a callback to be executed when a change has been detected.
 
 
 ```javascript
@@ -73,7 +71,7 @@ const unsubscribe = subscribe(getUser, setUserInGA)(store);
 
 ## Listening to actions
 
-Most of the time, observing changes in state is what one needs for analytics. However, sometimes, you just want to react to an action being dispatched. Considering the same example, I also need to call an affiliate when a user has just signed up. I can't observe the current user value changing: I would have no idea if it changed because of an acquisition. I just need to react to the action dispatched by successful sign up.
+Observing changes in state for analytics will get you there most of the time. However, sometimes reacting to an action being dispatched is what you need. Considering the same example, I also need to call an affiliate when a user has just signed up. I can't observe the current user value changing: I would have no idea if it changed because of an acquisition, a log in or a password reset. I just need to react to the action dispatched by a successful sign up.
 
 Actions are like events, and the way we listen to events is by adding event listeners (`addEventListener(eventType, listener)`). Why not have an `addActionListener(actionType, listener)`? We just need to make use of an absolute brilliant feature of redux: store enhancers.
 
@@ -117,7 +115,7 @@ const removeActionListener = store.addActionListener('USER_SIGNED_UP', () => {
 
 ## Attaching analytics behaviours to components
 
-Finally, we need to be able to add and remove analytics observers and action listeners during the lifetime of an application. Analytics can easily be organised by domain and attached to business-level views or components. Using a higher-order component, we can create components which will create store subscriptions and add action listeners when mounted, and which will unsubscribe / remove them when unmounted. This is a great approach: we have reactive analytics, but we are still able to organize our code at the component-level, wherever it makes sense for you. We don't imped our ability to do code splitting, we can have test different components with slight analytics variations to perform A/B testing...
+Finally, we need to be able to add and remove analytics observers and action listeners during the lifetime of an application. Analytics can easily be organised by domain and attached to business-level views or components. Using a higher-order component, we can create components which will subscribe to your store and add action listeners when mounted, and which will unsubscribe / remove them when unmounted. This is a great approach: we have reactive analytics, but we are still able to organize our code at the component-level, wherever it makes sense for you. We don't imped our ability to do code splitting, we can A/B test variations of components with different analytics...
 
 But first, we need to have a better subscribe method. Instead create a subscription for each value we want to observe, we can share the same subscription at the component level (a bit like the way connect works).
 
@@ -204,4 +202,4 @@ const withAnalytics = (valueObservers, actionListeners, invokeImmediately = true
 export default withAnalytics;
 ```
 
-And that's it! A fairly simple solution to bring reactive analytics to redux, observing state changes and listening to actions, and attaching analytics to components!
+And that's it! A fairly simple solution to bring reactive analytics to redux, observing state changes and listening to actions, and attaching analytics to components! All of that without a middleware.
