@@ -14,7 +14,7 @@ image: https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248
 A fews months ago I attended ReactEurope in Paris. There was a talk (a bit niche, from a conference sponsor) on analytics in redux. I'm working on a redux app at work, and like any apps it has analytics needs. At the time I had only scratched the surface of analytics in redux, and middlewares seemed the right place to start. But after a few iterations, I abandonned middlewares in favour of a better solution: __reactive analytics__. I would encourage you to watch [Andre Staltz' talk about reactive programming](https://www.youtube.com/watch?v=v68ppDlvHqs) during the last PolyConf, it inspired some of this work.
 
 
-## Are middlewares suited for analytics?
+## Are middlewares suitable for analytics?
 
 There are two ways you could use middlewares for analytics:
 - You could atach metadata to your actions
