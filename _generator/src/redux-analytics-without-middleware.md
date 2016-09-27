@@ -20,7 +20,7 @@ There are two ways you could use middlewares for analytics:
 - You could atach metadata to your actions
 - You could have a big switch statement on action types (or if / else if statements)
 
-Those two solutions are in my opinion not great. For the first one, actions shouldn't have to be aware of analytics side-effects they might trigger, and how to present their data to an analytics middleware. It adds complexity to your action creators and it isn't the best for separation of concerns.
+Those two solutions are in my opinion not great. For the first one, actions don't need to be aware of analytics side-effects they might trigger, and how to present their data to an analytics middleware. It adds complexity to your action creators and it isn't the best for separation of concerns.
 
 Instead any analytics code should be observing actions and reacting to them, and this brings us to point 2: an analytics middleware with a big switch statement. First, this is hardly scalable as it will grow over time. But to understand why this is not suitable, let's consider a simple example.
 
