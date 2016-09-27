@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base href="/">
+	<title>Redux analytics, without middleware | React and be thankful</title>
+	<meta name="description" content="A fews months ago I attended ReactEurope in Paris. There was a talk (a bit niche, from a conference sponsor) on analytics in redux. I&#39;m workin&hellip;">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Redux analytics, without middleware">
+	<meta name="twitter:description" content="A fews months ago I attended ReactEurope in Paris. There was a talk (a bit niche, from a conference sponsor) on analytics in redux. I&#39;m working on a redux app at work, and like any apps i&hellip;">
+	<meta name="twitter:creator" content="@tcroch">
+	<meta name="twitter:image" content="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67">
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Redux analytics, without middleware">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://blog.reactandbethankful.com/posts/2016/09/27/redux-analytics-without-middleware">
+	<meta property="og:description" content="A fews months ago I attended ReactEurope in Paris. There was a talk (a bit niche, from a conference sponsor) on analytics in redux. I&#39;m working on a redux app at work, and like any apps it has analytics needs. At the time I had only scratched the surface of analytics in redux, and middlewares seemed the right place to start. But after a few iterations, I abandonned middlewares in favour of a better solution: reactive analytics. I would encourage you to watch Andre Staltz&#39; talk about reactive programming during the last PolyConf, it inspired some of this work.">
+	<meta property="og:image" content="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67">
+	<!-- Article meta data -->
+	<meta property="article:published_time" content="2016-09-27T14:00:00.000Z">
+	<meta property="article:modified_time" content="2016-09-27T13:30:23.285Z">
+	<meta property="article:tag" content="react">
+	<meta property="article:tag" content="functional">
+	<meta property="article:tag" content="reactive">
+	<meta property="article:tag" content="analytics">
+	<meta property="article:tag" content="redux">
+	<!-- RSS feed -->
+	<link rel="alternate" type="application/rss+xml" title="React and be thankful" href="http://blog.reactandbethankful.com/rss.xml">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="assets/app.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/">React and be thankful</a> <small>A blog about building (reactive) web applications</small></h1>
+		<section>
+			<input id="searchInput">
+			<div id="searchResults"></div>
+			<button type="button" class="circled-icon" id="searchButton"><span class="fa fa-search" title="Search" aria-label="Search" placeholder="Search"></span></button>
+			<!--
+
+     --><a class="circled-icon" href="/rss.xml"><span class="fa fa-rss" title="RSS Feed" aria-label="RSS Feed"></span></a></section>
+	</header>
+	<script></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			function renderSearchResults(results) {
+				searchResults.classList[results.length > 0 ? 'remove' : 'add']('hidden');
+				searchResults.innerHTML = "";
+				results = results
+					.map(function(res) {
+						return articles[res.ref];
+					}).filter(function(article) {
+						return article !== undefined && location.pathname.indexOf(article.path) === -1;
+					});
+				if (results.length) {
+					results.forEach(function(article) {
+						searchResults.appendChild(renderSearchResult(article));
+					});
+					searchResults.classList.remove('hidden');
+				} else {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				}
+			}
+
+			function renderSearchResult(article) {
+				var link = document.createElement('a');
+				link.href = article.path;
+				link.appendChild(document.createTextNode(article.title));
+				return link;
+			}
+			var searchResults = document.getElementById('searchResults');
+			var searchInput = document.getElementById('searchInput');
+			var lunrIndex;
+			var articles;
+
+			function getLunrIndex() {
+				superagent
+					.get('/searchIndex.json')
+					.end(function(err, res) {
+						if (!err) {
+							lunrIndex = lunr.Index.load(res.body);
+						}
+					});
+			}
+
+			function getArticles() {
+				superagent
+					.get('/articles.json')
+					.end(function(err, res) {
+						if (!err) {
+							articles = res.body;
+						}
+					});
+			}
+
+			function hideSearchInput(evt) {
+				if (evt && evt.keyCode && evt.keyCode !== 27) return;
+				if (evt && (evt.target === searchButton || searchButton.contains(evt.target) || (evt.target === searchInput && evt.keyCode !== 27))) return;
+				searchInput.classList.remove('revealed');
+				searchResults.classList.add('hidden');
+				searchResults.innerHTML = "";
+				searchInput.removeEventListener('input', onSearchInput);
+				window.removeEventListener('click', hideSearchInput);
+				window.removeEventListener('scroll', hideSearchInput);
+				window.removeEventListener('keydown', hideSearchInput);
+				searchInput.removeEventListener('keydown', hideSearchInput);
+				searchInput.value = '';
+			}
+
+			function showSearchInput() {
+				searchInput.classList.add('revealed');
+				if (!lunrIndex) getLunrIndex();
+				if (!articles) getArticles();
+				searchInput.addEventListener('input', onSearchInput, false);
+				window.addEventListener('click', hideSearchInput, false);
+				window.addEventListener('scroll', hideSearchInput, false);
+				window.addEventListener('keydown', hideSearchInput, false);
+				searchInput.addEventListener('keydown', hideSearchInput, false);
+				searchInput.focus();
+			}
+
+			function onSearchInput(evt) {
+				if (evt.target.value.length < 2) {
+					searchResults.innerHTML = "";
+					searchResults.classList.add('hidden');
+				} else if (lunrIndex && articles) {
+					renderSearchResults(lunrIndex.search(evt.target.value));
+				}
+			}
+			document.getElementById('searchButton').addEventListener('click', function(evt) {
+				if (!searchInput.classList.contains('revealed')) showSearchInput();
+				else hideSearchInput();
+			}, false);
+			var headerPadding = parseInt(window.getComputedStyle(document.querySelector('body > header')).paddingTop, 10);
+			window.addEventListener('scroll', function(evt) {
+				if (window.scrollY > headerPadding / 2) document.body.classList.add('scrolled');
+				else document.body.classList.remove('scrolled');
+			}, false);
+		});
+	</script>
+	<article class="main">
+		<section class="share"><a href="https://twitter.com/share" class="twitter-share-button" data-via="tcroch" data-size="large">Tweet</a>
+			<script>
+				! function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+						p = /^http:/.test(d.location) ? 'http' : 'https';
+					if (!d.getElementById(id)) {
+						js = d.createElement(s);
+						js.id = id;
+						js.src = p + '://platform.twitter.com/widgets.js';
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+				}(document, 'script', 'twitter-wjs');
+			</script>
+		</section>
+		<h1 id="redux-analytics-without-middleware">Redux analytics, without middleware</h1>
+		<p>A fews months ago I attended ReactEurope in Paris. There was a talk (a bit niche, from a conference sponsor) on analytics in redux. I&#39;m working on a redux
+			app at work, and like any apps it has analytics needs. At the time I had only scratched the surface of analytics in redux, and middlewares seemed the right place
+			to start. But after a few iterations, I abandonned middlewares in favour of a better solution: <strong>reactive analytics</strong>. I would encourage you to watch
+			<a href="https://www.youtube.com/watch?v=v68ppDlvHqs">Andre Staltz&#39; talk about reactive programming</a> during the last PolyConf, it inspired some of this
+			work.</p>
+		<h2 id="are-middlewares-suited-for-analytics-">Are middlewares suited for analytics?</h2>
+		<p>There are two ways you could use middlewares for analytics:</p>
+		<ul>
+			<li>You could atach metadata to your actions</li>
+			<li>You could have a big switch statement on action types (or if / else if statements)</li>
+		</ul>
+		<p>Those two solutions are in my opinion not great. For the first one, actions shouldn&#39;t have to be aware of analytics side-effects they might trigger, and how
+			to present their data to an analytics middleware. It adds complexity to your action creators and it isn&#39;t the best for separation of concerns.</p>
+		<p>Instead any analytics code should be observing actions and reacting to them, and this brings us to point 2: an analytics middleware with a big switch statement.
+			First, this is hardly scalable as it will grow over time. But to understand why this is not suitable, let&#39;s consider a simple example.</p>
+		<p>Shortly after I started to use an analytics redux middleware, I needed to inform google analytics of the currently logged-in user (for session reconciliation).
+			I have a reducer taking care of the piece of state containing the current user, with a few actions causing it to return a new state: when a user signs in, signs
+			up, resets its password or logs out. Except when logging out, those actions contain an API response which itself contains a new session. My analytics middleware
+			would need to have knowledge of those four actions! One could ask: &quot;why do you not combine them into one action?&quot;, which is a valid question. And my
+			answer would be: &quot;what is the point of having actions?&quot;. If I was to combine those actions, I would move the responsibility to know the causes actions
+			have on the state from reducers to action creators. And this isn&#39;t right because only reducers should have such knowledge. An action creator should not decide
+			what actions to dispatch based on what parts of the state should be updated.</p>
+		<p>Middlewares are also static and cannot be added and removed after store creation.</p>
+		<h2 id="observing-state-changes">Observing state changes</h2>
+		<p>In the example above, there is a quite obvious thing to do: observe the current user in state. Instead of looking at actions, we want to look at the effects they
+			have on the appplication state. And redux provides already everything we need: <code class="nohighlight">store.subscribe</code>.</p>
+		<p>What we need: a function wrapping <code class="nohighlight">store.subscribe</code> to which we provide a selector (a function of state returning a path of the
+			state) and a callback to be executed when a change has been detected.</p><pre><code class="javascript">const subscribe = (selector, callback, invokeImmediately = true) =&gt; (store) =&gt; {
+    let previousValue;
+
+    const invokeCallback = () =&gt; {
+        const value = selector(state);
+
+        if (value !== previousValue) {
+            callback(value, previousValue, store.getState());
+        }
+
+        previousValue = value;
+    }
+
+    if (invokeImmediately) {
+        invokeCallback();
+    }
+
+    return store.subscribe((state) =&gt; {
+        invokeCallback();
+    };
+};
+</code></pre>
+		<p>And then, observing the current user changing would look like this:</p><pre><code class="javascript">const getUser = (state) =&gt; state.activeUser;
+const setUserInGA = (user) =&gt; {
+    window.ga(&#39;set&#39;, &#39;userId&#39;, user ? hash(user.id) : null);
+}
+
+const unsubscribe = subscribe(getUser, setUserInGA)(store);
+</code></pre>
+		<h2 id="listening-to-actions">Listening to actions</h2>
+		<p>Most of the time, observing changes in state is what one needs for analytics. However, sometimes, you just want to react to an action being dispatched. Considering
+			the same example, I also need to call an affiliate when a user has just signed up. I can&#39;t observe the current user value changing: I would have no idea if
+			it changed because of an acquisition. I just need to react to the action dispatched by successful sign up.</p>
+		<p>Actions are like events, and the way we listen to events is by adding event listeners (<code class="nohighlight">addEventListener(eventType, listener)</code>).
+			Why not have an <code class="nohighlight">addActionListener(actionType, listener)</code>? We just need to make use of an absolute brilliant feature of redux:
+			store enhancers.</p><pre><code class="javascript">function actionListenersStoreEnhancer(createStore) {
+    return (reducer, initialState, enhancer) =&gt; {
+        const actionListeners = {};
+        const store = createStore(reducer, initialState, enhancer);
+        const dispatch = store.dispatch;
+
+        store.dispatch = (action) =&gt; {
+            const result = dispatch(action);
+
+            if (typeof action === &#39;object&#39; &amp;&amp; action.type &amp;&amp; actionListeners[action.type]) {
+                actionListeners[action.type].forEach((listener) =&gt; listener(action));
+            }
+
+            return result;
+        };
+
+        store.addActionListener = (listener) =&gt; {
+            actionListeners[actionType] = (actionListeners[actionType] || []).concat(listener);
+
+            return () =&gt; {
+                actionListeners[actionType] = actionListeners[actionType].filter((l) =&gt; l !== listener);
+            };
+        };
+
+        return store;
+    };
+}
+</code></pre>
+		<p>And then, using it this way:</p><pre><code class="javascript">const removeActionListener = store.addActionListener(&#39;USER_SIGNED_UP&#39;, () =&gt; {
+    window.fbq(&#39;track&#39;, &#39;CompleteRegistration&#39;);
+});
+</code></pre>
+		<h2 id="attaching-analytics-behaviours-to-components">Attaching analytics behaviours to components</h2>
+		<p>Finally, we need to be able to add and remove analytics observers and action listeners during the lifetime of an application. Analytics can easily be organised
+			by domain and attached to business-level views or components. Using a higher-order component, we can create components which will create store subscriptions and
+			add action listeners when mounted, and which will unsubscribe / remove them when unmounted. This is a great approach: we have reactive analytics, but we are still
+			able to organize our code at the component-level, wherever it makes sense for you. We don&#39;t imped our ability to do code splitting, we can have test different
+			components with slight analytics variations to perform A/B testing...</p>
+		<p>But first, we need to have a better subscribe method. Instead create a subscription for each value we want to observe, we can share the same subscription at the
+			component level (a bit like the way connect works).</p><pre><code class="javascript">const getValuesAndCallback(state, observers, previousValues) =&gt;
+    Object.keys(observers).reduce(
+        (obj, key) =&gt; {
+            const [ selector, callback ] = observers[key];
+
+            const previousValue = previousValues[key];
+            const value = selector(state);
+
+            if (previousValue !== value) {
+                callback(value, previousValue, store.getState());
+                obj[key] = value;
+            }
+            return obj;
+        },
+        previousValues
+    );
+
+const subscribe = (observers, invokeImmediately = true) =&gt; (store) =&gt; {
+    let values = {};
+
+    if (invokeImmediately) {
+        values = getValuesAndCallback(store, observers, values);
+    }
+
+    return store.subscribe((state) =&gt; {
+        getValuesAndCallback(state, observers, values);
+    });
+};
+</code></pre>
+		<p>And that would be use this way (not the prettiest, but it&#39;s the best API I&#39;ve found so far):</p><pre><code class="javascript">subscribe({
+    user: [ getUser, (user) =&gt; { /* send hashed userId */ }
+    route: [ getRoute, (route) =&gt; { /* send pageview event */ }
+})(store);
+</code></pre>
+		<p>Finally, we need an higher-order component, making use of your <code class="nohighlight">subscribe</code> and <code class="nohighlight">addActionListener</code>			functions:</p><pre><code class="javascript">const withAnalytics = (valueObservers, actionListeners, invokeImmediately = true) =&gt; (BaseComponent) =&gt; {
+    class WithAnalytics extends Component {
+        constructor(props, context) {
+            super(props);
+
+            this.store = context.store;
+        }
+
+        componentWillMount() {
+            this.unsubscribe = subscribe(valueObservers, invokeImmediately)(this.store);
+            this.removeActionListenerList = Object.keys(actionListeners)
+                .map((actionType) =&gt; this.store.addActionListener(actionType, actionListeners[actionType]);
+        }
+
+        componentWillUnmount() {
+            if (this.unsubscribe) {
+                this.unsubscribe();
+                this.removeActionListenerList.forEach((removeListener) =&gt; removeListener());
+            }
+        }
+
+        render() {
+            return React.createElement(BaseComponent, this.props);
+        }
+    }
+
+    const displayName = BaseComponent.displayName || BaseComponent.name || &#39;Component&#39;;
+
+    WithAnalytics.displayName = `WithAnalytics[${displayName}]`;
+
+    WithAnalytics.contextTypes = {
+        store: PropTypes.object.isRequired
+    };
+
+    return WithAnalytics;
+};
+
+export default withAnalytics;
+</code></pre>
+		<p>And that&#39;s it! A fairly simple solution to bring reactive analytics to redux, observing state changes and listening to actions, and attaching analytics to
+			components!</p>
+		<p>Something wrong? Fix it on <a href="https://github.com/troch/troch.github.io/tree/master/_generator/src/redux-analytics-without-middleware.md">Github!</a></p>
+		<section
+		class="prev-next-links"><a href="posts/2015/09/15/understanding-the-functional-revolution/" class="prev"><span class="fa fa-chevron-left"></span> <span>Understanding the functional revolution in front-end applications</span></a></section>
+	</article>
+	<footer>
+		<!-- <div class="about">About the author</div> -->
+		<section class="contact-links"><a class="circled-icon" href="https://github.com/troch" target="_blank" aria-label="Github (troch)" title="Github (troch)"><i class="fa fa-github"></i></a>
+			<a
+			class="circled-icon" href="https://uk.linkedin.com/in/thomasroch" target="_blank" aria-label="Linkedin (Thomas Roch)" title="Linkedin (Thomas Roch)"><i class="fa fa-linkedin"></i></a>
+				<a class="circled-icon" href="https://twitter.com/tcroch" target="_blank" aria-label="Twitter (tcroch)" title="Twitter (tcroch)"><i class="fa fa-twitter"></i></a> <a class="circled-icon" href="https://stackoverflow.com/users/3114505/thomas-roch" target="_blank" aria-label="Stackoverflow (Thomas Roch)"
+				title="Stackoverflow (Thomas Roch)"><i class="fa fa-stack-overflow"></i></a> <a class="circled-icon" href="http://www.slideshare.net/ThomasRoch" target="_blank"
+				aria-label="SlideShare (Thomas Roch)" title="SlideShare (Thomas Roch)"><i class="fa fa-slideshare"></i></a></section>
+		<section class="info">&copy; Thomas Roch 2015-present. Built with <a href="http://www.metalsmith.io">metalsmith</a> and <a href="http://www.gulpjs.com">Gulp</a>. Served by <a href="https://github.com/troch/troch.github.io">GitHub pages</a>.</section>
+	</footer>
+	<!-- Script files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.8/lunr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/css.min.js"></script>
+	<!-- Scripts -->
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<!-- Analytics -->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-61970524-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

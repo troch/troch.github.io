@@ -15,10 +15,10 @@ gulp.task('cleanDist', function (done) {
     del('dist/', done);
 });
 
-gulp.task('copyAssets', function () {
-    return gulp.src('./bower_components/kefir/dist/kefir.min.js')
-        .pipe(gulp.dest('./'))
-});
+// gulp.task('copyAssets', function () {
+//     return gulp.src('./bower_components/kefir/dist/kefir.min.js')
+//         .pipe(gulp.dest('./'))
+// });
 
 gulp.task('copyPosts', function () {
     return gulp.src('./dist/**/*.*')
@@ -31,7 +31,7 @@ gulp.task('cleanPosts', function (done) {
 
 gulp.task('deploy', gulp.series(
     'cleanPosts',
-    gulp.parallel('less', 'copyPosts', 'copyAssets'),
+    gulp.parallel('less', 'copyPosts'),
     'cleanDist'
 ));
 
