@@ -20,7 +20,7 @@
 	<meta property="og:image" content="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67">
 	<!-- Article meta data -->
 	<meta property="article:published_time" content="2016-09-27T14:00:00.000Z">
-	<meta property="article:modified_time" content="2016-09-27T13:36:05.957Z">
+	<meta property="article:modified_time" content="2016-09-27T13:39:29.389Z">
 	<meta property="article:tag" content="react">
 	<meta property="article:tag" content="functional">
 	<meta property="article:tag" content="reactive">
@@ -180,9 +180,9 @@
 			I have a reducer taking care of the piece of state containing the current user, with a few actions causing it to return a new state: when a user signs in, signs
 			up, resets its password or logs out. Except when logging out, those actions contain an API response which itself contains a new session. My analytics middleware
 			would need to have knowledge of those four actions! One could ask: &quot;why do you not combine them into one action?&quot;, which is a valid question. And my
-			answer would be: &quot;what is the point of having actions?&quot;. If I was to combine those actions, I would move the responsibility to know the causes actions
-			have on the state from reducers to action creators. And this isn&#39;t right because only reducers should have such knowledge. An action creator should not decide
-			what actions to dispatch based on what parts of the state should be updated.</p>
+			answer would be: &quot;what is the point of having actions?&quot;. If I were to combine those actions, I would move to action creators the responsibility to know
+			the causes actions have on the state. And this isn&#39;t right because only reducers should have such knowledge. An action creator should not decide what actions
+			to dispatch based on what parts of the state should be updated.</p>
 		<p>Middlewares are also static and cannot be added and removed after store creation.</p>
 		<h2 id="observing-state-changes">Observing state changes</h2>
 		<p>In the example above, there is a quite obvious thing to do: observe the current user in state. Instead of looking at actions, we want to look at the effects they
