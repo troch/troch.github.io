@@ -55,7 +55,7 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-  background: #2645aa;
+  background: #2645AA;
   transition: background-color 0.4s ease-in-out;
   font-size: 1rem;
   width: 36px;
@@ -66,7 +66,7 @@
   cursor: pointer;
 }
 .circled-icon:hover {
-  background-color: #00a124;
+  background-color: #00A124;
 }
 .circled-icon > .fa {
   position: absolute;
@@ -94,10 +94,10 @@ body {
   font-family: 'PT Sans', sans-serif;
   line-height: 24px;
   font-size: 16px;
-  color: #333333;
+  color: #333;
   margin: 0;
   padding: 0;
-  background-color: #112f90;
+  background-color: #112F90;
 }
 *,
 *::after,
@@ -127,13 +127,13 @@ header,
 footer {
   color: white;
   padding: 1rem;
-  background-color: #112f90;
+  background-color: #112F90;
 }
 header .info,
 footer .info {
   text-align: center;
   font-size: 0.85rem;
-  color: #f1f1f1;
+  color: #F1F1F1;
   margin: 1rem 0;
 }
 body {
@@ -144,7 +144,7 @@ footer > .about {
   margin-bottom: 1rem;
 }
 footer > .info {
-  color: #f1f1f1;
+  color: #F1F1F1;
 }
 footer > .info a {
   text-decoration: underline;
@@ -173,7 +173,7 @@ main article > a {
 }
 main article .tag {
   display: inline-block;
-  background-color: #f1f1f1;
+  background-color: #F1F1F1;
   border-radius: 3px;
   font-size: 0.9rem;
   padding: 0.25rem;
@@ -183,14 +183,14 @@ main article .tag + .tag {
   margin-left: 0.1rem;
 }
 main article + article {
-  border-top: 2px solid #f1f1f1;
+  border-top: 2px solid #F1F1F1;
 }
 section.share {
   margin-bottom: 1rem;
   text-align: center;
 }
 section.prev-next-links {
-  border-top: 2px solid #f1f1f1;
+  border-top: 2px solid #F1F1F1;
   display: flex;
   flex-direction: row;
 }
@@ -199,7 +199,7 @@ section.prev-next-links > a {
   padding: 1.5rem;
 }
 section.prev-next-links > a:hover {
-  background-color: #f1f1f1;
+  background-color: #F1F1F1;
   text-decoration: none;
 }
 section.prev-next-links > a.next {
@@ -223,7 +223,7 @@ section.prev-next-links > a.next {
     padding: 0;
   }
   footer .info {
-    color: #999999;
+    color: #999;
   }
   main,
   .main {
@@ -271,7 +271,7 @@ section.prev-next-links > a.next {
   }
   section.prev-next-links > a span.fa {
     transition: transform .5s;
-    color: #cccccc;
+    color: #CCC;
     font-size: 3rem;
     width: 4rem;
   }
@@ -283,7 +283,7 @@ section.prev-next-links > a.next {
   }
   section.prev-next-links > a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #00a124;
+    background-color: #00A124;
     text-decoration: none;
   }
   section.prev-next-links > a:hover span:not(.fa) {
@@ -291,7 +291,7 @@ section.prev-next-links > a.next {
   }
   section.prev-next-links > a:hover span.fa {
     transform: rotateX(-180deg);
-    color: #f1f1f1;
+    color: #F1F1F1;
   }
 }
 @media (min-width: 920px) {
@@ -306,7 +306,7 @@ section.prev-next-links > a.next {
   font-size: 1.2rem;
   border: 0;
   padding: 0;
-  background-color: #2645aa;
+  background-color: #2645AA;
   color: white;
   position: relative;
   right: -36px;
@@ -320,14 +320,14 @@ section.prev-next-links > a.next {
 }
 #searchInput.revealed ~ #searchButton.circled-icon {
   border-radius: 0;
-  background-color: #00a124;
+  background-color: #00A124;
 }
 #searchResults {
   position: fixed;
   z-index: 2;
   right: calc(1.5rem + 36px);
   top: calc(2rem + 36px);
-  background-color: #112f90;
+  background-color: #112F90;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 body.scrolled #searchResults {
@@ -341,7 +341,7 @@ body.scrolled #searchResults {
 #searchResults > a:hover,
 #searchResults > a:focus {
   text-decoration: none;
-  background-color: #2645aa;
+  background-color: #2645AA;
 }
 @media (min-width: 920px) {
   #searchInput.revealed {
@@ -437,7 +437,7 @@ article.main {
 }
 main a,
 article.main a {
-  color: #112f90;
+  color: #112F90;
 }
 main p,
 article.main p {
@@ -460,7 +460,7 @@ article.main ul code {
   font-size: 0.8rem;
   background-color: rgba(0, 0, 0, 0.06);
   border-radius: 3px;
-  color: #666666;
+  color: #666;
   white-space: nowrap;
 }
 main p code:before,
@@ -487,23 +487,23 @@ main h1,
 article.main h1 {
   margin: 0 0 1rem;
   font-size: 1.6rem;
-  color: #00a124;
-  border-left-color: #00a124;
+  color: #00A124;
+  border-left-color: #00A124;
   line-height: 2rem;
 }
 main h2,
 article.main h2 {
   margin: 3rem 0 1.5rem;
   font-size: 1.4rem;
-  color: #999999;
-  border-left-color: #999999;
+  color: #999;
+  border-left-color: #999;
 }
 main blockquote,
 article.main blockquote {
   display: block;
   position: relative;
   margin: 1rem 0;
-  background-color: #f1f1f1;
+  background-color: #F1F1F1;
   padding: 1rem 1rem 1rem 3.25rem;
 }
 main blockquote > p,
@@ -520,7 +520,7 @@ article.main blockquote::before {
   position: absolute;
   top: 1.25rem;
   left: 1rem;
-  color: #112f90;
+  color: #112F90;
 }
 main pre,
 article.main pre {
@@ -532,7 +532,7 @@ article.main pre > code {
   display: block;
   padding: 0.5em;
   width: 100%;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #F1F1F1;
   border-left-width: 0.35rem;
   font-size: 0.9rem;
   padding-left: 0.65rem !important;

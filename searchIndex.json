@@ -19,9 +19,6 @@
 			"posts/2015/05/01/how-to-install-gulp-4/index.html": ["4", "automation,build", "automation,gulpjs,increment", "build", "gulp", "instal",
 				"javascript,nodejs,build", "node,nodejs,javascript,gulp,gulpjs,build", "runner,gulp", "tool,streams,task"
 			],
-			"posts/2016/09/27/redux-analytics-without-middleware/index.html": ["analyt", "javascript,react,redux,funct", "middlewar", "program", "programming,react",
-				"react,functional,reactive,analytics,redux", "redux", "without"
-			],
 			"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": ["agnost", "end", "html5", "javascript,router,html5,front", "new", "router",
 				"router,html5,nested,routes,path,tree,component,reactive,react,framework", "router5"
 			],
@@ -30,6 +27,9 @@
 			],
 			"posts/2015/04/18/building-with-grunt-part-1/index.html": ["1", "automation,build", "automation,gruntj", "build", "grunt", "javascript,nodejs,build",
 				"node,nodejs,javascript,grunt,gruntjs,build", "part", "runner", "tool,task"
+			],
+			"posts/2016/09/27/redux-analytics-without-middleware/index.html": ["analyt", "javascript,react,redux,funct", "middlewar", "program", "programming,react",
+				"react,functional,reactive,analytics,redux", "redux", "without"
 			],
 			"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": ["2", "automation,build", "automation,gruntj", "build", "caveat", "grunt",
 				"javascript,nodejs,build", "node,nodejs,javascript,grunt,gruntjs,build", "part", "runner", "tool,task"
@@ -407,6 +407,26 @@
 						}
 					}
 				},
+				"g": {
+					"docs": {},
+					"n": {
+						"docs": {},
+						"o": {
+							"docs": {},
+							"s": {
+								"docs": {},
+								"t": {
+									"docs": {
+										"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+											"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+											"tf": 2.5
+										}
+									}
+								}
+							}
+						}
+					}
+				},
 				"n": {
 					"docs": {},
 					"a": {
@@ -437,26 +457,6 @@
 												"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
 												"tf": 1.25
 											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"g": {
-					"docs": {},
-					"n": {
-						"docs": {},
-						"o": {
-							"docs": {},
-							"s": {
-								"docs": {},
-								"t": {
-									"docs": {
-										"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
-											"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
-											"tf": 2.5
 										}
 									}
 								}
@@ -809,59 +809,6 @@
 														},
 														"r": {
 															"docs": {},
-															"e": {
-																"docs": {},
-																"a": {
-																	"docs": {},
-																	"c": {
-																		"docs": {},
-																		"t": {
-																			"docs": {},
-																			",": {
-																				"docs": {},
-																				"r": {
-																					"docs": {},
-																					"e": {
-																						"docs": {},
-																						"d": {
-																							"docs": {},
-																							"u": {
-																								"docs": {},
-																								"x": {
-																									"docs": {},
-																									",": {
-																										"docs": {},
-																										"f": {
-																											"docs": {},
-																											"u": {
-																												"docs": {},
-																												"n": {
-																													"docs": {},
-																													"c": {
-																														"docs": {},
-																														"t": {
-																															"docs": {
-																																"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
-																																	"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
-																																	"tf": 3.333333333333333
-																																}
-																															}
-																														}
-																													}
-																												}
-																											}
-																										}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															},
 															"o": {
 																"docs": {},
 																"u": {
@@ -908,6 +855,59 @@
 																										}
 																									},
 																									"docs": {}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															"e": {
+																"docs": {},
+																"a": {
+																	"docs": {},
+																	"c": {
+																		"docs": {},
+																		"t": {
+																			"docs": {},
+																			",": {
+																				"docs": {},
+																				"r": {
+																					"docs": {},
+																					"e": {
+																						"docs": {},
+																						"d": {
+																							"docs": {},
+																							"u": {
+																								"docs": {},
+																								"x": {
+																									"docs": {},
+																									",": {
+																										"docs": {},
+																										"f": {
+																											"docs": {},
+																											"u": {
+																												"docs": {},
+																												"n": {
+																													"docs": {},
+																													"c": {
+																														"docs": {},
+																														"t": {
+																															"docs": {
+																																"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
+																																	"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
+																																	"tf": 3.333333333333333
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
 																								}
 																							}
 																						}
@@ -1548,176 +1548,6 @@
 						}
 					}
 				},
-				"e": {
-					"docs": {},
-					"a": {
-						"docs": {},
-						"c": {
-							"docs": {},
-							"t": {
-								"docs": {},
-								",": {
-									"docs": {},
-									"f": {
-										"docs": {},
-										"u": {
-											"docs": {},
-											"n": {
-												"docs": {},
-												"c": {
-													"docs": {},
-													"t": {
-														"docs": {},
-														"i": {
-															"docs": {},
-															"o": {
-																"docs": {},
-																"n": {
-																	"docs": {},
-																	"a": {
-																		"docs": {},
-																		"l": {
-																			"docs": {},
-																			",": {
-																				"docs": {},
-																				"r": {
-																					"docs": {},
-																					"e": {
-																						"docs": {},
-																						"a": {
-																							"docs": {},
-																							"c": {
-																								"docs": {},
-																								"t": {
-																									"docs": {},
-																									"i": {
-																										"docs": {},
-																										"v": {
-																											"docs": {},
-																											"e": {
-																												"docs": {},
-																												",": {
-																													"docs": {},
-																													"a": {
-																														"docs": {},
-																														"n": {
-																															"docs": {},
-																															"a": {
-																																"docs": {},
-																																"l": {
-																																	"docs": {},
-																																	"y": {
-																																		"docs": {},
-																																		"t": {
-																																			"docs": {},
-																																			"i": {
-																																				"docs": {},
-																																				"c": {
-																																					"docs": {},
-																																					"s": {
-																																						"docs": {},
-																																						",": {
-																																							"docs": {},
-																																							"r": {
-																																								"docs": {},
-																																								"e": {
-																																									"docs": {},
-																																									"d": {
-																																										"docs": {},
-																																										"u": {
-																																											"docs": {},
-																																											"x": {
-																																												"docs": {
-																																													"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
-																																														"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
-																																														"tf": 5
-																																													}
-																																												}
-																																											}
-																																										}
-																																									}
-																																								}
-																																							}
-																																						}
-																																					}
-																																				}
-																																			}
-																																		}
-																																	}
-																																}
-																															}
-																														}
-																													}
-																												}
-																											}
-																										}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								"i": {
-									"docs": {},
-									"v": {
-										"docs": {
-											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
-												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
-												"tf": 0.8333333333333333
-											}
-										}
-									}
-								}
-							}
-						}
-					},
-					"d": {
-						"docs": {},
-						"u": {
-							"docs": {},
-							"x": {
-								"docs": {
-									"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
-										"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
-										"tf": 2.5
-									}
-								}
-							}
-						}
-					},
-					"v": {
-						"docs": {},
-						"o": {
-							"docs": {},
-							"l": {
-								"docs": {},
-								"u": {
-									"docs": {},
-									"t": {
-										"docs": {
-											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
-												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
-												"tf": 1.6666666666666665
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
 				"o": {
 					"docs": {},
 					"u": {
@@ -1945,6 +1775,176 @@
 							}
 						}
 					}
+				},
+				"e": {
+					"docs": {},
+					"a": {
+						"docs": {},
+						"c": {
+							"docs": {},
+							"t": {
+								"docs": {},
+								",": {
+									"docs": {},
+									"f": {
+										"docs": {},
+										"u": {
+											"docs": {},
+											"n": {
+												"docs": {},
+												"c": {
+													"docs": {},
+													"t": {
+														"docs": {},
+														"i": {
+															"docs": {},
+															"o": {
+																"docs": {},
+																"n": {
+																	"docs": {},
+																	"a": {
+																		"docs": {},
+																		"l": {
+																			"docs": {},
+																			",": {
+																				"docs": {},
+																				"r": {
+																					"docs": {},
+																					"e": {
+																						"docs": {},
+																						"a": {
+																							"docs": {},
+																							"c": {
+																								"docs": {},
+																								"t": {
+																									"docs": {},
+																									"i": {
+																										"docs": {},
+																										"v": {
+																											"docs": {},
+																											"e": {
+																												"docs": {},
+																												",": {
+																													"docs": {},
+																													"a": {
+																														"docs": {},
+																														"n": {
+																															"docs": {},
+																															"a": {
+																																"docs": {},
+																																"l": {
+																																	"docs": {},
+																																	"y": {
+																																		"docs": {},
+																																		"t": {
+																																			"docs": {},
+																																			"i": {
+																																				"docs": {},
+																																				"c": {
+																																					"docs": {},
+																																					"s": {
+																																						"docs": {},
+																																						",": {
+																																							"docs": {},
+																																							"r": {
+																																								"docs": {},
+																																								"e": {
+																																									"docs": {},
+																																									"d": {
+																																										"docs": {},
+																																										"u": {
+																																											"docs": {},
+																																											"x": {
+																																												"docs": {
+																																													"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
+																																														"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
+																																														"tf": 5
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"i": {
+									"docs": {},
+									"v": {
+										"docs": {
+											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+												"tf": 0.8333333333333333
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"d": {
+						"docs": {},
+						"u": {
+							"docs": {},
+							"x": {
+								"docs": {
+									"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
+										"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
+										"tf": 2.5
+									}
+								}
+							}
+						}
+					},
+					"v": {
+						"docs": {},
+						"o": {
+							"docs": {},
+							"l": {
+								"docs": {},
+								"u": {
+									"docs": {},
+									"t": {
+										"docs": {
+											"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+												"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+												"tf": 1.6666666666666665
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"t": {
@@ -2097,27 +2097,75 @@
 					}
 				}
 			},
-			"m": {
+			"e": {
 				"docs": {},
-				"i": {
+				"n": {
 					"docs": {},
 					"d": {
-						"docs": {},
-						"d": {
+						"docs": {
+							"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+								"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+								"tf": 5
+							},
+							"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+								"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+								"tf": 1.6666666666666665
+							}
+						},
+						",": {
 							"docs": {},
-							"l": {
+							"a": {
 								"docs": {},
-								"e": {
+								"p": {
 									"docs": {},
-									"w": {
+									"p": {
 										"docs": {},
-										"a": {
+										"l": {
 											"docs": {},
-											"r": {
-												"docs": {
-													"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
-														"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
-														"tf": 2.5
+											"i": {
+												"docs": {},
+												"c": {
+													"docs": {},
+													"a": {
+														"docs": {},
+														"t": {
+															"docs": {},
+															"i": {
+																"docs": {},
+																"o": {
+																	"docs": {},
+																	"n": {
+																		"docs": {},
+																		"s": {
+																			"docs": {},
+																			",": {
+																				"docs": {},
+																				"f": {
+																					"docs": {},
+																					"u": {
+																						"docs": {},
+																						"n": {
+																							"docs": {},
+																							"c": {
+																								"docs": {},
+																								"t": {
+																									"docs": {
+																										"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
+																											"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
+																											"tf": 0.8333333333333333
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
 													}
 												}
 											}
@@ -2127,10 +2175,84 @@
 							}
 						}
 					}
+				},
+				"x": {
+					"docs": {},
+					"a": {
+						"docs": {},
+						"m": {
+							"docs": {},
+							"p": {
+								"docs": {},
+								"l": {
+									"docs": {
+										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+											"tf": 1.4285714285714284
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"h": {
+				"docs": {},
+				"t": {
+					"docs": {},
+					"m": {
+						"docs": {},
+						"l": {
+							"5": {
+								"docs": {
+									"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
+										"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
+										"tf": 2.5
+									}
+								}
+							},
+							"docs": {}
+						}
+					}
 				}
 			},
 			"p": {
 				"docs": {},
+				"a": {
+					"docs": {},
+					"r": {
+						"docs": {},
+						"t": {
+							"docs": {
+								"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
+									"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
+									"tf": 2
+								},
+								"posts/2015/04/18/building-with-grunt-part-1/index.html": {
+									"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
+									"tf": 2.5
+								},
+								"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
+									"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
+									"tf": 2
+								},
+								"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
+									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
+									"tf": 1.4285714285714284
+								},
+								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
+									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
+									"tf": 1.25
+								},
+								"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
+									"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
+									"tf": 1.25
+								}
+							}
+						}
+					}
+				},
 				"r": {
 					"docs": {},
 					"o": {
@@ -2307,36 +2429,34 @@
 							}
 						}
 					}
-				},
-				"a": {
+				}
+			},
+			"m": {
+				"docs": {},
+				"i": {
 					"docs": {},
-					"r": {
+					"d": {
 						"docs": {},
-						"t": {
-							"docs": {
-								"posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html": {
-									"ref": "posts/2015/07/11/building-with-broccoli-part-1-introduction/index.html",
-									"tf": 2
-								},
-								"posts/2015/04/18/building-with-grunt-part-1/index.html": {
-									"ref": "posts/2015/04/18/building-with-grunt-part-1/index.html",
-									"tf": 2.5
-								},
-								"posts/2015/04/22/building-with-grunt-part-2-caveats/index.html": {
-									"ref": "posts/2015/04/22/building-with-grunt-part-2-caveats/index.html",
-									"tf": 2
-								},
-								"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
-									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-									"tf": 1.4285714285714284
-								},
-								"posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html": {
-									"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-2-gulp-anatomy/index.html",
-									"tf": 1.25
-								},
-								"posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html": {
-									"ref": "posts/2015/04/28/building-with-gulp-3-and-4-part-3-writing-transformers/index.html",
-									"tf": 1.25
+						"d": {
+							"docs": {},
+							"l": {
+								"docs": {},
+								"e": {
+									"docs": {},
+									"w": {
+										"docs": {},
+										"a": {
+											"docs": {},
+											"r": {
+												"docs": {
+													"posts/2016/09/27/redux-analytics-without-middleware/index.html": {
+														"ref": "posts/2016/09/27/redux-analytics-without-middleware/index.html",
+														"tf": 2.5
+													}
+												}
+											}
+										}
+									}
 								}
 							}
 						}
@@ -2382,126 +2502,6 @@
 									}
 								}
 							}
-						}
-					}
-				}
-			},
-			"e": {
-				"docs": {},
-				"n": {
-					"docs": {},
-					"d": {
-						"docs": {
-							"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
-								"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
-								"tf": 5
-							},
-							"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
-								"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
-								"tf": 1.6666666666666665
-							}
-						},
-						",": {
-							"docs": {},
-							"a": {
-								"docs": {},
-								"p": {
-									"docs": {},
-									"p": {
-										"docs": {},
-										"l": {
-											"docs": {},
-											"i": {
-												"docs": {},
-												"c": {
-													"docs": {},
-													"a": {
-														"docs": {},
-														"t": {
-															"docs": {},
-															"i": {
-																"docs": {},
-																"o": {
-																	"docs": {},
-																	"n": {
-																		"docs": {},
-																		"s": {
-																			"docs": {},
-																			",": {
-																				"docs": {},
-																				"f": {
-																					"docs": {},
-																					"u": {
-																						"docs": {},
-																						"n": {
-																							"docs": {},
-																							"c": {
-																								"docs": {},
-																								"t": {
-																									"docs": {
-																										"posts/2015/09/15/understanding-the-functional-revolution/index.html": {
-																											"ref": "posts/2015/09/15/understanding-the-functional-revolution/index.html",
-																											"tf": 0.8333333333333333
-																										}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"x": {
-					"docs": {},
-					"a": {
-						"docs": {},
-						"m": {
-							"docs": {},
-							"p": {
-								"docs": {},
-								"l": {
-									"docs": {
-										"posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html": {
-											"ref": "posts/2015/04/23/building-with-gulp-3-and-4-part-1-examples/index.html",
-											"tf": 1.4285714285714284
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"h": {
-				"docs": {},
-				"t": {
-					"docs": {},
-					"m": {
-						"docs": {},
-						"l": {
-							"5": {
-								"docs": {
-									"posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html": {
-										"ref": "posts/2015/07/11/router-5-a-new-framework-agnostic-html5-router/index.html",
-										"tf": 2.5
-									}
-								}
-							},
-							"docs": {}
 						}
 					}
 				}
