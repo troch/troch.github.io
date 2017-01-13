@@ -92,7 +92,7 @@ function actionListenersStoreEnhancer(createStore) {
             return result;
         };
 
-        store.addActionListener = (listener) => {
+        store.addActionListener = (actionType, listener) => {
             actionListeners[actionType] = (actionListeners[actionType] || []).concat(listener);
 
             return () => {
